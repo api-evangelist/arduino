@@ -1,0 +1,129 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "iot": "https://www.w3.org/ns/ssn/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "arduino": "https://api2.arduino.cc/iot/v1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Thing": {
+      "@id": "iot:System",
+      "@type": "@id",
+      "comment": "An Arduino IoT Cloud Thing representing a logical device with properties"
+    },
+    "Device": {
+      "@id": "sosa:Platform",
+      "@type": "@id",
+      "comment": "A physical Arduino hardware board registered in the cloud"
+    },
+    "Property": {
+      "@id": "sosa:ObservableProperty",
+      "@type": "@id",
+      "comment": "A measurable or controllable variable on a Thing"
+    },
+    "Dashboard": {
+      "@id": "schema:WebPage",
+      "@type": "@id",
+      "comment": "A visual interface displaying Thing property values"
+    },
+    "Trigger": {
+      "@id": "schema:Action",
+      "@type": "@id",
+      "comment": "An automation rule that fires when a condition is met"
+    },
+    "TimeSeries": {
+      "@id": "sosa:ObservationCollection",
+      "@type": "@id",
+      "comment": "Historical records of property values over time"
+    },
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "device_id": {
+      "@id": "arduino:devices",
+      "@type": "@id"
+    },
+    "thing_id": {
+      "@id": "arduino:things",
+      "@type": "@id"
+    },
+    "connected": {
+      "@id": "sosa:isHostedBy",
+      "@type": "xsd:boolean"
+    },
+    "last_activity_at": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "fqbn": {
+      "@id": "arduino:fqbn",
+      "@type": "xsd:string",
+      "comment": "Fully Qualified Board Name identifying the Arduino hardware type"
+    },
+    "serial": {
+      "@id": "schema:serialNumber",
+      "@type": "xsd:string"
+    },
+    "timezone": {
+      "@id": "schema:timeZone",
+      "@type": "xsd:string"
+    },
+    "type": "schema:additionalType",
+    "permission": {
+      "@id": "schema:accessMode",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "sosa:hasSimpleResult"
+    },
+    "time": {
+      "@id": "sosa:resultTime",
+      "@type": "xsd:dateTime"
+    },
+    "update_strategy": {
+      "@id": "arduino:updateStrategy",
+      "@type": "xsd:string"
+    },
+    "href": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "tag": {
+      "@id": "schema:identifier"
+    },
+    "properties": {
+      "@id": "sosa:hasProperty",
+      "@container": "@set"
+    },
+    "data": {
+      "@id": "sosa:hasMember",
+      "@container": "@set"
+    },
+    "widgets": {
+      "@id": "schema:hasPart",
+      "@container": "@set"
+    },
+    "access_token": {
+      "@id": "arduino:accessToken",
+      "@type": "xsd:string"
+    },
+    "expires_in": {
+      "@id": "arduino:expiresIn",
+      "@type": "xsd:integer"
+    },
+    "token_type": {
+      "@id": "arduino:tokenType",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "title": "Arduino IoT Cloud API Examples",
+  "description": "Representative request and response examples for the Arduino IoT Cloud REST API",
+  "examples": [
+    {
+      "name": "Create a Thing",
+      "description": "Create a new Thing in Arduino IoT Cloud",
+      "method": "POST",
+      "path": "/iot/v1/things",
+      "request": {
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "My Temperature Sensor",
+          "device_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "timezone": "America/New_York",
+          "properties": []
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "name": "My Temperature Sensor",
+          "device_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "timezone": "America/New_York",
+          "created_at": "2026-06-12T00:00:00Z",
+          "updated_at": "2026-06-12T00:00:00Z"
+        }
+      }
+    },
+    {
+      "name": "List Devices",
+      "description": "Retrieve all devices associated with the account",
+      "method": "GET",
+      "path": "/iot/v1/devices",
+      "request": {
+        "headers": {
+          "Authorization": "Bearer {access_token}"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "name": "Arduino MKR WiFi 1010",
+            "type": "mkrwifi1010",
+            "serial": "ABCDEF123456",
+            "fqbn": "arduino:samd:mkrwifi1010",
+            "connected": true,
+            "last_activity_at": "2026-06-12T00:00:00Z",
+            "created_at": "2026-01-01T00:00:00Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Get OAuth2 Token",
+      "description": "Obtain an OAuth2 client credentials access token",
+      "method": "POST",
+      "path": "/iot/v1/clients/token",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "grant_type": "client_credentials",
+          "client_id": "your_client_id",
+          "client_secret": "your_client_secret",
+          "audience": "https://api2.arduino.cc/iot"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "expires_in": 300,
+          "token_type": "Bearer"
+        }
+      }
+    },
+    {
+      "name": "Add Property to Thing",
+      "description": "Add a new property to an existing Thing",
+      "method": "PUT",
+      "path": "/iot/v1/things/{id}/properties",
+      "request": {
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "temperature",
+          "permission": "READ_WRITE",
+          "type": "FLOAT",
+          "update_strategy": "ON_CHANGE",
+          "update_parameter": 0.5,
+          "tag": 1
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "name": "temperature",
+          "permission": "READ_WRITE",
+          "type": "FLOAT",
+          "update_strategy": "ON_CHANGE",
+          "created_at": "2026-06-12T00:00:00Z"
+        }
+      }
+    },
+    {
+      "name": "Get Time Series Data",
+      "description": "Retrieve historical time-series data for a property",
+      "method": "GET",
+      "path": "/iot/v1/things/{id}/properties/{pid}/timeseries",
+      "request": {
+        "headers": {
+          "Authorization": "Bearer {access_token}"
+        },
+        "query": {
+          "from": "2026-06-01T00:00:00Z",
+          "to": "2026-06-12T00:00:00Z",
+          "interval": 3600
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": [
+            {
+              "time": "2026-06-01T00:00:00Z",
+              "value": 22.5
+            },
+            {
+              "time": "2026-06-01T01:00:00Z",
+              "value": 23.1
+            }
+          ],
+          "total": 264
+        }
+      }
+    }
+  ]
+}

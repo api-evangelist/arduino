@@ -45,6 +45,12 @@ apis:
         url: http://api2.arduino.cc/iot/swagger.json
       - type: Authentication
         url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/openapi/arduino-iot-cloud-api-openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+      - type: Examples
+        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
     contact:
       - FN: Arduino Support
         url: https://support.arduino.cc/
@@ -73,6 +79,10 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/rate-limits/arduino-rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/finops/arduino-finops.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/vocabulary/arduino-vocabulary.yml
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-ld/arduino-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,134 @@
+vocabulary:
+  name: Arduino IoT Cloud API Vocabulary
+  description: >
+    Domain vocabulary for the Arduino IoT Cloud REST API, covering core concepts,
+    resource types, and terminology used across devices, Things, properties,
+    dashboards, triggers, and time-series management.
+  version: '1.0'
+  source: https://api2.arduino.cc/iot/swagger.json
+
+concepts:
+  - term: Thing
+    definition: >
+      A logical representation of a connected device or sensor in Arduino IoT Cloud.
+      Things contain properties that reflect the state of real-world measurements or
+      actuations. Each Thing is associated with a physical device.
+    relatedTerms: [Device, Property, Dashboard]
+
+  - term: Device
+    definition: >
+      A physical Arduino board or compatible hardware registered in Arduino IoT Cloud.
+      Devices communicate with the cloud via MQTT or HTTP and execute sketch code.
+      Each device is identified by a unique serial number and FQBN (Fully Qualified
+      Board Name).
+    relatedTerms: [Thing, Certificate, Webhook, OTA]
+
+  - term: Property
+    definition: >
+      A variable belonging to a Thing that represents a measurable or controllable
+      value (e.g. temperature, humidity, on/off state). Properties have a type
+      (FLOAT, INT, BOOL, STRING, etc.), permission (READ, WRITE, READ_WRITE),
+      and update strategy.
+    relatedTerms: [Thing, TimeSeries, UpdateStrategy]
+
+  - term: Dashboard
+    definition: >
+      A visual interface in Arduino IoT Cloud that displays and controls property
+      values through configurable widgets. Dashboards can be shared with other users
+      and support real-time data visualization.
+    relatedTerms: [Widget, Thing, Property]
+
+  - term: Trigger
+    definition: >
+      An automation rule that fires an Action when a property value crosses a
+      threshold or a device event occurs. Triggers link conditions to actions
+      such as sending an email, push notification, or webhook call.
+    relatedTerms: [Action, Property, Device]
+
+  - term: Action
+    definition: >
+      A task executed in response to a Trigger, such as sending an email or
+      push notification when a sensor value threshold is exceeded.
+    relatedTerms: [Trigger]
+
+  - term: OTA
+    definition: >
+      Over-The-Air firmware update. Allows uploading new sketch binary images to
+      compatible Arduino devices remotely without physical access to the hardware.
+    relatedTerms: [Device, Binary]
+
+  - term: TimeSeries
+    definition: >
+      Historical records of property values over time, stored and queryable via
+      the API. Supports time-range queries with optional aggregation intervals.
+    relatedTerms: [Property, Thing]
+
+  - term: Certificate
+    definition: >
+      An X.509 digital certificate used to authenticate a device's secure
+      connection to the Arduino IoT Cloud MQTT broker.
+    relatedTerms: [Device]
+
+  - term: Webhook
+    definition: >
+      An HTTP callback registered on a device that Arduino IoT Cloud calls when
+      specific device events occur (e.g. status change, OTA completion).
+    relatedTerms: [Device, Trigger]
+
+  - term: LoRa
+    definition: >
+      Long Range wireless protocol support for Arduino boards connected via
+      LoRaWAN networks. Managed through the lora-app and lora-device endpoints.
+    relatedTerms: [Device, Network]
+
+  - term: FQBN
+    definition: >
+      Fully Qualified Board Name — a unique identifier string for an Arduino
+      board type (e.g. arduino:samd:mkrwifi1010) used to specify hardware
+      architecture and variant.
+    relatedTerms: [Device]
+
+  - term: ClientCredentials
+    definition: >
+      OAuth2 machine-to-machine authentication flow used by the Arduino IoT Cloud
+      API. Applications exchange a client_id and client_secret for a short-lived
+      Bearer access token at the /iot/v1/clients/token endpoint.
+    relatedTerms: [Authentication, Token]
+
+resource_types:
+  - name: actions_v1
+    description: Manage trigger actions for a user
+  - name: devices_v1
+    description: Legacy IoT device APIs
+  - name: devices_v2
+    description: Current endpoints for managing user devices
+  - name: devices_v2_certs
+    description: Manage TLS certificates for devices
+  - name: devices_v2_metadata
+    description: Manage device metadata
+  - name: devices_v2_pass
+    description: Manage device passwords
+  - name: devices_v2_pubkeys
+    description: Manage device public keys
+  - name: properties_v1
+    description: Manage properties of a Thing
+  - name: things_v1
+    description: Manage Things belonging to a user
+  - name: triggers_v1
+    description: Manage automation triggers for a user
+
+property_types:
+  - INT
+  - FLOAT
+  - BOOL
+  - STRING
+  - COLOR
+  - LOCATION
+  - SCHEDULE
+  - CLOUDLIGHT
+  - CLOUDTELEVISION
+
+update_strategies:
+  - ON_CHANGE
+  - TIMED
+  - POLLING
