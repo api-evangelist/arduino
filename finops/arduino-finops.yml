@@ -1,0 +1,148 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: Arduino
+providerId: arduino
+name: Arduino IoT Cloud FinOps
+description: >
+  FinOps framework alignment for Arduino IoT Cloud API consumption. Arduino Cloud
+  uses a subscription-based billing model with tiered plans. Costs are driven by
+  the number of Things (device abstractions), data record throughput, and data
+  retention duration. Enterprise customers receive custom metered billing.
+created: '2026-06-12'
+modified: '2026-06-12'
+url: https://cloud.arduino.cc/plans
+billingModel: subscription
+billingCycle: monthly_and_annual
+currency: USD
+focusColumns:
+  - BilledCost
+  - EffectiveCost
+  - ResourceType
+  - ServiceName
+  - SKUPriceId
+  - UsageQuantity
+  - UsageUnit
+  - ChargeType
+serviceDetails:
+  serviceName: Arduino Cloud IoT API
+  serviceCategory: Internet of Things
+  providerName: Arduino
+  invoiceIssuer: Arduino SA
+meters:
+  - name: Things Allocation
+    description: >
+      Number of active Thing instances (IoT device abstractions) provisioned under
+      the account. Determines plan eligibility threshold.
+    unit: things
+    billingDimension: plan_tier
+    plans:
+      - plan: Free
+        limit: 2
+        pricePerUnit: 0.00
+      - plan: Maker
+        limit: 25
+        pricePerUnit: 0.24
+        note: Amortized per Thing per month at $6/month for 25 Things
+      - plan: Team
+        limit: 100
+        pricePerUnit: 0.83
+        note: Amortized per Thing per month at $83.33/month for 100 Things
+      - plan: Enterprise
+        limit: -1
+        pricePerUnit: null
+        note: Custom — negotiated
+  - name: Daily Data Records
+    description: >
+      Number of IoT property update records written to the time-series store
+      per day. Drives storage throughput and retention costs.
+    unit: records_per_day
+    billingDimension: plan_tier
+    plans:
+      - plan: Free
+        limit: 100000
+        pricePerUnit: 0.00
+      - plan: Maker
+        limit: 1000000
+        pricePerUnit: null
+        note: Included in plan subscription
+      - plan: Team
+        limit: 10000000
+        pricePerUnit: null
+        note: Included in plan subscription
+      - plan: Enterprise
+        limit: -1
+        pricePerUnit: null
+        note: Custom
+  - name: Data Storage
+    description: Monthly cloud data storage for IoT time-series records.
+    unit: MB_per_month
+    billingDimension: plan_tier
+    plans:
+      - plan: Free
+        limit: 10
+        pricePerUnit: 0.00
+      - plan: Maker
+        limit: 100
+        pricePerUnit: null
+        note: Included in plan subscription
+      - plan: Team
+        limit: 1024
+        pricePerUnit: null
+        note: Included in plan subscription (1 GB)
+      - plan: Enterprise
+        limit: -1
+        pricePerUnit: null
+        note: Custom
+  - name: API Requests
+    description: >
+      REST API calls to api2.arduino.cc for device management, dashboard control,
+      property reads/writes, and series queries.
+    unit: requests_per_second
+    billingDimension: rate_limit
+    plans:
+      - plan: Free
+        limit: 10
+        pricePerUnit: 0.00
+        note: Hard limit; 429 on breach
+      - plan: Maker
+        limit: 10
+        pricePerUnit: 0.00
+        note: Hard limit; 429 on breach
+      - plan: Team
+        limit: 10
+        pricePerUnit: 0.00
+        note: Hard limit; 429 on breach
+      - plan: Enterprise
+        limit: -1
+        pricePerUnit: null
+        note: Fair usage policy
+principles:
+  - name: Visibility
+    description: >
+      Track Thing count, daily record usage, and monthly data storage against
+      plan thresholds in the Arduino Cloud dashboard. Monitor API 429 error rates
+      to surface rate-limit pressure before it disrupts production workloads.
+    actions:
+      - Monitor Arduino Cloud usage dashboard for Things and data record consumption
+      - Set up alerts when daily record usage exceeds 80% of plan limit
+      - Track HTTP 429 responses in API monitoring to detect rate-limit saturation
+  - name: Optimization
+    description: >
+      Right-size plan selection based on measured Thing count and data throughput.
+      Batch property writes where possible to reduce record count. Use data
+      retention periods strategically — fetch historical series data before
+      retention expiry rather than storing externally at higher cost.
+    actions:
+      - Audit active Things and retire unused devices to stay within plan tier
+      - Batch time-series writes to reduce daily record consumption
+      - Evaluate annual billing (Maker $72/yr vs $72 monthly equivalent) for cost savings
+      - Review data retention needs before choosing between Maker (3 months) and Team (1 year) plans
+  - name: Accountability
+    description: >
+      Assign Arduino Cloud plan costs to engineering teams or projects by
+      maintaining separate Team workspace accounts per cost center. Use
+      Enterprise plan custom billing for multi-team chargebacks.
+    actions:
+      - Use separate Arduino Cloud team accounts per cost center or project
+      - Map monthly subscription invoices to project budgets in FinOps tooling
+      - For Enterprise, negotiate usage-based metering aligned with FOCUS billing columns

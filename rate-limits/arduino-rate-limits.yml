@@ -1,0 +1,87 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Arduino
+providerId: arduino
+name: Arduino IoT Cloud API Rate Limits
+description: >
+  The Arduino IoT Cloud REST API enforces a rate limit of 10 requests per second
+  for authenticated clients on Free, Maker, and Team plans. Enterprise plans operate
+  under a fair usage policy with effectively unlimited throughput. Exceeding the limit
+  returns HTTP 429 with an explanatory message.
+created: '2026-06-12'
+modified: '2026-06-12'
+url: https://docs.arduino.cc/cloud-api
+headers:
+  retryAfter: true
+responseCodes:
+  throttled: 429
+  throttledMessage: 'You have reached maximum request limit.'
+limits:
+  - name: Authenticated API Request Rate - Free
+    description: Maximum API requests per second for authenticated clients on the Free plan.
+    scope: account
+    metric: requests
+    limit: 10
+    timeFrame: second
+    plans:
+      - Free
+  - name: Authenticated API Request Rate - Maker
+    description: Maximum API requests per second for authenticated clients on the Maker plan.
+    scope: account
+    metric: requests
+    limit: 10
+    timeFrame: second
+    plans:
+      - Maker
+  - name: Authenticated API Request Rate - Team
+    description: Maximum API requests per second for authenticated clients on the Team plan.
+    scope: account
+    metric: requests
+    limit: 10
+    timeFrame: second
+    plans:
+      - Team
+  - name: Authenticated API Request Rate - Enterprise
+    description: >
+      Enterprise accounts operate under a fair usage policy with no hard per-second cap.
+      Requests must remain within fair usage guidelines agreed at contract time.
+    scope: account
+    metric: requests
+    limit: -1
+    timeFrame: second
+    note: Unlimited under fair usage
+    plans:
+      - Enterprise
+  - name: Daily Data Records - Free
+    description: Maximum number of data records (property updates) processed per day on the Free plan.
+    scope: account
+    metric: data_records
+    limit: 100000
+    timeFrame: day
+    plans:
+      - Free
+  - name: Daily Data Records - Maker
+    description: Maximum number of data records processed per day on the Maker plan.
+    scope: account
+    metric: data_records
+    limit: 1000000
+    timeFrame: day
+    plans:
+      - Maker
+  - name: Daily Data Records - Team
+    description: Maximum number of data records processed per day on the Team plan.
+    scope: account
+    metric: data_records
+    limit: 10000000
+    timeFrame: day
+    plans:
+      - Team
+authentication:
+  type: OAuth2
+  flow: client_credentials
+  tokenEndpoint: https://api2.arduino.cc/iot/v1/clients/token
+  scopes: []
+errorHandling:
+  - code: 429
+    description: Rate limit exceeded — too many requests in the current time window.
+    action: Implement exponential backoff and retry after a brief pause.

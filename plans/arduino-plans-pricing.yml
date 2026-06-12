@@ -1,0 +1,217 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Arduino
+providerId: arduino
+name: Arduino Cloud Plans and Pricing
+description: >
+  Arduino Cloud offers tiered plans for IoT developers ranging from a free tier
+  for prototyping to enterprise plans with unlimited resources and custom pricing.
+  All plans support the Arduino IoT Cloud REST API at 10 requests per second.
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+url: https://cloud.arduino.cc/plans
+plans:
+  - name: Free
+    description: Entry-level plan for individual makers and prototyping with basic IoT capabilities.
+    type: free
+    url: https://cloud.arduino.cc/plans
+    quotas:
+      - name: Things
+        description: Maximum number of Things (IoT device abstractions)
+        metric: things
+        limit: 2
+        timeFrame: account
+      - name: Variables per Thing
+        description: Maximum number of variables/properties per Thing
+        metric: variables_per_thing
+        limit: 5
+        timeFrame: account
+      - name: Daily Data Records
+        description: Maximum data records processed per day
+        metric: records_per_day
+        limit: 100000
+        timeFrame: day
+      - name: Monthly Data
+        description: Maximum data storage per month
+        metric: data_mb_per_month
+        limit: 10
+        timeFrame: month
+      - name: Data Retention
+        description: How long time-series data is retained
+        metric: data_retention_days
+        limit: 1
+        timeFrame: account
+      - name: API Rate
+        description: Authenticated API requests per second
+        metric: requests_per_second
+        limit: 10
+        timeFrame: second
+      - name: Compilations
+        description: Sketch compilations per day
+        metric: compilations_per_day
+        limit: 25
+        timeFrame: day
+      - name: AI Assistant Interactions
+        description: AI assistant interactions included
+        metric: ai_interactions
+        limit: 30
+        timeFrame: account
+    metered: []
+    boolean:
+      - name: Cloud Storage
+        description: Sketch cloud storage included
+        value: true
+  - name: Maker
+    description: Mid-tier plan for individual developers with larger projects needing advanced features.
+    type: freemium
+    url: https://cloud.arduino.cc/plans
+    pricing:
+      - price: 6.00
+        currency: USD
+        period: month
+        billedAs: monthly
+      - price: 72.00
+        currency: USD
+        period: year
+        billedAs: annually
+    trial:
+      days: 30
+      requiresCreditCard: true
+    quotas:
+      - name: Things
+        description: Maximum number of Things (IoT device abstractions)
+        metric: things
+        limit: 25
+        timeFrame: account
+      - name: Variables per Thing
+        description: Maximum number of variables/properties per Thing
+        metric: variables_per_thing
+        limit: -1
+        timeFrame: account
+        note: Unlimited
+      - name: Daily Data Records
+        description: Maximum data records processed per day
+        metric: records_per_day
+        limit: 1000000
+        timeFrame: day
+      - name: Monthly Data
+        description: Maximum data storage per month
+        metric: data_mb_per_month
+        limit: 100
+        timeFrame: month
+      - name: Data Retention
+        description: How long time-series data is retained (months)
+        metric: data_retention_months
+        limit: 3
+        timeFrame: account
+      - name: API Rate
+        description: Authenticated API requests per second
+        metric: requests_per_second
+        limit: 10
+        timeFrame: second
+    metered: []
+    boolean:
+      - name: Unlimited Cloud Storage
+        description: Unlimited sketch cloud storage
+        value: true
+      - name: Advanced Features
+        description: Access to all advanced platform features
+        value: true
+  - name: Team
+    description: Collaborative plan for teams with shared device management and higher data throughput.
+    type: paid
+    url: https://cloud.arduino.cc/plans
+    pricing:
+      - price: 1000.00
+        currency: USD
+        period: year
+        billedAs: annually
+    trial:
+      days: 30
+      requiresCreditCard: true
+    quotas:
+      - name: Things
+        description: Maximum number of Things (IoT device abstractions)
+        metric: things
+        limit: 100
+        timeFrame: account
+      - name: Users
+        description: Maximum number of team members
+        metric: users
+        limit: 50
+        timeFrame: account
+      - name: Daily Data Records
+        description: Maximum data records processed per day
+        metric: records_per_day
+        limit: 10000000
+        timeFrame: day
+      - name: Monthly Data
+        description: Maximum data storage per month
+        metric: data_gb_per_month
+        limit: 1
+        timeFrame: month
+      - name: Data Retention
+        description: How long time-series data is retained (years)
+        metric: data_retention_years
+        limit: 1
+        timeFrame: account
+      - name: API Rate
+        description: Authenticated API requests per second
+        metric: requests_per_second
+        limit: 10
+        timeFrame: second
+    metered: []
+    boolean:
+      - name: Unlimited Variables
+        description: Unlimited variables per Thing
+        value: true
+      - name: Team Collaboration
+        description: Shared device and dashboard management for teams
+        value: true
+  - name: Enterprise
+    description: >
+      Fully customizable plan for large-scale IoT deployments with unlimited devices,
+      users, and data under fair usage policy.
+    type: enterprise
+    url: https://cloud.arduino.cc/plans
+    pricing:
+      - note: Custom pricing — contact Arduino for a quote
+    quotas:
+      - name: Things
+        description: Unlimited Things
+        metric: things
+        limit: -1
+        timeFrame: account
+        note: Unlimited under fair usage
+      - name: Users
+        description: Unlimited users
+        metric: users
+        limit: -1
+        timeFrame: account
+        note: Unlimited
+      - name: Daily Data Records
+        description: Custom data record allowance
+        metric: records_per_day
+        limit: -1
+        timeFrame: day
+        note: Custom
+      - name: Data Retention
+        description: Data retained for 2 years
+        metric: data_retention_years
+        limit: 2
+        timeFrame: account
+      - name: API Rate
+        description: API requests under fair usage (effectively unlimited)
+        metric: requests_per_second
+        limit: -1
+        timeFrame: second
+        note: Unlimited under fair usage
+    metered: []
+    boolean:
+      - name: Dedicated Support
+        description: Priority enterprise support
+        value: true
+      - name: Custom Integrations
+        description: Custom integration and deployment options
+        value: true

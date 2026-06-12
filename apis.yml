@@ -1,0 +1,78 @@
+aid: arduino
+name: Arduino
+description: >
+  Arduino is an open-source electronics platform providing hardware, software, and cloud
+  services for IoT development. The Arduino IoT Cloud REST API enables developers to
+  programmatically manage devices, Things, dashboards, properties, and time-series data
+  in the Arduino Cloud ecosystem. The API uses OAuth2 client credentials for authentication
+  and returns JSON-encoded responses with standard HTTP status codes. SDKs are available
+  in JavaScript, Python, and Go, generated automatically from an OpenAPI specification.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - IoT
+  - Electronics
+  - Open Source
+  - Devices
+  - Dashboards
+  - Time Series
+  - Cloud
+url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: arduino:arduino-iot-cloud-api
+    name: Arduino IoT Cloud API
+    description: >
+      REST API for managing Arduino IoT Cloud resources including devices, Things,
+      properties, dashboards, triggers, and time-series data. Authenticated via OAuth2
+      client credentials flow against the api2.arduino.cc endpoint, with SDKs available
+      for JavaScript, Python, and Go.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+    baseURL: https://api2.arduino.cc/iot/v1
+    tags:
+      - IoT
+      - Devices
+      - Dashboards
+      - Properties
+      - Time Series
+    properties:
+      - type: Documentation
+        url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+      - type: OpenAPI
+        url: http://api2.arduino.cc/iot/swagger.json
+      - type: Authentication
+        url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+    contact:
+      - FN: Arduino Support
+        url: https://support.arduino.cc/
+common:
+  - type: Website
+    url: https://www.arduino.cc/
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/
+  - type: GitHubOrganization
+    url: https://github.com/arduino
+  - type: GitHubOrganization
+    url: https://github.com/arduino-libraries
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/arduino
+  - type: X
+    url: https://x.com/arduino
+  - type: Blog
+    url: https://blog.arduino.cc/
+  - type: Pricing
+    url: https://cloud.arduino.cc/plans
+  - type: StatusPage
+    url: https://status.arduino.cc/
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/plans/arduino-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/rate-limits/arduino-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/finops/arduino-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
