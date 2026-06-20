@@ -8,7 +8,7 @@ description: >
   and returns JSON-encoded responses with standard HTTP status codes. SDKs are available
   in JavaScript, Python, and Go, generated automatically from an OpenAPI specification.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - IoT
   - Electronics
@@ -29,7 +29,7 @@ apis:
       properties, dashboards, triggers, and time-series data. Authenticated via OAuth2
       client credentials flow against the api2.arduino.cc endpoint, with SDKs available
       for JavaScript, Python, and Go.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
     baseURL: https://api2.arduino.cc/iot/v1
     tags:
