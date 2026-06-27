@@ -2,13 +2,17 @@
   "repo": "arduino",
   "feeds": [
     {
-      "source": "https://x.com/arduino",
-      "feed_url": "https://x.com/arduino",
+      "source": "https://blog.arduino.cc/feed/",
+      "feed_url": "https://blog.arduino.cc/feed/",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 4,
+      "method": "feed"
+    },
+    {
+      "source": "https://x.com/arduino",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 7,
+  "fetched": "2026-06-27T12:03:07Z"
 }
