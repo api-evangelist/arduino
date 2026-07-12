@@ -55,6 +55,8 @@ apis:
       - FN: Arduino Support
         url: https://support.arduino.cc/
 common:
+  - type: DomainSecurity
+    url: security/arduino-domain-security.yml
   - type: Website
     url: https://www.arduino.cc/
   - type: Documentation
