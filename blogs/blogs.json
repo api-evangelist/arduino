@@ -5,14 +5,17 @@
       "source": "https://blog.arduino.cc/feed/",
       "feed_url": "https://blog.arduino.cc/feed/",
       "title": "",
-      "saved": 4,
+      "saved": 0,
       "method": "feed"
     },
     {
       "source": "https://x.com/arduino",
-      "error": "HTTPError"
+      "feed_url": "https://x.com/arduino",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 7,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 12,
+  "fetched": "2026-07-11T11:50:51Z"
 }
