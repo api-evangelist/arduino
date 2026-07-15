@@ -55,6 +55,8 @@ apis:
       - FN: Arduino Support
         url: https://support.arduino.cc/
 common:
+  - type: AgenticAccess
+    url: agentic-access/arduino-agentic-access.yml
   - type: DomainSecurity
     url: security/arduino-domain-security.yml
   - type: Website
