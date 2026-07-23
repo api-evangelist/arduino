@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 cleanup API
+  version: '2.0'
+tags:
+- name: cleanup
+paths:
+  /iot/v1/cleanup:
+    post:
+      description: Iot removes the things created more than an hour ago and never got reclaimed. It then deletes the certificates that are no longer associated with a thing
+      operationId: cleanup#iot
+      responses:
+        '200':
+          description: OK
+      summary: iot cleanup
+      tags:
+      - cleanup
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

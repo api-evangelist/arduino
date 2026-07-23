@@ -1,0 +1,554 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 clients_v1 API
+  version: '2.0'
+tags:
+- name: clients_v1
+paths:
+  /iot/v1/clients:
+    get:
+      description: Returns the list of oauth clients of the user
+      operationId: clients_v1#list
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.client+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoClientCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClientCollection'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.client+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.client+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: list clients_v1
+      tags:
+      - clients_v1
+    put:
+      description: Creates a new client associated to the user. It is active by default
+      operationId: clients_v1#create
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/client'
+        description: ClientPayload describes an oauth client
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+          description: Created
+        '400':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: create clients_v1
+      tags:
+      - clients_v1
+  /iot/v1/clients/token:
+    post:
+      description: Exchange client_id and client_secret for a jwt token
+      operationId: clients_v1#token
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/token'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/token'
+        description: TokenPayload describes a request to obtain a jwt token
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.token+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoToken'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoToken'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.token+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.token+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: token clients_v1
+      tags:
+      - clients_v1
+  /iot/v1/clients/{id}:
+    delete:
+      description: Removes a client associated to the user
+      operationId: clients_v1#delete
+      parameters:
+      - description: The id of the client
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: delete clients_v1
+      tags:
+      - clients_v1
+    get:
+      description: Returns the client requested by the user
+      operationId: clients_v1#show
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: show clients_v1
+      tags:
+      - clients_v1
+    patch:
+      description: Update an existing client
+      operationId: clients_v1#update
+      parameters:
+      - description: The id of the client
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/client'
+        description: ClientPayload describes an oauth client
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: update clients_v1
+      tags:
+      - clients_v1
+    post:
+      description: Enable and disables iot clients of a user
+      operationId: clients_v1#enable
+      parameters:
+      - description: The id of the user
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/enableclient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/enableclient'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: enable clients_v1
+      tags:
+      - clients_v1
+  /iot/v1/clients/{id}/secret:
+    post:
+      description: Regenerate client secret
+      operationId: clients_v1#regenerate
+      parameters:
+      - description: The id of the client
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoClient'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.client+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: regenerate clients_v1
+      tags:
+      - clients_v1
+components:
+  schemas:
+    ArduinoToken:
+      description: ArduinoToken media type (default view)
+      properties:
+        access_token:
+          description: The access_token
+          type: string
+        expires_in:
+          description: The number of seconds the token will be valid
+          format: int64
+          type: integer
+        token_type:
+          description: The Type of token
+          type: string
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      title: 'Mediatype identifier: application/vnd.arduino.token+json; view=default'
+      type: object
+    ArduinoClient:
+      description: ArduinoClient media type (default view)
+      properties:
+        created_at:
+          description: Creation time
+          format: date-time
+          type: string
+        id:
+          description: The client_id of the client
+          type: string
+        name:
+          description: The friendly name of the client
+          type: string
+        secret:
+          description: The client_secret of the client
+          type: string
+      required:
+      - id
+      - name
+      - secret
+      - created_at
+      title: 'Mediatype identifier: application/vnd.arduino.client+json; view=default'
+      type: object
+    client:
+      description: ClientPayload describes an oauth client
+      properties:
+        name:
+          description: The name of the client
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+      required:
+      - name
+      title: client
+      type: object
+    token:
+      description: TokenPayload describes a request to obtain a jwt token
+      properties:
+        audience:
+          description: The audience. It's always https://api2.arduino.cc/iot
+          enum:
+          - https://api2.arduino.cc/iot
+          type: string
+        client_id:
+          description: The client_id
+          maxLength: 32
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        client_secret:
+          description: The client_secret
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        grant_type:
+          description: The grant type. It's always client_credentials
+          enum:
+          - client_credentials
+          type: string
+        organization_id:
+          description: The organization id
+          format: uuid
+          type: string
+      required:
+      - grant_type
+      - audience
+      - client_id
+      - client_secret
+      title: token
+      type: object
+    enableclient:
+      properties:
+        enabled:
+          description: Enable or disable a client
+          type: boolean
+      required:
+      - enabled
+      title: enableclient
+      type: object
+    ArduinoClientCollection:
+      description: ArduinoClientCollection is the media type for an array of ArduinoClient (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoClient'
+      title: 'Mediatype identifier: application/vnd.arduino.client+json; type=collection; view=default'
+      type: array
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

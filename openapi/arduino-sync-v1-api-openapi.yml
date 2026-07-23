@@ -1,0 +1,602 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 sync_v1 API
+  version: '2.0'
+tags:
+- name: sync_v1
+paths:
+  /iot/v1/sync:
+    get:
+      description: Returns the list of sync
+      operationId: sync_v1#list
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.sync+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoSyncCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSyncCollection'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.sync+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.sync+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.sync+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list sync_v1
+      tags:
+      - sync_v1
+    put:
+      description: Creates a new sync
+      operationId: sync_v1#create
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sync'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/sync'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+          description: Created
+        '400':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: create sync_v1
+      tags:
+      - sync_v1
+  /iot/v1/sync/{id}:
+    delete:
+      description: Removes a sync
+      operationId: sync_v1#delete
+      parameters:
+      - description: The id of the sync
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete sync_v1
+      tags:
+      - sync_v1
+    get:
+      description: Returns a sync
+      operationId: sync_v1#show
+      parameters:
+      - description: The id of the sync
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: show sync_v1
+      tags:
+      - sync_v1
+    post:
+      description: Updates a a sync
+      operationId: sync_v1#update
+      parameters:
+      - description: The id of the sync
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sync'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/sync'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoSync'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.sync+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: update sync_v1
+      tags:
+      - sync_v1
+components:
+  schemas:
+    ArduinoSync:
+      description: ArduinoSync media type (default view)
+      properties:
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        organization_id:
+          description: Id of the organization the sync belongs to
+          format: uuid
+          type: string
+        properties:
+          description: The properties in sync
+          items:
+            $ref: '#/components/schemas/ArduinoProperty'
+          type: array
+        type:
+          description: The type of the property
+          type: string
+      required:
+      - id
+      - type
+      - properties
+      title: 'Mediatype identifier: application/vnd.arduino.sync+json; view=default'
+      type: object
+    sync:
+      properties:
+        properties:
+          description: The ID of the properties you want to sync
+          items:
+            format: uuid
+            type: string
+          type: array
+        type:
+          description: The ID of the properties you want to sync
+          enum:
+          - ANALOG
+          - CHARSTRING
+          - FLOAT
+          - INT
+          - LENGHT_C
+          - LENGHT_I
+          - LENGHT_M
+          - PERCENTAGE
+          - STATUS
+          - TEMPERATURE_C
+          - TEMPERATURE_F
+          - METER
+          - KILOGRAM
+          - GRAM
+          - SECOND
+          - AMPERE
+          - KELVIN
+          - CANDELA
+          - MOLE
+          - HERTZ
+          - RADIAN
+          - STERADIAN
+          - NEWTON
+          - PASCAL
+          - JOULE
+          - WATT
+          - COULOMB
+          - VOLT
+          - FARAD
+          - OHM
+          - SIEMENS
+          - WEBER
+          - TESLA
+          - HENRY
+          - DEGREES_CELSIUS
+          - LUMEN
+          - LUX
+          - BECQUEREL
+          - GRAY
+          - SIEVERT
+          - KATAL
+          - SQUARE_METER
+          - CUBIC_METER
+          - LITER
+          - METER_PER_SECOND
+          - METER_PER_SQUARE_SECOND
+          - CUBIC_METER_PER_SECOND
+          - LITER_PER_SECOND
+          - WATT_PER_SQUARE_METER
+          - CANDELA_PER_SQUARE_METER
+          - BIT
+          - BIT_PER_SECOND
+          - DEGREES_LATITUDE
+          - DEGREES_LONGITUDE
+          - PH_VALUE
+          - DECIBEL
+          - DECIBEL_1W
+          - BEL
+          - COUNT
+          - RATIO_DIV
+          - RATIO_MOD
+          - PERCENTAGE_RELATIVE_HUMIDITY
+          - PERCENTAGE_BATTERY_LEVEL
+          - SECONDS_BATTERY_LEVEL
+          - EVENT_RATE_SECOND
+          - EVENT_RATE_MINUTE
+          - HEART_RATE
+          - HEART_BEATS
+          - SIEMENS_PER_METER
+          - LOCATION
+          - COLOR_HSB
+          - COLOR_RGB
+          - GENERIC_COMPLEX_PROPERTY
+          - HOME_COLORED_LIGHT
+          - HOME_DIMMED_LIGHT
+          - HOME_LIGHT
+          - HOME_CONTACT_SENSOR
+          - HOME_MOTION_SENSOR
+          - HOME_SMART_PLUG
+          - HOME_TEMPERATURE
+          - HOME_TEMPERATURE_C
+          - HOME_TEMPERATURE_F
+          - HOME_SWITCH
+          - HOME_TELEVISION
+          - GOOGLE_HOME_COLORED_LIGHT
+          - GOOGLE_HOME_DIMMED_LIGHT
+          - GOOGLE_HOME_LIGHT
+          - GOOGLE_HOME_CONTACT_SENSOR
+          - GOOGLE_HOME_MOTION_SENSOR
+          - GOOGLE_HOME_SMART_PLUG
+          - GOOGLE_HOME_TEMPERATURE
+          - GOOGLE_HOME_TEMPERATURE_C
+          - GOOGLE_HOME_TEMPERATURE_F
+          - GOOGLE_HOME_SWITCH
+          - SMART_HOME_COLORED_LIGHT
+          - SMART_HOME_DIMMED_LIGHT
+          - SMART_HOME_LIGHT
+          - SMART_HOME_CONTACT_SENSOR
+          - SMART_HOME_MOTION_SENSOR
+          - SMART_HOME_SMART_PLUG
+          - SMART_HOME_TEMPERATURE
+          - SMART_HOME_TEMPERATURE_C
+          - SMART_HOME_TEMPERATURE_F
+          - SMART_HOME_SWITCH
+          - SMART_HOME_TELEVISION
+          - ENERGY
+          - FORCE
+          - TEMPERATURE
+          - POWER
+          - ELECTRIC_CURRENT
+          - ELECTRIC_POTENTIAL
+          - ELECTRICAL_RESISTANCE
+          - CAPACITANCE
+          - TIME
+          - FREQUENCY
+          - DATA_RATE
+          - ACCELERATION
+          - AREA
+          - LENGTH
+          - VELOCITY
+          - MASS
+          - VOLUME
+          - FLOW_RATE
+          - ANGLE
+          - ILLUMINANCE
+          - LUMINOUS_FLUX
+          - LUMINANCE
+          - LUMINOUS_INTENSITY
+          - LOGARITHMIC_QUANTITY
+          - PRESSURE
+          - INFORMATION_CONTENT
+          - SCHEDULE
+          type: string
+      required:
+      - type
+      - properties
+      title: sync
+      type: object
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoSyncCollection:
+      description: ArduinoSyncCollection is the media type for an array of ArduinoSync (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoSync'
+      title: 'Mediatype identifier: application/vnd.arduino.sync+json; type=collection; view=default'
+      type: array
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

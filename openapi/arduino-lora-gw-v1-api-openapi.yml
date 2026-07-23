@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 lora_gw_v1 API
+  version: '2.0'
+tags:
+- name: lora_gw_v1
+paths:
+  /iot/v1/lora-gw/:
+    put:
+      description: Create a new pending lora gateway. Its info are only saved on our database.
+      operationId: lora_gw_v1#create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLoraGwV1Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateLoraGwV1Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoragwv1'
+          description: Created
+      summary: create lora_gw_v1
+      tags:
+      - lora_gw_v1
+  /iot/v1/lora-gw/{id}:
+    delete:
+      description: Removes a lora gateway
+      operationId: lora_gw_v1#delete
+      parameters:
+      - description: The id of the lora gateway. It's calculated from the mac using magic
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: delete lora_gw_v1
+      tags:
+      - lora_gw_v1
+    get:
+      description: Retrieve info about a lora gateway.
+      operationId: lora_gw_v1#show
+      parameters:
+      - description: The id of the lora gateway. It's calculated from the mac using magic
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoragwv1'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoragwv1'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+      summary: show lora_gw_v1
+      tags:
+      - lora_gw_v1
+  /iot/v1/lora-gw/{id}/claim:
+    post:
+      description: Assign a lora gateway to a user, create a device_v1 resource, create an tts user (if not existing), create the device on tts
+      operationId: lora_gw_v1#claim
+      parameters:
+      - description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimLoraGwV1Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClaimLoraGwV1Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoragwv1'
+          description: OK
+      summary: claim lora_gw_v1
+      tags:
+      - lora_gw_v1
+  /iot/v1/lora-gw/{id}/unclaim:
+    post:
+      description: Remove the gateway from tts, delete the device_v1 resource.
+      operationId: lora_gw_v1#unclaim
+      parameters:
+      - description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.loragwv1+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoragwv1'
+          description: OK
+      summary: unclaim lora_gw_v1
+      tags:
+      - lora_gw_v1
+components:
+  schemas:
+    ClaimLoraGwV1Payload:
+      properties:
+        user_id:
+          description: The user id. Could be a uuid, or the string 'me'
+          type: string
+      required:
+      - user_id
+      title: ClaimLoraGwV1Payload
+      type: object
+    CreateLoraGwV1Payload:
+      properties:
+        id:
+          description: The id of the lora gateway. It's calculated from the mac using magic
+          example: '71619230301'
+          type: string
+        mac:
+          description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
+          type: string
+        pub:
+          description: The public key of the lora gateway
+          example: '-----BEGIN PUBLIC KEY-----
+
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO
+
+            3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX
+
+            7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS
+
+            j+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd
+
+            OrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ
+
+            5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl
+
+            FQIDAQAB
+
+            -----END PUBLIC KEY-----'
+          type: string
+      required:
+      - id
+      - pub
+      - mac
+      title: CreateLoraGwV1Payload
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoLoragwv1:
+      description: ArduinoLoragwv1 media type (default view)
+      properties:
+        aws_id:
+          description: The id of the aws thing
+          type: string
+        id:
+          description: The id of the lora gateway. It's calculated from the mac using magic
+          example: '71619230301'
+          type: string
+        mac:
+          description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
+          type: string
+        pub:
+          description: The public key of the lora gateway
+          example: '-----BEGIN PUBLIC KEY-----
+
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO
+
+            3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX
+
+            7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS
+
+            j+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd
+
+            OrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ
+
+            5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl
+
+            FQIDAQAB
+
+            -----END PUBLIC KEY-----'
+          type: string
+        reachable:
+          description: True if the gateway is connected false if cannot be reachable
+          type: boolean
+      required:
+      - id
+      - pub
+      - mac
+      - aws_id
+      title: 'Mediatype identifier: application/vnd.arduino.loragwv1+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

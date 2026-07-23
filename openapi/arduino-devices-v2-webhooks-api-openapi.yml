@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 devices_v2_webhooks API
+  version: '2.0'
+tags:
+- name: devices_v2_webhooks
+paths:
+  /iot/v2/devices/{id}/webhooks:
+    put:
+      description: Creates a new webhook associated to a device
+      operationId: devices_v2_webhooks#create
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/devicev2.webhook'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/devicev2.webhook'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.devicev2.webhook+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+          description: Created
+        '401':
+          content:
+            application/vnd.arduino.devicev2.webhook+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '412':
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.devicev2.webhook+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: create devices_v2_webhooks
+      tags:
+      - devices_v2_webhooks
+  /iot/v2/devices/{id}/webhooks/{wid}:
+    delete:
+      description: Removes a webhook associated to a device
+      operationId: devices_v2_webhooks#delete
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the webhook
+        in: path
+        name: wid
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete devices_v2_webhooks
+      tags:
+      - devices_v2_webhooks
+components:
+  schemas:
+    devicev2.webhook:
+      properties:
+        active:
+          default: true
+          description: Whether the webhook is active
+          type: boolean
+        uri:
+          description: The uri of the webhook
+          format: uri
+          type: string
+      required:
+      - uri
+      title: devicev2.webhook
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoDevicev2Webhook:
+      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
+      properties:
+        active:
+          default: true
+          description: Whether the webhook is active
+          type: boolean
+        id:
+          description: The uuid of the webhook
+          format: uuid
+          type: string
+        uri:
+          description: The uri of the webhook
+          format: uri
+          type: string
+      required:
+      - id
+      - uri
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

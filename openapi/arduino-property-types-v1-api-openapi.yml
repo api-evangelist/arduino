@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 property_types_v1 API
+  version: '2.0'
+tags:
+- name: property_types_v1
+paths:
+  /iot/v1/property_types:
+    get:
+      description: Returns the list of available property types
+      operationId: property_types_v1#listTypes
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.propertytype+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoPropertytypeCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoPropertytypeCollection'
+          description: OK
+        '500':
+          content:
+            application/vnd.arduino.propertytype+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: listTypes property_types_v1
+      tags:
+      - property_types_v1
+components:
+  schemas:
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoPropertytype:
+      description: ArduinoPropertytype media type (default view)
+      properties:
+        assistants:
+          description: The voice assistants available for this type
+          items:
+            type: string
+          type: array
+        declaration:
+          description: The c++ type we are using for this variable type
+          type: string
+        deprecated:
+          description: Tell if this type is deprecated
+          type: boolean
+        example:
+          description: Example of use
+          type: string
+        name:
+          description: The friendly name of the property type
+          type: string
+        rw:
+          description: Tell if the type allow a R/W permission
+          type: boolean
+        supersededBy:
+          description: The type of property to use if it's deprecated
+          type: string
+        tags:
+          description: The tags related to the type
+          items:
+            type: string
+          type: array
+        type:
+          description: The api reference of this type
+          enum:
+          - ENERGY
+          - FORCE
+          - TEMPERATURE
+          - POWER
+          - ELECTRIC_CURRENT
+          - ELECTRIC_POTENTIAL
+          - ELECTRICAL_RESISTANCE
+          - CAPACITANCE
+          - TIME
+          - FREQUENCY
+          - DATA_RATE
+          - HEART_BEATS
+          - COUNT
+          - ACCELERATION
+          - AREA
+          - LENGTH
+          - VELOCITY
+          - LOCATION
+          - MASS
+          - VOLUME
+          - FLOW_RATE
+          - ANGLE
+          - ILLUMINANCE
+          - LUMINOUS_FLUX
+          - LUMINANCE
+          - LUMINOUS_INTENSITY
+          - COLOR_HSB
+          - LOGARITHMIC_QUANTITY
+          - PRESSURE
+          - INFORMATION_CONTENT
+          - PERCENTAGE
+          - PERCENTAGE_RELATIVE_HUMIDITY
+          - GENERIC_COMPLEX_PROPERTY
+          - HOME_LIGHT
+          - HOME_DIMMED_LIGHT
+          - HOME_COLORED_LIGHT
+          - HOME_CONTACT_SENSOR
+          - HOME_SMART_PLUG
+          - HOME_SWITCH
+          - HOME_MOTION_SENSOR
+          - HOME_TEMPERATURE_C
+          - HOME_TEMPERATURE_F
+          - HOME_TELEVISION
+          - SCHEDULE
+          - CHARSTRING
+          - FLOAT
+          - INT
+          - STATUS
+          - AMPERE
+          - BECQUEREL
+          - BEL
+          - BIT
+          - BIT_PER_SECOND
+          - CANDELA
+          - CANDELA_PER_SQUARE_METER
+          - COULOMB
+          - CUBIC_METER
+          - CUBIC_METER_PER_SECOND
+          - DECIBEL
+          - DECIBEL_1W
+          - DEGREES_LATITUDE
+          - DEGREES_LONGITUDE
+          - EVENT_RATE_MINUTE
+          - EVENT_RATE_SECOND
+          - FARAD
+          - GRAM
+          - GRAY
+          - HEART_RATE
+          - HENRY
+          - HERTZ
+          - JOULE
+          - KATAL
+          - KELVIN
+          - KILOGRAM
+          - LENGHT_C
+          - LENGHT_I
+          - LENGHT_M
+          - LITER
+          - LITER_PER_SECOND
+          - LUMEN
+          - LUX
+          - METER_PER_SECOND
+          - METER_PER_SQUARE_SECOND
+          - MOLE
+          - NEWTON
+          - OHM
+          - PASCAL
+          - PERCENTAGE_BATTERY_LEVEL
+          - PH_VALUE
+          - RADIAN
+          - RATIO_DIV
+          - SECONDS_BATTERY_LEVEL
+          - SIEMENS
+          - SIEMENS_PER_METER
+          - SIEVERT
+          - SQUARE_METER
+          - STERADIAN
+          - TEMPERATURE_C
+          - TEMPERATURE_F
+          - TESLA
+          - VOLT
+          - WATT
+          - WATT_PER_SQUARE_METER
+          - WEBER
+          type: string
+        units:
+          description: The measure units available for this type
+          items:
+            type: string
+          type: array
+      required:
+      - name
+      - deprecated
+      - rw
+      - type
+      - declaration
+      title: 'Mediatype identifier: application/vnd.arduino.propertytype+json; view=default'
+      type: object
+    ArduinoPropertytypeCollection:
+      description: ArduinoPropertytypeCollection is the media type for an array of ArduinoPropertytype (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoPropertytype'
+      title: 'Mediatype identifier: application/vnd.arduino.propertytype+json; type=collection; view=default'
+      type: array
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

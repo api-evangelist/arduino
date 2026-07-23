@@ -1,0 +1,335 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 lora_app_v1 API
+  version: '2.0'
+tags:
+- name: lora_app_v1
+paths:
+  /iot/v1/lora-app/:
+    get:
+      description: List the available apps for the given user
+      operationId: lora_app_v1#list
+      parameters:
+      - description: The user id. Could be a uuid, or the string 'me'
+        in: query
+        name: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.loraappsv1+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoraappsv1'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoLoraappsv1'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.loraappsv1+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.loraappsv1+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: list lora_app_v1
+      tags:
+      - lora_app_v1
+    put:
+      description: Create LoRa apps for the given user
+      operationId: lora_app_v1#create
+      parameters:
+      - description: The user id. Could be a uuid, or the string 'me'
+        in: query
+        name: user_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLoraAppV1Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateLoraAppV1Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '409':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Conflict
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: create lora_app_v1
+      tags:
+      - lora_app_v1
+  /iot/v1/lora-app/{label}:
+    delete:
+      description: Delete a single app for the given user
+      operationId: lora_app_v1#delete
+      parameters:
+      - in: path
+        name: label
+        required: true
+        schema:
+          type: string
+      - description: The user id. Could be a uuid, or the string 'me'
+        in: query
+        name: user_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteLoraAppV1Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteLoraAppV1Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: delete lora_app_v1
+      tags:
+      - lora_app_v1
+    post:
+      description: Update the available apps for the given user
+      operationId: lora_app_v1#update
+      parameters:
+      - in: path
+        name: label
+        required: true
+        schema:
+          type: string
+      - description: The user id. Could be a uuid, or the string 'me'
+        in: query
+        name: user_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLoraAppV1Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdateLoraAppV1Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: update lora_app_v1
+      tags:
+      - lora_app_v1
+components:
+  schemas:
+    ArduinoLoraappv1:
+      description: ArduinoLoraappv1 media type (default view)
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: 'Mediatype identifier: application/vnd.arduino.loraappv1+json; view=default'
+      type: object
+    ArduinoLoraappsv1:
+      description: ArduinoLoraappsv1 media type (default view)
+      properties:
+        apps:
+          description: The list of apps
+          items:
+            $ref: '#/components/schemas/ArduinoLoraappv1'
+          type: array
+      required:
+      - apps
+      title: 'Mediatype identifier: application/vnd.arduino.loraappsv1+json; view=default'
+      type: object
+    CreateLoraAppV1Payload:
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: CreateLoraAppV1Payload
+      type: object
+    DeleteLoraAppV1Payload:
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: DeleteLoraAppV1Payload
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    UpdateLoraAppV1Payload:
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: UpdateLoraAppV1Payload
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

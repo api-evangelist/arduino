@@ -1,0 +1,1142 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 properties_v2 API
+  version: '2.0'
+tags:
+- name: properties_v2
+paths:
+  /iot/v2/things/publish/raw_cbor:
+    put:
+      description: Publish property values to MQTT using device raw format (CBOR)
+      operationId: properties_v2#publishRaw
+      parameters:
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rawPropertyValues'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/rawPropertyValues'
+        description: PropertyValuePayload describes a property value
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: publishRaw properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/properties:
+    get:
+      description: Returns the list of properties associated to the thing
+      operationId: properties_v2#list
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: If true, shows the soft deleted properties
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.property+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoPropertyCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoPropertyCollection'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.property+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.property+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.property+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list properties_v2
+      tags:
+      - properties_v2
+    put:
+      description: Creates a new property associated to a thing
+      operationId: properties_v2#create
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/property'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/property'
+        description: PropertyPayload describes a property of a thing. No field is mandatory
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+          description: Created
+        '400':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: create properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/properties/{pid}:
+    delete:
+      description: Removes a property associated to a thing
+      operationId: properties_v2#delete
+      parameters:
+      - description: If true, hard delete the property
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete properties_v2
+      tags:
+      - properties_v2
+    get:
+      description: Returns the property requested by the user
+      operationId: properties_v2#show
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: If true, shows the soft deleted properties
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: show properties_v2
+      tags:
+      - properties_v2
+    post:
+      description: Updates a property associated to a thing
+      operationId: properties_v2#update
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/property'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/property'
+        description: PropertyPayload describes a property of a thing. No field is mandatory
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoProperty'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.property+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: update properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/properties/{pid}/publish:
+    put:
+      description: Publish a property value to MQTT
+      operationId: properties_v2#publish
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/propertyValue'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/propertyValue'
+        description: PropertyValuePayload describes a property value
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: publish properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/properties/{pid}/publish_batch:
+    put:
+      description: Publish a property's array of values to MQTT
+      operationId: properties_v2#publishBatch
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishBatchPropertiesV2Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PublishBatchPropertiesV2Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: publishBatch properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/properties/{pid}/timeseries:
+    get:
+      description: 'Get numerical property''s historic data binned on a specified time interval (note: the total number of data points should NOT be greater than 1000 otherwise the result will be truncated)'
+      operationId: properties_v2#timeseries
+      parameters:
+      - description: Samples aggregation statistic. Supported aggregations AVG|MAX|MIN|COUNT|SUM|PCT_99|PCT_95|PCT_90|PCT_75|PCT_50|PCT_15|PCT_5
+        in: query
+        name: aggregation
+        schema:
+          enum:
+          - AVG
+          - MIN
+          - MAX
+          - SUM
+          - COUNT
+          - PCT_99
+          - PCT_95
+          - PCT_90
+          - PCT_75
+          - PCT_50
+          - PCT_15
+          - PCT_5
+          type: string
+      - description: Whether data's ordering (by time) should be descending
+        in: query
+        name: desc
+        schema:
+          default: false
+          type: boolean
+      - description: 'Get data with a timestamp >= to this date (default: 2 weeks ago, min: 1842-01-01T00:00:00Z, max: 2242-01-01T00:00:00Z)'
+        in: query
+        name: from
+        schema:
+          type: string
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: 'Binning interval in seconds (defaut: the smallest possible value compatibly with the limit of 1000 data points in the response)'
+        in: query
+        name: interval
+        schema:
+          minimum: 1
+          type: integer
+      - description: ID of a numerical property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: 'Get data with a timestamp < to this date (default: now, min: 1842-01-01T00:00:00Z, max: 2242-01-01T00:00:00Z)'
+        in: query
+        name: to
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.timeseriesmedia+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTimeseriesmedia'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTimeseriesmedia'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.timeseriesmedia+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.timeseriesmedia+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.timeseriesmedia+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: timeseries properties_v2
+      tags:
+      - properties_v2
+  /iot/v2/things/{id}/publish:
+    put:
+      description: Publish property values to MQTT
+      operationId: properties_v2#publishMulti
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the organization
+        in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/propertyValues'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/propertyValues'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: publishMulti properties_v2
+      tags:
+      - properties_v2
+components:
+  schemas:
+    ArduinoTimeseriesmedia:
+      description: ArduinoTimeseriesmedia media type (default view)
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/TimeseriesDataPoint'
+          type: array
+      required:
+      - data
+      title: 'Mediatype identifier: application/vnd.arduino.timeseriesmedia+json; view=default'
+      type: object
+    propertyValue:
+      description: PropertyValuePayload describes a property value
+      properties:
+        device_id:
+          description: The device that sends the property
+          format: uuid
+          type: string
+        value:
+          description: The property value
+      required:
+      - value
+      title: propertyValue
+      type: object
+    property:
+      description: PropertyPayload describes a property of a thing. No field is mandatory
+      properties:
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          enum:
+          - READ_ONLY
+          - READ_WRITE
+          type: string
+        persist:
+          default: true
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        type:
+          description: The type of the property
+          enum:
+          - ANALOG
+          - CHARSTRING
+          - FLOAT
+          - INT
+          - LENGHT_C
+          - LENGHT_I
+          - LENGHT_M
+          - PERCENTAGE
+          - STATUS
+          - TEMPERATURE_C
+          - TEMPERATURE_F
+          - METER
+          - KILOGRAM
+          - GRAM
+          - SECOND
+          - AMPERE
+          - KELVIN
+          - CANDELA
+          - MOLE
+          - HERTZ
+          - RADIAN
+          - STERADIAN
+          - NEWTON
+          - PASCAL
+          - JOULE
+          - WATT
+          - COULOMB
+          - VOLT
+          - FARAD
+          - OHM
+          - SIEMENS
+          - WEBER
+          - TESLA
+          - HENRY
+          - DEGREES_CELSIUS
+          - LUMEN
+          - LUX
+          - BECQUEREL
+          - GRAY
+          - SIEVERT
+          - KATAL
+          - SQUARE_METER
+          - CUBIC_METER
+          - LITER
+          - METER_PER_SECOND
+          - METER_PER_SQUARE_SECOND
+          - CUBIC_METER_PER_SECOND
+          - LITER_PER_SECOND
+          - WATT_PER_SQUARE_METER
+          - CANDELA_PER_SQUARE_METER
+          - BIT
+          - BIT_PER_SECOND
+          - DEGREES_LATITUDE
+          - DEGREES_LONGITUDE
+          - PH_VALUE
+          - DECIBEL
+          - DECIBEL_1W
+          - BEL
+          - COUNT
+          - RATIO_DIV
+          - RATIO_MOD
+          - PERCENTAGE_RELATIVE_HUMIDITY
+          - PERCENTAGE_BATTERY_LEVEL
+          - SECONDS_BATTERY_LEVEL
+          - EVENT_RATE_SECOND
+          - EVENT_RATE_MINUTE
+          - HEART_RATE
+          - HEART_BEATS
+          - SIEMENS_PER_METER
+          - LOCATION
+          - COLOR_HSB
+          - COLOR_RGB
+          - GENERIC_COMPLEX_PROPERTY
+          - HOME_COLORED_LIGHT
+          - HOME_DIMMED_LIGHT
+          - HOME_LIGHT
+          - HOME_CONTACT_SENSOR
+          - HOME_MOTION_SENSOR
+          - HOME_SMART_PLUG
+          - HOME_TEMPERATURE
+          - HOME_TEMPERATURE_C
+          - HOME_TEMPERATURE_F
+          - HOME_SWITCH
+          - HOME_TELEVISION
+          - GOOGLE_HOME_COLORED_LIGHT
+          - GOOGLE_HOME_DIMMED_LIGHT
+          - GOOGLE_HOME_LIGHT
+          - GOOGLE_HOME_CONTACT_SENSOR
+          - GOOGLE_HOME_MOTION_SENSOR
+          - GOOGLE_HOME_SMART_PLUG
+          - GOOGLE_HOME_TEMPERATURE
+          - GOOGLE_HOME_TEMPERATURE_C
+          - GOOGLE_HOME_TEMPERATURE_F
+          - GOOGLE_HOME_SWITCH
+          - SMART_HOME_COLORED_LIGHT
+          - SMART_HOME_DIMMED_LIGHT
+          - SMART_HOME_LIGHT
+          - SMART_HOME_CONTACT_SENSOR
+          - SMART_HOME_MOTION_SENSOR
+          - SMART_HOME_SMART_PLUG
+          - SMART_HOME_TEMPERATURE
+          - SMART_HOME_TEMPERATURE_C
+          - SMART_HOME_TEMPERATURE_F
+          - SMART_HOME_SWITCH
+          - SMART_HOME_TELEVISION
+          - ENERGY
+          - FORCE
+          - TEMPERATURE
+          - POWER
+          - ELECTRIC_CURRENT
+          - ELECTRIC_POTENTIAL
+          - ELECTRICAL_RESISTANCE
+          - CAPACITANCE
+          - TIME
+          - FREQUENCY
+          - DATA_RATE
+          - ACCELERATION
+          - AREA
+          - LENGTH
+          - VELOCITY
+          - MASS
+          - VOLUME
+          - FLOW_RATE
+          - ANGLE
+          - ILLUMINANCE
+          - LUMINOUS_FLUX
+          - LUMINANCE
+          - LUMINOUS_INTENSITY
+          - LOGARITHMIC_QUANTITY
+          - PRESSURE
+          - INFORMATION_CONTENT
+          - SCHEDULE
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          enum:
+          - ON_CHANGE
+          - TIMED
+          type: string
+        variable_name:
+          description: The  sketch variable name of the property
+          maxLength: 64
+          pattern: ^[a-zA-Z_][a-zA-Z0-9_]*$
+          type: string
+      required:
+      - name
+      - type
+      - permission
+      - update_strategy
+      title: property
+      type: object
+    propertyValues:
+      properties:
+        properties:
+          description: The set of properties to publish
+          items:
+            $ref: '#/components/schemas/propertyDefinition'
+          minItems: 1
+          type: array
+        to_device:
+          default: false
+          description: Handle data direction, simulating data from or to device (default false - data sent by device)
+          type: boolean
+      required:
+      - properties
+      title: propertyValues
+      type: object
+    TimeseriesDataPoint:
+      properties:
+        time:
+          description: Binning timestamp
+          format: date-time
+          type: string
+        value:
+          description: Avg value on the binning interval
+          format: double
+          type: number
+      required:
+      - time
+      - value
+      title: TimeseriesDataPoint
+      type: object
+    PublishBatchPropertiesV2Payload:
+      items:
+        $ref: '#/components/schemas/propertyTimedValue'
+      title: PublishBatchPropertiesV2Payload
+      type: array
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
+    propertyTimedValue:
+      description: PropertyValuePayload describes a property value
+      properties:
+        timestamp:
+          description: The timestamp of the property value
+          format: date-time
+          type: string
+        value:
+          description: The property value
+      required:
+      - timestamp
+      - value
+      title: propertyTimedValue
+      type: object
+    rawPropertyValues:
+      description: PropertyValuePayload describes a property value
+      properties:
+        device_id:
+          description: The device that sends the property
+          format: uuid
+          type: string
+        payload:
+          description: The property value in raw format (CBOR) base64 encoded
+          maxLength: 131072
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+        to_device:
+          default: false
+          description: Handle data direction, simulating data from or to device (default false - data sent by device)
+          type: boolean
+      required:
+      - payload
+      - device_id
+      title: rawPropertyValues
+      type: object
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
+      type: object
+    propertyDefinition:
+      properties:
+        property:
+          description: Property name
+          type: string
+        value:
+          description: The property value
+      required:
+      - property
+      - value
+      title: propertyDefinition
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

@@ -1,0 +1,357 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 devices_v2_pubkeys API
+  version: '2.0'
+tags:
+- description: Provides a set of endpoints to manage the pubkeys of a device
+  name: devices_v2_pubkeys
+paths:
+  /iot/v2/devices/{id}/pubkeys:
+    get:
+      description: Returns the list of pubkeys associated to the device
+      operationId: devices_v2_pubkeys#list
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2PubkeyCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2PubkeyCollection'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+      security:
+      - oauth2: []
+      summary: list devices_v2_pubkeys
+      tags:
+      - devices_v2_pubkeys
+    put:
+      description: Creates a new pubkey associated to a device
+      operationId: devices_v2_pubkeys#create
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDevicesV2PubkeysPayload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateDevicesV2PubkeysPayload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+          description: Created
+        '401':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+      security:
+      - oauth2: []
+      summary: create devices_v2_pubkeys
+      tags:
+      - devices_v2_pubkeys
+  /iot/v2/devices/{id}/pubkeys/{pid}:
+    delete:
+      description: Removes a pubkey associated to a device
+      operationId: devices_v2_pubkeys#delete
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the pubkey
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+      security:
+      - oauth2: []
+      summary: delete devices_v2_pubkeys
+      tags:
+      - devices_v2_pubkeys
+    get:
+      description: Returns the pubkey requested by the user
+      operationId: devices_v2_pubkeys#show
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the pubkey
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+      security:
+      - oauth2: []
+      summary: show devices_v2_pubkeys
+      tags:
+      - devices_v2_pubkeys
+    post:
+      description: Updates a pubkey associated to a device
+      operationId: devices_v2_pubkeys#update
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the pubkey
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/devicev2.pubkey'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/devicev2.pubkey'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.devicev2.pubkey+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          description: Not Found
+      security:
+      - oauth2: []
+      summary: update devices_v2_pubkeys
+      tags:
+      - devices_v2_pubkeys
+components:
+  schemas:
+    devicev2.pubkey:
+      properties:
+        enabled:
+          description: Whether the public key is enabled
+          type: boolean
+        expire:
+          description: When the public key will expire
+          format: date-time
+          type: string
+        pem:
+          description: The public key in pem format
+          type: string
+      title: devicev2.pubkey
+      type: object
+    ArduinoDevicev2Pubkey:
+      description: DevicePubkeyV2 describes a public key associated to the device (default view)
+      properties:
+        device_id:
+          description: The unique identifier of the device
+          format: uuid
+          type: string
+        enabled:
+          default: true
+          description: Whether the public key is enabled
+          type: boolean
+        expire:
+          description: When the public key will expire
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this pubkey
+          type: string
+        id:
+          description: The unique identifier of the key
+          format: uuid
+          type: string
+        pem:
+          description: The public key in pem format
+          example: "-----BEGIN PUBLIC KEY-----\n\t\t\tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO\n\t\t\t3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX\n\t\t\t7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS\n\t\t\tj+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd\n\t\t\tOrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ\n\t\t\t5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl\n\t\t\tFQIDAQAB\n\t\t\t-----END PUBLIC KEY-----"
+          maxLength: 512
+          type: string
+      required:
+      - id
+      - device_id
+      - enabled
+      - expire
+      - pem
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; view=default'
+      type: object
+    CreateDevicesV2PubkeysPayload:
+      properties:
+        enabled:
+          description: Whether the public key is enabled
+          type: boolean
+        expire:
+          description: When the public key will expire
+          format: date-time
+          type: string
+        pem:
+          description: The public key in pem format
+          type: string
+      required:
+      - enabled
+      - expire
+      - pem
+      title: CreateDevicesV2PubkeysPayload
+      type: object
+    ArduinoDevicev2PubkeyCollection:
+      description: ArduinoDevicev2PubkeyCollection is the media type for an array of ArduinoDevicev2Pubkey (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; type=collection; view=default'
+      type: array
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

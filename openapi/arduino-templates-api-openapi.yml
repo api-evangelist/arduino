@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 templates API
+  version: '2.0'
+tags:
+- name: templates
+paths:
+  /iot/v1/templates:
+    put:
+      description: Apply an existing cloud template and generate all the needed resources
+      operationId: templates#apply
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/template'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/template'
+        description: TemplatePayload describes the needed attribute to apply a template
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTemplate'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTemplate'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '404':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '409':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Conflict
+        '500':
+          content:
+            application/vnd.arduino.template+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: apply templates
+      tags:
+      - templates
+components:
+  schemas:
+    ArduinoThingresult:
+      description: ArduinoThingresult media type (default view)
+      properties:
+        device_id:
+          description: UUID of the attached device
+          format: uuid
+          type: string
+        id:
+          description: UUID of the created Thing
+          format: uuid
+          type: string
+        sketch_id:
+          description: UUID of the created Sketch
+          format: uuid
+          type: string
+      required:
+      - id
+      - sketch_id
+      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; view=default'
+      type: object
+    ArduinoTemplate:
+      description: ArduinoTemplate media type (default view)
+      properties:
+        dashboards:
+          items:
+            format: uuid
+            type: string
+          type: array
+        things:
+          $ref: '#/components/schemas/ArduinoThingresultCollection'
+        triggers:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - things
+      title: 'Mediatype identifier: application/vnd.arduino.template+json; view=default'
+      type: object
+    ArduinoThingresultCollection:
+      description: ArduinoThingresultCollection is the media type for an array of ArduinoThingresult (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoThingresult'
+      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; type=collection; view=default'
+      type: array
+    template:
+      description: TemplatePayload describes the needed attribute to apply a template
+      properties:
+        custom_template_id:
+          description: The name of the directory on S3 bucket containing the user's template
+          type: string
+        prefix_name:
+          description: The prefix to apply to the names of the generated resources
+          maxLength: 45
+          pattern: ^[a-zA-Z0-9_. -]+$
+          type: string
+        template_name:
+          description: The name of the directory on S3 bucket containing the template
+          example: remote-controlled-lights
+          type: string
+        things_options:
+          additionalProperties: true
+          type: object
+      required:
+      - template_name
+      title: template
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

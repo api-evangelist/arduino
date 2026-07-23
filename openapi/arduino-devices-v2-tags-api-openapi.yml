@@ -1,0 +1,233 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 devices_v2_tags API
+  version: '2.0'
+tags:
+- name: devices_v2_tags
+paths:
+  /iot/v2/devices/{id}/tags:
+    get:
+      description: List tags associated to the device.
+      operationId: devices_v2_tags#list
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.tags+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTags'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTags'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.tags+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.tags+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list devices_v2_tags
+      tags:
+      - devices_v2_tags
+    put:
+      description: Creates or updates a tag associated to the device.
+      operationId: devices_v2_tags#upsert
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/tag'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: upsert devices_v2_tags
+      tags:
+      - devices_v2_tags
+  /iot/v2/devices/{id}/tags/{key}:
+    delete:
+      description: Delete a tag associated to the device given its key.
+      operationId: devices_v2_tags#delete
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The key of the tag
+        in: path
+        name: key
+        required: true
+        schema:
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete devices_v2_tags
+      tags:
+      - devices_v2_tags
+components:
+  schemas:
+    ArduinoTags:
+      description: ArduinoTags media type (default view)
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/tag'
+          type: array
+      required:
+      - tags
+      title: 'Mediatype identifier: application/vnd.arduino.tags+json; view=default'
+      type: object
+    tag:
+      properties:
+        key:
+          description: Key of the tag
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+        value:
+          description: Value of the tag
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+      required:
+      - key
+      - value
+      title: tag
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

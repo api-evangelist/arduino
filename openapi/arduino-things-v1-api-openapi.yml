@@ -1,0 +1,1793 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 things_v1 API
+  version: '2.0'
+tags:
+- description: Provides a set of endpoints to manage the things of a user
+  name: things_v1
+paths:
+  /iot/v1/things:
+    get:
+      description: Returns the list of things associated to the user
+      operationId: things_v1#list
+      parameters:
+      - description: If true, returns all the things
+        in: query
+        name: across_user_ids
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the device you want to filter
+        in: query
+        name: device_id
+        schema:
+          type: string
+      - description: Filter only the desired things
+        in: query
+        name: ids
+        schema:
+          items:
+            type: string
+          type: array
+      - description: If true, shows the soft deleted things
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: If true, returns things with their properties, and last values
+        in: query
+        name: show_properties
+        schema:
+          default: false
+          type: boolean
+      - description: Filter by tags
+        in: query
+        name: tags
+        schema:
+          items:
+            maxLength: 129
+            pattern: ^[a-zA-Z0-9_.@-]+:[a-zA-Z0-9_.@-]+$
+            type: string
+          type: array
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoThingCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThingCollection'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '500':
+          content:
+            application/vnd.arduino.thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list things_v1
+      tags:
+      - things_v1
+    put:
+      description: Creates a new thing associated to the user
+      operationId: things_v1#create
+      parameters:
+      - description: If true, detach device from the other thing, and attach to this thing
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThingCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ThingCreate'
+        description: Payload to create a new thing
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: Created
+        '400':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '409':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Conflict
+        '412':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: create things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}:
+    delete:
+      description: Removes a thing associated to the user
+      operationId: things_v1#delete
+      parameters:
+      - description: If true, hard delete the thing
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete things_v1
+      tags:
+      - things_v1
+    get:
+      description: Returns the thing requested by the user
+      operationId: things_v1#show
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: If true, shows the soft deleted thing
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: show things_v1
+      tags:
+      - things_v1
+    post:
+      description: Updates a thing associated to the user
+      operationId: things_v1#update
+      parameters:
+      - description: If true, detach device from the other thing, and attach to this thing
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/thingUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/thingUpdate'
+        description: Payload to update an existing thing
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Conflict
+        '412':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: update things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/device:
+    get:
+      description: Returns the device attached to the thing
+      operationId: things_v1#showDevice
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: showDevice things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/layout:
+    get:
+      description: Returns the thing requested by the user, without last values data
+      operationId: things_v1#layout
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: If true, shows the soft deleted thing
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thinglayout+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThinglayout'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThinglayout'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.thinglayout+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thinglayout+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.thinglayout+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: layout things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/shadow/send:
+    post:
+      description: Publish the last property values to MQTT
+      operationId: things_v1#shadow
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/thingPropertiesValues'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/thingPropertiesValues'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '202':
+          description: Accepted
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: shadow things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/sketch:
+    delete:
+      operationId: things_v1#deleteSketch
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: deleteSketch things_v1
+      tags:
+      - things_v1
+    put:
+      description: Creates a new sketch thing associated to the thing
+      operationId: things_v1#createSketch
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/thingSketch'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/thingSketch'
+        description: ThingSketchPayload describes a sketch of a thing
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: Created
+        '400':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: createSketch things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/sketch/{sketchId}:
+    put:
+      description: Update an existing thing sketch
+      operationId: things_v1#updateSketch
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the sketch
+        in: path
+        name: sketchId
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateSketch'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/updateSketch'
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: updateSketch things_v1
+      tags:
+      - things_v1
+  /iot/v1/things/{id}/sketch/{sketchId}/rename:
+    put:
+      description: Update an existing thing sketch name
+      operationId: things_v1#updateSketchName
+      parameters:
+      - description: The id of the thing
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The id of the sketch
+        in: path
+        name: sketchId
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoThing'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.thing+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: updateSketchName things_v1
+      tags:
+      - things_v1
+components:
+  schemas:
+    ArduinoDevicev2WebhookCollection:
+      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+      type: array
+    ArduinoTimezone:
+      description: ArduinoTimezone media type (default view)
+      properties:
+        name:
+          description: Name of the time zone.
+          type: string
+        offset:
+          description: Current UTC DST offset in seconds.
+          format: int64
+          type: integer
+        until:
+          description: Date until the offset is valid.
+          format: date-time
+          type: string
+      required:
+      - name
+      - offset
+      - until
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
+      type: object
+    ArduinoThingCollection:
+      description: ArduinoThingCollection is the media type for an array of ArduinoThing (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoThing'
+      title: 'Mediatype identifier: application/vnd.arduino.thing+json; type=collection; view=default'
+      type: array
+    updateSketch:
+      properties:
+        sketch_version:
+          description: The autogenerated sketch version
+          enum:
+          - v1
+          - v2
+          type: string
+      title: updateSketch
+      type: object
+    thingSketch:
+      description: ThingSketchPayload describes a sketch of a thing
+      properties:
+        sketch_version:
+          description: The autogenerated sketch version
+          enum:
+          - v1
+          - v2
+          type: string
+      title: thingSketch
+      type: object
+    ArduinoThing:
+      description: ArduinoThing media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the thing
+          format: date-time
+          type: string
+        device_fqbn:
+          description: The fqbn of the attached device, if any
+          type: string
+        device_id:
+          description: The id of the device
+          format: uuid
+          type: string
+        device_name:
+          description: The name of the attached device, if any
+          type: string
+        device_type:
+          description: The type of the attached device, if any
+          type: string
+        href:
+          description: The api reference of this thing
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          type: string
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        properties_count:
+          description: The number of properties of the thing
+          format: int64
+          type: integer
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
+          type: string
+        source_template:
+          description: The id of the template used to create the thing
+          format: uuid
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags of the thing
+          type: object
+        timezone:
+          description: Time zone of the thing
+          type: string
+        updated_at:
+          description: Update date of the thing
+          format: date-time
+          type: string
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      required:
+      - id
+      - user_id
+      - name
+      - href
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.thing+json; view=default'
+      type: object
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
+    tag:
+      properties:
+        key:
+          description: Key of the tag
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+        value:
+          description: Value of the tag
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+      required:
+      - key
+      - value
+      title: tag
+      type: object
+    thingUpdate:
+      description: Payload to update an existing thing
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        device_id:
+          description: The arn of the associated device
+          format: uuid
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_. -]+$
+          type: string
+        properties:
+          description: The properties of the thing
+          items:
+            $ref: '#/components/schemas/property'
+          type: array
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        timezone:
+          description: 'A time zone name.
+
+            Check /v2/timezones for a list of valid names.'
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      title: thingUpdate
+      type: object
+    thingPropertiesValues:
+      properties:
+        properties:
+          items:
+            $ref: '#/components/schemas/thingPropertiesValue'
+          type: array
+        thing_id:
+          format: uuid
+          type: string
+      required:
+      - properties
+      title: thingPropertiesValues
+      type: object
+    ArduinoDevicev2SimpleProperties:
+      description: ArduinoDevicev2SimpleProperties media type (default view)
+      properties:
+        name:
+          description: The name of the property
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value:
+          description: Value of the property
+      required:
+      - name
+      - value
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
+      type: object
+    ArduinoDevicev2:
+      description: ArduinoDevicev2 media type (default view)
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        created_at:
+          description: Creation date of the device
+          format: date-time
+          type: string
+        deleted_at:
+          description: Deletion date of the trigger
+          format: date-time
+          type: string
+        device_status:
+          description: The connection status of the device
+          enum:
+          - ONLINE
+          - OFFLINE
+          - UNKNOWN
+          type: string
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        href:
+          description: The api reference of this device
+          type: string
+        id:
+          description: The arn of the device
+          format: uuid
+          type: string
+        issuer_ca:
+          type: string
+        label:
+          description: The label of the device
+          type: string
+        last_activity_at:
+          description: Last activity date
+          format: date-time
+          type: string
+        latest_wifi_fw_version:
+          description: The latest version of the NINA/WIFI101 firmware available for this device
+          type: string
+        lib_version:
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        metadata:
+          additionalProperties: true
+          description: The metadata of the device
+          type: object
+        name:
+          description: The friendly name of the device
+          type: string
+        no_sketch:
+          description: True if the device type can not have an associated sketch
+          type: boolean
+        organization_id:
+          description: Id of the organization the device belongs to
+          format: uuid
+          type: string
+        ota_available:
+          description: True if the device type is ready to receive OTA updated
+          type: boolean
+        ota_compatible:
+          description: True if the device type is OTA compatible
+          type: boolean
+        required_wifi_fw_version:
+          description: The required version of the NINA/WIFI101 firmware needed by IoT Cloud
+          type: string
+        serial:
+          description: The serial uuid of the device
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags belonging to the device
+          type: object
+        thing:
+          $ref: '#/components/schemas/ArduinoThing'
+        type:
+          description: The type of the device
+          type: string
+        unique_hardware_id:
+          description: The unique hardware id of the device
+          maxLength: 64
+          minLength: 64
+          type: string
+        updated_at:
+          description: Update date of the trigger
+          format: date-time
+          type: string
+        user_id:
+          description: The id of the user
+          format: uuid
+          type: string
+        webhooks:
+          $ref: '#/components/schemas/ArduinoDevicev2WebhookCollection'
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - label
+      - user_id
+      - href
+      - serial
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; view=default'
+      type: object
+    property:
+      description: PropertyPayload describes a property of a thing. No field is mandatory
+      properties:
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          enum:
+          - READ_ONLY
+          - READ_WRITE
+          type: string
+        persist:
+          default: true
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        type:
+          description: The type of the property
+          enum:
+          - ANALOG
+          - CHARSTRING
+          - FLOAT
+          - INT
+          - LENGHT_C
+          - LENGHT_I
+          - LENGHT_M
+          - PERCENTAGE
+          - STATUS
+          - TEMPERATURE_C
+          - TEMPERATURE_F
+          - METER
+          - KILOGRAM
+          - GRAM
+          - SECOND
+          - AMPERE
+          - KELVIN
+          - CANDELA
+          - MOLE
+          - HERTZ
+          - RADIAN
+          - STERADIAN
+          - NEWTON
+          - PASCAL
+          - JOULE
+          - WATT
+          - COULOMB
+          - VOLT
+          - FARAD
+          - OHM
+          - SIEMENS
+          - WEBER
+          - TESLA
+          - HENRY
+          - DEGREES_CELSIUS
+          - LUMEN
+          - LUX
+          - BECQUEREL
+          - GRAY
+          - SIEVERT
+          - KATAL
+          - SQUARE_METER
+          - CUBIC_METER
+          - LITER
+          - METER_PER_SECOND
+          - METER_PER_SQUARE_SECOND
+          - CUBIC_METER_PER_SECOND
+          - LITER_PER_SECOND
+          - WATT_PER_SQUARE_METER
+          - CANDELA_PER_SQUARE_METER
+          - BIT
+          - BIT_PER_SECOND
+          - DEGREES_LATITUDE
+          - DEGREES_LONGITUDE
+          - PH_VALUE
+          - DECIBEL
+          - DECIBEL_1W
+          - BEL
+          - COUNT
+          - RATIO_DIV
+          - RATIO_MOD
+          - PERCENTAGE_RELATIVE_HUMIDITY
+          - PERCENTAGE_BATTERY_LEVEL
+          - SECONDS_BATTERY_LEVEL
+          - EVENT_RATE_SECOND
+          - EVENT_RATE_MINUTE
+          - HEART_RATE
+          - HEART_BEATS
+          - SIEMENS_PER_METER
+          - LOCATION
+          - COLOR_HSB
+          - COLOR_RGB
+          - GENERIC_COMPLEX_PROPERTY
+          - HOME_COLORED_LIGHT
+          - HOME_DIMMED_LIGHT
+          - HOME_LIGHT
+          - HOME_CONTACT_SENSOR
+          - HOME_MOTION_SENSOR
+          - HOME_SMART_PLUG
+          - HOME_TEMPERATURE
+          - HOME_TEMPERATURE_C
+          - HOME_TEMPERATURE_F
+          - HOME_SWITCH
+          - HOME_TELEVISION
+          - GOOGLE_HOME_COLORED_LIGHT
+          - GOOGLE_HOME_DIMMED_LIGHT
+          - GOOGLE_HOME_LIGHT
+          - GOOGLE_HOME_CONTACT_SENSOR
+          - GOOGLE_HOME_MOTION_SENSOR
+          - GOOGLE_HOME_SMART_PLUG
+          - GOOGLE_HOME_TEMPERATURE
+          - GOOGLE_HOME_TEMPERATURE_C
+          - GOOGLE_HOME_TEMPERATURE_F
+          - GOOGLE_HOME_SWITCH
+          - SMART_HOME_COLORED_LIGHT
+          - SMART_HOME_DIMMED_LIGHT
+          - SMART_HOME_LIGHT
+          - SMART_HOME_CONTACT_SENSOR
+          - SMART_HOME_MOTION_SENSOR
+          - SMART_HOME_SMART_PLUG
+          - SMART_HOME_TEMPERATURE
+          - SMART_HOME_TEMPERATURE_C
+          - SMART_HOME_TEMPERATURE_F
+          - SMART_HOME_SWITCH
+          - SMART_HOME_TELEVISION
+          - ENERGY
+          - FORCE
+          - TEMPERATURE
+          - POWER
+          - ELECTRIC_CURRENT
+          - ELECTRIC_POTENTIAL
+          - ELECTRICAL_RESISTANCE
+          - CAPACITANCE
+          - TIME
+          - FREQUENCY
+          - DATA_RATE
+          - ACCELERATION
+          - AREA
+          - LENGTH
+          - VELOCITY
+          - MASS
+          - VOLUME
+          - FLOW_RATE
+          - ANGLE
+          - ILLUMINANCE
+          - LUMINOUS_FLUX
+          - LUMINANCE
+          - LUMINOUS_INTENSITY
+          - LOGARITHMIC_QUANTITY
+          - PRESSURE
+          - INFORMATION_CONTENT
+          - SCHEDULE
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          enum:
+          - ON_CHANGE
+          - TIMED
+          type: string
+        variable_name:
+          description: The  sketch variable name of the property
+          maxLength: 64
+          pattern: ^[a-zA-Z_][a-zA-Z0-9_]*$
+          type: string
+      required:
+      - name
+      - type
+      - permission
+      - update_strategy
+      title: property
+      type: object
+    ArduinoDevicev2SimplePropertiesCollection:
+      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
+      type: array
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoThinglayout:
+      description: ArduinoThinglayout media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the thing
+          format: date-time
+          type: string
+        device_fqbn:
+          description: The fqbn of the device
+          type: string
+        device_id:
+          description: The arn of the device
+          format: uuid
+          type: string
+        device_type:
+          description: The type of the device
+          type: string
+        href:
+          description: The api reference of this thing
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          type: string
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        properties_count:
+          description: The number of properties of the thing
+          format: double
+          type: number
+        shared_with:
+          description: The list of users the dashboard is shared with
+          items:
+            format: uuid
+            type: string
+          type: array
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags of the thing
+          type: object
+        timezone:
+          $ref: '#/components/schemas/ArduinoTimezone'
+        updated_at:
+          description: Update date of the thing
+          format: date-time
+          type: string
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      required:
+      - id
+      - user_id
+      - name
+      - href
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.thinglayout+json; view=default'
+      type: object
+    ThingCreate:
+      description: Payload to create a new thing
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        device_id:
+          description: The arn of the associated device
+          format: uuid
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_. -]+$
+          type: string
+        properties:
+          description: The properties of the thing
+          items:
+            $ref: '#/components/schemas/property'
+          type: array
+        tags:
+          description: Optional set of tags
+          items:
+            $ref: '#/components/schemas/tag'
+          type: array
+        timezone:
+          default: America/New_York
+          description: 'A time zone name
+
+            Check /v2/timezones for a list of valid names.'
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      title: ThingCreate
+      type: object
+    ArduinoDevicev2Webhook:
+      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
+      properties:
+        active:
+          default: true
+          description: Whether the webhook is active
+          type: boolean
+        id:
+          description: The uuid of the webhook
+          format: uuid
+          type: string
+        uri:
+          description: The uri of the webhook
+          format: uri
+          type: string
+      required:
+      - id
+      - uri
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
+      type: object
+    thingPropertiesValue:
+      properties:
+        created_at:
+          description: Then the property was created
+          format: date-time
+          type: string
+        name:
+          description: The name of the property
+          type: string
+        value:
+          description: The last value of the property
+      required:
+      - name
+      - value
+      - created_at
+      title: thingPropertiesValue
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

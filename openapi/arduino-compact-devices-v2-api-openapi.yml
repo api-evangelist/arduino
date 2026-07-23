@@ -1,0 +1,254 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 compact_devices_v2 API
+  version: '2.0'
+tags:
+- name: compact_devices_v2
+paths:
+  /iot/v2/compact_devices:
+    get:
+      description: Returns the list of devices associated to the user
+      operationId: compact_devices_v2#listCompact
+      parameters:
+      - description: Filter by deletion date
+        in: query
+        name: deleted_after
+        schema:
+          type: string
+      - description: If true, returns the extended information of the devices
+        in: query
+        name: extended
+        schema:
+          default: false
+          type: boolean
+      - description: Filter only the desired things
+        in: query
+        name: ids
+        schema:
+          items:
+            type: string
+          type: array
+      - description: Filter by a string contained in the name
+        in: query
+        name: name_filter
+        schema:
+          type: string
+      - description: Filter by device serial number
+        in: query
+        name: serial
+        schema:
+          type: string
+      - description: If true, shows the soft deleted things
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: Filter by tags
+        in: query
+        name: tags
+        schema:
+          items:
+            maxLength: 129
+            pattern: ^[a-zA-Z0-9_.@-]+:[a-zA-Z0-9_.@-]+$
+            type: string
+          type: array
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.compact_device_v2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoCompact_device_v2Collection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoCompact_device_v2Collection'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.compact_device_v2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.compact_device_v2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.compact_device_v2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '500':
+          content:
+            application/vnd.arduino.compact_device_v2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: listCompact compact_devices_v2
+      tags:
+      - compact_devices_v2
+components:
+  schemas:
+    ArduinoCompact_device_v2:
+      description: ArduinoCompact_device_v2 media type (default view)
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        created_at:
+          description: Creation date of the device
+          format: date-time
+          type: string
+        deleted_at:
+          description: Deletion date of the trigger
+          format: date-time
+          type: string
+        device_status:
+          description: The connection status of the device
+          enum:
+          - ONLINE
+          - OFFLINE
+          - UNKNOWN
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        href:
+          description: The api reference of this device
+          type: string
+        id:
+          description: The arn of the device
+          format: uuid
+          type: string
+        issuer_ca:
+          type: string
+        label:
+          description: The label of the device
+          type: string
+        lib_version:
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        metadata:
+          additionalProperties: true
+          description: The metadata of the device
+          type: object
+        name:
+          description: The friendly name of the device
+          type: string
+        organization_id:
+          description: Id of the organization the device belongs to
+          format: uuid
+          type: string
+        serial:
+          description: The serial uuid of the device
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags belonging to the device
+          type: object
+        thing_id:
+          description: The id of the attached thing
+          format: uuid
+          type: string
+        type:
+          description: The type of the device
+          type: string
+        unique_hardware_id:
+          maxLength: 64
+          minLength: 64
+          type: string
+        updated_at:
+          description: Update date of the trigger
+          format: date-time
+          type: string
+        user_id:
+          description: The id of the user
+          format: uuid
+          type: string
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - label
+      - user_id
+      - href
+      - serial
+      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoCompact_device_v2Collection:
+      description: ArduinoCompact_device_v2Collection is the media type for an array of ArduinoCompact_device_v2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_device_v2'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; type=collection; view=default'
+      type: array
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

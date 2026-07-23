@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 ota API
+  version: '2.0'
+tags:
+- name: ota
+paths:
+  /iot/ota/{id}:
+    get:
+      operationId: ota#getShortlink
+      parameters:
+      - description: The id of the actual AWS presigned url
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      summary: getShortlink ota
+      tags:
+      - ota
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

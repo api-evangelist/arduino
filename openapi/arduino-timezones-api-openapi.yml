@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 timezones API
+  version: '2.0'
+tags:
+- name: timezones
+paths:
+  /iot/v2/timezones:
+    get:
+      description: Get the list of time zones.
+      operationId: timezones#list
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.timezones+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTimezones'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoTimezones'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.timezones+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.arduino.timezones+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list timezones
+      tags:
+      - timezones
+components:
+  schemas:
+    ArduinoTimezoneCollection:
+      description: ArduinoTimezoneCollection is the media type for an array of ArduinoTimezone (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoTimezone'
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; type=collection; view=default'
+      type: array
+    ArduinoTimezones:
+      description: ArduinoTimezones media type (default view)
+      properties:
+        timezones:
+          $ref: '#/components/schemas/ArduinoTimezoneCollection'
+      required:
+      - timezones
+      title: 'Mediatype identifier: application/vnd.arduino.timezones+json; view=default'
+      type: object
+    ArduinoTimezone:
+      description: ArduinoTimezone media type (default view)
+      properties:
+        name:
+          description: Name of the time zone.
+          type: string
+        offset:
+          description: Current UTC DST offset in seconds.
+          format: int64
+          type: integer
+        until:
+          description: Date until the offset is valid.
+          format: date-time
+          type: string
+      required:
+      - name
+      - offset
+      - until
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

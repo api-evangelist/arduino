@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 supported_v1 API
+  version: '2.0'
+tags:
+- name: supported_v1
+paths:
+  /iot/v1/supported/devices:
+    get:
+      description: Returns a list of the supported devices
+      operationId: supported_v1#devices
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.supporteddevicev1+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoSupporteddevicev1Collection'
+          description: OK
+      summary: devices supported_v1
+      tags:
+      - supported_v1
+components:
+  schemas:
+    ArduinoSupporteddevicev1Collection:
+      description: ArduinoSupporteddevicev1Collection is the media type for an array of ArduinoSupporteddevicev1 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoSupporteddevicev1'
+      title: 'Mediatype identifier: application/vnd.arduino.supporteddevicev1+json; type=collection; view=default'
+      type: array
+    ArduinoSupporteddevicev1:
+      description: ArduinoSupporteddevicev1 media type (default view)
+      properties:
+        fqbn:
+          description: The Fully Qualified Board Name
+          example: arduino:mbed:nano33ble
+          type: string
+        label:
+          description: The descriptive label of the device
+          example: Arduino MKR WiFi 1010
+          type: string
+        min_provisioning_sketch_version:
+          description: The minimum sketch version to be compatible with the provisioning method
+          example: 1.0.0
+          type: string
+        min_provisioning_wifi_version:
+          description: The minimum wifi fw version to be compatible with the provisioning method
+          example: 1.0.0
+          type: string
+        ota_available:
+          description: Whether the device supports OTA updates
+          example: true
+          type: boolean
+        provisioning:
+          description: The provisioning method
+          enum:
+          - v1
+          - v2
+          example: v2
+          type: string
+        tags:
+          description: The tags this device belongs to
+          example:
+          - lora
+          items:
+            type: string
+          type: array
+        type:
+          description: The type that should be use in api requests
+          example: mkrwifi1010
+          type: string
+        vendor:
+          description: The vendor of the device
+          example: ARDUINO
+          type: string
+      required:
+      - type
+      - label
+      - tags
+      - vendor
+      title: 'Mediatype identifier: application/vnd.arduino.supporteddevicev1+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

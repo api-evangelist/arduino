@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino Cloud binaries_v2 Iot API
+  version: '2.0'
+tags:
+- name: Iot
+paths:
+  /iot/apidocs:
+    get:
+      operationId: public#/iot/apidocs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: File downloaded
+      summary: Download templates/publicdocs.html
+      tags:
+      - Iot
+  /iot/docs:
+    get:
+      operationId: public#/iot/docs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: File downloaded
+      summary: Download templates/docs.html
+      tags:
+      - Iot
+  /iot/public-swagger.json:
+    get:
+      operationId: public#/iot/public-swagger.json
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: File downloaded
+      summary: Download swagger/public-swagger.json
+      tags:
+      - Iot
+  /iot/swagger.json:
+    get:
+      operationId: public#/iot/swagger.json
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+          description: File downloaded
+      summary: Download swagger/swagger.json
+      tags:
+      - Iot
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

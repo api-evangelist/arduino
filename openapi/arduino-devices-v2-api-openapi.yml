@@ -1,0 +1,1792 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 devices_v2 API
+  version: '2.0'
+tags:
+- description: Provides a set of endpoints to manage user devices
+  name: devices_v2
+paths:
+  /iot/v2/devices:
+    get:
+      description: Returns the list of devices associated to the user
+      operationId: devices_v2#list
+      parameters:
+      - description: If true, returns all the devices
+        in: query
+        name: across_user_ids
+        schema:
+          default: false
+          type: boolean
+      - description: Filter by device serial number
+        in: query
+        name: serial
+        schema:
+          type: string
+      - description: If true, shows the soft deleted devices
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: Filter by tags
+        in: query
+        name: tags
+        schema:
+          items:
+            maxLength: 129
+            pattern: ^[a-zA-Z0-9_.@-]+:[a-zA-Z0-9_.@-]+$
+            type: string
+          type: array
+      - description: Filter by device unique hardware id
+        in: query
+        name: unique_hardware_id
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Collection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2Collection'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.devicev2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: list devices_v2
+      tags:
+      - devices_v2
+    put:
+      description: Creates a new device associated to the user.
+      operationId: devices_v2#create
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDevicesV2Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateDevicesV2Payload'
+        description: DeviceV2 describes a device.
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: Created
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '412':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: create devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/claim:
+    put:
+      description: Creates a new device associated to the user.
+      operationId: devices_v2#createClaimed
+      parameters:
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClaimedDevicesV2Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateClaimedDevicesV2Payload'
+        description: DeviceV2 describes a device.
+        required: true
+        x-originalParamName: payload
+      responses:
+        '201':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: Created
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '409':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Conflict
+        '412':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: createClaimed devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}:
+    delete:
+      description: Removes a device associated to the user
+      operationId: devices_v2#delete
+      parameters:
+      - description: If true, hard delete the device
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: delete devices_v2
+      tags:
+      - devices_v2
+    get:
+      description: Returns the device requested by the user
+      operationId: devices_v2#show
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: show devices_v2
+      tags:
+      - devices_v2
+    post:
+      description: Updates a device associated to the user
+      operationId: devices_v2#update
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/devicev2'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/devicev2'
+        description: DeviceV2 describes a device.
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: update devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/events:
+    get:
+      description: GET device events
+      operationId: devices_v2#getEvents
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The number of events to select
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: The time at which to start selecting events
+        in: query
+        name: start
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2.event.properties+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2EventProperties'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2EventProperties'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2.event.properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2.event.properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2.event.properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+        '503':
+          content:
+            application/vnd.arduino.devicev2.event.properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Service Unavailable
+      security:
+      - oauth2: []
+      summary: getEvents devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/image:
+    post:
+      description: Returns an iso image to be burned into a usb key
+      operationId: devices_v2#image
+      parameters:
+      - description: The id of the resource
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageDevicesV2Payload'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImageDevicesV2Payload'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: image devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/properties:
+    get:
+      description: GET device properties
+      operationId: devices_v2#getProperties
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: If true, shows the soft deleted properties
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2properties+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2properties'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2properties'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2properties+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: getProperties devices_v2
+      tags:
+      - devices_v2
+    put:
+      description: Update device properties last values
+      operationId: devices_v2#updateProperties
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/propertiesValues'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/propertiesValues'
+        required: true
+        x-originalParamName: payload
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: updateProperties devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/properties/{pid}:
+    get:
+      description: GET device properties values in a range of time
+      operationId: devices_v2#timeseries
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The number of properties to select
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: The id of the property
+        in: path
+        name: pid
+        required: true
+        schema:
+          type: string
+      - description: The time at which to start selecting properties
+        in: query
+        name: start
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2propertyvalues+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2propertyvalues'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2propertyvalues'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.devicev2propertyvalues+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.devicev2propertyvalues+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2propertyvalues+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2propertyvalues+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: timeseries devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/remove-uhwid:
+    post:
+      description: Removes the unique hardware id from the device
+      operationId: devices_v2#removeHardwareID
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2'
+          description: OK
+        '401':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '412':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Precondition Failed
+        '500':
+          content:
+            application/vnd.arduino.devicev2+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: removeHardwareID devices_v2
+      tags:
+      - devices_v2
+  /iot/v2/devices/{id}/status:
+    get:
+      description: GET connection status events
+      operationId: devices_v2#GetStatusEvents
+      parameters:
+      - description: The id of the device
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The number of events to select
+        in: query
+        name: limit
+        schema:
+          default: 30
+          type: integer
+      - description: The time at which to start selecting events
+        in: query
+        name: start
+        schema:
+          type: string
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2StatusEvents'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoDevicev2StatusEvents'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+        '503':
+          content:
+            application/vnd.arduino.devicev2.status.events+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Service Unavailable
+      security:
+      - oauth2: []
+      summary: GetStatusEvents devices_v2
+      tags:
+      - devices_v2
+components:
+  schemas:
+    ArduinoDevicev2propertyvalues:
+      description: ArduinoDevicev2propertyvalues media type (default view)
+      properties:
+        id:
+          type: string
+        last_evaluated_key:
+          properties:
+            created_at:
+              format: date-time
+              type: string
+            id:
+              type: string
+            name:
+              type: string
+          type: object
+        name:
+          type: string
+        values:
+          $ref: '#/components/schemas/ArduinoDevicev2propertyvalueCollection'
+      required:
+      - id
+      - last_evaluated_key
+      - name
+      - values
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalues+json; view=default'
+      type: object
+    ArduinoDevicev2WebhookCollection:
+      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+      type: array
+    ArduinoDevicev2StatusEvents:
+      description: ArduinoDevicev2StatusEvents media type (default view)
+      properties:
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2StatusEventCollection'
+        id:
+          description: The id of the device
+          format: uuid
+          type: string
+      required:
+      - id
+      - events
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.events+json; view=default'
+      type: object
+    CreateClaimedDevicesV2Payload:
+      description: DeviceV2 describes a device.
+      properties:
+        ID:
+          description: The id of the device
+          format: uuid
+          type: string
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        name:
+          description: The friendly name of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        serial:
+          description: The serial uuid of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        type:
+          description: The type of the device
+          enum:
+          - mkrwifi1010
+          - mkr1000
+          - nano_33_iot
+          - mkrgsm1400
+          - mkrnb1500
+          - login_and_secretkey_wifi
+          - envie_m7
+          - nanorp2040connect
+          - nicla_vision
+          - phone
+          - portenta_x8
+          - opta
+          - giga
+          - generic_device_secretkey
+          - portenta_c33
+          - unor4wifi
+          - nano_nora
+          - unoq
+          type: string
+        unique_hardware_id:
+          description: The unique hardware id of the device
+          maxLength: 64
+          minLength: 64
+          type: string
+        user_id:
+          description: The user_id associated to the device. If absent it will be inferred from the authentication header
+          format: uuid
+          type: string
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          maxLength: 10
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+          type: string
+      required:
+      - user_id
+      - unique_hardware_id
+      - type
+      title: CreateClaimedDevicesV2Payload
+      type: object
+    ArduinoDevicev2properties:
+      description: ArduinoDevicev2properties media type (default view)
+      properties:
+        data_retention_days:
+          description: How many days the data will be kept
+          format: double
+          type: number
+        deviceId:
+          description: The device of the property
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+      required:
+      - deviceId
+      - user_id
+      - data_retention_days
+      - properties
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2properties+json; view=default'
+      type: object
+    ArduinoDevicev2Collection:
+      description: ArduinoDevicev2Collection is the media type for an array of ArduinoDevicev2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; type=collection; view=default'
+      type: array
+    ArduinoDevicev2propertyvalueCollection:
+      description: ArduinoDevicev2propertyvalueCollection is the media type for an array of ArduinoDevicev2propertyvalue (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2propertyvalue'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; type=collection; view=default'
+      type: array
+    configv2:
+      description: ConfigPayload describe a tuple name:value
+      properties:
+        name:
+          description: The name of the configuration
+          type: string
+        value:
+          description: The name of the configuration
+          type: string
+      title: configv2
+      type: object
+    ArduinoThing:
+      description: ArduinoThing media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the thing
+          format: date-time
+          type: string
+        device_fqbn:
+          description: The fqbn of the attached device, if any
+          type: string
+        device_id:
+          description: The id of the device
+          format: uuid
+          type: string
+        device_name:
+          description: The name of the attached device, if any
+          type: string
+        device_type:
+          description: The type of the attached device, if any
+          type: string
+        href:
+          description: The api reference of this thing
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          type: string
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        properties_count:
+          description: The number of properties of the thing
+          format: int64
+          type: integer
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
+          type: string
+        source_template:
+          description: The id of the template used to create the thing
+          format: uuid
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags of the thing
+          type: object
+        timezone:
+          description: Time zone of the thing
+          type: string
+        updated_at:
+          description: Update date of the thing
+          format: date-time
+          type: string
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      required:
+      - id
+      - user_id
+      - name
+      - href
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.thing+json; view=default'
+      type: object
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
+    propertiesValue:
+      properties:
+        name:
+          description: The name of the property
+          type: string
+        type:
+          default: infer
+          description: The type of the property
+          enum:
+          - infer
+          - base64
+          - hex
+          - json
+          type: string
+        value:
+          description: The last value of the property
+      required:
+      - name
+      - value
+      - type
+      title: propertiesValue
+      type: object
+    CreateDevicesV2Payload:
+      description: DeviceV2 describes a device.
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        name:
+          description: The friendly name of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        serial:
+          description: The serial uuid of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        type:
+          description: The type of the device
+          enum:
+          - mkrwifi1010
+          - mkr1000
+          - nano_33_iot
+          - mkrgsm1400
+          - mkrnb1500
+          - login_and_secretkey_wifi
+          - envie_m7
+          - nanorp2040connect
+          - nicla_vision
+          - phone
+          - portenta_x8
+          - opta
+          - giga
+          - generic_device_secretkey
+          - portenta_c33
+          - unor4wifi
+          - nano_nora
+          - unoq
+          type: string
+        unique_hardware_id:
+          maxLength: 64
+          minLength: 64
+          type: string
+        user_id:
+          description: The user_id associated to the device. If absent it will be inferred from the authentication header
+          format: uuid
+          type: string
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          maxLength: 10
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+          type: string
+      required:
+      - type
+      title: CreateDevicesV2Payload
+      type: object
+    ArduinoDevicev2StatusEventCollection:
+      description: ArduinoDevicev2StatusEventCollection is the media type for an array of ArduinoDevicev2StatusEvent (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2StatusEvent'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; type=collection; view=default'
+      type: array
+    ArduinoDevicev2SimpleProperties:
+      description: ArduinoDevicev2SimpleProperties media type (default view)
+      properties:
+        name:
+          description: The name of the property
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value:
+          description: Value of the property
+      required:
+      - name
+      - value
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
+      type: object
+    ArduinoDevicev2:
+      description: ArduinoDevicev2 media type (default view)
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        created_at:
+          description: Creation date of the device
+          format: date-time
+          type: string
+        deleted_at:
+          description: Deletion date of the trigger
+          format: date-time
+          type: string
+        device_status:
+          description: The connection status of the device
+          enum:
+          - ONLINE
+          - OFFLINE
+          - UNKNOWN
+          type: string
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        href:
+          description: The api reference of this device
+          type: string
+        id:
+          description: The arn of the device
+          format: uuid
+          type: string
+        issuer_ca:
+          type: string
+        label:
+          description: The label of the device
+          type: string
+        last_activity_at:
+          description: Last activity date
+          format: date-time
+          type: string
+        latest_wifi_fw_version:
+          description: The latest version of the NINA/WIFI101 firmware available for this device
+          type: string
+        lib_version:
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        metadata:
+          additionalProperties: true
+          description: The metadata of the device
+          type: object
+        name:
+          description: The friendly name of the device
+          type: string
+        no_sketch:
+          description: True if the device type can not have an associated sketch
+          type: boolean
+        organization_id:
+          description: Id of the organization the device belongs to
+          format: uuid
+          type: string
+        ota_available:
+          description: True if the device type is ready to receive OTA updated
+          type: boolean
+        ota_compatible:
+          description: True if the device type is OTA compatible
+          type: boolean
+        required_wifi_fw_version:
+          description: The required version of the NINA/WIFI101 firmware needed by IoT Cloud
+          type: string
+        serial:
+          description: The serial uuid of the device
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags belonging to the device
+          type: object
+        thing:
+          $ref: '#/components/schemas/ArduinoThing'
+        type:
+          description: The type of the device
+          type: string
+        unique_hardware_id:
+          description: The unique hardware id of the device
+          maxLength: 64
+          minLength: 64
+          type: string
+        updated_at:
+          description: Update date of the trigger
+          format: date-time
+          type: string
+        user_id:
+          description: The id of the user
+          format: uuid
+          type: string
+        webhooks:
+          $ref: '#/components/schemas/ArduinoDevicev2WebhookCollection'
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - label
+      - user_id
+      - href
+      - serial
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; view=default'
+      type: object
+    ArduinoDevicev2propertyvalue:
+      description: ArduinoDevicev2propertyvalue media type (default view)
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        value:
+          properties:
+            payload:
+              type: string
+            seqno:
+              format: int64
+              type: integer
+            statistics:
+              properties:
+                adr:
+                  format: double
+                  type: number
+                channel:
+                  format: double
+                  type: number
+                duplicate:
+                  format: double
+                  type: number
+                freq:
+                  format: double
+                  type: number
+                modBW:
+                  format: double
+                  type: number
+                rssi:
+                  format: double
+                  type: number
+                seqno:
+                  format: double
+                  type: number
+                sf:
+                  format: double
+                  type: number
+                snr:
+                  format: double
+                  type: number
+                time:
+                  format: double
+                  type: number
+              type: object
+          type: object
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; view=default'
+      type: object
+    ArduinoDevicev2SimplePropertiesCollection:
+      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
+      type: array
+    ImageDevicesV2Payload:
+      items:
+        $ref: '#/components/schemas/configv2'
+      title: ImageDevicesV2Payload
+      type: array
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    propertiesValues:
+      properties:
+        input:
+          default: false
+          description: If true, send property values to device's input topic.
+          type: boolean
+        properties:
+          items:
+            $ref: '#/components/schemas/propertiesValue'
+          type: array
+      required:
+      - properties
+      title: propertiesValues
+      type: object
+    devicev2:
+      description: DeviceV2 describes a device.
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        name:
+          description: The friendly name of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        serial:
+          description: The serial uuid of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        type:
+          description: The type of the device
+          enum:
+          - mkrwifi1010
+          - mkr1000
+          - nano_33_iot
+          - mkrgsm1400
+          - mkrnb1500
+          - login_and_secretkey_wifi
+          - envie_m7
+          - nanorp2040connect
+          - nicla_vision
+          - phone
+          - portenta_x8
+          - opta
+          - giga
+          - generic_device_secretkey
+          - portenta_c33
+          - unor4wifi
+          - nano_nora
+          - unoq
+          type: string
+        unique_hardware_id:
+          maxLength: 64
+          minLength: 64
+          type: string
+        user_id:
+          description: The user_id associated to the device. If absent it will be inferred from the authentication header
+          format: uuid
+          type: string
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          maxLength: 10
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+          type: string
+      title: devicev2
+      type: object
+    ArduinoDevicev2StatusEvent:
+      description: ArduinoDevicev2StatusEvent media type (default view)
+      properties:
+        updated_at:
+          description: Update timestamp of the status event
+          format: date-time
+          type: string
+        value:
+          description: The status event of the device
+          enum:
+          - CONNECTED
+          - DISCONNECTED
+          type: string
+      required:
+      - value
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; view=default'
+      type: object
+    ArduinoDevicev2Webhook:
+      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
+      properties:
+        active:
+          default: true
+          description: Whether the webhook is active
+          type: boolean
+        id:
+          description: The uuid of the webhook
+          format: uuid
+          type: string
+        uri:
+          description: The uri of the webhook
+          format: uri
+          type: string
+      required:
+      - id
+      - uri
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
+      type: object
+    ArduinoDevicev2EventProperties:
+      description: ArduinoDevicev2EventProperties media type (default view)
+      properties:
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
+        id:
+          description: The device of the property
+          format: uuid
+          type: string
+      required:
+      - id
+      - events
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.event.properties+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

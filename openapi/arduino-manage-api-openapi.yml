@@ -1,0 +1,155 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 manage API
+  version: '2.0'
+tags:
+- description: A set of api to manage resources externally
+  name: manage
+paths:
+  /iot/v1/manage/org/{id}:
+    delete:
+      description: Delete organization resources
+      operationId: manage#delete_org
+      parameters:
+      - description: The uuid of the organization you want to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: delete_org manage
+      tags:
+      - manage
+  /iot/v1/manage/users/{id}:
+    delete:
+      description: Deletes the user, all their sketches and libraries
+      operationId: manage#delete_user
+      parameters:
+      - description: The id of the user. Can be 'me' to access the currently authenticated user
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: 'NotFound: The requested user doesn''t exist or it''s not visible to the current user.'
+      summary: delete_user manage
+      tags:
+      - manage
+  /iot/v1/manage/users/{id}/devices:
+    delete:
+      description: Delete devices for a given user and organization
+      operationId: manage#delete_user_devices
+      parameters:
+      - description: If true, hard delete the devices
+        in: query
+        name: force
+        schema:
+          default: false
+          type: boolean
+      - description: The uuid of the user you want to delete devices for
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '500':
+          content:
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      summary: delete_user_devices manage
+      tags:
+      - manage
+  /iot/v1/manage/users/{id}/export:
+    get:
+      description: Exports an archive containing all user info.
+      operationId: manage#export_user
+      parameters:
+      - description: The id of the user. Can be 'me' to access the currently authenticated user
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      summary: export_user manage
+      tags:
+      - manage
+components:
+  schemas:
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

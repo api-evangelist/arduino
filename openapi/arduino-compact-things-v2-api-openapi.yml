@@ -1,0 +1,201 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 compact_things_v2 API
+  version: '2.0'
+tags:
+- name: compact_things_v2
+paths:
+  /iot/v2/compact_things:
+    get:
+      description: Returns the list of things associated to the user
+      operationId: compact_things_v2#listCompact
+      parameters:
+      - description: Filter by deletion date
+        in: query
+        name: deleted_after
+        schema:
+          type: string
+      - description: Filter only the desired things
+        in: query
+        name: ids
+        schema:
+          items:
+            type: string
+          type: array
+      - description: Filter by a string contained in the name
+        in: query
+        name: name_filter
+        schema:
+          type: string
+      - description: If true, shows the soft deleted things
+        in: query
+        name: show_deleted
+        schema:
+          default: false
+          type: boolean
+      - description: Filter by tags
+        in: query
+        name: tags
+        schema:
+          items:
+            maxLength: 129
+            pattern: ^[a-zA-Z0-9_.@-]+:[a-zA-Z0-9_.@-]+$
+            type: string
+          type: array
+      - in: header
+        name: X-Organization
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.compact_thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/ArduinoCompact_thingCollection'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoCompact_thingCollection'
+          description: OK
+        '400':
+          content:
+            application/vnd.arduino.compact_thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Bad Request
+        '401':
+          content:
+            application/vnd.arduino.compact_thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Unauthorized
+        '403':
+          content:
+            application/vnd.arduino.compact_thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Forbidden
+        '500':
+          content:
+            application/vnd.arduino.compact_thing+json; type=collection:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: listCompact compact_things_v2
+      tags:
+      - compact_things_v2
+components:
+  schemas:
+    ArduinoCompact_thingCollection:
+      description: ArduinoCompact_thingCollection is the media type for an array of ArduinoCompact_thing (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_thing'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; type=collection; view=default'
+      type: array
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoCompact_thing:
+      description: ArduinoCompact_thing media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the thing
+          format: date-time
+          type: string
+        device_id:
+          description: The id of the device
+          format: uuid
+          type: string
+        href:
+          description: The api reference of this thing
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          type: string
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags of the thing
+          type: object
+        timezone:
+          description: Time zone of the thing
+          type: string
+        updated_at:
+          description: Update date of the thing
+          format: date-time
+          type: string
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+      required:
+      - id
+      - user_id
+      - name
+      - href
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

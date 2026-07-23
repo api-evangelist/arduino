@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
+  title: Arduino IoT Cloud binaries_v2 API
+  version: '2.0'
+tags:
+- name: binaries_v2
+paths:
+  /iot/v2/binaries/{name}:
+    get:
+      description: Returns the sketch binary requested by the user
+      operationId: binaries_v2#show
+      parameters:
+      - description: The FQBN you need the binary run to
+        in: query
+        name: fqbn
+        required: true
+        schema:
+          enum:
+          - arduino:samd:mkr1000
+          - arduino:samd:mkrwifi1010
+          - arduino:samd:mkrgsm1400
+          - arduino:samd:nano_33_iot
+          - arduino:samd:mkrnb1500
+          - arduino:samd:mkrwan1300
+          - arduino:samd:mkrwan1310
+          - arduino:mbed_portenta:envie_m7
+          - arduino:mbed_nano:nanorp2040connect
+          - arduino:mbed_nicla:nicla_vision
+          - arduino:mbed_opta:opta
+          - arduino:mbed_giga:giga
+          - arduino:renesas_portenta:portenta_c33
+          - arduino:esp32:nano_nora
+          - arduino:renesas_uno:unor4wifi
+          type: string
+      - description: The name of the sketch
+        in: path
+        name: name
+        required: true
+        schema:
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_-]+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/vnd.arduino.binary+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoBinary'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/ArduinoBinary'
+          description: OK
+        '404':
+          description: Not Found
+        '500':
+          content:
+            application/vnd.arduino.binary+json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/vnd.goa.error+json:
+              schema:
+                $ref: '#/components/schemas/error'
+          description: Internal Server Error
+      security:
+      - oauth2: []
+      summary: show binaries_v2
+      tags:
+      - binaries_v2
+components:
+  schemas:
+    ArduinoBinary:
+      description: ArduinoBinary media type (default view)
+      properties:
+        bin:
+          description: The BASE64 encoded binary file
+          type: string
+        filename:
+          description: The binary filename
+          type: string
+        fqbn:
+          description: The FQBN of the board the binary run to
+          type: string
+        name:
+          description: The sketch name
+          type: string
+        sha256:
+          description: The md5 hash of the binary file
+          type: string
+      required:
+      - name
+      - filename
+      - bin
+      - fqbn
+      - sha256
+      title: 'Mediatype identifier: application/vnd.arduino.binary+json; view=default'
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+externalDocs:
+  description: See docs on Confluence
+  url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud
