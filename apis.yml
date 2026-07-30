@@ -8,7 +8,19 @@ description: >
   and returns JSON-encoded responses with standard HTTP status codes. SDKs are available
   in JavaScript, Python, and Go, generated automatically from an OpenAPI specification.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/arduino.png
 tags:
   - IoT
   - Electronics
@@ -22,38 +34,946 @@ created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.19'
 apis:
-  - aid: arduino:arduino-iot-cloud-api
-    name: Arduino IoT Cloud API
-    description: >
-      REST API for managing Arduino IoT Cloud resources including devices, Things,
-      properties, dashboards, triggers, and time-series data. Authenticated via OAuth2
-      client credentials flow against the api2.arduino.cc endpoint, with SDKs available
-      for JavaScript, Python, and Go.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
-    baseURL: https://api2.arduino.cc/iot/v1
-    tags:
-      - IoT
-      - Devices
-      - Dashboards
-      - Properties
-      - Time Series
-    properties:
-      - type: Documentation
-        url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
-      - type: OpenAPI
-        url: http://api2.arduino.cc/iot/swagger.json
-      - type: Authentication
-        url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/openapi/arduino-iot-cloud-api-openapi.yml
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
-      - type: Examples
-        url: https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
-    contact:
-      - FN: Arduino Support
-        url: https://support.arduino.cc/
+- aid: arduino:arduino-binaries-v2-api
+  name: Arduino binaries_v2 API
+  description: The binaries_v2 API from Arduino — 1 operation(s) for binaries_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - binaries_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-binaries-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-cleanup-api
+  name: Arduino cleanup API
+  description: The cleanup API from Arduino — 1 operation(s) for cleanup.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - cleanup
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-cleanup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-clients-v1-api
+  name: Arduino clients_v1 API
+  description: The clients_v1 API from Arduino — 4 operation(s) for clients_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - clients_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-clients-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-compact-dashboards-v2-api
+  name: Arduino compact_dashboards_v2 API
+  description: The compact_dashboards_v2 API from Arduino — 1 operation(s) for compact_dashboards_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - compact_dashboards_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-compact-dashboards-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-compact-devices-v2-api
+  name: Arduino compact_devices_v2 API
+  description: The compact_devices_v2 API from Arduino — 1 operation(s) for compact_devices_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - compact_devices_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-compact-devices-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-compact-things-v2-api
+  name: Arduino compact_things_v2 API
+  description: The compact_things_v2 API from Arduino — 1 operation(s) for compact_things_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - compact_things_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-compact-things-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-compact-triggers-v1-api
+  name: Arduino compact_triggers_v1 API
+  description: The compact_triggers_v1 API from Arduino — 1 operation(s) for compact_triggers_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - compact_triggers_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-compact-triggers-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-dashboard-shares-v1-api
+  name: Arduino dashboard_shares_v1 API
+  description: The dashboard_shares_v1 API from Arduino — 1 operation(s) for dashboard_shares_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - dashboard_shares_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-dashboard-shares-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-dashboards-v2-api
+  name: Arduino dashboards_v2 API
+  description: The dashboards_v2 API from Arduino — 8 operation(s) for dashboards_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - dashboards_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-dashboards-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-dashboards-v3-api
+  name: Arduino dashboards_v3 API
+  description: The dashboards_v3 API from Arduino — 4 operation(s) for dashboards_v3.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - dashboards_v3
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-dashboards-v3-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-tags-v2-api
+  name: Arduino devices_tags_v2 API
+  description: The devices_tags_v2 API from Arduino — 1 operation(s) for devices_tags_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_tags_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-tags-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-api
+  name: Arduino devices_v2 API
+  description: Provides a set of endpoints to manage user devices
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-certs-api
+  name: Arduino devices_v2_certs API
+  description: Provides a set of endpoints to manage the certs of a device
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_certs
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-certs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-metadata-api
+  name: Arduino devices_v2_metadata API
+  description: Provides a set of endpoints to manage the metadata of a device
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-ota-api
+  name: Arduino devices_v2_ota API
+  description: The devices_v2_ota API from Arduino — 2 operation(s) for devices_v2_ota.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_ota
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-ota-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-pass-api
+  name: Arduino devices_v2_pass API
+  description: Provides a set of endpoints to manage the password of a device
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_pass
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-pass-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-pubkeys-api
+  name: Arduino devices_v2_pubkeys API
+  description: Provides a set of endpoints to manage the pubkeys of a device
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_pubkeys
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-pubkeys-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-tags-api
+  name: Arduino devices_v2_tags API
+  description: The devices_v2_tags API from Arduino — 2 operation(s) for devices_v2_tags.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_tags
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-devices-v2-webhooks-api
+  name: Arduino devices_v2_webhooks API
+  description: The devices_v2_webhooks API from Arduino — 2 operation(s) for devices_v2_webhooks.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - devices_v2_webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-devices-v2-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-iot-api
+  name: Arduino Iot API
+  description: The Iot API from Arduino — 4 operation(s) for iot.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - Iot
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-iot-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-lora-app-v1-api
+  name: Arduino lora_app_v1 API
+  description: The lora_app_v1 API from Arduino — 2 operation(s) for lora_app_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - lora_app_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-lora-app-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-lora-apps-v1-api
+  name: Arduino lora_apps_v1 API
+  description: The lora_apps_v1 API from Arduino — 1 operation(s) for lora_apps_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - lora_apps_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-lora-apps-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-lora-devices-v1-api
+  name: Arduino lora_devices_v1 API
+  description: The lora_devices_v1 API from Arduino — 1 operation(s) for lora_devices_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - lora_devices_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-lora-devices-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-lora-freq-plan-v1-api
+  name: Arduino lora_freq_plan_v1 API
+  description: The lora_freq_plan_v1 API from Arduino — 1 operation(s) for lora_freq_plan_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - lora_freq_plan_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-lora-freq-plan-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-lora-gw-v1-api
+  name: Arduino lora_gw_v1 API
+  description: The lora_gw_v1 API from Arduino — 4 operation(s) for lora_gw_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - lora_gw_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-lora-gw-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-manage-api
+  name: Arduino manage API
+  description: A set of api to manage resources externally
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - manage
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-manage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-network-credentials-v1-api
+  name: Arduino network_credentials_v1 API
+  description: The network_credentials_v1 API from Arduino — 2 operation(s) for network_credentials_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - network_credentials_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-network-credentials-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-ota-api
+  name: Arduino ota API
+  description: The ota API from Arduino — 1 operation(s) for ota.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - ota
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-ota-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-properties-api
+  name: Arduino properties API
+  description: The properties API from Arduino — 1 operation(s) for properties.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - properties
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-properties-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-properties-v2-api
+  name: Arduino properties_v2 API
+  description: The properties_v2 API from Arduino — 7 operation(s) for properties_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - properties_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-properties-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-property-types-v1-api
+  name: Arduino property_types_v1 API
+  description: The property_types_v1 API from Arduino — 1 operation(s) for property_types_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - property_types_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-property-types-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-series-v1-api
+  name: Arduino series_v1 API
+  description: The series_v1 API from Arduino — 5 operation(s) for series_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - series_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-series-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-series-v2-api
+  name: Arduino series_v2 API
+  description: The series_v2 API from Arduino — 5 operation(s) for series_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - series_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-series-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-supported-v1-api
+  name: Arduino supported_v1 API
+  description: The supported_v1 API from Arduino — 1 operation(s) for supported_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - supported_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-supported-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-sync-v1-api
+  name: Arduino sync_v1 API
+  description: The sync_v1 API from Arduino — 2 operation(s) for sync_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - sync_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-sync-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-templates-api
+  name: Arduino templates API
+  description: The templates API from Arduino — 1 operation(s) for templates.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - templates
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-templates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-thing-properties-v1-api
+  name: Arduino thing_properties_v1 API
+  description: The thing_properties_v1 API from Arduino — 6 operation(s) for thing_properties_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - thing_properties_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-thing-properties-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-things-tags-v2-api
+  name: Arduino things_tags_v2 API
+  description: The things_tags_v2 API from Arduino — 1 operation(s) for things_tags_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - things_tags_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-things-tags-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-things-v1-api
+  name: Arduino things_v1 API
+  description: Provides a set of endpoints to manage the things of a user
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - things_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-things-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-things-v1-tags-api
+  name: Arduino things_v1_tags API
+  description: The things_v1_tags API from Arduino — 2 operation(s) for things_v1_tags.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - things_v1_tags
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-things-v1-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-things-v2-api
+  name: Arduino things_v2 API
+  description: The things_v2 API from Arduino — 7 operation(s) for things_v2.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - things_v2
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-things-v2-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-things-v2-tags-api
+  name: Arduino things_v2_tags API
+  description: The things_v2_tags API from Arduino — 2 operation(s) for things_v2_tags.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - things_v2_tags
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-things-v2-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-timezones-api
+  name: Arduino timezones API
+  description: The timezones API from Arduino — 1 operation(s) for timezones.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - timezones
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-timezones-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-triggers-v1-api
+  name: Arduino triggers_v1 API
+  description: Provides a set of endpoints to manage the triggers of a user
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - triggers_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-triggers-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-usage-internal-api
+  name: Arduino usage_internal API
+  description: The usage_internal API from Arduino — 1 operation(s) for usage_internal.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - usage_internal
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-usage-internal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-usage-v1-api
+  name: Arduino usage_v1 API
+  description: The usage_v1 API from Arduino — 4 operation(s) for usage_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - usage_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-usage-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
+- aid: arduino:arduino-users-v1-api
+  name: Arduino users_v1 API
+  description: The users_v1 API from Arduino — 3 operation(s) for users_v1.
+  humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  baseURL: https://api2.arduino.cc/iot/v1
+  tags:
+  - users_v1
+  properties:
+  - type: OpenAPI
+    url: openapi/arduino-users-v1-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
+  - type: Authentication
+    url: https://docs.arduino.cc/arduino-cloud/getting-started/api-overview/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/json-schema/arduino-iot-cloud-schemas.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
 common:
   - type: AgenticAccess
     url: agentic-access/arduino-agentic-access.yml
