@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 templates API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "apply templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/templates",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply an existing cloud template and generate all the needed resources"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

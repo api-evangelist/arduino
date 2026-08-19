@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "binaries_v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "show binaries_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/binaries/:name",
+            "params": [
+              {
+                "name": "fqbn",
+                "value": "",
+                "type": "query",
+                "description": "The FQBN you need the binary run to"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the sketch"
+              }
+            ]
+          },
+          "docs": "Returns the sketch binary requested by the user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

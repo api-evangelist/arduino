@@ -1,0 +1,368 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 properties_v2 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "properties_v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "publishRaw properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/things/publish/raw_cbor",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish property values to MQTT using device raw format (CBOR)"
+        },
+        {
+          "info": {
+            "name": "list properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted properties"
+              }
+            ]
+          },
+          "docs": "Returns the list of properties associated to the thing"
+        },
+        {
+          "info": {
+            "name": "create properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new property associated to a thing"
+        },
+        {
+          "info": {
+            "name": "show properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the property"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted properties"
+              }
+            ]
+          },
+          "docs": "Returns the property requested by the user"
+        },
+        {
+          "info": {
+            "name": "update properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the property"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a property associated to a thing"
+        },
+        {
+          "info": {
+            "name": "delete properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, hard delete the property"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the property"
+              }
+            ]
+          },
+          "docs": "Removes a property associated to a thing"
+        },
+        {
+          "info": {
+            "name": "publish properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid/publish",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the property"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a property value to MQTT"
+        },
+        {
+          "info": {
+            "name": "publishBatch properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid/publish_batch",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the property"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a property's array of values to MQTT"
+        },
+        {
+          "info": {
+            "name": "timeseries properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/things/:id/properties/:pid/timeseries",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aggregation",
+                "value": "",
+                "type": "query",
+                "description": "Samples aggregation statistic. Supported aggregations AVG|MAX|MIN|COUNT|SUM|PCT_99|PCT_95|PCT_90|PCT_75|PCT_50|PCT_15|PCT_5"
+              },
+              {
+                "name": "desc",
+                "value": "",
+                "type": "query",
+                "description": "Whether data's ordering (by time) should be descending"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Get data with a timestamp >= to this date (default: 2 weeks ago, min: 1842-01-01T00:00:00Z, max: 2242-01-01T00:00:00Z)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Binning interval in seconds (defaut: the smallest possible value compatibly with the limit of 1000 data points in the response)"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "ID of a numerical property"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Get data with a timestamp < to this date (default: now, min: 1842-01-01T00:00:00Z, max: 2242-01-01T00:00:00Z)"
+              }
+            ]
+          },
+          "docs": "Get numerical property's historic data binned on a specified time interval (note: the total number of data points should NOT be greater than 1000 otherwise the result will be truncated)"
+        },
+        {
+          "info": {
+            "name": "publishMulti properties_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/things/:id/publish",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish property values to MQTT"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

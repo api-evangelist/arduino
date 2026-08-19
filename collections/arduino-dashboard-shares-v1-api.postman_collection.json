@@ -1,0 +1,256 @@
+{
+  "item": [
+    {
+      "id": "11755a00-a2dd-4cee-8482-019bbe1e43e7",
+      "name": "dashboard_shares_v1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc2a85e8-785d-4eb9-818f-9524af40086c",
+          "name": "deleteByUser dashboard_shares_v1",
+          "request": {
+            "name": "deleteByUser dashboard_shares_v1",
+            "description": {
+              "content": "Delete shares of user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "dashboards_shares",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The user_id of the owner"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.goa.error+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e38091d-e37f-469e-9d80-393f6e22c6f5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "dashboards_shares",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The user_id of the owner"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2a97c70-8505-47cf-92c9-86851a1705d2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "dashboards_shares",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The user_id of the owner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b59db254-1127-4c5a-93b5-40eedd61548a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "dashboards_shares",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The user_id of the owner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37e9633f-a8d9-4a3a-b457-9047f1da8880",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "dashboards_shares",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The user_id of the owner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b835ffa7-5169-4372-b665-3649ad3c3555",
+    "name": "Arduino IoT Cloud binaries_v2 dashboard_shares_v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

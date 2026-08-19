@@ -1,0 +1,586 @@
+{
+  "item": [
+    {
+      "id": "5f258f8d-8cd0-4c0d-add3-e508c4c52fe5",
+      "name": "templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d717f9e-cf76-4b08-bb14-45eb863026ed",
+          "name": "apply templates",
+          "request": {
+            "name": "apply templates",
+            "description": {
+              "content": "Apply an existing cloud template and generate all the needed resources",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.template+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "template_name",
+                  "value": "<string>",
+                  "description": "(Required) The name of the directory on S3 bucket containing the template"
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_template_id",
+                  "value": "<string>",
+                  "description": "The name of the directory on S3 bucket containing the user's template"
+                },
+                {
+                  "disabled": false,
+                  "key": "prefix_name",
+                  "value": "<string>",
+                  "description": "The prefix to apply to the names of the generated resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a11699d4-a596-4a59-9465-84c81a660be5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"things\": [\n    {\n      \"id\": \"480fe9df-5c40-2128-ae3f-443e444bebee\",\n      \"sketch_id\": \"a4692138-4d76-833a-4ca6-34685b0cb4ab\",\n      \"device_id\": \"dbf8f6fb-336c-14d5-4b53-2ffe76b0ce80\"\n    },\n    {\n      \"id\": \"cea9deb2-2e17-6432-173a-3c92b68c6ba3\",\n      \"sketch_id\": \"bf9f9cf8-6453-7dfe-dc68-9b482e835948\",\n      \"device_id\": \"d0372636-49e1-7258-ddba-cfebdc760844\"\n    }\n  ],\n  \"dashboards\": [\n    \"fb9f23cf-e0fc-dd7a-8205-7288e3e76757\",\n    \"f2aae304-3266-cd95-1e67-87da1a10bf16\"\n  ],\n  \"triggers\": [\n    \"1ee15ba1-31a3-6c56-e3de-37823c349ff7\",\n    \"f88d5f16-015e-9f3d-4ad1-c217c8515509\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4268ba8a-2284-4f6c-a2b1-85287532db1c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fd0d79a-7de5-402c-8da2-3135961279f5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8dc885f-b539-4ba1-8521-eaeed2606449",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e530f410-6be3-43b3-bc0d-a9db1ba2d29d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73faa18c-2235-4cf3-b868-fc9e998bf818",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.template+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the directory on S3 bucket containing the template",
+                        "type": "text/plain"
+                      },
+                      "key": "template_name",
+                      "value": "remote-controlled-lights"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the directory on S3 bucket containing the user's template",
+                        "type": "text/plain"
+                      },
+                      "key": "custom_template_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The prefix to apply to the names of the generated resources",
+                        "type": "text/plain"
+                      },
+                      "key": "prefix_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "key_0",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cf8734a5-de35-47de-bd2a-852ed55c9c7f",
+    "name": "Arduino IoT Cloud binaries_v2 templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

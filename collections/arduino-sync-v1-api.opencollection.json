@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 sync_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sync_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list sync_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/sync",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the list of sync"
+        },
+        {
+          "info": {
+            "name": "create sync_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/sync",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new sync"
+        },
+        {
+          "info": {
+            "name": "show sync_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/sync/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the sync"
+              }
+            ]
+          },
+          "docs": "Returns a sync"
+        },
+        {
+          "info": {
+            "name": "update sync_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/sync/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the sync"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a a sync"
+        },
+        {
+          "info": {
+            "name": "delete sync_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/sync/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the sync"
+              }
+            ]
+          },
+          "docs": "Removes a sync"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

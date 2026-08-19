@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "ad5ffea6-6790-4009-9336-c60dce5eb98f",
+      "name": "compact_dashboards_v2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62c47329-2027-4995-b3f8-ab29bc2423c3",
+          "name": "listCompact compact_dashboards_v2",
+          "request": {
+            "name": "listCompact compact_dashboards_v2",
+            "description": {
+              "content": "Returns the list of dashboards with basic information only",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v2",
+                "compact_dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deleted_after",
+                  "value": "<string>",
+                  "description": "Filter by deletion date"
+                },
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "false",
+                  "description": "If true, shows the extended information of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter only the desired dashboards"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter only the desired dashboards"
+                },
+                {
+                  "disabled": false,
+                  "key": "name_filter",
+                  "value": "<string>",
+                  "description": "The name of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "show_deleted",
+                  "value": "false",
+                  "description": "If true, shows the soft deleted things"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "9f8a5905-91d3-4b48-b29f-ac10742e8aea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v2",
+                    "compact_dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleted_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name_filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"e6a5ec4a-bec4-bf4a-caf9-02c130e0ca04\",\n    \"name\": \"string\",\n    \"user_id\": \"e578acc7-0f5c-cae8-a0c3-c75b76d577f6\",\n    \"cover_image\": \"string\",\n    \"created_at\": \"1963-01-06T15:32:09.021Z\",\n    \"deleted_at\": \"1966-06-03T09:29:13.235Z\",\n    \"organization_id\": \"ede7f6c4-dc2f-fd72-432b-eba6d575fac4\",\n    \"pages\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 508,\n        \"icon\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 9113,\n        \"icon\": \"string\"\n      }\n    ],\n    \"shared_by\": {\n      \"user_id\": \"52b65a6e-9ed5-b739-d7d5-80994ed1a19f\",\n      \"username\": \"string\"\n    },\n    \"shared_with\": [\n      {\n        \"user_id\": \"9b47ae62-69d5-14e0-b4de-2d9a28ef9304\",\n        \"username\": \"string\"\n      },\n      {\n        \"user_id\": \"3b887efe-e593-e35e-5f8d-bfc4eae307e0\",\n        \"username\": \"string\"\n      }\n    ],\n    \"updated_at\": \"1987-02-23T05:56:02.033Z\"\n  },\n  {\n    \"id\": \"c3ae47e1-b7fb-11a8-8b23-b9124f94bc3a\",\n    \"name\": \"string\",\n    \"user_id\": \"d34c1b3d-5e1d-4a59-41d0-0b3569a8253b\",\n    \"cover_image\": \"string\",\n    \"created_at\": \"2003-06-27T03:46:44.538Z\",\n    \"deleted_at\": \"2020-12-02T02:50:07.922Z\",\n    \"organization_id\": \"7c8d32c0-11b3-8326-3140-8a4557d0de5e\",\n    \"pages\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 7942,\n        \"icon\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 1034,\n        \"icon\": \"string\"\n      }\n    ],\n    \"shared_by\": {\n      \"user_id\": \"81714647-fbe2-4098-c101-be6183b4fe90\",\n      \"username\": \"string\"\n    },\n    \"shared_with\": [\n      {\n        \"user_id\": \"8f053ec9-12a3-9e5c-81f0-f4aadaf41772\",\n        \"username\": \"string\"\n      },\n      {\n        \"user_id\": \"5f332a68-0994-8324-4c91-afa6a5ef4fa2\",\n        \"username\": \"string\"\n      }\n    ],\n    \"updated_at\": \"1991-11-29T02:10:00.362Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9705908f-7b0a-4c65-b01d-f917a1d6de8b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v2",
+                    "compact_dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleted_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name_filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e090ad2-8650-4c62-bbae-5253004ceefe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v2",
+                    "compact_dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleted_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name_filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c22afd37-4fa4-43f5-ac9f-56f832babbee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v2",
+                    "compact_dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleted_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name_filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7d41fdd-5728-4125-be1e-e8130ec7c879",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v2",
+                    "compact_dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deleted_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name_filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.compact_dashboard_v2+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "46aa2eaa-c81c-43c3-8b47-2d2af457f282",
+    "name": "Arduino IoT Cloud binaries_v2 compact_dashboards_v2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

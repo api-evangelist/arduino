@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 compact_devices_v2 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "compact_devices_v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listCompact compact_devices_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/compact_devices",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by deletion date"
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns the extended information of the devices"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter only the desired things"
+              },
+              {
+                "name": "name_filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a string contained in the name"
+              },
+              {
+                "name": "serial",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device serial number"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted things"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tags"
+              }
+            ]
+          },
+          "docs": "Returns the list of devices associated to the user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

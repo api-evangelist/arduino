@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 devices_v2_pass API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices_v2_pass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get devices_v2_pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pass",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              },
+              {
+                "name": "suggested_password",
+                "value": "",
+                "type": "query",
+                "description": "If true, return a suggested password"
+              }
+            ]
+          },
+          "docs": "Returns whether the password for this device is set or not. It doesn't return the password."
+        },
+        {
+          "info": {
+            "name": "check devices_v2_pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pass",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if the password matches."
+        },
+        {
+          "info": {
+            "name": "set devices_v2_pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pass",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the password for the device. It can never be read back."
+        },
+        {
+          "info": {
+            "name": "delete devices_v2_pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pass",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ]
+          },
+          "docs": "Removes the password for the device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

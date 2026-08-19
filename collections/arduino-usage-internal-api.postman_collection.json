@@ -1,0 +1,487 @@
+{
+  "item": [
+    {
+      "id": "27d4cb67-538d-4408-8f7d-0b7db8fed64a",
+      "name": "usage_internal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c0fe8e9-7323-4e70-96b7-59ec51f7eb52",
+          "name": "batch_ingest usage_internal",
+          "request": {
+            "name": "batch_ingest usage_internal",
+            "description": {
+              "content": "Upserts a batch of per-(owner, thing, device, date) message counters. The payload carries two flat lists, users_usage and orgs_usage, that can be populated independently in the same request. Rows in users_usage must be unique by (user_id, thing_id, device_id, date). Rows in orgs_usage must be unique by (org_id, thing_id, device_id, date). Duplicate rows are rejected with 400 Bad Request. Behavior is all-or-nothing: every record is committed in a single transaction, or nothing is. On success the endpoint returns 204 No Content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "usage",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.goa.error+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "orgs_usage",
+                  "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}",
+                  "description": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array."
+                },
+                {
+                  "disabled": false,
+                  "key": "orgs_usage",
+                  "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}",
+                  "description": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array."
+                },
+                {
+                  "disabled": false,
+                  "key": "users_usage",
+                  "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}",
+                  "description": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array."
+                },
+                {
+                  "disabled": false,
+                  "key": "users_usage",
+                  "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}",
+                  "description": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81a9e42a-913b-410a-b6df-ab2c6a9cc159",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "usage",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4125545-1096-49fc-b621-e60366c7d0ee",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "usage",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e34e2732-84a7-440e-b0df-46a4986713ea",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "usage",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a09155f9-e2a9-48e3-81bf-255ad42a6f8b",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "usage",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6506672a-3f89-4d73-a250-c2e9251a157e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "usage",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "orgs_usage",
+                      "value": "{\"org_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.",
+                        "type": "text/plain"
+                      },
+                      "key": "users_usage",
+                      "value": "{\"user_id\":\"<uuid>\",\"thing_id\":\"<uuid>\",\"device_id\":\"<uuid>\",\"date\":\"<dateTime>\",\"count\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "80594017-77cf-48af-8494-3aea5e755841",
+    "name": "Arduino IoT Cloud binaries_v2 usage_internal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

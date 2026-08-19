@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 lora_app_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "lora_app_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list lora_app_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/lora-app/",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The user id. Could be a uuid, or the string 'me'"
+              }
+            ]
+          },
+          "docs": "List the available apps for the given user"
+        },
+        {
+          "info": {
+            "name": "create lora_app_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/lora-app/",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The user id. Could be a uuid, or the string 'me'"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create LoRa apps for the given user"
+        },
+        {
+          "info": {
+            "name": "update lora_app_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/lora-app/:label",
+            "params": [
+              {
+                "name": "label",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The user id. Could be a uuid, or the string 'me'"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the available apps for the given user"
+        },
+        {
+          "info": {
+            "name": "delete lora_app_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/lora-app/:label",
+            "params": [
+              {
+                "name": "label",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The user id. Could be a uuid, or the string 'me'"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a single app for the given user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

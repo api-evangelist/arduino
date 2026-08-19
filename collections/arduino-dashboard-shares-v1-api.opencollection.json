@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 dashboard_shares_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dashboard_shares_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "deleteByUser dashboard_shares_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/dashboards_shares/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The user_id of the owner"
+              }
+            ]
+          },
+          "docs": "Delete shares of user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

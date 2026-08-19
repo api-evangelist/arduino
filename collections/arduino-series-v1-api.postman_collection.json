@@ -1,0 +1,2764 @@
+{
+  "item": [
+    {
+      "id": "92f75733-f07b-4338-959c-d448942d94a8",
+      "name": "series_v1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f642b349-9c47-4725-a028-7e832d38d2c6",
+          "name": "batch_query series_v1",
+          "request": {
+            "name": "batch_query series_v1",
+            "description": {
+              "content": "Returns the batch of time-series aggregated samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "series",
+                "batch_query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.series.batch+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"<string>\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"<string>\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "resp_version",
+                  "value": "<long>",
+                  "description": "(Required) Response version"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b0704da-4d78-42cd-a44f-139165cbddd9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch+json"
+                }
+              ],
+              "body": "{\n  \"responses\": [\n    {\n      \"status\": \"string\",\n      \"resp_version\": 2298,\n      \"query\": \"string\",\n      \"from_date\": \"1961-06-13T19:01:59.015Z\",\n      \"to_date\": \"1999-06-17T07:54:29.087Z\",\n      \"interval\": 7177,\n      \"times\": [\n        \"2023-05-02T20:43:45.603Z\",\n        \"2019-04-27T17:48:56.889Z\"\n      ],\n      \"values\": [\n        6052.7996158856,\n        9728.563589354631\n      ],\n      \"count_values\": 5128,\n      \"aggregation\": \"AVG\",\n      \"message\": \"\",\n      \"property_id\": \"7f2b0010-1653-eaf9-626e-eae323be039a\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 258,\n      \"thing_id\": \"b89764f5-c5c5-7cc2-151d-2db56881153b\"\n    },\n    {\n      \"status\": \"string\",\n      \"resp_version\": 5029,\n      \"query\": \"string\",\n      \"from_date\": \"1977-08-14T00:28:09.491Z\",\n      \"to_date\": \"1998-03-30T01:07:29.566Z\",\n      \"interval\": 354,\n      \"times\": [\n        \"1996-09-03T03:54:36.493Z\",\n        \"1956-02-11T05:57:21.096Z\"\n      ],\n      \"values\": [\n        4763.123859356758,\n        5693.90015799655\n      ],\n      \"count_values\": 5899,\n      \"aggregation\": \"AVG\",\n      \"message\": \"\",\n      \"property_id\": \"fd799a8c-c318-61b7-f9f7-f7396893f31e\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 9216,\n      \"thing_id\": \"8350e018-385c-4f01-95d1-99a9080beff9\"\n    }\n  ],\n  \"resp_version\": 4188\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a571a7b8-87de-4bb4-a586-b32580ba1834",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68f148d1-0beb-47da-ba6f-996732a64f8b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcbb034c-7f19-4193-9db6-698c5881e7d8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4ae262d-6584-47a1-a7f3-c27ea9b2c837",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f468f47-4831-459f-a5a5-58c2401a3d66",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c171af28-7931-4ef7-86b7-1ac26f567729",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"to\":\"<dateTime>\",\"aggregation\":\"AVG\",\"interval\":\"<long>\",\"series_limit\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39447cfa-e4ed-496b-8c2f-b711af789046",
+          "name": "batch_query_raw series_v1",
+          "request": {
+            "name": "batch_query_raw series_v1",
+            "description": {
+              "content": "Returns the batch of time-series raw samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "series",
+                "batch_query_raw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.series.raw.batch+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "resp_version",
+                  "value": "<long>",
+                  "description": "(Required) Response version"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0f99c43-809f-4330-8977-9b3ced31f44f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch+json"
+                }
+              ],
+              "body": "{\n  \"responses\": [\n    {\n      \"status\": \"string\",\n      \"resp_version\": 218,\n      \"series\": {\n        \"metric\": \"string\"\n      },\n      \"query\": \"string\",\n      \"from_date\": \"1974-10-23T18:17:13.799Z\",\n      \"to_date\": \"1972-06-27T13:02:56.758Z\",\n      \"sort\": \"ASC\",\n      \"times\": [\n        \"2012-10-14T22:04:17.237Z\",\n        \"1989-08-07T20:05:49.715Z\"\n      ],\n      \"count_values\": 875,\n      \"message\": \"\",\n      \"property_id\": \"1af76983-6dcd-6b2c-f599-54e9b75db270\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 8704,\n      \"thing_id\": \"4d3ff81b-57ac-fe32-bdd2-c0ca99086804\"\n    },\n    {\n      \"status\": \"string\",\n      \"resp_version\": 3845,\n      \"series\": {\n        \"metric\": \"string\"\n      },\n      \"query\": \"string\",\n      \"from_date\": \"2012-06-28T17:43:03.942Z\",\n      \"to_date\": \"2006-09-03T09:30:05.114Z\",\n      \"sort\": \"ASC\",\n      \"times\": [\n        \"2001-06-10T04:59:15.685Z\",\n        \"2001-03-27T22:23:23.423Z\"\n      ],\n      \"count_values\": 1137,\n      \"message\": \"\",\n      \"property_id\": \"5ba1363f-9084-d99c-02fd-d72298105238\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 3709,\n      \"thing_id\": \"4ba4e656-b791-020c-7eea-ec6819f52a85\"\n    }\n  ],\n  \"resp_version\": 9964\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f3efb12-d86a-4c6f-afb1-1668afdd1489",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5185846a-25fb-49ab-9fe5-b78d20193ce1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1ded3e8-80ff-46e3-968b-3602c8c894a8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47b983f6-3513-4de3-a66c-f6ae3d223221",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae90ba6e-0cba-4590-aac9-0d8cce65681d",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5213b1b3-cb6a-44ec-9bbe-acd609e055a0",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"series_limit\":\"<long>\",\"sort\":\"DESC\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92d2d06f-2592-4ff2-8443-29394ff8babe",
+          "name": "batch_query_raw_last_value series_v1",
+          "request": {
+            "name": "batch_query_raw_last_value series_v1",
+            "description": {
+              "content": "Returns the batch of time-series data raw",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "series",
+                "batch_query_raw",
+                "lastvalue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}",
+                  "description": "(Required) Requests"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdeb0518-6743-42ac-82fc-c32f0f916ca8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"responses\": [\n    {\n      \"thing_id\": \"8664ba04-e18b-2caa-578f-946e9d5fd311\",\n      \"property_id\": \"c7d5df79-1e5f-9c47-604d-4d05b6ce7cdd\",\n      \"count_values\": 5867,\n      \"times\": [\n        \"2022-06-14T09:49:38.096Z\",\n        \"1984-10-22T07:27:19.820Z\"\n      ]\n    },\n    {\n      \"thing_id\": \"8123ff1c-1e46-94c1-595b-04bed4120c62\",\n      \"property_id\": \"50cc780e-afd6-4a3b-024b-938dc4984467\",\n      \"count_values\": 8617,\n      \"times\": [\n        \"2014-09-22T14:51:59.967Z\",\n        \"2007-10-05T07:31:01.591Z\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "126c9246-fc57-4738-bbc3-40f89896fa44",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84a3ed14-2486-4754-8763-f08c5d7dabf9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6feb20f1-9d62-41d5-a9cb-3e274a5ffb63",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5983b814-00a3-49ce-ba99-15e2866ed02b",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40b21017-8730-4786-bdd7-c05f0c0a8179",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_raw",
+                    "lastvalue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"thing_id\":\"<uuid>\",\"property_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.raw.batch.lastvalue+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fa457f3-af91-4c3a-8781-341b146b1ab2",
+          "name": "batch_query_sampling series_v1",
+          "request": {
+            "name": "batch_query_sampling series_v1",
+            "description": {
+              "content": "Returns a batch of time-series sampled samples. To be used for types that does not support mathematic aggregation. Types supported: strings, complex types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "series",
+                "batch_query_sampling"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.series.batch.sampled+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "requests",
+                  "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}",
+                  "description": "(Required) Requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "resp_version",
+                  "value": "<long>",
+                  "description": "(Required) Response version"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc2e0b08-5728-4af0-bee8-4e64442ff9b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch.sampled+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch.sampled+json"
+                }
+              ],
+              "body": "{\n  \"responses\": [\n    {\n      \"status\": \"string\",\n      \"resp_version\": 8240,\n      \"query\": \"string\",\n      \"from_date\": \"1956-06-23T16:12:02.861Z\",\n      \"to_date\": \"2008-03-31T16:15:03.372Z\",\n      \"interval\": 9185,\n      \"times\": [\n        \"1965-04-06T08:50:47.305Z\",\n        \"2000-02-08T03:43:15.323Z\"\n      ],\n      \"count_values\": 7875,\n      \"message\": \"\",\n      \"property_id\": \"a7a7cc42-9a6f-eb57-ace5-203ca3960010\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 931,\n      \"thing_id\": \"f15f0483-572d-d6f1-9fcc-a71674dcbb2c\"\n    },\n    {\n      \"status\": \"string\",\n      \"resp_version\": 5732,\n      \"query\": \"string\",\n      \"from_date\": \"1975-01-14T10:54:47.011Z\",\n      \"to_date\": \"2022-02-10T08:28:22.312Z\",\n      \"interval\": 7596,\n      \"times\": [\n        \"1977-07-26T15:54:11.653Z\",\n        \"1968-02-04T14:33:26.012Z\"\n      ],\n      \"count_values\": 7406,\n      \"message\": \"\",\n      \"property_id\": \"2c37d3f8-00d3-6252-27f1-0e4936e455ae\",\n      \"property_name\": \"string\",\n      \"property_type\": \"string\",\n      \"series_limit\": 1660,\n      \"thing_id\": \"bab9aad2-04ed-31ec-63a5-de7713729ccb\"\n    }\n  ],\n  \"resp_version\": 7859\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60fa96cd-0d3b-4d67-b788-03afd1efec9a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch.sampled+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch.sampled+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc531c26-6589-4de6-ab7b-b2a029cf85a0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch.sampled+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch.sampled+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1add446-9783-45b9-bc4e-6fd55ad5d6ae",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch.sampled+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch.sampled+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b8f3e8-031e-457c-98ec-7d2d7a87cc7a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64774f8a-52a6-45f5-a689-95a8cdb9944a",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f73269b-7d88-49dd-b728-49fc8d963316",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "batch_query_sampling"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.series.batch.sampled+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Requests",
+                        "type": "text/plain"
+                      },
+                      "key": "requests",
+                      "value": "{\"q\":\"<string>\",\"from\":\"<dateTime>\",\"interval\":300,\"series_limit\":\"<long>\",\"to\":\"<dateTime>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Response version",
+                        "type": "text/plain"
+                      },
+                      "key": "resp_version",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.series.batch.sampled+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7619945-3fe2-4705-95fb-2ca9cda18c04",
+          "name": "historic_data series_v1",
+          "request": {
+            "name": "historic_data series_v1",
+            "description": {
+              "content": "Request sending of historical data of properties by email",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "series",
+                "historic_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.goa.error+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "properties",
+                  "value": "<uuid>",
+                  "description": "(Required) IDs of properties"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) Get data starting from this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) Get data up to this date"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ded01bf6-48ff-4a87-8088-271579860e56",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b6fe113-1773-4e43-a1a2-74a12be3dd87",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7e657c9-01f6-43a6-86f1-f3b741e81810",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d9978ab-a376-48b8-8f9c-471b6070bfe3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62e81d9d-fc25-4fd7-8359-689685813fd2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2980a8c5-664f-490b-914d-b889d1ecf930",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "series",
+                    "historic_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs of properties",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data starting from this date",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Get data up to this date",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2d830b26-d9ca-4f24-9548-cc8b1eb52b5e",
+    "name": "Arduino IoT Cloud binaries_v2 series_v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

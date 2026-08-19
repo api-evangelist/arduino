@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 devices_v2_certs API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices_v2_certs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "check devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/cert_check",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if the certificate is the one generated during the provisioning process of the given device"
+        },
+        {
+          "info": {
+            "name": "list devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/certs",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ]
+          },
+          "docs": "Returns the list of certs associated to the device"
+        },
+        {
+          "info": {
+            "name": "create devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/certs",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new cert associated to a device. The csr is signed and saved in database. The CommonName will be replaced with the device id."
+        },
+        {
+          "info": {
+            "name": "show devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/certs/:cid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the cert"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ]
+          },
+          "docs": "Returns the cert requested by the user"
+        },
+        {
+          "info": {
+            "name": "update devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/certs/:cid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the cert"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a cert associated to a device. The csr is signed and saved in database. The CommonName will be replaced with the device id."
+        },
+        {
+          "info": {
+            "name": "delete devices_v2_certs",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/certs/:cid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the cert"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ]
+          },
+          "docs": "Removes a cert associated to a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 users_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "verifyEmail users_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/users/byEmail/:email",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "The email you want to check"
+              }
+            ]
+          },
+          "docs": "Verify if an email belongs to an Arduino Account"
+        },
+        {
+          "info": {
+            "name": "getByID users_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/users/byId/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The uuid of the user you want to get"
+              }
+            ]
+          },
+          "docs": "Get user by ID"
+        },
+        {
+          "info": {
+            "name": "byUsername users_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/users/byUsername/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns a list of users that matches the username provided"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

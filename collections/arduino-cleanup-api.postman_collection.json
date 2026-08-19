@@ -1,0 +1,94 @@
+{
+  "item": [
+    {
+      "id": "f6a8f224-91d7-46fe-87b7-ad0c95993e95",
+      "name": "cleanup",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac73068f-7b5e-4ef3-aaf6-e69943da2c54",
+          "name": "iot cleanup",
+          "request": {
+            "name": "iot cleanup",
+            "description": {
+              "content": "Iot removes the things created more than an hour ago and never got reclaimed. It then deletes the certificates that are no longer associated with a thing",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "cleanup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69cff82e-baa5-42eb-8fe1-247c6d4f2969",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "cleanup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "48550e49-f72b-4bca-9bba-d12d1e4c4ef8",
+    "name": "Arduino IoT Cloud binaries_v2 cleanup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

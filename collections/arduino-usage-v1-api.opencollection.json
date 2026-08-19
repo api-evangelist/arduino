@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 usage_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "usage_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "daily usage_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/usage/daily",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this device"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start of the range, inclusive (UTC)"
+              },
+              {
+                "name": "thing_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this thing"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End of the range, inclusive (UTC). Must be >= from. Max range: 400 days."
+              }
+            ]
+          },
+          "docs": "Returns the daily message-consumption series for the authenticated user or the organization (when X-Organization is set). One data point per day."
+        },
+        {
+          "info": {
+            "name": "monthly usage_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/usage/monthly",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this device"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start of the range, inclusive. Truncated to the beginning of the month (UTC)."
+              },
+              {
+                "name": "thing_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this thing"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End of the range, inclusive. Truncated to the end of the month (UTC). Max range: 5 years."
+              }
+            ]
+          },
+          "docs": "Returns the monthly message-consumption series for the authenticated user or the organization (when X-Organization is set). One data point per calendar month (UTC)."
+        },
+        {
+          "info": {
+            "name": "things_daily usage_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/usage/things/daily",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start of the range, inclusive (UTC)"
+              },
+              {
+                "name": "thing_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this thing"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End of the range, inclusive (UTC). Must be >= from. Max range: 400 days."
+              }
+            ]
+          },
+          "docs": "Returns the daily message-consumption series broken down per thing for the authenticated user or the organization (when X-Organization is set). When thing_id is set the response contains a single thing entry. Devices belonging to the same thing are summed together."
+        },
+        {
+          "info": {
+            "name": "things_monthly usage_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/usage/things/monthly",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start of the range, inclusive. Truncated to the beginning of the month (UTC)."
+              },
+              {
+                "name": "thing_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: restrict results to this thing"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End of the range, inclusive. Truncated to the end of the month (UTC). Max range: 5 years."
+              }
+            ]
+          },
+          "docs": "Returns the monthly message-consumption series broken down per thing for the authenticated user or the organization (when X-Organization is set). When thing_id is set the response contains a single thing entry. Devices belonging to the same thing are summed together."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

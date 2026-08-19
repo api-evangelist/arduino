@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 lora_devices_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "lora_devices_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create lora_devices_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/lora-devices/",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new lora device. Its info are saved on our database, and on the lora provider network. Creates a device_v2 automatically"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

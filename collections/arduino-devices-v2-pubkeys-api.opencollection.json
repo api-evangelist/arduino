@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 devices_v2_pubkeys API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices_v2_pubkeys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list devices_v2_pubkeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pubkeys",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ]
+          },
+          "docs": "Returns the list of pubkeys associated to the device"
+        },
+        {
+          "info": {
+            "name": "create devices_v2_pubkeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pubkeys",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new pubkey associated to a device"
+        },
+        {
+          "info": {
+            "name": "show devices_v2_pubkeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pubkeys/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the pubkey"
+              }
+            ]
+          },
+          "docs": "Returns the pubkey requested by the user"
+        },
+        {
+          "info": {
+            "name": "update devices_v2_pubkeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pubkeys/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the pubkey"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a pubkey associated to a device"
+        },
+        {
+          "info": {
+            "name": "delete devices_v2_pubkeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/pubkeys/:pid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the pubkey"
+              }
+            ]
+          },
+          "docs": "Removes a pubkey associated to a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 supported_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "supported_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "devices supported_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/supported/devices"
+          },
+          "docs": "Returns a list of the supported devices"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

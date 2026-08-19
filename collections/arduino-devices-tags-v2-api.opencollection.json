@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 devices_tags_v2 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices_tags_v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list devices_tags_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/devices_tags",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the list of unique tag keys associated to the user's devices"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 cleanup API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cleanup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "iot cleanup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/cleanup"
+          },
+          "docs": "Iot removes the things created more than an hour ago and never got reclaimed. It then deletes the certificates that are no longer associated with a thing"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

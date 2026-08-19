@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 devices_v2_webhooks API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices_v2_webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create devices_v2_webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/webhooks",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new webhook associated to a device"
+        },
+        {
+          "info": {
+            "name": "delete devices_v2_webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v2/devices/:id/webhooks/:wid",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device"
+              },
+              {
+                "name": "wid",
+                "value": "",
+                "type": "path",
+                "description": "The id of the webhook"
+              }
+            ]
+          },
+          "docs": "Removes a webhook associated to a device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

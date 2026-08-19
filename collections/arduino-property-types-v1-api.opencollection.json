@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 property_types_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "property_types_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listTypes property_types_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/property_types"
+          },
+          "docs": "Returns the list of available property types"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

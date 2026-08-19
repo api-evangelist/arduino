@@ -1,0 +1,404 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 things_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "things_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/things",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "across_user_ids",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns all the things"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the device you want to filter"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter only the desired things"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted things"
+              },
+              {
+                "name": "show_properties",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns things with their properties, and last values"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tags"
+              }
+            ]
+          },
+          "docs": "Returns the list of things associated to the user"
+        },
+        {
+          "info": {
+            "name": "create things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/things",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, detach device from the other thing, and attach to this thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new thing associated to the user"
+        },
+        {
+          "info": {
+            "name": "show things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/things/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted thing"
+              }
+            ]
+          },
+          "docs": "Returns the thing requested by the user"
+        },
+        {
+          "info": {
+            "name": "update things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/things/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, detach device from the other thing, and attach to this thing"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a thing associated to the user"
+        },
+        {
+          "info": {
+            "name": "delete things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/things/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, hard delete the thing"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ]
+          },
+          "docs": "Removes a thing associated to the user"
+        },
+        {
+          "info": {
+            "name": "showDevice things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/things/:id/device",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ]
+          },
+          "docs": "Returns the device attached to the thing"
+        },
+        {
+          "info": {
+            "name": "layout things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/things/:id/layout",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted thing"
+              }
+            ]
+          },
+          "docs": "Returns the thing requested by the user, without last values data"
+        },
+        {
+          "info": {
+            "name": "shadow things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/things/:id/shadow/send",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish the last property values to MQTT"
+        },
+        {
+          "info": {
+            "name": "createSketch things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/things/:id/sketch",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new sketch thing associated to the thing"
+        },
+        {
+          "info": {
+            "name": "deleteSketch things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/things/:id/sketch",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ]
+          },
+          "docs": "deleteSketch things_v1"
+        },
+        {
+          "info": {
+            "name": "updateSketch things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/things/:id/sketch/:sketchId",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "sketchId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the sketch"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing thing sketch"
+        },
+        {
+          "info": {
+            "name": "updateSketchName things_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/things/:id/sketch/:sketchId/rename",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "sketchId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the sketch"
+              }
+            ]
+          },
+          "docs": "Update an existing thing sketch name"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

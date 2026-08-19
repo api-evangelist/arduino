@@ -1,0 +1,216 @@
+{
+  "item": [
+    {
+      "id": "9a474dba-2212-4da9-be0e-accd4c97a7b4",
+      "name": "properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bcde60b0-1d7d-4c52-9a0e-f24622173cf4",
+          "name": "listAll properties",
+          "request": {
+            "name": "listAll properties",
+            "description": {
+              "content": "Returns the list of all properties of the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.property+json; type=collection"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "6e098b72-2c40-41da-9e5e-28f037e270f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.property+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.property+json; type=collection"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"a43fa3a5-e513-fcd3-6aed-c6e2bdfe1b0e\",\n    \"thing_id\": \"3e3d3761-c70d-9d58-bf05-b1cdce419977\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"permission\": \"string\",\n    \"update_strategy\": \"string\",\n    \"href\": \"string\",\n    \"created_at\": \"2009-03-09T13:44:20.911Z\",\n    \"deleted_at\": \"1978-06-27T07:22:44.115Z\",\n    \"last_value\": {},\n    \"linked_to_trigger\": true,\n    \"max_value\": 4377.8557446265995,\n    \"min_value\": 7263.548325689332,\n    \"persist\": false,\n    \"sync_id\": \"2be889b0-a2ca-0968-6019-c6a7268f02e9\",\n    \"tag\": 8895,\n    \"thing_name\": \"string\",\n    \"update_parameter\": 4622.178548741897,\n    \"updated_at\": \"2025-01-08T07:45:26.390Z\",\n    \"value_updated_at\": \"2002-10-23T14:57:05.934Z\",\n    \"variable_name\": \"string\"\n  },\n  {\n    \"id\": \"a4239055-d31c-c691-a35b-98ea6ec26e8d\",\n    \"thing_id\": \"6ed85ec9-cf64-527e-8a5d-62da920097ef\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"permission\": \"string\",\n    \"update_strategy\": \"string\",\n    \"href\": \"string\",\n    \"created_at\": \"1948-11-24T16:15:45.481Z\",\n    \"deleted_at\": \"1952-06-22T12:45:54.209Z\",\n    \"last_value\": {},\n    \"linked_to_trigger\": false,\n    \"max_value\": 4327.009278354766,\n    \"min_value\": 3900.995707143665,\n    \"persist\": true,\n    \"sync_id\": \"3feaa879-31cb-f002-5e43-8bdacc18d6ce\",\n    \"tag\": 5710,\n    \"thing_name\": \"string\",\n    \"update_parameter\": 4622.289099295289,\n    \"updated_at\": \"2014-11-18T14:13:24.719Z\",\n    \"value_updated_at\": \"1954-08-13T00:04:20.235Z\",\n    \"variable_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3de671c6-c247-43b7-894c-f18c3d95639e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.property+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.property+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6036666e-2ff4-45e4-9acb-b17b0cf2e32f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.property+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.property+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2aaa5dd1-35ec-4921-addc-4801ac08a63d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.property+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.property+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d85a0d9f-4e26-450b-a776-7aab90d6c466",
+    "name": "Arduino IoT Cloud binaries_v2 properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 usage_internal API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "usage_internal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "batch_ingest usage_internal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/usage/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upserts a batch of per-(owner, thing, device, date) message counters. The payload carries two flat lists, users_usage and orgs_usage, that can be populated independently in the same request. Rows in users_usage must be unique by (user_id, thing_id, device_id, date). Rows in orgs_usage must be unique by (org_id, thing_id, device_id, date). Duplicate rows are rejected with 400 Bad Request. Behavior is all-or-nothing: every record is committed in a single transaction, or nothing is. On success the "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

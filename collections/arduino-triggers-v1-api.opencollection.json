@@ -1,0 +1,396 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 triggers_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "triggers_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/actions",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the list of actions"
+        },
+        {
+          "info": {
+            "name": "create actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/actions",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new action"
+        },
+        {
+          "info": {
+            "name": "show actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/actions/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the action"
+              }
+            ]
+          },
+          "docs": "Returns an action"
+        },
+        {
+          "info": {
+            "name": "update actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/actions/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an action"
+        },
+        {
+          "info": {
+            "name": "delete actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/actions/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the action"
+              }
+            ]
+          },
+          "docs": "Removes an action"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe actions_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/actions/:id/unsubscribe",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove selected recipients from the action"
+        },
+        {
+          "info": {
+            "name": "list triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/triggers",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the device associated with the triggers (mutually exclusive with 'property_id')"
+              },
+              {
+                "name": "property_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the property associated with the triggers (mutually exclusive with 'device_id')"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted triggers"
+              },
+              {
+                "name": "source_type",
+                "value": "",
+                "type": "query",
+                "description": "The source type of the trigger, could be PROPERTY, DEVICE_INCLUDE or DEVICE_EXCLUDE"
+              }
+            ]
+          },
+          "docs": "Returns the list of triggers"
+        },
+        {
+          "info": {
+            "name": "create triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/triggers",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new trigger"
+        },
+        {
+          "info": {
+            "name": "show triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ]
+          },
+          "docs": "Returns a trigger"
+        },
+        {
+          "info": {
+            "name": "update triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a trigger"
+        },
+        {
+          "info": {
+            "name": "patch triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patch a trigger"
+        },
+        {
+          "info": {
+            "name": "delete triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, hard delete the trigger"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ]
+          },
+          "docs": "Removes a trigger"
+        },
+        {
+          "info": {
+            "name": "template triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id/template",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ]
+          },
+          "docs": "Extract template from the given trigger"
+        },
+        {
+          "info": {
+            "name": "unsubscribe triggers_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/triggers/:id/unsubscribe",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the trigger"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribe the list of users from all the actions of the trigger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

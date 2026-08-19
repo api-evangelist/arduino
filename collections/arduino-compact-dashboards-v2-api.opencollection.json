@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 compact_dashboards_v2 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "compact_dashboards_v2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "listCompact compact_dashboards_v2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/compact_dashboards",
+            "headers": [
+              {
+                "name": "X-Organization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by deletion date"
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the extended information of the dashboard"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter only the desired dashboards"
+              },
+              {
+                "name": "name_filter",
+                "value": "",
+                "type": "query",
+                "description": "The name of the dashboard"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "If true, shows the soft deleted things"
+              }
+            ]
+          },
+          "docs": "Returns the list of dashboards with basic information only"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

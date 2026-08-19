@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 things_v1_tags API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "things_v1_tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list things_v1_tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/things/:id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ]
+          },
+          "docs": "List tags associated to the thing."
+        },
+        {
+          "info": {
+            "name": "upsert things_v1_tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/things/:id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a tag associated to the thing."
+        },
+        {
+          "info": {
+            "name": "delete things_v1_tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/things/:id/tags/:key",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the thing"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the tag"
+              }
+            ]
+          },
+          "docs": "Delete a tag associated to the thing given its key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

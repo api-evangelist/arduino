@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 timezones API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "timezones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list timezones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v2/timezones"
+          },
+          "docs": "Get the list of time zones."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

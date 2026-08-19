@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 lora_gw_v1 API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "lora_gw_v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create lora_gw_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/iot/v1/lora-gw/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new pending lora gateway. Its info are only saved on our database."
+        },
+        {
+          "info": {
+            "name": "show lora_gw_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/lora-gw/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the lora gateway. It's calculated from the mac using magic"
+              }
+            ]
+          },
+          "docs": "Retrieve info about a lora gateway."
+        },
+        {
+          "info": {
+            "name": "delete lora_gw_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/lora-gw/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the lora gateway. It's calculated from the mac using magic"
+              }
+            ]
+          },
+          "docs": "Removes a lora gateway"
+        },
+        {
+          "info": {
+            "name": "claim lora_gw_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/lora-gw/:id/claim",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign a lora gateway to a user, create a device_v1 resource, create an tts user (if not existing), create the device on tts"
+        },
+        {
+          "info": {
+            "name": "unclaim lora_gw_v1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/iot/v1/lora-gw/:id/unclaim",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts."
+              }
+            ]
+          },
+          "docs": "Remove the gateway from tts, delete the device_v1 resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

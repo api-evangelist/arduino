@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 manage API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "manage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "delete_org manage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/manage/org/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The uuid of the organization you want to delete"
+              }
+            ]
+          },
+          "docs": "Delete organization resources"
+        },
+        {
+          "info": {
+            "name": "delete_user manage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/manage/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the user. Can be 'me' to access the currently authenticated user"
+              }
+            ]
+          },
+          "docs": "Deletes the user, all their sketches and libraries"
+        },
+        {
+          "info": {
+            "name": "delete_user_devices manage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/iot/v1/manage/users/:id/devices",
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, hard delete the devices"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The uuid of the user you want to delete devices for"
+              }
+            ]
+          },
+          "docs": "Delete devices for a given user and organization"
+        },
+        {
+          "info": {
+            "name": "export_user manage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/v1/manage/users/:id/export",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the user. Can be 'me' to access the currently authenticated user"
+              }
+            ]
+          },
+          "docs": "Exports an archive containing all user info."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

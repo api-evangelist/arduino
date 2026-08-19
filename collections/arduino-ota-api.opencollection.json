@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino IoT Cloud binaries_v2 ota API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ota",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getShortlink ota",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/ota/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the actual AWS presigned url"
+              }
+            ]
+          },
+          "docs": "getShortlink ota"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

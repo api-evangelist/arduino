@@ -1,0 +1,3832 @@
+{
+  "item": [
+    {
+      "id": "4fcf03cb-90b8-49bc-87bf-1ed50353a0d1",
+      "name": "dashboards_v3",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "194a2434-f46c-4749-a898-24698661be2f",
+          "name": "list dashboards_v3",
+          "request": {
+            "name": "list dashboards_v3",
+            "description": {
+              "content": "Returns the list of dashboards",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "thing_id",
+                  "value": "<string>",
+                  "description": "The thing_id of the dashboard's properties"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "The user_id of the dashboard's owner"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "9c5a041a-ecde-41be-9fb7-e4efd300f193",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "thing_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"12050afa-d9da-a70c-11c1-d5cac9ff00e2\",\n    \"name\": \"string\",\n    \"updated_at\": \"1987-04-04T12:28:06.904Z\",\n    \"cover_image\": \"string\",\n    \"created_by\": {\n      \"user_id\": \"f251156c-1cf6-71ac-8be5-bd8f6eaf287e\",\n      \"username\": \"string\"\n    },\n    \"organization_id\": \"2aafef32-b00a-fb55-1302-a96f2ebe1d50\",\n    \"pages\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 6393,\n        \"icon\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 1586,\n        \"icon\": \"string\"\n      }\n    ],\n    \"shared_by\": {\n      \"user_id\": \"76a95a66-681a-e956-9bb4-ca914491d223\",\n      \"username\": \"string\"\n    },\n    \"shared_with\": [\n      {\n        \"user_id\": \"9b7d2c40-3ac1-906e-f0aa-dd1e54f6e4c2\",\n        \"username\": \"string\"\n      },\n      {\n        \"user_id\": \"7b2edf78-90ba-df95-0797-7ad13037bada\",\n        \"username\": \"string\"\n      }\n    ],\n    \"widgets\": [\n      {\n        \"id\": \"615987c2-bea1-7b9c-495c-9d07709dafcf\",\n        \"type\": \"string\",\n        \"width\": 8358,\n        \"height\": 8420,\n        \"x\": 1929,\n        \"y\": 9954,\n        \"options\": {\n          \"key_0\": 8555.58127246675,\n          \"key_1\": 7087.859611636807\n        },\n        \"page_id\": \"string\",\n        \"has_permission_incompatibility\": true,\n        \"has_type_incompatibility\": true,\n        \"has_unlinked_variable\": true,\n        \"height_mobile\": 4874,\n        \"name\": \"string\",\n        \"variables\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"width_mobile\": 5545,\n        \"x_mobile\": 2829,\n        \"y_mobile\": 6958\n      },\n      {\n        \"id\": \"309b2d2f-320d-e726-56fb-117aaeb14851\",\n        \"type\": \"string\",\n        \"width\": 2515,\n        \"height\": 2703,\n        \"x\": 4893,\n        \"y\": 3171,\n        \"options\": {\n          \"key_0\": 4519.326357624517\n        },\n        \"page_id\": \"string\",\n        \"has_permission_incompatibility\": false,\n        \"has_type_incompatibility\": false,\n        \"has_unlinked_variable\": true,\n        \"height_mobile\": 1069,\n        \"name\": \"string\",\n        \"variables\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"width_mobile\": 6883,\n        \"x_mobile\": 5629,\n        \"y_mobile\": 6968\n      }\n    ]\n  },\n  {\n    \"id\": \"9da53258-6bde-fae9-b453-95fb8fcc9f2b\",\n    \"name\": \"string\",\n    \"updated_at\": \"1988-05-28T21:38:44.622Z\",\n    \"cover_image\": \"string\",\n    \"created_by\": {\n      \"user_id\": \"03989b2d-e9cb-7e3a-8676-4e7103e94e85\",\n      \"username\": \"string\"\n    },\n    \"organization_id\": \"cfcc1413-0bfa-f8c6-615b-5f68b721c0b8\",\n    \"pages\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 8513,\n        \"icon\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"position\": 5305,\n        \"icon\": \"string\"\n      }\n    ],\n    \"shared_by\": {\n      \"user_id\": \"b454354c-c354-fb62-5df6-0464411eda92\",\n      \"username\": \"string\"\n    },\n    \"shared_with\": [\n      {\n        \"user_id\": \"1f34999c-0d63-707e-e60d-d0ac67f8cf25\",\n        \"username\": \"string\"\n      },\n      {\n        \"user_id\": \"4878fcaf-3ef7-c382-d8ee-c96af864917b\",\n        \"username\": \"string\"\n      }\n    ],\n    \"widgets\": [\n      {\n        \"id\": \"51f09e68-b0e9-317d-3755-d657276edb81\",\n        \"type\": \"string\",\n        \"width\": 5555,\n        \"height\": 4222,\n        \"x\": 5569,\n        \"y\": 7554,\n        \"options\": {\n          \"key_0\": true,\n          \"key_1\": 2124\n        },\n        \"page_id\": \"string\",\n        \"has_permission_incompatibility\": false,\n        \"has_type_incompatibility\": false,\n        \"has_unlinked_variable\": false,\n        \"height_mobile\": 7337,\n        \"name\": \"string\",\n        \"variables\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"width_mobile\": 8097,\n        \"x_mobile\": 7646,\n        \"y_mobile\": 8005\n      },\n      {\n        \"id\": \"efa8d328-0c16-b7bb-1df5-1af2a5366dd2\",\n        \"type\": \"string\",\n        \"width\": 4058,\n        \"height\": 8867,\n        \"x\": 9751,\n        \"y\": 9583,\n        \"options\": {\n          \"key_0\": false,\n          \"key_1\": 7493.591020484608\n        },\n        \"page_id\": \"string\",\n        \"has_permission_incompatibility\": false,\n        \"has_type_incompatibility\": true,\n        \"has_unlinked_variable\": false,\n        \"height_mobile\": 7542,\n        \"name\": \"string\",\n        \"variables\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"width_mobile\": 2014,\n        \"x_mobile\": 4818,\n        \"y_mobile\": 2438\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea6ee9c8-acc9-4d71-973b-8a91497b4b83",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "thing_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a0236ca-a88a-427e-877a-38830f3d56d4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "thing_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "153eecb3-6e0b-4a74-8973-36e83da7166d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "thing_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f2a2218-0c01-4876-a8b3-8069ed9c35fe",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "thing_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a8772e1-cf68-4fa3-9762-958327e0f631",
+          "name": "create dashboards_v3",
+          "request": {
+            "name": "create dashboards_v3",
+            "description": {
+              "content": "Create a new dashboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cover_image",
+                  "value": "<string>",
+                  "description": "The cover image of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The friendly name of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "soft_deleted",
+                  "value": "false",
+                  "description": "If false, restore the thing from the soft deletion"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":\"string\"},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":false},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c516502c-b6d5-4809-b5c0-0aa01bfac0c4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"294089d6-c5f1-8f56-4d94-341831d3c8f0\",\n  \"name\": \"string\",\n  \"updated_at\": \"1956-05-02T17:08:00.797Z\",\n  \"cover_image\": \"string\",\n  \"created_by\": {\n    \"user_id\": \"dae3d8d2-cbc2-6cad-32a2-aafa3e5a8e04\",\n    \"username\": \"string\"\n  },\n  \"organization_id\": \"28ca8782-93c1-2c1e-633e-29107f8ab852\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 5845,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 8805,\n      \"icon\": \"string\"\n    }\n  ],\n  \"shared_by\": {\n    \"user_id\": \"5b2f1b43-4939-3f7e-ea60-fe0e869fbbdc\",\n    \"username\": \"string\"\n  },\n  \"shared_with\": [\n    {\n      \"user_id\": \"e8d7056e-22fe-5628-5643-b59555d86144\",\n      \"username\": \"string\"\n    },\n    {\n      \"user_id\": \"3813c55b-c09b-c758-8f3e-b5d6e1eca8da\",\n      \"username\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"id\": \"7977afe9-2e1d-c145-f10c-4cd48b51434a\",\n      \"type\": \"string\",\n      \"width\": 8910,\n      \"height\": 6873,\n      \"x\": 5584,\n      \"y\": 3270,\n      \"options\": {\n        \"key_0\": 2902,\n        \"key_1\": 2914.0430639938063\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": true,\n      \"has_unlinked_variable\": false,\n      \"height_mobile\": 4464,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"5f37e296-33f5-28da-df04-cba6f8889a10\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"d5375962-6c1d-c9d8-9d33-c1649c99edc2\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1960-04-19T00:14:36.649Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"8fd72865-21a0-6da0-5de3-7eca248cb0a0\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0bb31a40-f8f6-11c1-e131-1a0d6b2b2ef7\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2006-01-13T17:13:08.848Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6067,\n      \"x_mobile\": 4145,\n      \"y_mobile\": 1578\n    },\n    {\n      \"id\": \"65d687af-693f-69e5-301f-daea07e108e2\",\n      \"type\": \"string\",\n      \"width\": 7349,\n      \"height\": 5020,\n      \"x\": 9659,\n      \"y\": 6895,\n      \"options\": {\n        \"key_0\": 7197,\n        \"key_1\": 3550.5811888241333\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": false,\n      \"has_unlinked_variable\": true,\n      \"height_mobile\": 4810,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"f7799a0b-26f7-c2c3-92c8-93bf3017030b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"c10fc462-de5d-ff55-bdab-a61a2e219f12\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1970-02-02T05:28:18.708Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"c5bc33e2-ce30-0c0a-eb29-e54d9f823c3b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0588860f-0961-a4f1-37f5-e1c152dded60\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2025-08-27T16:32:40.525Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6947,\n      \"x_mobile\": 225,\n      \"y_mobile\": 5045\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e8c4ec6-819c-4a72-9029-facd18867a41",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64b5d31a-b9ff-4bea-ba4e-7571c1e322a3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d25afbe-7c12-4d12-80d0-248dec1ab8cb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a7d782e-f667-49c6-a838-8714d910487f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93c2be72-86e5-4efd-a221-4aea1e45894e",
+          "name": "show dashboards_v3",
+          "request": {
+            "name": "show dashboards_v3",
+            "description": {
+              "content": "Show a dashboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "de4dee03-d362-4ba1-ab38-02aae43a68c5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"294089d6-c5f1-8f56-4d94-341831d3c8f0\",\n  \"name\": \"string\",\n  \"updated_at\": \"1956-05-02T17:08:00.797Z\",\n  \"cover_image\": \"string\",\n  \"created_by\": {\n    \"user_id\": \"dae3d8d2-cbc2-6cad-32a2-aafa3e5a8e04\",\n    \"username\": \"string\"\n  },\n  \"organization_id\": \"28ca8782-93c1-2c1e-633e-29107f8ab852\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 5845,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 8805,\n      \"icon\": \"string\"\n    }\n  ],\n  \"shared_by\": {\n    \"user_id\": \"5b2f1b43-4939-3f7e-ea60-fe0e869fbbdc\",\n    \"username\": \"string\"\n  },\n  \"shared_with\": [\n    {\n      \"user_id\": \"e8d7056e-22fe-5628-5643-b59555d86144\",\n      \"username\": \"string\"\n    },\n    {\n      \"user_id\": \"3813c55b-c09b-c758-8f3e-b5d6e1eca8da\",\n      \"username\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"id\": \"7977afe9-2e1d-c145-f10c-4cd48b51434a\",\n      \"type\": \"string\",\n      \"width\": 8910,\n      \"height\": 6873,\n      \"x\": 5584,\n      \"y\": 3270,\n      \"options\": {\n        \"key_0\": 2902,\n        \"key_1\": 2914.0430639938063\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": true,\n      \"has_unlinked_variable\": false,\n      \"height_mobile\": 4464,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"5f37e296-33f5-28da-df04-cba6f8889a10\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"d5375962-6c1d-c9d8-9d33-c1649c99edc2\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1960-04-19T00:14:36.649Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"8fd72865-21a0-6da0-5de3-7eca248cb0a0\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0bb31a40-f8f6-11c1-e131-1a0d6b2b2ef7\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2006-01-13T17:13:08.848Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6067,\n      \"x_mobile\": 4145,\n      \"y_mobile\": 1578\n    },\n    {\n      \"id\": \"65d687af-693f-69e5-301f-daea07e108e2\",\n      \"type\": \"string\",\n      \"width\": 7349,\n      \"height\": 5020,\n      \"x\": 9659,\n      \"y\": 6895,\n      \"options\": {\n        \"key_0\": 7197,\n        \"key_1\": 3550.5811888241333\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": false,\n      \"has_unlinked_variable\": true,\n      \"height_mobile\": 4810,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"f7799a0b-26f7-c2c3-92c8-93bf3017030b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"c10fc462-de5d-ff55-bdab-a61a2e219f12\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1970-02-02T05:28:18.708Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"c5bc33e2-ce30-0c0a-eb29-e54d9f823c3b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0588860f-0961-a4f1-37f5-e1c152dded60\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2025-08-27T16:32:40.525Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6947,\n      \"x_mobile\": 225,\n      \"y_mobile\": 5045\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdf8e8d3-c0b7-4b96-bca0-6cccaac9796b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dceede9-d66e-4271-b4ce-9c9a540a733f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f44a9e38-81a4-4587-84b3-7a1a61176a93",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8efcc2ac-8764-410e-9c4d-0fb27218866b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a877cea6-2ca4-4ad5-a4ba-86bdc8859ede",
+          "name": "patch dashboards_v3",
+          "request": {
+            "name": "patch dashboards_v3",
+            "description": {
+              "content": "Updates an existing dashboard field without overwriting the existing data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cover_image",
+                  "value": "<string>",
+                  "description": "The cover image of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The friendly name of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "soft_deleted",
+                  "value": "false",
+                  "description": "If false, restore the thing from the soft deletion"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":\"string\"},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":5919.900734406075},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c961c8e-0609-4e1f-a5be-e40d4862253e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"294089d6-c5f1-8f56-4d94-341831d3c8f0\",\n  \"name\": \"string\",\n  \"updated_at\": \"1956-05-02T17:08:00.797Z\",\n  \"cover_image\": \"string\",\n  \"created_by\": {\n    \"user_id\": \"dae3d8d2-cbc2-6cad-32a2-aafa3e5a8e04\",\n    \"username\": \"string\"\n  },\n  \"organization_id\": \"28ca8782-93c1-2c1e-633e-29107f8ab852\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 5845,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 8805,\n      \"icon\": \"string\"\n    }\n  ],\n  \"shared_by\": {\n    \"user_id\": \"5b2f1b43-4939-3f7e-ea60-fe0e869fbbdc\",\n    \"username\": \"string\"\n  },\n  \"shared_with\": [\n    {\n      \"user_id\": \"e8d7056e-22fe-5628-5643-b59555d86144\",\n      \"username\": \"string\"\n    },\n    {\n      \"user_id\": \"3813c55b-c09b-c758-8f3e-b5d6e1eca8da\",\n      \"username\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"id\": \"7977afe9-2e1d-c145-f10c-4cd48b51434a\",\n      \"type\": \"string\",\n      \"width\": 8910,\n      \"height\": 6873,\n      \"x\": 5584,\n      \"y\": 3270,\n      \"options\": {\n        \"key_0\": 2902,\n        \"key_1\": 2914.0430639938063\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": true,\n      \"has_unlinked_variable\": false,\n      \"height_mobile\": 4464,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"5f37e296-33f5-28da-df04-cba6f8889a10\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"d5375962-6c1d-c9d8-9d33-c1649c99edc2\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1960-04-19T00:14:36.649Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"8fd72865-21a0-6da0-5de3-7eca248cb0a0\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0bb31a40-f8f6-11c1-e131-1a0d6b2b2ef7\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2006-01-13T17:13:08.848Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6067,\n      \"x_mobile\": 4145,\n      \"y_mobile\": 1578\n    },\n    {\n      \"id\": \"65d687af-693f-69e5-301f-daea07e108e2\",\n      \"type\": \"string\",\n      \"width\": 7349,\n      \"height\": 5020,\n      \"x\": 9659,\n      \"y\": 6895,\n      \"options\": {\n        \"key_0\": 7197,\n        \"key_1\": 3550.5811888241333\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": false,\n      \"has_unlinked_variable\": true,\n      \"height_mobile\": 4810,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"f7799a0b-26f7-c2c3-92c8-93bf3017030b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"c10fc462-de5d-ff55-bdab-a61a2e219f12\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1970-02-02T05:28:18.708Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"c5bc33e2-ce30-0c0a-eb29-e54d9f823c3b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0588860f-0961-a4f1-37f5-e1c152dded60\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2025-08-27T16:32:40.525Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6947,\n      \"x_mobile\": 225,\n      \"y_mobile\": 5045\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7bab75f-8c61-4c27-87aa-47de29805cac",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6c1012f-9b4a-4051-8c87-a53f9decb5fc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ad36763-5afb-4c95-8f07-c35fbd80a31e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d043044-9557-4231-b705-7b3cf87279f4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69349515-afb2-4711-9b2f-f14e2f5f511a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d3cacc5-b8e9-403b-96c9-eeaf40874ac5",
+          "name": "update dashboards_v3",
+          "request": {
+            "name": "update dashboards_v3",
+            "description": {
+              "content": "Updates an existing dashboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cover_image",
+                  "value": "<string>",
+                  "description": "The cover image of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The friendly name of the dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "pages",
+                  "value": "{\"id\":\"<uuid>\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}",
+                  "description": "List of sub-pages"
+                },
+                {
+                  "disabled": false,
+                  "key": "soft_deleted",
+                  "value": "false",
+                  "description": "If false, restore the thing from the soft deletion"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":\"string\"},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "widgets",
+                  "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":5919.900734406075},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}",
+                  "description": "Widgets attached to this dashboard"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cf5f58b1-6c55-451d-b3d0-6b1a600c2aa0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"294089d6-c5f1-8f56-4d94-341831d3c8f0\",\n  \"name\": \"string\",\n  \"updated_at\": \"1956-05-02T17:08:00.797Z\",\n  \"cover_image\": \"string\",\n  \"created_by\": {\n    \"user_id\": \"dae3d8d2-cbc2-6cad-32a2-aafa3e5a8e04\",\n    \"username\": \"string\"\n  },\n  \"organization_id\": \"28ca8782-93c1-2c1e-633e-29107f8ab852\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 5845,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 8805,\n      \"icon\": \"string\"\n    }\n  ],\n  \"shared_by\": {\n    \"user_id\": \"5b2f1b43-4939-3f7e-ea60-fe0e869fbbdc\",\n    \"username\": \"string\"\n  },\n  \"shared_with\": [\n    {\n      \"user_id\": \"e8d7056e-22fe-5628-5643-b59555d86144\",\n      \"username\": \"string\"\n    },\n    {\n      \"user_id\": \"3813c55b-c09b-c758-8f3e-b5d6e1eca8da\",\n      \"username\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"id\": \"7977afe9-2e1d-c145-f10c-4cd48b51434a\",\n      \"type\": \"string\",\n      \"width\": 8910,\n      \"height\": 6873,\n      \"x\": 5584,\n      \"y\": 3270,\n      \"options\": {\n        \"key_0\": 2902,\n        \"key_1\": 2914.0430639938063\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": true,\n      \"has_unlinked_variable\": false,\n      \"height_mobile\": 4464,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"5f37e296-33f5-28da-df04-cba6f8889a10\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"d5375962-6c1d-c9d8-9d33-c1649c99edc2\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1960-04-19T00:14:36.649Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"8fd72865-21a0-6da0-5de3-7eca248cb0a0\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0bb31a40-f8f6-11c1-e131-1a0d6b2b2ef7\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2006-01-13T17:13:08.848Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6067,\n      \"x_mobile\": 4145,\n      \"y_mobile\": 1578\n    },\n    {\n      \"id\": \"65d687af-693f-69e5-301f-daea07e108e2\",\n      \"type\": \"string\",\n      \"width\": 7349,\n      \"height\": 5020,\n      \"x\": 9659,\n      \"y\": 6895,\n      \"options\": {\n        \"key_0\": 7197,\n        \"key_1\": 3550.5811888241333\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": false,\n      \"has_unlinked_variable\": true,\n      \"height_mobile\": 4810,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"f7799a0b-26f7-c2c3-92c8-93bf3017030b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"c10fc462-de5d-ff55-bdab-a61a2e219f12\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1970-02-02T05:28:18.708Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"c5bc33e2-ce30-0c0a-eb29-e54d9f823c3b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0588860f-0961-a4f1-37f5-e1c152dded60\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2025-08-27T16:32:40.525Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6947,\n      \"x_mobile\": 225,\n      \"y_mobile\": 5045\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2becf966-8ba5-4f17-9f78-4a9764aea7f0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d1ba4ef-0e04-4108-b123-f11cd36a6cee",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c594b0f9-09fc-4363-8211-be6a5770aa01",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3bec673-2ceb-4294-98a7-5724cb273236",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77f55c12-1871-4227-83cb-39aebdf3554f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The cover image of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "cover_image",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The friendly name of the dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of sub-pages",
+                        "type": "text/plain"
+                      },
+                      "key": "pages",
+                      "value": "{\"id\":\"1d4decea-63eb-4ecd-b5fb-bb21f120d3d9\",\"name\":\"<string>\",\"position\":\"<long>\",\"icon\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If false, restore the thing from the soft deletion",
+                        "type": "text/plain"
+                      },
+                      "key": "soft_deleted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":797,\"key_1\":5213.169060289578,\"key_2\":2026.5339825858598},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Widgets attached to this dashboard",
+                        "type": "text/plain"
+                      },
+                      "key": "widgets",
+                      "value": "{\"id\":\"<uuid>\",\"type\":\"<string>\",\"width\":\"<long>\",\"height\":\"<long>\",\"x\":\"<long>\",\"y\":\"<long>\",\"options\":{\"key_0\":4924.503198337222},\"height_mobile\":\"<long>\",\"name\":\"<string>\",\"page_id\":\"<string>\",\"variables\":[\"<uuid>\",\"<uuid>\"],\"width_mobile\":\"<long>\",\"x_mobile\":\"<long>\",\"y_mobile\":\"<long>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72d6270c-921d-4c58-b469-5298071b9121",
+          "name": "clone dashboards_v3",
+          "request": {
+            "name": "clone dashboards_v3",
+            "description": {
+              "content": "Clone an existing dashboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards",
+                ":id",
+                "clone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3+json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "overrides",
+                  "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}",
+                  "description": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link"
+                },
+                {
+                  "disabled": false,
+                  "key": "overrides",
+                  "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}",
+                  "description": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4922c02e-e204-4c71-8df8-8171af920299",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"294089d6-c5f1-8f56-4d94-341831d3c8f0\",\n  \"name\": \"string\",\n  \"updated_at\": \"1956-05-02T17:08:00.797Z\",\n  \"cover_image\": \"string\",\n  \"created_by\": {\n    \"user_id\": \"dae3d8d2-cbc2-6cad-32a2-aafa3e5a8e04\",\n    \"username\": \"string\"\n  },\n  \"organization_id\": \"28ca8782-93c1-2c1e-633e-29107f8ab852\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 5845,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 8805,\n      \"icon\": \"string\"\n    }\n  ],\n  \"shared_by\": {\n    \"user_id\": \"5b2f1b43-4939-3f7e-ea60-fe0e869fbbdc\",\n    \"username\": \"string\"\n  },\n  \"shared_with\": [\n    {\n      \"user_id\": \"e8d7056e-22fe-5628-5643-b59555d86144\",\n      \"username\": \"string\"\n    },\n    {\n      \"user_id\": \"3813c55b-c09b-c758-8f3e-b5d6e1eca8da\",\n      \"username\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"id\": \"7977afe9-2e1d-c145-f10c-4cd48b51434a\",\n      \"type\": \"string\",\n      \"width\": 8910,\n      \"height\": 6873,\n      \"x\": 5584,\n      \"y\": 3270,\n      \"options\": {\n        \"key_0\": 2902,\n        \"key_1\": 2914.0430639938063\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": true,\n      \"has_unlinked_variable\": false,\n      \"height_mobile\": 4464,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"5f37e296-33f5-28da-df04-cba6f8889a10\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"d5375962-6c1d-c9d8-9d33-c1649c99edc2\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1960-04-19T00:14:36.649Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"8fd72865-21a0-6da0-5de3-7eca248cb0a0\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0bb31a40-f8f6-11c1-e131-1a0d6b2b2ef7\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2006-01-13T17:13:08.848Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6067,\n      \"x_mobile\": 4145,\n      \"y_mobile\": 1578\n    },\n    {\n      \"id\": \"65d687af-693f-69e5-301f-daea07e108e2\",\n      \"type\": \"string\",\n      \"width\": 7349,\n      \"height\": 5020,\n      \"x\": 9659,\n      \"y\": 6895,\n      \"options\": {\n        \"key_0\": 7197,\n        \"key_1\": 3550.5811888241333\n      },\n      \"page_id\": \"string\",\n      \"has_permission_incompatibility\": true,\n      \"has_type_incompatibility\": false,\n      \"has_unlinked_variable\": true,\n      \"height_mobile\": 4810,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"id\": \"f7799a0b-26f7-c2c3-92c8-93bf3017030b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"c10fc462-de5d-ff55-bdab-a61a2e219f12\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"1970-02-02T05:28:18.708Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"c5bc33e2-ce30-0c0a-eb29-e54d9f823c3b\",\n          \"name\": \"string\",\n          \"variable_name\": \"string\",\n          \"thing_id\": \"0588860f-0961-a4f1-37f5-e1c152dded60\",\n          \"thing_name\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"last_value\": {},\n          \"last_value_updated_at\": \"2025-08-27T16:32:40.525Z\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 6947,\n      \"x_mobile\": 225,\n      \"y_mobile\": 5045\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d11196e-d679-4162-8e19-048cd6c7c48a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "413f016b-6679-434f-b967-2f099d664ffd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf514e63-947f-43d6-b692-4874ae76c9cb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe9a0511-9aea-4481-a76d-8f8a365d4e6f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "306a6813-9d0c-40da-9f96-442f8bbfe33f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "clone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link",
+                        "type": "text/plain"
+                      },
+                      "key": "overrides",
+                      "value": "{\"old_thing_id\":\"<uuid>\",\"new_thing_id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "068b3cb7-849e-499b-a1b0-9108c3d8d01a",
+          "name": "template dashboards_v3",
+          "request": {
+            "name": "template dashboards_v3",
+            "description": {
+              "content": "Get a template of the dashboard",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v3",
+                "dashboards",
+                ":id",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the dashboard"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.dashboardv3template+json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ae36e1d0-47ed-4f78-a38b-82ef33402079",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3template+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3template+json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"cover_image\": \"string\",\n  \"id\": \"string\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 3510,\n      \"icon\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"position\": 9872,\n      \"icon\": \"string\"\n    }\n  ],\n  \"widgets\": [\n    {\n      \"type\": \"string\",\n      \"width\": 8911,\n      \"height\": 3373,\n      \"x\": 3399,\n      \"y\": 3059,\n      \"options\": {\n        \"key_0\": true,\n        \"key_1\": true,\n        \"key_2\": \"string\"\n      },\n      \"page_id\": \"string\",\n      \"height_mobile\": 7332,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"variable_id\": \"string\",\n          \"thing_id\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"variable_id\": \"string\",\n          \"thing_id\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 3217,\n      \"x_mobile\": 3580,\n      \"y_mobile\": 2496\n    },\n    {\n      \"type\": \"string\",\n      \"width\": 9822,\n      \"height\": 6178,\n      \"x\": 6200,\n      \"y\": 3350,\n      \"options\": {\n        \"key_0\": 3103,\n        \"key_1\": false\n      },\n      \"page_id\": \"string\",\n      \"height_mobile\": 5863,\n      \"name\": \"string\",\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"variable_id\": \"string\",\n          \"thing_id\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"variable_id\": \"string\",\n          \"thing_id\": \"string\",\n          \"type\": \"string\",\n          \"permission\": \"string\",\n          \"thing_timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"width_mobile\": 8145,\n      \"x_mobile\": 7058,\n      \"y_mobile\": 2427\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1b1e0b0-2b9f-44dd-b6c9-f1b9d10a5882",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3template+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64dd0525-1a51-4947-b9c0-f33ceaa5c431",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3template+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1171184f-a2f7-4561-ac23-b71c96456a7a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3template+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c350c39c-66fa-4425-b27b-c622d5c2729f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41337bb2-105d-4bb1-b1ef-4bdf2b1ac9c5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v3",
+                    "dashboards",
+                    ":id",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the dashboard"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.dashboardv3template+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.dashboardv3template+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3f041e32-97e4-4c08-a0f0-eb4f2b340d01",
+    "name": "Arduino IoT Cloud binaries_v2 dashboards_v3 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

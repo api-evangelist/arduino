@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arduino Cloud binaries_v2 Iot API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Iot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download templates/publicdocs.html",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/apidocs"
+          },
+          "docs": "Download templates/publicdocs.html"
+        },
+        {
+          "info": {
+            "name": "Download templates/docs.html",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/docs"
+          },
+          "docs": "Download templates/docs.html"
+        },
+        {
+          "info": {
+            "name": "Download swagger/public-swagger.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/public-swagger.json"
+          },
+          "docs": "Download swagger/public-swagger.json"
+        },
+        {
+          "info": {
+            "name": "Download swagger/swagger.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/iot/swagger.json"
+          },
+          "docs": "Download swagger/swagger.json"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

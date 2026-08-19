@@ -1,0 +1,108 @@
+{
+  "item": [
+    {
+      "id": "99ae59d7-67ba-439d-9296-64d56d0bca9e",
+      "name": "supported_v1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66787548-bd05-444f-8c88-4490a3feccd9",
+          "name": "devices supported_v1",
+          "request": {
+            "name": "devices supported_v1",
+            "description": {
+              "content": "Returns a list of the supported devices",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "supported",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.supporteddevicev1+json; type=collection"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ccb0bdd-6ec7-4333-83bb-d40a2005b0e5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "supported",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.supporteddevicev1+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.supporteddevicev1+json; type=collection"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"mkrwifi1010\",\n    \"label\": \"Arduino MKR WiFi 1010\",\n    \"tags\": [\n      \"lora\"\n    ],\n    \"vendor\": \"ARDUINO\",\n    \"fqbn\": \"arduino:mbed:nano33ble\",\n    \"min_provisioning_sketch_version\": \"1.0.0\",\n    \"min_provisioning_wifi_version\": \"1.0.0\",\n    \"ota_available\": true,\n    \"provisioning\": \"v2\"\n  },\n  {\n    \"type\": \"mkrwifi1010\",\n    \"label\": \"Arduino MKR WiFi 1010\",\n    \"tags\": [\n      \"lora\"\n    ],\n    \"vendor\": \"ARDUINO\",\n    \"fqbn\": \"arduino:mbed:nano33ble\",\n    \"min_provisioning_sketch_version\": \"1.0.0\",\n    \"min_provisioning_wifi_version\": \"1.0.0\",\n    \"ota_available\": true,\n    \"provisioning\": \"v2\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3caf0ecb-cb59-4118-9953-3c17e9185dd4",
+    "name": "Arduino IoT Cloud binaries_v2 supported_v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}

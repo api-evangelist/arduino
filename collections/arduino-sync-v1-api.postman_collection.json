@@ -1,0 +1,1758 @@
+{
+  "item": [
+    {
+      "id": "d9cc9e11-6b8a-430f-9aaf-ae049bc0ae68",
+      "name": "sync_v1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edcab5c6-eb80-48c8-b3a3-e5aed3f53d74",
+          "name": "list sync_v1",
+          "request": {
+            "name": "list sync_v1",
+            "description": {
+              "content": "Returns the list of sync",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.sync+json; type=collection"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "db4fdcc7-ddf9-4c11-bf57-9c02ca5317ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json; type=collection"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8b45663a-c405-0baa-9fb9-06b99d801274\",\n    \"type\": \"string\",\n    \"properties\": [\n      {\n        \"id\": \"db9b3e68-817d-7a01-9537-986d9aed5752\",\n        \"thing_id\": \"ad195134-a298-84d5-ecb9-5adec632835d\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"permission\": \"string\",\n        \"update_strategy\": \"string\",\n        \"href\": \"string\",\n        \"created_at\": \"1998-05-22T18:45:18.936Z\",\n        \"deleted_at\": \"1974-12-16T16:41:37.870Z\",\n        \"last_value\": {},\n        \"linked_to_trigger\": true,\n        \"max_value\": 5248.3257685533235,\n        \"min_value\": 7223.506738062597,\n        \"persist\": false,\n        \"sync_id\": \"29f657df-1c6f-7fa1-3922-e7158d7a953b\",\n        \"tag\": 3515,\n        \"thing_name\": \"string\",\n        \"update_parameter\": 7876.889392103996,\n        \"updated_at\": \"1954-03-13T13:06:48.216Z\",\n        \"value_updated_at\": \"2023-09-12T01:57:12.919Z\",\n        \"variable_name\": \"string\"\n      },\n      {\n        \"id\": \"35257596-f8b4-bd06-6d0b-b7ff83f2fab1\",\n        \"thing_id\": \"7b7faaf1-f84e-d982-ecb2-ee2b400a0d14\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"permission\": \"string\",\n        \"update_strategy\": \"string\",\n        \"href\": \"string\",\n        \"created_at\": \"1961-04-05T23:48:34.928Z\",\n        \"deleted_at\": \"2006-03-04T18:13:18.769Z\",\n        \"last_value\": {},\n        \"linked_to_trigger\": false,\n        \"max_value\": 9942.927126481562,\n        \"min_value\": 3394.6140207562094,\n        \"persist\": true,\n        \"sync_id\": \"627bbeb9-7de8-66ce-5760-1fb1d85fdf59\",\n        \"tag\": 6950,\n        \"thing_name\": \"string\",\n        \"update_parameter\": 6074.349669120733,\n        \"updated_at\": \"2010-05-28T15:23:04.970Z\",\n        \"value_updated_at\": \"1996-09-18T22:00:03.584Z\",\n        \"variable_name\": \"string\"\n      }\n    ],\n    \"organization_id\": \"eb3d9ef9-ec3a-114e-0b18-5397101a0709\"\n  },\n  {\n    \"id\": \"346bbec8-61ef-f909-201b-af7d6f4cd85e\",\n    \"type\": \"string\",\n    \"properties\": [\n      {\n        \"id\": \"8aadb3a4-ea0d-394e-ac9a-e248ad16e85c\",\n        \"thing_id\": \"30c01020-700f-cff4-6f20-06ae6992334f\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"permission\": \"string\",\n        \"update_strategy\": \"string\",\n        \"href\": \"string\",\n        \"created_at\": \"1980-10-02T14:50:43.168Z\",\n        \"deleted_at\": \"2017-03-07T19:57:19.098Z\",\n        \"last_value\": {},\n        \"linked_to_trigger\": false,\n        \"max_value\": 2246.1380560815246,\n        \"min_value\": 7635.145191265367,\n        \"persist\": false,\n        \"sync_id\": \"3d0702b4-af77-28f4-4d53-6c080609923c\",\n        \"tag\": 3108,\n        \"thing_name\": \"string\",\n        \"update_parameter\": 8733.992935110873,\n        \"updated_at\": \"1955-01-12T12:00:26.981Z\",\n        \"value_updated_at\": \"2002-02-25T05:13:46.381Z\",\n        \"variable_name\": \"string\"\n      },\n      {\n        \"id\": \"87f8c192-5b4e-0e38-9a7c-787abf071057\",\n        \"thing_id\": \"dd2f3bd1-8830-89e5-aaa5-8b6ce5aa1f16\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"permission\": \"string\",\n        \"update_strategy\": \"string\",\n        \"href\": \"string\",\n        \"created_at\": \"1968-05-20T21:21:13.259Z\",\n        \"deleted_at\": \"1977-09-05T14:39:09.378Z\",\n        \"last_value\": {},\n        \"linked_to_trigger\": true,\n        \"max_value\": 5318.06517321879,\n        \"min_value\": 4249.14798985832,\n        \"persist\": false,\n        \"sync_id\": \"2acca321-abdc-82d3-5be0-34b4f43f6832\",\n        \"tag\": 8776,\n        \"thing_name\": \"string\",\n        \"update_parameter\": 7766.590316268462,\n        \"updated_at\": \"2002-09-26T17:06:55.789Z\",\n        \"value_updated_at\": \"2012-08-31T06:30:12.518Z\",\n        \"variable_name\": \"string\"\n      }\n    ],\n    \"organization_id\": \"9c297beb-eb55-1e1f-7f13-3fb5b5b32fda\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28ba6314-5e77-4402-b20c-72179ef623ff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aad546d4-461c-4668-947a-31259b5b8c5f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3921b8a4-04e9-477f-9678-991253431538",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json; type=collection"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json; type=collection"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34e784d6-fa81-4c76-9850-1bd95fa107c9",
+          "name": "create sync_v1",
+          "request": {
+            "name": "create sync_v1",
+            "description": {
+              "content": "Creates a new sync",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.sync+json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                },
+                {
+                  "disabled": false,
+                  "key": "properties",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                },
+                {
+                  "disabled": false,
+                  "key": "properties",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "597bcd43-8be8-4df8-bace-a0c629317c66",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"40b9487d-15d6-1687-62fb-cece17721344\",\n  \"type\": \"string\",\n  \"properties\": [\n    {\n      \"id\": \"a17531d6-08d9-da67-d73e-f2000ee4b8f2\",\n      \"thing_id\": \"834d5cd8-25b2-18d3-8259-dfd140d4b058\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1965-12-09T04:25:29.133Z\",\n      \"deleted_at\": \"1975-01-29T03:48:32.010Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 161.5676153817114,\n      \"min_value\": 9748.91728493756,\n      \"persist\": true,\n      \"sync_id\": \"b41ce970-5661-2638-28e8-4d1b63a442ae\",\n      \"tag\": 1466,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 2728.8165088624573,\n      \"updated_at\": \"1963-02-04T14:02:13.965Z\",\n      \"value_updated_at\": \"2004-07-26T11:37:17.822Z\",\n      \"variable_name\": \"string\"\n    },\n    {\n      \"id\": \"c9ce9ea7-f067-6e0f-dd99-ed8a71b7e1d5\",\n      \"thing_id\": \"a3e97aa3-ebcf-7e03-6c4a-bd8ff423ce8c\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1958-09-18T05:11:24.732Z\",\n      \"deleted_at\": \"2020-04-07T07:58:27.778Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 4309.7837678591795,\n      \"min_value\": 8695.322285921726,\n      \"persist\": true,\n      \"sync_id\": \"0e340cfd-478a-9d8c-1d71-3ec9befe6cab\",\n      \"tag\": 8934,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 4972.300985847762,\n      \"updated_at\": \"1948-04-21T13:10:24.046Z\",\n      \"value_updated_at\": \"1985-11-28T05:44:02.118Z\",\n      \"variable_name\": \"string\"\n    }\n  ],\n  \"organization_id\": \"e0c4f645-0adc-d1a2-6eef-a1c9ede882ef\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b4b8f60-6109-4e1d-bfc9-4290ed204869",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28f61c90-b8af-4399-9509-c3c027643379",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04471739-1011-4226-a3a3-79f21c692ca6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "009e6755-fe57-4a46-bcbe-8bbbb614c073",
+              "name": "Precondition Failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b17b2953-8e5a-407e-b22d-3af247320f85",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64df31c9-de06-427a-af82-273e1b225496",
+          "name": "delete sync_v1",
+          "request": {
+            "name": "delete sync_v1",
+            "description": {
+              "content": "Removes a sync",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "sync",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the sync"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.goa.error+json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "501fb043-1de3-45ca-adbb-9cbf5b2ce342",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c14962a8-c3fd-4dee-9a66-d7c729a26776",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d14c85b0-d7f8-46f6-88b4-a36fffd445e8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d9423d3-6da2-4a93-bd5e-a7bc367752c7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.goa.error+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.goa.error+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fba6d094-e24b-4087-8258-d251280d01ed",
+          "name": "show sync_v1",
+          "request": {
+            "name": "show sync_v1",
+            "description": {
+              "content": "Returns a sync",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "sync",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the sync"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.sync+json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "8c44fc5f-c49c-4898-b7a7-f5aab07e530b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"40b9487d-15d6-1687-62fb-cece17721344\",\n  \"type\": \"string\",\n  \"properties\": [\n    {\n      \"id\": \"a17531d6-08d9-da67-d73e-f2000ee4b8f2\",\n      \"thing_id\": \"834d5cd8-25b2-18d3-8259-dfd140d4b058\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1965-12-09T04:25:29.133Z\",\n      \"deleted_at\": \"1975-01-29T03:48:32.010Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 161.5676153817114,\n      \"min_value\": 9748.91728493756,\n      \"persist\": true,\n      \"sync_id\": \"b41ce970-5661-2638-28e8-4d1b63a442ae\",\n      \"tag\": 1466,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 2728.8165088624573,\n      \"updated_at\": \"1963-02-04T14:02:13.965Z\",\n      \"value_updated_at\": \"2004-07-26T11:37:17.822Z\",\n      \"variable_name\": \"string\"\n    },\n    {\n      \"id\": \"c9ce9ea7-f067-6e0f-dd99-ed8a71b7e1d5\",\n      \"thing_id\": \"a3e97aa3-ebcf-7e03-6c4a-bd8ff423ce8c\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1958-09-18T05:11:24.732Z\",\n      \"deleted_at\": \"2020-04-07T07:58:27.778Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 4309.7837678591795,\n      \"min_value\": 8695.322285921726,\n      \"persist\": true,\n      \"sync_id\": \"0e340cfd-478a-9d8c-1d71-3ec9befe6cab\",\n      \"tag\": 8934,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 4972.300985847762,\n      \"updated_at\": \"1948-04-21T13:10:24.046Z\",\n      \"value_updated_at\": \"1985-11-28T05:44:02.118Z\",\n      \"variable_name\": \"string\"\n    }\n  ],\n  \"organization_id\": \"e0c4f645-0adc-d1a2-6eef-a1c9ede882ef\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdee3d59-eeac-47c5-b679-ded490284ae1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98b3bcca-e07d-4135-a0bf-19f58ea3e035",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf7f84fa-1634-4b31-b8dc-5066f36edb83",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42175818-ecb9-4a36-a95c-5a0ccf77edc0",
+          "name": "update sync_v1",
+          "request": {
+            "name": "update sync_v1",
+            "description": {
+              "content": "Updates a a sync",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iot",
+                "v1",
+                "sync",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the sync"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Organization",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.arduino.sync+json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                },
+                {
+                  "disabled": false,
+                  "key": "properties",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                },
+                {
+                  "disabled": false,
+                  "key": "properties",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the properties you want to sync"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c37d67d-da60-4eee-9c1f-df77f81251de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"40b9487d-15d6-1687-62fb-cece17721344\",\n  \"type\": \"string\",\n  \"properties\": [\n    {\n      \"id\": \"a17531d6-08d9-da67-d73e-f2000ee4b8f2\",\n      \"thing_id\": \"834d5cd8-25b2-18d3-8259-dfd140d4b058\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1965-12-09T04:25:29.133Z\",\n      \"deleted_at\": \"1975-01-29T03:48:32.010Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 161.5676153817114,\n      \"min_value\": 9748.91728493756,\n      \"persist\": true,\n      \"sync_id\": \"b41ce970-5661-2638-28e8-4d1b63a442ae\",\n      \"tag\": 1466,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 2728.8165088624573,\n      \"updated_at\": \"1963-02-04T14:02:13.965Z\",\n      \"value_updated_at\": \"2004-07-26T11:37:17.822Z\",\n      \"variable_name\": \"string\"\n    },\n    {\n      \"id\": \"c9ce9ea7-f067-6e0f-dd99-ed8a71b7e1d5\",\n      \"thing_id\": \"a3e97aa3-ebcf-7e03-6c4a-bd8ff423ce8c\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"permission\": \"string\",\n      \"update_strategy\": \"string\",\n      \"href\": \"string\",\n      \"created_at\": \"1958-09-18T05:11:24.732Z\",\n      \"deleted_at\": \"2020-04-07T07:58:27.778Z\",\n      \"last_value\": {},\n      \"linked_to_trigger\": false,\n      \"max_value\": 4309.7837678591795,\n      \"min_value\": 8695.322285921726,\n      \"persist\": true,\n      \"sync_id\": \"0e340cfd-478a-9d8c-1d71-3ec9befe6cab\",\n      \"tag\": 8934,\n      \"thing_name\": \"string\",\n      \"update_parameter\": 4972.300985847762,\n      \"updated_at\": \"1948-04-21T13:10:24.046Z\",\n      \"value_updated_at\": \"1985-11-28T05:44:02.118Z\",\n      \"variable_name\": \"string\"\n    }\n  ],\n  \"organization_id\": \"e0c4f645-0adc-d1a2-6eef-a1c9ede882ef\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6baf2ab6-284f-4a49-989a-7ed69ae8636b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a614b79-fd98-4cb6-9e8e-93aeb18f48f0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad21a029-1167-4253-a848-a2e980e963a1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ea0c011-268f-45e6-904a-360f5bc702f5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iot",
+                    "v1",
+                    "sync",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the sync"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-Organization",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.arduino.sync+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ID of the properties you want to sync",
+                        "type": "text/plain"
+                      },
+                      "key": "properties",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.arduino.sync+json"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalid_value\",\n  \"detail\": \"Value of ID must be an integer\",\n  \"id\": \"3F1FKVRR\",\n  \"meta\": {\n    \"timestamp\": 1458609066\n  },\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "47a7535a-615b-4b53-9439-82468f21c310",
+    "name": "Arduino IoT Cloud binaries_v2 sync_v1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides a set of endpoints to manage Devices, Things, Properties and Timeseries",
+      "type": "text/plain"
+    }
+  }
+}
