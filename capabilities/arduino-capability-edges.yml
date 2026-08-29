@@ -1,0 +1,38 @@
+slug: arduino
+provider: Arduino
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: clients_v1
+  spec_file: arduino-clients-v1-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.75
+  evidence: 'POST /iot/v1/clients/token  clients_v1#token; POST /iot/v1/clients/{id}/secret  clients_v1#regenerate;
+    schemas: ArduinoToken, ArduinoClient'
+  reason: Operations create, enable, delete and regenerate secrets for API clients and issue tokens —
+    this is the issuance and stewardship of developer/OAuth credentials for consumers of the Arduino IoT
+    Cloud public API, i.e. Developer Identity & Credential Management. Not general workforce IAM, since
+    the subject is an API client application, not an employee.
+- tag: devices_v2_webhooks
+  spec_file: arduino-devices-v2-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: PUT /iot/v2/devices/{id}/webhooks  devices_v2_webhooks#create; DELETE /iot/v2/devices/{id}/webhooks/{wid};
+    schema ArduinoDevicev2Webhook
+  reason: Create and delete of outbound webhook registrations for a device is exactly lifecycle management
+    of webhook/event subscriptions offered to platform developers. Only two operations, so 0.7 rather
+    than higher.

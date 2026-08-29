@@ -1051,6 +1051,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/arduino/refs/heads/main/examples/arduino-iot-cloud-examples.json
 common:
+  - type: CapabilityMap
+    url: capabilities/arduino-capability-edges.yml
+    name: Arduino Business Capability Map
   - type: AgenticAccess
     url: agentic-access/arduino-agentic-access.yml
   - type: DomainSecurity
