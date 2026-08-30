@@ -81,7 +81,7 @@ apis:
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
   tags:
-  - Cleanup
+  - cleanup
   tags_raw:
   - cleanup
   properties:
@@ -460,7 +460,7 @@ apis:
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
   tags:
-  - IoT
+  - Iot
   tags_raw:
   - Iot
   properties:
@@ -587,7 +587,7 @@ apis:
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
   tags:
-  - Manage
+  - manage
   tags_raw:
   - manage
   properties:
@@ -630,7 +630,7 @@ apis:
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
   tags:
-  - OTA
+  - ota
   tags_raw:
   - ota
   properties:
@@ -673,8 +673,7 @@ apis:
   description: The properties_v2 API from Arduino — 7 operation(s) for properties_v2.
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
-  tags:
-  - Properties V2
+  tags: []
   tags_raw:
   - properties_v2
   properties:
@@ -1033,8 +1032,7 @@ apis:
   description: The users_v1 API from Arduino — 3 operation(s) for users_v1.
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
-  tags:
-  - Users V1
+  tags: []
   tags_raw:
   - users_v1
   properties:
