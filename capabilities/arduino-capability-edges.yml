@@ -3,7 +3,7 @@ provider: Arduino
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Electrical Components & Equipment
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,28 +11,101 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 10
 edges:
+- tag: devices_v2_ota
+  spec_file: arduino-devices-v2-ota-api-openapi.yml
+  capability_id: BC-1950.30
+  capability_id_l1: BC-1950
+  capability_name: Over-the-Air Update Management
+  confidence: 0.95
+  evidence: 'POST /iot/v2/devices/{id}/ota  devices_v2_ota#upload; schemas: devicev2.otabinaryurl, ArduinoDevicev2Otaupload'
+  reason: Uploading and sending firmware binaries (including by URL) to a device is plainly over-the-air
+    firmware update management.
+- tag: devices_v2
+  spec_file: arduino-devices-v2-api-openapi.yml
+  capability_id: BC-1950
+  capability_id_l1: BC-1950
+  capability_name: Connected Product & Firmware Management
+  confidence: 0.85
+  evidence: PUT /iot/v2/devices/claim  devices_v2#createClaimed; GET /iot/v2/devices/{id}/properties;
+    GET /iot/v2/devices/{id}/properties/{pid}  devices_v2#timeseries
+  reason: Core CRUD plus claiming, event and property/timeseries retrieval for IoT devices in the field
+    — the operational lifecycle of connected products. Spans provisioning and telemetry, so only the L1
+    is asserted.
+- tag: devices_v2_certs
+  spec_file: arduino-devices-v2-certs-api-openapi.yml
+  capability_id: BC-1950.10
+  capability_id_l1: BC-1950
+  capability_name: Device Identity & Provisioning Management
+  confidence: 0.85
+  evidence: 'PUT /iot/v2/devices/{id}/certs  devices_v2_certs#create; schemas: ArduinoDevicev2Cert, devicev2.cert'
+  reason: Issuance, inspection, checking and revocation of per-device certificates is device identity
+    and cryptographic credential lifecycle for connected products.
+- tag: devices_v2_pubkeys
+  spec_file: arduino-devices-v2-pubkeys-api-openapi.yml
+  capability_id: BC-1950.10
+  capability_id_l1: BC-1950
+  capability_name: Device Identity & Provisioning Management
+  confidence: 0.85
+  evidence: 'PUT /iot/v2/devices/{id}/pubkeys  devices_v2_pubkeys#create; schemas: ArduinoDevicev2Pubkey,
+    devicev2.pubkey'
+  reason: Lifecycle of per-device public keys is issuance and stewardship of device cryptographic credentials.
+- tag: lora_gw_v1
+  spec_file: arduino-lora-gw-v1-api-openapi.yml
+  capability_id: BC-1950.70
+  capability_id_l1: BC-1950
+  capability_name: Edge & Gateway Operations Management
+  confidence: 0.8
+  evidence: PUT /iot/v1/lora-gw/ create lora_gw_v1; POST /iot/v1/lora-gw/{id}/claim claim lora_gw_v1
+  reason: Create/delete/claim/unclaim of LoRa gateways is lifecycle operation of field gateway devices,
+    matching Edge & Gateway Operations Management.
+- tag: properties_v2
+  spec_file: arduino-properties-v2-api-openapi.yml
+  capability_id: BC-1950.40
+  capability_id_l1: BC-1950
+  capability_name: Device Telemetry & Connectivity Management
+  confidence: 0.8
+  evidence: PUT /iot/v2/things/{id}/properties/{pid}/publish publish properties_v2; GET .../timeseries;
+    schema TimeseriesDataPoint
+  reason: Publishing and reading device property values and their timeseries is telemetry ingestion and
+    state management for connected products.
+- tag: thing_properties_v1
+  spec_file: arduino-thing-properties-v1-api-openapi.yml
+  capability_id: BC-1950.40
+  capability_id_l1: BC-1950
+  capability_name: Device Telemetry & Connectivity Management
+  confidence: 0.8
+  evidence: GET /iot/v1/things/{id}/properties/{pid}/timeseries  thing_properties_v1#timeseries; PUT /iot/v1/things/publish/raw_cbor  publishRaw;
+    schemas TimeseriesDataPoint, propertyValues
+  reason: Publishing and reading device property values and their time series is telemetry ingestion and
+    retrieval for connected products, matching Device Telemetry & Connectivity Management.
 - tag: clients_v1
   spec_file: arduino-clients-v1-api-openapi.yml
   capability_id: BC-4270.40
   capability_id_l1: BC-4270
   capability_name: Developer Identity & Credential Management
-  confidence: 0.75
-  evidence: 'POST /iot/v1/clients/token  clients_v1#token; POST /iot/v1/clients/{id}/secret  clients_v1#regenerate;
-    schemas: ArduinoToken, ArduinoClient'
-  reason: Operations create, enable, delete and regenerate secrets for API clients and issue tokens —
-    this is the issuance and stewardship of developer/OAuth credentials for consumers of the Arduino IoT
-    Cloud public API, i.e. Developer Identity & Credential Management. Not general workforce IAM, since
-    the subject is an API client application, not an employee.
-- tag: devices_v2_webhooks
-  spec_file: arduino-devices-v2-webhooks-api-openapi.yml
-  capability_id: BC-4270.80
-  capability_id_l1: BC-4270
-  capability_name: Webhook & Event Subscription Management
   confidence: 0.7
-  evidence: PUT /iot/v2/devices/{id}/webhooks  devices_v2_webhooks#create; DELETE /iot/v2/devices/{id}/webhooks/{wid};
-    schema ArduinoDevicev2Webhook
-  reason: Create and delete of outbound webhook registrations for a device is exactly lifecycle management
-    of webhook/event subscriptions offered to platform developers. Only two operations, so 0.7 rather
-    than higher.
+  evidence: 'POST /iot/v1/clients/token  clients_v1#token; POST /iot/v1/clients/{id}/secret  clients_v1#regenerate;
+    schemas: client, ArduinoToken, ArduinoClient'
+  reason: Lifecycle of API client credentials (create/enable/delete clients, issue tokens, regenerate
+    secrets) for developers integrating with the Arduino Cloud API — developer credential and OAuth client
+    stewardship rather than end-user IAM.
+- tag: devices_v2_pass
+  spec_file: arduino-devices-v2-pass-api-openapi.yml
+  capability_id: BC-1950.10
+  capability_id_l1: BC-1950
+  capability_name: Device Identity & Provisioning Management
+  confidence: 0.7
+  evidence: 'PUT /iot/v2/devices/{id}/pass  devices_v2_pass#set; schemas: devicev2.pass, ArduinoDevicev2Pass'
+  reason: Set/check/delete of a per-device secret is device credential lifecycle for connected products
+    rather than enterprise IAM; sub-capability inferred from the credential nature.
+- tag: lora_devices_v1
+  spec_file: arduino-lora-devices-v1-api-openapi.yml
+  capability_id: BC-1950.10
+  capability_id_l1: BC-1950
+  capability_name: Device Identity & Provisioning Management
+  confidence: 0.7
+  evidence: 'PUT /iot/v1/lora-devices/  lora_devices_v1#create; schemas: ArduinoLoradevicev1, CreateLoraDevicesV1Payload'
+  reason: Single operation registering a LoRa device into the cloud — device onboarding/provisioning for
+    connected products. Thin surface, so moderate confidence.
