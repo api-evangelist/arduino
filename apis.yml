@@ -949,7 +949,7 @@ apis:
   humanURL: https://docs.arduino.cc/arduino-cloud/api/arduino-iot-api/
   baseURL: https://api2.arduino.cc/iot/v1
   tags:
-  - Timezones
+  - Timezone
   tags_raw:
   - timezones
   properties:
