@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 10
+edge_count: 11
 edges:
 - tag: devices_v2_ota
   spec_file: arduino-devices-v2-ota-api-openapi.yml
@@ -100,6 +100,18 @@ edges:
   evidence: 'PUT /iot/v2/devices/{id}/pass  devices_v2_pass#set; schemas: devicev2.pass, ArduinoDevicev2Pass'
   reason: Set/check/delete of a per-device secret is device credential lifecycle for connected products
     rather than enterprise IAM; sub-capability inferred from the credential nature.
+- tag: devices_v2_webhooks
+  spec_file: arduino-devices-v2-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: PUT /iot/v2/devices/{id}/webhooks  devices_v2_webhooks#create; DELETE /iot/v2/devices/{id}/webhooks/{wid};
+    schema ArduinoDevicev2Webhook
+  reason: Create and delete of outbound webhook registrations for a device is exactly lifecycle management
+    of webhook/event subscriptions offered to platform developers. Only two operations, so 0.7 rather
+    than higher.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: lora_devices_v1
   spec_file: arduino-lora-devices-v1-api-openapi.yml
   capability_id: BC-1950.10
