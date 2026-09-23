@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 users_v1 API
+  title: Arduino IoT Cloud Users V1 API
   version: '2.0'
 tags:
-- name: users_v1
+- name: Users V1
 paths:
   /iot/v1/users/byEmail/{email}:
     get:
@@ -50,7 +50,7 @@ paths:
           description: Internal Server Error
       summary: verifyEmail users_v1
       tags:
-      - users_v1
+      - Users V1
   /iot/v1/users/byId/{user_id}:
     get:
       description: Get user by ID
@@ -94,7 +94,7 @@ paths:
           description: Internal Server Error
       summary: getByID users_v1
       tags:
-      - users_v1
+      - Users V1
   /iot/v1/users/byUsername/{username}:
     get:
       description: Returns a list of users that matches the username provided
@@ -139,7 +139,7 @@ paths:
           description: Internal Server Error
       summary: byUsername users_v1
       tags:
-      - users_v1
+      - Users V1
 components:
   schemas:
     error:

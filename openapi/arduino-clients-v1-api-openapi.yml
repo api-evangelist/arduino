@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 clients_v1 API
+  title: Arduino IoT Cloud Clients V1 API
   version: '2.0'
 tags:
 - name: clients_v1
@@ -438,40 +438,14 @@ components:
       - expires_in
       title: 'Mediatype identifier: application/vnd.arduino.token+json; view=default'
       type: object
-    ArduinoClient:
-      description: ArduinoClient media type (default view)
+    enableclient:
       properties:
-        created_at:
-          description: Creation time
-          format: date-time
-          type: string
-        id:
-          description: The client_id of the client
-          type: string
-        name:
-          description: The friendly name of the client
-          type: string
-        secret:
-          description: The client_secret of the client
-          type: string
+        enabled:
+          description: Enable or disable a client
+          type: boolean
       required:
-      - id
-      - name
-      - secret
-      - created_at
-      title: 'Mediatype identifier: application/vnd.arduino.client+json; view=default'
-      type: object
-    client:
-      description: ClientPayload describes an oauth client
-      properties:
-        name:
-          description: The name of the client
-          maxLength: 64
-          pattern: ^[a-zA-Z0-9_.@-]+$
-          type: string
-      required:
-      - name
-      title: client
+      - enabled
+      title: enableclient
       type: object
     token:
       description: TokenPayload describes a request to obtain a jwt token
@@ -507,21 +481,47 @@ components:
       - client_secret
       title: token
       type: object
-    enableclient:
-      properties:
-        enabled:
-          description: Enable or disable a client
-          type: boolean
-      required:
-      - enabled
-      title: enableclient
-      type: object
     ArduinoClientCollection:
       description: ArduinoClientCollection is the media type for an array of ArduinoClient (default view)
       items:
         $ref: '#/components/schemas/ArduinoClient'
       title: 'Mediatype identifier: application/vnd.arduino.client+json; type=collection; view=default'
       type: array
+    client:
+      description: ClientPayload describes an oauth client
+      properties:
+        name:
+          description: The name of the client
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_.@-]+$
+          type: string
+      required:
+      - name
+      title: client
+      type: object
+    ArduinoClient:
+      description: ArduinoClient media type (default view)
+      properties:
+        created_at:
+          description: Creation time
+          format: date-time
+          type: string
+        id:
+          description: The client_id of the client
+          type: string
+        name:
+          description: The friendly name of the client
+          type: string
+        secret:
+          description: The client_secret of the client
+          type: string
+      required:
+      - id
+      - name
+      - secret
+      - created_at
+      title: 'Mediatype identifier: application/vnd.arduino.client+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:

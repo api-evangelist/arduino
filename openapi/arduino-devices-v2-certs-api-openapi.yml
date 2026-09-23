@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 devices_v2_certs API
+  title: Arduino IoT Cloud Devices V2 Certs API
   version: '2.0'
 tags:
 - description: Provides a set of endpoints to manage the certs of a device
@@ -368,6 +368,39 @@ paths:
       - devices_v2_certs
 components:
   schemas:
+    CheckDevicesV2CertsPayload:
+      description: A PEM certificate
+      properties:
+        pem:
+          description: The certificate in pem format
+          example: "-----BEGIN CERTIFICATE-----\n\t\t\tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO\n\t\t\t3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX\n\t\t\t7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS\n\t\t\tj+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd\n\t\t\tOrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ\n\t\t\t5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl\n\t\t\tFQIDAQAB\n\t\t\t-----END CERTIFICATE-----"
+          maxLength: 512
+          type: string
+      required:
+      - pem
+      title: CheckDevicesV2CertsPayload
+      type: object
+    devicev2.cert:
+      properties:
+        ca:
+          description: The Certification Authority you want to use
+          type: string
+        csr:
+          description: The certificate request in pem format
+          example: "-----BEGIN CERTIFICATE-----\n\t\t\tMIIBeDCCAR4CAQAwgY0xCzAJBgNVBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRl\n\t\t\tMQ8wDQYDVQQHEwZNeUNpdHkxFDASBgNVBAoTC0NvbXBhbnkgTHRkMQswCQYDVQQL\n\t\t\tEwJJVDEUMBIGA1UEAxMLZXhhbXBsZS5jb20xHzAdBgkqhkiG9w0BCQEMEHRlc3RA\n\t\t\tZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATf6J9Gk79XGJ2I\n\t\t\t+v6p/r0UmPufUcUwtlx7gx87+DaI8Vpj9R5KN71HsHYw5uq+Lm0cr0CZIdtZU4cP\n\t\t\tupd6jDQToC4wLAYJKoZIhvcNAQkOMR8wHTAbBgNVHREEFDASgRB0ZXN0QGV4YW1w\n\t\t\tbGUuY29tMAoGCCqGSM49BAMCA0gAMEUCIGQqtlGzYdjPwYZYJ41albMBcdrKI7+8\n\t\t\toiNSNWyDxJSGAiEAqQPPxMdr6vaXCCjr5s1J01WLKHzGoPFCR40rqAPs8eQ=\n\t\t\t-----END CERTIFICATE-----\n\t\t\t"
+          maxLength: 1024
+          type: string
+        enabled:
+          description: Whether the certificate is enabled
+          type: boolean
+      title: devicev2.cert
+      type: object
+    ArduinoDevicev2CertCollection:
+      description: ArduinoDevicev2CertCollection is the media type for an array of ArduinoDevicev2Cert (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Cert'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.cert+json; type=collection; view=default'
+      type: array
     ArduinoDevicev2Cert:
       description: DeviceCertV2 describes a certificate associated to the device (default view)
       properties:
@@ -427,21 +460,6 @@ components:
       - csr
       title: CreateDevicesV2CertsPayload
       type: object
-    devicev2.cert:
-      properties:
-        ca:
-          description: The Certification Authority you want to use
-          type: string
-        csr:
-          description: The certificate request in pem format
-          example: "-----BEGIN CERTIFICATE-----\n\t\t\tMIIBeDCCAR4CAQAwgY0xCzAJBgNVBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRl\n\t\t\tMQ8wDQYDVQQHEwZNeUNpdHkxFDASBgNVBAoTC0NvbXBhbnkgTHRkMQswCQYDVQQL\n\t\t\tEwJJVDEUMBIGA1UEAxMLZXhhbXBsZS5jb20xHzAdBgkqhkiG9w0BCQEMEHRlc3RA\n\t\t\tZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATf6J9Gk79XGJ2I\n\t\t\t+v6p/r0UmPufUcUwtlx7gx87+DaI8Vpj9R5KN71HsHYw5uq+Lm0cr0CZIdtZU4cP\n\t\t\tupd6jDQToC4wLAYJKoZIhvcNAQkOMR8wHTAbBgNVHREEFDASgRB0ZXN0QGV4YW1w\n\t\t\tbGUuY29tMAoGCCqGSM49BAMCA0gAMEUCIGQqtlGzYdjPwYZYJ41albMBcdrKI7+8\n\t\t\toiNSNWyDxJSGAiEAqQPPxMdr6vaXCCjr5s1J01WLKHzGoPFCR40rqAPs8eQ=\n\t\t\t-----END CERTIFICATE-----\n\t\t\t"
-          maxLength: 1024
-          type: string
-        enabled:
-          description: Whether the certificate is enabled
-          type: boolean
-      title: devicev2.cert
-      type: object
     ArduinoCompressedv2:
       description: compressed contains the info from which to generate the certificate (default view)
       properties:
@@ -477,24 +495,6 @@ components:
       - signature_asn1_y
       title: 'Mediatype identifier: application/vnd.arduino.compressedv2; view=default'
       type: object
-    CheckDevicesV2CertsPayload:
-      description: A PEM certificate
-      properties:
-        pem:
-          description: The certificate in pem format
-          example: "-----BEGIN CERTIFICATE-----\n\t\t\tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO\n\t\t\t3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX\n\t\t\t7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS\n\t\t\tj+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd\n\t\t\tOrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ\n\t\t\t5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl\n\t\t\tFQIDAQAB\n\t\t\t-----END CERTIFICATE-----"
-          maxLength: 512
-          type: string
-      required:
-      - pem
-      title: CheckDevicesV2CertsPayload
-      type: object
-    ArduinoDevicev2CertCollection:
-      description: ArduinoDevicev2CertCollection is the media type for an array of ArduinoDevicev2Cert (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2Cert'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.cert+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:

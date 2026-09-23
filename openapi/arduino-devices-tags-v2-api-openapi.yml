@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 devices_tags_v2 API
+  title: Arduino IoT Cloud Devices Tags V2 API
   version: '2.0'
 tags:
 - name: devices_tags_v2

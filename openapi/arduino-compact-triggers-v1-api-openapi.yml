@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 compact_triggers_v1 API
+  title: Arduino IoT Cloud Compact Triggers V1 API
   version: '2.0'
 tags:
 - name: compact_triggers_v1
@@ -91,50 +91,6 @@ paths:
       - compact_triggers_v1
 components:
   schemas:
-    variable:
-      properties:
-        attribute:
-          description: The template expression that extracts the value from the respective entity
-          enum:
-          - ID
-          - NAME
-          - VALUE
-          - TIMESTAMP
-          - USERNAME
-          - EMAIL
-          - STATUS
-          example: PROPERTY
-          type: string
-        entity:
-          description: Type of the entity being referenced
-          enum:
-          - RECIPIENT
-          - USER
-          - DEVICE
-          - THING
-          - PROPERTY
-          - TRIGGERING_DEVICE
-          example: PROPERTY
-          type: string
-        id:
-          description: The ID of the referenced entity
-          format: uuid
-          type: string
-        placeholder:
-          description: Name of the variable as referenced by the expression
-          type: string
-        property_id:
-          description: The ID of the property referenced entity
-          type: string
-        thing_id:
-          description: The ID of the thing referenced entity
-          type: string
-      required:
-      - placeholder
-      - entity
-      - attribute
-      title: variable
-      type: object
     ArduinoCompact_trigger:
       description: ArduinoCompact_trigger media type (default view)
       properties:
@@ -186,50 +142,17 @@ components:
       - name
       title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; view=default'
       type: object
-    push_delivery_opts:
-      properties:
-        to:
-          description: The recipient of a push notification
-          items:
-            $ref: '#/components/schemas/user_recipient'
-          minItems: 1
-          type: array
-      required:
-      - to
-      title: push_delivery_opts
-      type: object
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    body_expression:
+    ArduinoCompact_triggerCollection:
+      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_trigger'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
+      type: array
+    title_expression:
       properties:
         expression:
-          description: Content of the body of a message, variables are allowed
-          maxLength: 1000
+          description: Content of the title (or subject) of a message, variables are allowed
+          maxLength: 100
           type: string
         variables:
           description: Variables used by the expression
@@ -238,7 +161,79 @@ components:
           type: array
       required:
       - expression
-      title: body_expression
+      title: title_expression
+      type: object
+    variable:
+      properties:
+        attribute:
+          description: The template expression that extracts the value from the respective entity
+          enum:
+          - ID
+          - NAME
+          - VALUE
+          - TIMESTAMP
+          - USERNAME
+          - EMAIL
+          - STATUS
+          example: PROPERTY
+          type: string
+        entity:
+          description: Type of the entity being referenced
+          enum:
+          - RECIPIENT
+          - USER
+          - DEVICE
+          - THING
+          - PROPERTY
+          - TRIGGERING_DEVICE
+          example: PROPERTY
+          type: string
+        id:
+          description: The ID of the referenced entity
+          format: uuid
+          type: string
+        placeholder:
+          description: Name of the variable as referenced by the expression
+          type: string
+        property_id:
+          description: The ID of the property referenced entity
+          type: string
+        thing_id:
+          description: The ID of the thing referenced entity
+          type: string
+      required:
+      - placeholder
+      - entity
+      - attribute
+      title: variable
+      type: object
+    push_action:
+      properties:
+        body:
+          $ref: '#/components/schemas/body_expression'
+        delivery:
+          $ref: '#/components/schemas/push_delivery_opts'
+        title:
+          $ref: '#/components/schemas/title_expression'
+      required:
+      - delivery
+      - title
+      - body
+      title: push_action
+      type: object
+    email_action:
+      properties:
+        body:
+          $ref: '#/components/schemas/body_expression'
+        delivery:
+          $ref: '#/components/schemas/email_delivery_opts'
+        subject:
+          $ref: '#/components/schemas/title_expression'
+      required:
+      - delivery
+      - subject
+      - body
+      title: email_action
       type: object
     email_delivery_opts:
       properties:
@@ -261,6 +256,37 @@ components:
       required:
       - to
       title: email_delivery_opts
+      type: object
+    body_expression:
+      properties:
+        expression:
+          description: Content of the body of a message, variables are allowed
+          maxLength: 1000
+          type: string
+        variables:
+          description: Variables used by the expression
+          items:
+            $ref: '#/components/schemas/variable'
+          type: array
+      required:
+      - expression
+      title: body_expression
+      type: object
+    user_recipient:
+      properties:
+        email:
+          description: The email address of the user
+          type: string
+        id:
+          description: The id of the user
+          format: uuid
+          type: string
+        username:
+          description: The username of the user
+          type: string
+      required:
+      - id
+      title: user_recipient
       type: object
     ArduinoAction:
       description: ArduinoAction media type (default view)
@@ -300,6 +326,18 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.arduino.action+json; view=default'
       type: object
+    push_delivery_opts:
+      properties:
+        to:
+          description: The recipient of a push notification
+          items:
+            $ref: '#/components/schemas/user_recipient'
+          minItems: 1
+          type: array
+      required:
+      - to
+      title: push_delivery_opts
+      type: object
     device_status_source:
       properties:
         criteria:
@@ -328,71 +366,33 @@ components:
       - criteria
       title: device_status_source
       type: object
-    user_recipient:
+    error:
+      description: Error response media type (default view)
       properties:
-        email:
-          description: The email address of the user
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
           type: string
         id:
-          description: The id of the user
-          format: uuid
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
           type: string
-        username:
-          description: The username of the user
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
           type: string
-      required:
-      - id
-      title: user_recipient
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    email_action:
-      properties:
-        body:
-          $ref: '#/components/schemas/body_expression'
-        delivery:
-          $ref: '#/components/schemas/email_delivery_opts'
-        subject:
-          $ref: '#/components/schemas/title_expression'
-      required:
-      - delivery
-      - subject
-      - body
-      title: email_action
-      type: object
-    push_action:
-      properties:
-        body:
-          $ref: '#/components/schemas/body_expression'
-        delivery:
-          $ref: '#/components/schemas/push_delivery_opts'
-        title:
-          $ref: '#/components/schemas/title_expression'
-      required:
-      - delivery
-      - title
-      - body
-      title: push_action
-      type: object
-    title_expression:
-      properties:
-        expression:
-          description: Content of the title (or subject) of a message, variables are allowed
-          maxLength: 100
-          type: string
-        variables:
-          description: Variables used by the expression
-          items:
-            $ref: '#/components/schemas/variable'
-          type: array
-      required:
-      - expression
-      title: title_expression
-      type: object
-    ArduinoCompact_triggerCollection:
-      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_trigger'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

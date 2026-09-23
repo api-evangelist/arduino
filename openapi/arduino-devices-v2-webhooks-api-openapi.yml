@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 devices_v2_webhooks API
+  title: Arduino IoT Cloud Devices V2 Webhooks API
   version: '2.0'
 tags:
 - name: devices_v2_webhooks
@@ -119,19 +119,25 @@ paths:
       - devices_v2_webhooks
 components:
   schemas:
-    devicev2.webhook:
+    ArduinoDevicev2Webhook:
+      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
       properties:
         active:
           default: true
           description: Whether the webhook is active
           type: boolean
+        id:
+          description: The uuid of the webhook
+          format: uuid
+          type: string
         uri:
           description: The uri of the webhook
           format: uri
           type: string
       required:
+      - id
       - uri
-      title: devicev2.webhook
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
       type: object
     error:
       description: Error response media type (default view)
@@ -160,25 +166,19 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    ArduinoDevicev2Webhook:
-      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
+    devicev2.webhook:
       properties:
         active:
           default: true
           description: Whether the webhook is active
           type: boolean
-        id:
-          description: The uuid of the webhook
-          format: uuid
-          type: string
         uri:
           description: The uri of the webhook
           format: uri
           type: string
       required:
-      - id
       - uri
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
+      title: devicev2.webhook
       type: object
 externalDocs:
   description: See docs on Confluence

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 API
+  title: Arduino IoT Cloud Binaries V2 API
   version: '2.0'
 tags:
 - name: binaries_v2
@@ -69,32 +69,6 @@ paths:
       - binaries_v2
 components:
   schemas:
-    ArduinoBinary:
-      description: ArduinoBinary media type (default view)
-      properties:
-        bin:
-          description: The BASE64 encoded binary file
-          type: string
-        filename:
-          description: The binary filename
-          type: string
-        fqbn:
-          description: The FQBN of the board the binary run to
-          type: string
-        name:
-          description: The sketch name
-          type: string
-        sha256:
-          description: The md5 hash of the binary file
-          type: string
-      required:
-      - name
-      - filename
-      - bin
-      - fqbn
-      - sha256
-      title: 'Mediatype identifier: application/vnd.arduino.binary+json; view=default'
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -121,6 +95,32 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoBinary:
+      description: ArduinoBinary media type (default view)
+      properties:
+        bin:
+          description: The BASE64 encoded binary file
+          type: string
+        filename:
+          description: The binary filename
+          type: string
+        fqbn:
+          description: The FQBN of the board the binary run to
+          type: string
+        name:
+          description: The sketch name
+          type: string
+        sha256:
+          description: The md5 hash of the binary file
+          type: string
+      required:
+      - name
+      - filename
+      - bin
+      - fqbn
+      - sha256
+      title: 'Mediatype identifier: application/vnd.arduino.binary+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

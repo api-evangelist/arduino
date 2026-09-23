@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 cleanup API
+  title: Arduino IoT Cloud Cleanup API
   version: '2.0'
 tags:
-- name: cleanup
+- name: Cleanup
 paths:
   /iot/v1/cleanup:
     post:
@@ -15,7 +15,7 @@ paths:
           description: OK
       summary: iot cleanup
       tags:
-      - cleanup
+      - Cleanup
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

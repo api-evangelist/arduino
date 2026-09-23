@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 things_v1_tags API
+  title: Arduino IoT Cloud Things V1 Tags API
   version: '2.0'
 tags:
 - name: things_v1_tags
@@ -193,17 +193,6 @@ paths:
       - things_v1_tags
 components:
   schemas:
-    ArduinoTags:
-      description: ArduinoTags media type (default view)
-      properties:
-        tags:
-          items:
-            $ref: '#/components/schemas/tag'
-          type: array
-      required:
-      - tags
-      title: 'Mediatype identifier: application/vnd.arduino.tags+json; view=default'
-      type: object
     tag:
       properties:
         key:
@@ -220,6 +209,17 @@ components:
       - key
       - value
       title: tag
+      type: object
+    ArduinoTags:
+      description: ArduinoTags media type (default view)
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/tag'
+          type: array
+      required:
+      - tags
+      title: 'Mediatype identifier: application/vnd.arduino.tags+json; view=default'
       type: object
     error:
       description: Error response media type (default view)

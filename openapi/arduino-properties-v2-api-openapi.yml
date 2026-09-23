@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 properties_v2 API
+  title: Arduino IoT Cloud Properties V2 API
   version: '2.0'
 tags:
-- name: properties_v2
+- name: Properties V2
 paths:
   /iot/v2/things/publish/raw_cbor:
     put:
@@ -63,7 +63,7 @@ paths:
       - oauth2: []
       summary: publishRaw properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/properties:
     get:
       description: Returns the list of properties associated to the thing
@@ -127,7 +127,7 @@ paths:
       - oauth2: []
       summary: list properties_v2
       tags:
-      - properties_v2
+      - Properties V2
     put:
       description: Creates a new property associated to a thing
       operationId: properties_v2#create
@@ -206,7 +206,7 @@ paths:
       - oauth2: []
       summary: create properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/properties/{pid}:
     delete:
       description: Removes a property associated to a thing
@@ -262,7 +262,7 @@ paths:
       - oauth2: []
       summary: delete properties_v2
       tags:
-      - properties_v2
+      - Properties V2
     get:
       description: Returns the property requested by the user
       operationId: properties_v2#show
@@ -331,7 +331,7 @@ paths:
       - oauth2: []
       summary: show properties_v2
       tags:
-      - properties_v2
+      - Properties V2
     post:
       description: Updates a property associated to a thing
       operationId: properties_v2#update
@@ -414,7 +414,7 @@ paths:
       - oauth2: []
       summary: update properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/properties/{pid}/publish:
     put:
       description: Publish a property value to MQTT
@@ -484,7 +484,7 @@ paths:
       - oauth2: []
       summary: publish properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/properties/{pid}/publish_batch:
     put:
       description: Publish a property's array of values to MQTT
@@ -553,7 +553,7 @@ paths:
       - oauth2: []
       summary: publishBatch properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/properties/{pid}/timeseries:
     get:
       description: 'Get numerical property''s historic data binned on a specified time interval (note: the total number of data points should NOT be greater than 1000 otherwise the result will be truncated)'
@@ -659,7 +659,7 @@ paths:
       - oauth2: []
       summary: timeseries properties_v2
       tags:
-      - properties_v2
+      - Properties V2
   /iot/v2/things/{id}/publish:
     put:
       description: Publish property values to MQTT
@@ -722,9 +722,35 @@ paths:
       - oauth2: []
       summary: publishMulti properties_v2
       tags:
-      - properties_v2
+      - Properties V2
 components:
   schemas:
+    PublishBatchPropertiesV2Payload:
+      items:
+        $ref: '#/components/schemas/propertyTimedValue'
+      title: PublishBatchPropertiesV2Payload
+      type: array
+    rawPropertyValues:
+      description: PropertyValuePayload describes a property value
+      properties:
+        device_id:
+          description: The device that sends the property
+          format: uuid
+          type: string
+        payload:
+          description: The property value in raw format (CBOR) base64 encoded
+          maxLength: 131072
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+        to_device:
+          default: false
+          description: Handle data direction, simulating data from or to device (default false - data sent by device)
+          type: boolean
+      required:
+      - payload
+      - device_id
+      title: rawPropertyValues
+      type: object
     ArduinoTimeseriesmedia:
       description: ArduinoTimeseriesmedia media type (default view)
       properties:
@@ -748,6 +774,92 @@ components:
       required:
       - value
       title: propertyValue
+      type: object
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
       type: object
     property:
       description: PropertyPayload describes a property of a thing. No field is mandatory
@@ -935,21 +1047,37 @@ components:
       - update_strategy
       title: property
       type: object
-    propertyValues:
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
+    propertyDefinition:
       properties:
-        properties:
-          description: The set of properties to publish
-          items:
-            $ref: '#/components/schemas/propertyDefinition'
-          minItems: 1
-          type: array
-        to_device:
-          default: false
-          description: Handle data direction, simulating data from or to device (default false - data sent by device)
-          type: boolean
+        property:
+          description: Property name
+          type: string
+        value:
+          description: The property value
       required:
-      - properties
-      title: propertyValues
+      - property
+      - value
+      title: propertyDefinition
+      type: object
+    propertyTimedValue:
+      description: PropertyValuePayload describes a property value
+      properties:
+        timestamp:
+          description: The timestamp of the property value
+          format: date-time
+          type: string
+        value:
+          description: The property value
+      required:
+      - timestamp
+      - value
+      title: propertyTimedValue
       type: object
     TimeseriesDataPoint:
       properties:
@@ -966,149 +1094,21 @@ components:
       - value
       title: TimeseriesDataPoint
       type: object
-    PublishBatchPropertiesV2Payload:
-      items:
-        $ref: '#/components/schemas/propertyTimedValue'
-      title: PublishBatchPropertiesV2Payload
-      type: array
-    ArduinoPropertyCollection:
-      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoProperty'
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
-      type: array
-    propertyTimedValue:
-      description: PropertyValuePayload describes a property value
+    propertyValues:
       properties:
-        timestamp:
-          description: The timestamp of the property value
-          format: date-time
-          type: string
-        value:
-          description: The property value
-      required:
-      - timestamp
-      - value
-      title: propertyTimedValue
-      type: object
-    rawPropertyValues:
-      description: PropertyValuePayload describes a property value
-      properties:
-        device_id:
-          description: The device that sends the property
-          format: uuid
-          type: string
-        payload:
-          description: The property value in raw format (CBOR) base64 encoded
-          maxLength: 131072
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
+        properties:
+          description: The set of properties to publish
+          items:
+            $ref: '#/components/schemas/propertyDefinition'
+          minItems: 1
+          type: array
         to_device:
           default: false
           description: Handle data direction, simulating data from or to device (default false - data sent by device)
           type: boolean
       required:
-      - payload
-      - device_id
-      title: rawPropertyValues
-      type: object
-    ArduinoProperty:
-      description: ArduinoProperty media type (default view)
-      properties:
-        created_at:
-          description: Creation date of the property
-          format: date-time
-          type: string
-        deleted_at:
-          description: Delete date of the property
-          format: date-time
-          type: string
-        href:
-          description: The api reference of this property
-          type: string
-        id:
-          description: The id of the property
-          format: uuid
-          type: string
-        last_value:
-          description: Last value of this property
-        linked_to_trigger:
-          description: Indicates if the property is involved in the activation of at least a trigger
-          type: boolean
-        max_value:
-          description: Maximum value of this property
-          format: double
-          type: number
-        min_value:
-          description: Minimum value of this property
-          format: double
-          type: number
-        name:
-          description: The friendly name of the property
-          type: string
-        permission:
-          description: The permission of the property
-          type: string
-        persist:
-          description: If true, data will persist into a timeseries database
-          type: boolean
-        sync_id:
-          description: The id of the sync pool
-          format: uuid
-          type: string
-        tag:
-          description: The integer id of the property
-          format: int64
-          type: integer
-        thing_id:
-          description: The id of the thing
-          format: uuid
-          type: string
-        thing_name:
-          description: The name of the associated thing
-          type: string
-        type:
-          description: The type of the property
-          type: string
-        update_parameter:
-          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
-          format: double
-          type: number
-        update_strategy:
-          description: The update strategy for the property value
-          type: string
-        updated_at:
-          description: Update date of the property
-          format: date-time
-          type: string
-        value_updated_at:
-          description: Last update timestamp of this property
-          format: date-time
-          type: string
-        variable_name:
-          description: The sketch variable name of the property
-          type: string
-      required:
-      - id
-      - thing_id
-      - name
-      - type
-      - permission
-      - update_strategy
-      - href
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
-      type: object
-    propertyDefinition:
-      properties:
-        property:
-          description: Property name
-          type: string
-        value:
-          description: The property value
-      required:
-      - property
-      - value
-      title: propertyDefinition
+      - properties
+      title: propertyValues
       type: object
     error:
       description: Error response media type (default view)

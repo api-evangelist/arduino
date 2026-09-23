@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 devices_v2_pass API
+  title: Arduino IoT Cloud Devices V2 Pass API
   version: '2.0'
 tags:
 - description: Provides a set of endpoints to manage the password of a device
@@ -223,18 +223,14 @@ paths:
       - devices_v2_pass
 components:
   schemas:
-    ArduinoDevicev2Pass:
-      description: DeviceCertV2 describes a password associated to a device (default view)
+    CheckDevicesV2PassPayload:
       properties:
-        set:
-          description: Whether the password is set or not
-          type: boolean
-        suggested_password:
-          description: A random suggested password
+        password:
+          description: The password for the device
           type: string
       required:
-      - set
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
+      - password
+      title: CheckDevicesV2PassPayload
       type: object
     devicev2.pass:
       properties:
@@ -270,14 +266,18 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    CheckDevicesV2PassPayload:
+    ArduinoDevicev2Pass:
+      description: DeviceCertV2 describes a password associated to a device (default view)
       properties:
-        password:
-          description: The password for the device
+        set:
+          description: Whether the password is set or not
+          type: boolean
+        suggested_password:
+          description: A random suggested password
           type: string
       required:
-      - password
-      title: CheckDevicesV2PassPayload
+      - set
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

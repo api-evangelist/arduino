@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 series_v2 API
+  title: Arduino IoT Cloud Series V2 API
   version: '2.0'
 tags:
 - name: series_v2
@@ -348,200 +348,6 @@ paths:
       - series_v2
 components:
   schemas:
-    ArduinoSeriesRawLastValueResponse:
-      description: ArduinoSeriesRawLastValueResponse media type (default view)
-      properties:
-        count_values:
-          description: Total number of values in the array 'values'
-          format: int64
-          type: integer
-        property_id:
-          description: Property id
-          format: uuid
-          type: string
-        thing_id:
-          description: Thing id
-          format: uuid
-          type: string
-        times:
-          description: Timestamp in RFC3339
-          items:
-            format: date-time
-            type: string
-          type: array
-        values:
-          description: Values can be in Float, String, Bool, Object
-          items: {}
-          type: array
-      required:
-      - thing_id
-      - property_id
-      - count_values
-      - values
-      - times
-      title: 'Mediatype identifier: application/vnd.arduino.series.raw.last.value.response+json; view=default'
-      type: object
-    BatchQueryRequestsMediaV1:
-      properties:
-        requests:
-          description: Requests
-          items:
-            $ref: '#/components/schemas/BatchQueryRequestMediaV1'
-          type: array
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-      required:
-      - requests
-      - resp_version
-      title: BatchQueryRequestsMediaV1
-      type: object
-    ArduinoSeriesRawResponse:
-      description: ArduinoSeriesRawResponse media type (default view)
-      properties:
-        count_values:
-          description: Total number of values in the array 'values'
-          format: int64
-          type: integer
-        from_date:
-          description: From date
-          format: date-time
-          type: string
-        message:
-          default: ''
-          description: If the response is different than 'ok'
-          type: string
-        property_id:
-          description: Property id
-          format: uuid
-          type: string
-        property_name:
-          description: Property name
-          type: string
-        property_type:
-          description: Property type
-          type: string
-        query:
-          description: Query of for the data
-          type: string
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-        series:
-          $ref: '#/components/schemas/BatchQueryRawResponseSeriesMediaV1'
-        series_limit:
-          description: Max of values
-          format: int64
-          type: integer
-        sort:
-          description: Sorting
-          enum:
-          - ASC
-          - DESC
-          type: string
-        status:
-          description: Status of the response
-          type: string
-        thing_id:
-          description: Thing id
-          format: uuid
-          type: string
-        times:
-          description: Timestamp in RFC3339
-          items:
-            format: date-time
-            type: string
-          type: array
-        to_date:
-          description: To date
-          format: date-time
-          type: string
-        values:
-          description: Values can be in Float, String, Bool, Object
-          items: {}
-          type: array
-      required:
-      - status
-      - resp_version
-      - series
-      - query
-      - from_date
-      - to_date
-      - sort
-      - times
-      - values
-      - count_values
-      title: 'Mediatype identifier: application/vnd.arduino.series.raw.response+json; view=default'
-      type: object
-    BatchQueryRequestMediaV1:
-      properties:
-        aggregation:
-          description: 'Aggregation statistic function.
-
-            For numeric values, AVG statistic is used by default. PCT_X compute the Xth approximate percentile (e.g. PCT_95 is the 95th approximate percentile).
-
-            For boolean, BOOL_OR statistic is used as default.'
-          enum:
-          - AVG
-          - MIN
-          - MAX
-          - SUM
-          - COUNT
-          - PCT_99
-          - PCT_95
-          - PCT_90
-          - PCT_75
-          - PCT_50
-          - PCT_15
-          - PCT_5
-          - BOOL_OR
-          - BOOL_AND
-          example: AVG
-          type: string
-        from:
-          description: From timestamp
-          format: date-time
-          type: string
-        interval:
-          description: 'Resolution in seconds (max allowed: 86400)'
-          format: int64
-          type: integer
-        q:
-          description: Data selection query (e.g. property.2a99729d-2556-4220-a139-023348a1e6b5 or thing.95717675-4786-4ffc-afcc-799777755391)
-          type: string
-        series_limit:
-          description: 'Maximum number of values returned after data aggregation, if any (default: 300, limit: 1000 - 10000 in case of thing query)'
-          format: int64
-          type: integer
-        to:
-          description: To timestamp
-          format: date-time
-          type: string
-      required:
-      - q
-      - from
-      - to
-      title: BatchQueryRequestMediaV1
-      type: object
-    ArduinoSeriesBatchSampled:
-      description: ArduinoSeriesBatchSampled media type (default view)
-      properties:
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-        responses:
-          description: Responses of the request
-          items:
-            $ref: '#/components/schemas/ArduinoSeriesSampledResponse'
-          type: array
-      required:
-      - responses
-      - resp_version
-      title: 'Mediatype identifier: application/vnd.arduino.series.batch.sampled+json; view=default'
-      type: object
     BatchLastValueRequestsMediaV1:
       properties:
         requests:
@@ -552,95 +358,6 @@ components:
       required:
       - requests
       title: BatchLastValueRequestsMediaV1
-      type: object
-    ArduinoSeriesSampledResponse:
-      description: ArduinoSeriesSampledResponse media type (default view)
-      properties:
-        count_values:
-          description: Total number of values in the array 'values'
-          format: int64
-          type: integer
-        from_date:
-          description: From date
-          format: date-time
-          type: string
-        interval:
-          description: Resolution in seconds
-          format: int64
-          type: integer
-        message:
-          default: ''
-          description: If the response is different than 'ok'
-          type: string
-        property_id:
-          description: Property id
-          format: uuid
-          type: string
-        property_name:
-          description: Property name
-          type: string
-        property_type:
-          description: Property type
-          type: string
-        query:
-          description: Query of for the data
-          type: string
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-        series_limit:
-          description: Maximum number of values returned after data aggregation, if any
-          format: int64
-          type: integer
-        status:
-          description: Status of the response
-          type: string
-        thing_id:
-          description: Thing id
-          format: uuid
-          type: string
-        times:
-          description: Timestamp in RFC3339
-          items:
-            format: date-time
-            type: string
-          type: array
-        to_date:
-          description: To date
-          format: date-time
-          type: string
-        values:
-          description: Values in Float
-          items: {}
-          type: array
-      required:
-      - status
-      - resp_version
-      - query
-      - from_date
-      - to_date
-      - interval
-      - times
-      - values
-      - count_values
-      title: 'Mediatype identifier: application/vnd.arduino.series.sampled.response+json; view=default'
-      type: object
-    BatchQueryRawRequestsMediaV1:
-      properties:
-        requests:
-          description: Requests
-          items:
-            $ref: '#/components/schemas/BatchQueryRawRequestMediaV1'
-          type: array
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-      required:
-      - requests
-      - resp_version
-      title: BatchQueryRawRequestsMediaV1
       type: object
     ArduinoSeriesRawBatch:
       description: ArduinoSeriesRawBatch media type (default view)
@@ -659,31 +376,8 @@ components:
       - resp_version
       title: 'Mediatype identifier: application/vnd.arduino.series.raw.batch+json; view=default'
       type: object
-    HistoricDataRequest:
-      properties:
-        from:
-          description: Get data starting from this date
-          format: date-time
-          type: string
-        properties:
-          description: IDs of properties
-          items:
-            format: uuid
-            type: string
-          minItems: 1
-          type: array
-        to:
-          description: Get data up to this date
-          format: date-time
-          type: string
-      required:
-      - properties
-      - from
-      - to
-      title: HistoricDataRequest
-      type: object
-    ArduinoSeriesBatch:
-      description: ArduinoSeriesBatch media type (default view)
+    ArduinoSeriesBatchSampled:
+      description: ArduinoSeriesBatchSampled media type (default view)
       properties:
         resp_version:
           description: Response version
@@ -692,55 +386,12 @@ components:
         responses:
           description: Responses of the request
           items:
-            $ref: '#/components/schemas/ArduinoSeriesResponse'
+            $ref: '#/components/schemas/ArduinoSeriesSampledResponse'
           type: array
       required:
       - responses
       - resp_version
-      title: 'Mediatype identifier: application/vnd.arduino.series.batch+json; view=default'
-      type: object
-    BatchQuerySampledRequestsMediaV1:
-      properties:
-        requests:
-          description: Requests
-          items:
-            $ref: '#/components/schemas/BatchQuerySampledRequestMediaV1'
-          type: array
-        resp_version:
-          description: Response version
-          format: int64
-          type: integer
-      required:
-      - requests
-      - resp_version
-      title: BatchQuerySampledRequestsMediaV1
-      type: object
-    BatchQuerySampledRequestMediaV1:
-      properties:
-        from:
-          description: 'From timestamp (default: now UTC - 24h)'
-          format: date-time
-          type: string
-        interval:
-          default: 300
-          description: Resolution in seconds (allowed min:60, max:86400)
-          maximum: 86400
-          minimum: 60
-          type: integer
-        q:
-          description: Data selection query (e.g. property.2a99729d-2556-4220-a139-023348a1e6b5)
-          type: string
-        series_limit:
-          description: 'Maximum number of values returned after data aggregation, if any (default: 300, limit: 1000)'
-          format: int64
-          type: integer
-        to:
-          description: 'To timestamp (default: now UTC)'
-          format: date-time
-          type: string
-      required:
-      - q
-      title: BatchQuerySampledRequestMediaV1
+      title: 'Mediatype identifier: application/vnd.arduino.series.batch.sampled+json; view=default'
       type: object
     BatchQueryRawLastValueRequestMediaV1:
       properties:
@@ -756,6 +407,42 @@ components:
       - thing_id
       - property_id
       title: BatchQueryRawLastValueRequestMediaV1
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    BatchQueryRawResponseSeriesMediaV1:
+      properties:
+        metric:
+          description: Metric name
+          type: string
+      required:
+      - metric
+      title: BatchQueryRawResponseSeriesMediaV1
       type: object
     ArduinoSeriesResponse:
       description: ArduinoSeriesResponse media type (default view)
@@ -855,57 +542,37 @@ components:
       - count_values
       title: 'Mediatype identifier: application/vnd.arduino.series.response+json; view=default'
       type: object
-    error:
-      description: Error response media type (default view)
+    BatchQuerySampledRequestsMediaV1:
       properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoSeriesRawBatchLastvalue:
-      description: ArduinoSeriesRawBatchLastvalue media type (default view)
-      properties:
-        responses:
-          description: Responses of the request
+        requests:
+          description: Requests
           items:
-            $ref: '#/components/schemas/ArduinoSeriesRawLastValueResponse'
+            $ref: '#/components/schemas/BatchQuerySampledRequestMediaV1'
           type: array
-        status:
-          description: Status of the response
-          type: string
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
       required:
-      - status
-      - responses
-      title: 'Mediatype identifier: application/vnd.arduino.series.raw.batch.lastvalue+json; view=default'
+      - requests
+      - resp_version
+      title: BatchQuerySampledRequestsMediaV1
       type: object
-    BatchQueryRawResponseSeriesMediaV1:
+    BatchQueryRequestsMediaV1:
       properties:
-        metric:
-          description: Metric name
-          type: string
+        requests:
+          description: Requests
+          items:
+            $ref: '#/components/schemas/BatchQueryRequestMediaV1'
+          type: array
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
       required:
-      - metric
-      title: BatchQueryRawResponseSeriesMediaV1
+      - requests
+      - resp_version
+      title: BatchQueryRequestsMediaV1
       type: object
     BatchQueryRawRequestMediaV1:
       properties:
@@ -934,6 +601,339 @@ components:
       required:
       - q
       title: BatchQueryRawRequestMediaV1
+      type: object
+    ArduinoSeriesRawResponse:
+      description: ArduinoSeriesRawResponse media type (default view)
+      properties:
+        count_values:
+          description: Total number of values in the array 'values'
+          format: int64
+          type: integer
+        from_date:
+          description: From date
+          format: date-time
+          type: string
+        message:
+          default: ''
+          description: If the response is different than 'ok'
+          type: string
+        property_id:
+          description: Property id
+          format: uuid
+          type: string
+        property_name:
+          description: Property name
+          type: string
+        property_type:
+          description: Property type
+          type: string
+        query:
+          description: Query of for the data
+          type: string
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
+        series:
+          $ref: '#/components/schemas/BatchQueryRawResponseSeriesMediaV1'
+        series_limit:
+          description: Max of values
+          format: int64
+          type: integer
+        sort:
+          description: Sorting
+          enum:
+          - ASC
+          - DESC
+          type: string
+        status:
+          description: Status of the response
+          type: string
+        thing_id:
+          description: Thing id
+          format: uuid
+          type: string
+        times:
+          description: Timestamp in RFC3339
+          items:
+            format: date-time
+            type: string
+          type: array
+        to_date:
+          description: To date
+          format: date-time
+          type: string
+        values:
+          description: Values can be in Float, String, Bool, Object
+          items: {}
+          type: array
+      required:
+      - status
+      - resp_version
+      - series
+      - query
+      - from_date
+      - to_date
+      - sort
+      - times
+      - values
+      - count_values
+      title: 'Mediatype identifier: application/vnd.arduino.series.raw.response+json; view=default'
+      type: object
+    ArduinoSeriesSampledResponse:
+      description: ArduinoSeriesSampledResponse media type (default view)
+      properties:
+        count_values:
+          description: Total number of values in the array 'values'
+          format: int64
+          type: integer
+        from_date:
+          description: From date
+          format: date-time
+          type: string
+        interval:
+          description: Resolution in seconds
+          format: int64
+          type: integer
+        message:
+          default: ''
+          description: If the response is different than 'ok'
+          type: string
+        property_id:
+          description: Property id
+          format: uuid
+          type: string
+        property_name:
+          description: Property name
+          type: string
+        property_type:
+          description: Property type
+          type: string
+        query:
+          description: Query of for the data
+          type: string
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
+        series_limit:
+          description: Maximum number of values returned after data aggregation, if any
+          format: int64
+          type: integer
+        status:
+          description: Status of the response
+          type: string
+        thing_id:
+          description: Thing id
+          format: uuid
+          type: string
+        times:
+          description: Timestamp in RFC3339
+          items:
+            format: date-time
+            type: string
+          type: array
+        to_date:
+          description: To date
+          format: date-time
+          type: string
+        values:
+          description: Values in Float
+          items: {}
+          type: array
+      required:
+      - status
+      - resp_version
+      - query
+      - from_date
+      - to_date
+      - interval
+      - times
+      - values
+      - count_values
+      title: 'Mediatype identifier: application/vnd.arduino.series.sampled.response+json; view=default'
+      type: object
+    HistoricDataRequest:
+      properties:
+        from:
+          description: Get data starting from this date
+          format: date-time
+          type: string
+        properties:
+          description: IDs of properties
+          items:
+            format: uuid
+            type: string
+          minItems: 1
+          type: array
+        to:
+          description: Get data up to this date
+          format: date-time
+          type: string
+      required:
+      - properties
+      - from
+      - to
+      title: HistoricDataRequest
+      type: object
+    BatchQuerySampledRequestMediaV1:
+      properties:
+        from:
+          description: 'From timestamp (default: now UTC - 24h)'
+          format: date-time
+          type: string
+        interval:
+          default: 300
+          description: Resolution in seconds (allowed min:60, max:86400)
+          maximum: 86400
+          minimum: 60
+          type: integer
+        q:
+          description: Data selection query (e.g. property.2a99729d-2556-4220-a139-023348a1e6b5)
+          type: string
+        series_limit:
+          description: 'Maximum number of values returned after data aggregation, if any (default: 300, limit: 1000)'
+          format: int64
+          type: integer
+        to:
+          description: 'To timestamp (default: now UTC)'
+          format: date-time
+          type: string
+      required:
+      - q
+      title: BatchQuerySampledRequestMediaV1
+      type: object
+    ArduinoSeriesRawBatchLastvalue:
+      description: ArduinoSeriesRawBatchLastvalue media type (default view)
+      properties:
+        responses:
+          description: Responses of the request
+          items:
+            $ref: '#/components/schemas/ArduinoSeriesRawLastValueResponse'
+          type: array
+        status:
+          description: Status of the response
+          type: string
+      required:
+      - status
+      - responses
+      title: 'Mediatype identifier: application/vnd.arduino.series.raw.batch.lastvalue+json; view=default'
+      type: object
+    ArduinoSeriesBatch:
+      description: ArduinoSeriesBatch media type (default view)
+      properties:
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
+        responses:
+          description: Responses of the request
+          items:
+            $ref: '#/components/schemas/ArduinoSeriesResponse'
+          type: array
+      required:
+      - responses
+      - resp_version
+      title: 'Mediatype identifier: application/vnd.arduino.series.batch+json; view=default'
+      type: object
+    ArduinoSeriesRawLastValueResponse:
+      description: ArduinoSeriesRawLastValueResponse media type (default view)
+      properties:
+        count_values:
+          description: Total number of values in the array 'values'
+          format: int64
+          type: integer
+        property_id:
+          description: Property id
+          format: uuid
+          type: string
+        thing_id:
+          description: Thing id
+          format: uuid
+          type: string
+        times:
+          description: Timestamp in RFC3339
+          items:
+            format: date-time
+            type: string
+          type: array
+        values:
+          description: Values can be in Float, String, Bool, Object
+          items: {}
+          type: array
+      required:
+      - thing_id
+      - property_id
+      - count_values
+      - values
+      - times
+      title: 'Mediatype identifier: application/vnd.arduino.series.raw.last.value.response+json; view=default'
+      type: object
+    BatchQueryRawRequestsMediaV1:
+      properties:
+        requests:
+          description: Requests
+          items:
+            $ref: '#/components/schemas/BatchQueryRawRequestMediaV1'
+          type: array
+        resp_version:
+          description: Response version
+          format: int64
+          type: integer
+      required:
+      - requests
+      - resp_version
+      title: BatchQueryRawRequestsMediaV1
+      type: object
+    BatchQueryRequestMediaV1:
+      properties:
+        aggregation:
+          description: 'Aggregation statistic function.
+
+            For numeric values, AVG statistic is used by default. PCT_X compute the Xth approximate percentile (e.g. PCT_95 is the 95th approximate percentile).
+
+            For boolean, BOOL_OR statistic is used as default.'
+          enum:
+          - AVG
+          - MIN
+          - MAX
+          - SUM
+          - COUNT
+          - PCT_99
+          - PCT_95
+          - PCT_90
+          - PCT_75
+          - PCT_50
+          - PCT_15
+          - PCT_5
+          - BOOL_OR
+          - BOOL_AND
+          example: AVG
+          type: string
+        from:
+          description: From timestamp
+          format: date-time
+          type: string
+        interval:
+          description: 'Resolution in seconds (max allowed: 86400)'
+          format: int64
+          type: integer
+        q:
+          description: Data selection query (e.g. property.2a99729d-2556-4220-a139-023348a1e6b5 or thing.95717675-4786-4ffc-afcc-799777755391)
+          type: string
+        series_limit:
+          description: 'Maximum number of values returned after data aggregation, if any (default: 300, limit: 1000 - 10000 in case of thing query)'
+          format: int64
+          type: integer
+        to:
+          description: To timestamp
+          format: date-time
+          type: string
+      required:
+      - q
+      - from
+      - to
+      title: BatchQueryRequestMediaV1
       type: object
 externalDocs:
   description: See docs on Confluence

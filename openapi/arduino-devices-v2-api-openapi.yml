@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 devices_v2 API
+  title: Arduino IoT Cloud Devices V2 API
   version: '2.0'
 tags:
 - description: Provides a set of endpoints to manage user devices
@@ -950,37 +950,96 @@ paths:
       - devices_v2
 components:
   schemas:
-    ArduinoDevicev2propertyvalues:
-      description: ArduinoDevicev2propertyvalues media type (default view)
-      properties:
-        id:
-          type: string
-        last_evaluated_key:
-          properties:
-            created_at:
-              format: date-time
-              type: string
-            id:
-              type: string
-            name:
-              type: string
-          type: object
-        name:
-          type: string
-        values:
-          $ref: '#/components/schemas/ArduinoDevicev2propertyvalueCollection'
-      required:
-      - id
-      - last_evaluated_key
-      - name
-      - values
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalues+json; view=default'
-      type: object
-    ArduinoDevicev2WebhookCollection:
-      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+    ArduinoDevicev2StatusEventCollection:
+      description: ArduinoDevicev2StatusEventCollection is the media type for an array of ArduinoDevicev2StatusEvent (default view)
       items:
-        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+        $ref: '#/components/schemas/ArduinoDevicev2StatusEvent'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; type=collection; view=default'
+      type: array
+    ArduinoDevicev2properties:
+      description: ArduinoDevicev2properties media type (default view)
+      properties:
+        data_retention_days:
+          description: How many days the data will be kept
+          format: double
+          type: number
+        deviceId:
+          description: The device of the property
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+      required:
+      - deviceId
+      - user_id
+      - data_retention_days
+      - properties
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2properties+json; view=default'
+      type: object
+    ArduinoDevicev2SimplePropertiesCollection:
+      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
+      type: array
+    propertiesValue:
+      properties:
+        name:
+          description: The name of the property
+          type: string
+        type:
+          default: infer
+          description: The type of the property
+          enum:
+          - infer
+          - base64
+          - hex
+          - json
+          type: string
+        value:
+          description: The last value of the property
+      required:
+      - name
+      - value
+      - type
+      title: propertiesValue
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoDevicev2Collection:
+      description: ArduinoDevicev2Collection is the media type for an array of ArduinoDevicev2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; type=collection; view=default'
       type: array
     ArduinoDevicev2StatusEvents:
       description: ArduinoDevicev2StatusEvents media type (default view)
@@ -995,6 +1054,36 @@ components:
       - id
       - events
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.events+json; view=default'
+      type: object
+    ArduinoDevicev2propertyvalueCollection:
+      description: ArduinoDevicev2propertyvalueCollection is the media type for an array of ArduinoDevicev2propertyvalue (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2propertyvalue'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; type=collection; view=default'
+      type: array
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
+    ArduinoDevicev2StatusEvent:
+      description: ArduinoDevicev2StatusEvent media type (default view)
+      properties:
+        updated_at:
+          description: Update timestamp of the status event
+          format: date-time
+          type: string
+        value:
+          description: The status event of the device
+          enum:
+          - CONNECTED
+          - DISCONNECTED
+          type: string
+      required:
+      - value
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; view=default'
       type: object
     CreateClaimedDevicesV2Payload:
       description: DeviceV2 describes a device.
@@ -1078,42 +1167,226 @@ components:
       - type
       title: CreateClaimedDevicesV2Payload
       type: object
-    ArduinoDevicev2properties:
-      description: ArduinoDevicev2properties media type (default view)
+    ArduinoDevicev2propertyvalues:
+      description: ArduinoDevicev2propertyvalues media type (default view)
       properties:
-        data_retention_days:
-          description: How many days the data will be kept
-          format: double
-          type: number
-        deviceId:
-          description: The device of the property
+        id:
+          type: string
+        last_evaluated_key:
+          properties:
+            created_at:
+              format: date-time
+              type: string
+            id:
+              type: string
+            name:
+              type: string
+          type: object
+        name:
+          type: string
+        values:
+          $ref: '#/components/schemas/ArduinoDevicev2propertyvalueCollection'
+      required:
+      - id
+      - last_evaluated_key
+      - name
+      - values
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalues+json; view=default'
+      type: object
+    devicev2:
+      description: DeviceV2 describes a device.
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        name:
+          description: The friendly name of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        serial:
+          description: The serial uuid of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        type:
+          description: The type of the device
+          enum:
+          - mkrwifi1010
+          - mkr1000
+          - nano_33_iot
+          - mkrgsm1400
+          - mkrnb1500
+          - login_and_secretkey_wifi
+          - envie_m7
+          - nanorp2040connect
+          - nicla_vision
+          - phone
+          - portenta_x8
+          - opta
+          - giga
+          - generic_device_secretkey
+          - portenta_c33
+          - unor4wifi
+          - nano_nora
+          - unoq
+          type: string
+        unique_hardware_id:
+          maxLength: 64
+          minLength: 64
+          type: string
+        user_id:
+          description: The user_id associated to the device. If absent it will be inferred from the authentication header
           format: uuid
           type: string
-        properties:
-          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          maxLength: 10
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+          type: string
+      title: devicev2
+      type: object
+    CreateDevicesV2Payload:
+      description: DeviceV2 describes a device.
+      properties:
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
+          type: string
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
+          enum:
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
+          type: string
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        name:
+          description: The friendly name of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        serial:
+          description: The serial uuid of the device
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        type:
+          description: The type of the device
+          enum:
+          - mkrwifi1010
+          - mkr1000
+          - nano_33_iot
+          - mkrgsm1400
+          - mkrnb1500
+          - login_and_secretkey_wifi
+          - envie_m7
+          - nanorp2040connect
+          - nicla_vision
+          - phone
+          - portenta_x8
+          - opta
+          - giga
+          - generic_device_secretkey
+          - portenta_c33
+          - unor4wifi
+          - nano_nora
+          - unoq
+          type: string
+        unique_hardware_id:
+          maxLength: 64
+          minLength: 64
+          type: string
         user_id:
-          description: The user id of the owner
+          description: The user_id associated to the device. If absent it will be inferred from the authentication header
           format: uuid
+          type: string
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
+          maxLength: 10
+          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
           type: string
       required:
-      - deviceId
-      - user_id
-      - data_retention_days
-      - properties
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2properties+json; view=default'
+      - type
+      title: CreateDevicesV2Payload
       type: object
-    ArduinoDevicev2Collection:
-      description: ArduinoDevicev2Collection is the media type for an array of ArduinoDevicev2 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; type=collection; view=default'
-      type: array
-    ArduinoDevicev2propertyvalueCollection:
-      description: ArduinoDevicev2propertyvalueCollection is the media type for an array of ArduinoDevicev2propertyvalue (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2propertyvalue'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; type=collection; view=default'
-      type: array
+    ArduinoDevicev2Webhook:
+      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
+      properties:
+        active:
+          default: true
+          description: Whether the webhook is active
+          type: boolean
+        id:
+          description: The uuid of the webhook
+          format: uuid
+          type: string
+        uri:
+          description: The uri of the webhook
+          format: uri
+          type: string
+      required:
+      - id
+      - uri
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
+      type: object
+    ArduinoDevicev2SimpleProperties:
+      description: ArduinoDevicev2SimpleProperties media type (default view)
+      properties:
+        name:
+          description: The name of the property
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value:
+          description: Value of the property
+      required:
+      - name
+      - value
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
+      type: object
     configv2:
       description: ConfigPayload describe a tuple name:value
       properties:
@@ -1124,6 +1397,55 @@ components:
           description: The name of the configuration
           type: string
       title: configv2
+      type: object
+    ArduinoDevicev2propertyvalue:
+      description: ArduinoDevicev2propertyvalue media type (default view)
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        value:
+          properties:
+            payload:
+              type: string
+            seqno:
+              format: int64
+              type: integer
+            statistics:
+              properties:
+                adr:
+                  format: double
+                  type: number
+                channel:
+                  format: double
+                  type: number
+                duplicate:
+                  format: double
+                  type: number
+                freq:
+                  format: double
+                  type: number
+                modBW:
+                  format: double
+                  type: number
+                rssi:
+                  format: double
+                  type: number
+                seqno:
+                  format: double
+                  type: number
+                sf:
+                  format: double
+                  type: number
+                snr:
+                  format: double
+                  type: number
+                time:
+                  format: double
+                  type: number
+              type: object
+          type: object
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; view=default'
       type: object
     ArduinoThing:
       description: ArduinoThing media type (default view)
@@ -1213,136 +1535,119 @@ components:
       - timezone
       title: 'Mediatype identifier: application/vnd.arduino.thing+json; view=default'
       type: object
-    ArduinoPropertyCollection:
-      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoProperty'
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
-      type: array
-    propertiesValue:
+    propertiesValues:
       properties:
-        name:
-          description: The name of the property
-          type: string
-        type:
-          default: infer
-          description: The type of the property
-          enum:
-          - infer
-          - base64
-          - hex
-          - json
-          type: string
-        value:
-          description: The last value of the property
-      required:
-      - name
-      - value
-      - type
-      title: propertiesValue
-      type: object
-    CreateDevicesV2Payload:
-      description: DeviceV2 describes a device.
-      properties:
-        ble_mac:
-          maxLength: 17
-          minLength: 17
-          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
-          type: string
-        connection_type:
-          description: The type of the connections selected by the user when multiple connections are available
-          enum:
-          - wifi
-          - eth
-          - wifiandsecret
-          - gsm
-          - nb
-          - lora
-          - catm1
-          - cellular
-          type: string
-        fqbn:
-          description: The fully qualified board name
-          type: string
-        locked:
-          description: True if the device is locked and can't be claimed by another user
-          type: boolean
-        name:
-          description: The friendly name of the device
-          maxLength: 64
-          pattern: '[a-zA-Z0-9_.@-]+'
-          type: string
-        serial:
-          description: The serial uuid of the device
-          maxLength: 64
-          pattern: '[a-zA-Z0-9_.@-]+'
-          type: string
-        soft_deleted:
+        input:
           default: false
-          description: If false, restore the thing from the soft deletion
+          description: If true, send property values to device's input topic.
           type: boolean
-        type:
-          description: The type of the device
-          enum:
-          - mkrwifi1010
-          - mkr1000
-          - nano_33_iot
-          - mkrgsm1400
-          - mkrnb1500
-          - login_and_secretkey_wifi
-          - envie_m7
-          - nanorp2040connect
-          - nicla_vision
-          - phone
-          - portenta_x8
-          - opta
-          - giga
-          - generic_device_secretkey
-          - portenta_c33
-          - unor4wifi
-          - nano_nora
-          - unoq
-          type: string
-        unique_hardware_id:
-          maxLength: 64
-          minLength: 64
-          type: string
-        user_id:
-          description: The user_id associated to the device. If absent it will be inferred from the authentication header
+        properties:
+          items:
+            $ref: '#/components/schemas/propertiesValue'
+          type: array
+      required:
+      - properties
+      title: propertiesValues
+      type: object
+    ArduinoDevicev2EventProperties:
+      description: ArduinoDevicev2EventProperties media type (default view)
+      properties:
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
+        id:
+          description: The device of the property
           format: uuid
           type: string
-        wifi_fw_version:
-          description: The version of the NINA/WIFI101 firmware running on the device
-          maxLength: 10
-          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
-          type: string
       required:
-      - type
-      title: CreateDevicesV2Payload
+      - id
+      - events
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.event.properties+json; view=default'
       type: object
-    ArduinoDevicev2StatusEventCollection:
-      description: ArduinoDevicev2StatusEventCollection is the media type for an array of ArduinoDevicev2StatusEvent (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2StatusEvent'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; type=collection; view=default'
-      type: array
-    ArduinoDevicev2SimpleProperties:
-      description: ArduinoDevicev2SimpleProperties media type (default view)
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
       properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
         name:
-          description: The name of the property
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
           type: string
         updated_at:
           description: Update date of the property
           format: date-time
           type: string
-        value:
-          description: Value of the property
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
       required:
+      - id
+      - thing_id
       - name
-      - value
-      - updated_at
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
       type: object
     ArduinoDevicev2:
       description: ArduinoDevicev2 media type (default view)
@@ -1471,322 +1776,17 @@ components:
       - serial
       title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; view=default'
       type: object
-    ArduinoDevicev2propertyvalue:
-      description: ArduinoDevicev2propertyvalue media type (default view)
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        value:
-          properties:
-            payload:
-              type: string
-            seqno:
-              format: int64
-              type: integer
-            statistics:
-              properties:
-                adr:
-                  format: double
-                  type: number
-                channel:
-                  format: double
-                  type: number
-                duplicate:
-                  format: double
-                  type: number
-                freq:
-                  format: double
-                  type: number
-                modBW:
-                  format: double
-                  type: number
-                rssi:
-                  format: double
-                  type: number
-                seqno:
-                  format: double
-                  type: number
-                sf:
-                  format: double
-                  type: number
-                snr:
-                  format: double
-                  type: number
-                time:
-                  format: double
-                  type: number
-              type: object
-          type: object
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2propertyvalue+json; view=default'
-      type: object
-    ArduinoDevicev2SimplePropertiesCollection:
-      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
-      type: array
     ImageDevicesV2Payload:
       items:
         $ref: '#/components/schemas/configv2'
       title: ImageDevicesV2Payload
       type: array
-    ArduinoProperty:
-      description: ArduinoProperty media type (default view)
-      properties:
-        created_at:
-          description: Creation date of the property
-          format: date-time
-          type: string
-        deleted_at:
-          description: Delete date of the property
-          format: date-time
-          type: string
-        href:
-          description: The api reference of this property
-          type: string
-        id:
-          description: The id of the property
-          format: uuid
-          type: string
-        last_value:
-          description: Last value of this property
-        linked_to_trigger:
-          description: Indicates if the property is involved in the activation of at least a trigger
-          type: boolean
-        max_value:
-          description: Maximum value of this property
-          format: double
-          type: number
-        min_value:
-          description: Minimum value of this property
-          format: double
-          type: number
-        name:
-          description: The friendly name of the property
-          type: string
-        permission:
-          description: The permission of the property
-          type: string
-        persist:
-          description: If true, data will persist into a timeseries database
-          type: boolean
-        sync_id:
-          description: The id of the sync pool
-          format: uuid
-          type: string
-        tag:
-          description: The integer id of the property
-          format: int64
-          type: integer
-        thing_id:
-          description: The id of the thing
-          format: uuid
-          type: string
-        thing_name:
-          description: The name of the associated thing
-          type: string
-        type:
-          description: The type of the property
-          type: string
-        update_parameter:
-          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
-          format: double
-          type: number
-        update_strategy:
-          description: The update strategy for the property value
-          type: string
-        updated_at:
-          description: Update date of the property
-          format: date-time
-          type: string
-        value_updated_at:
-          description: Last update timestamp of this property
-          format: date-time
-          type: string
-        variable_name:
-          description: The sketch variable name of the property
-          type: string
-      required:
-      - id
-      - thing_id
-      - name
-      - type
-      - permission
-      - update_strategy
-      - href
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
-      type: object
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    propertiesValues:
-      properties:
-        input:
-          default: false
-          description: If true, send property values to device's input topic.
-          type: boolean
-        properties:
-          items:
-            $ref: '#/components/schemas/propertiesValue'
-          type: array
-      required:
-      - properties
-      title: propertiesValues
-      type: object
-    devicev2:
-      description: DeviceV2 describes a device.
-      properties:
-        ble_mac:
-          maxLength: 17
-          minLength: 17
-          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
-          type: string
-        connection_type:
-          description: The type of the connections selected by the user when multiple connections are available
-          enum:
-          - wifi
-          - eth
-          - wifiandsecret
-          - gsm
-          - nb
-          - lora
-          - catm1
-          - cellular
-          type: string
-        fqbn:
-          description: The fully qualified board name
-          type: string
-        locked:
-          description: True if the device is locked and can't be claimed by another user
-          type: boolean
-        name:
-          description: The friendly name of the device
-          maxLength: 64
-          pattern: '[a-zA-Z0-9_.@-]+'
-          type: string
-        serial:
-          description: The serial uuid of the device
-          maxLength: 64
-          pattern: '[a-zA-Z0-9_.@-]+'
-          type: string
-        soft_deleted:
-          default: false
-          description: If false, restore the thing from the soft deletion
-          type: boolean
-        type:
-          description: The type of the device
-          enum:
-          - mkrwifi1010
-          - mkr1000
-          - nano_33_iot
-          - mkrgsm1400
-          - mkrnb1500
-          - login_and_secretkey_wifi
-          - envie_m7
-          - nanorp2040connect
-          - nicla_vision
-          - phone
-          - portenta_x8
-          - opta
-          - giga
-          - generic_device_secretkey
-          - portenta_c33
-          - unor4wifi
-          - nano_nora
-          - unoq
-          type: string
-        unique_hardware_id:
-          maxLength: 64
-          minLength: 64
-          type: string
-        user_id:
-          description: The user_id associated to the device. If absent it will be inferred from the authentication header
-          format: uuid
-          type: string
-        wifi_fw_version:
-          description: The version of the NINA/WIFI101 firmware running on the device
-          maxLength: 10
-          pattern: ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
-          type: string
-      title: devicev2
-      type: object
-    ArduinoDevicev2StatusEvent:
-      description: ArduinoDevicev2StatusEvent media type (default view)
-      properties:
-        updated_at:
-          description: Update timestamp of the status event
-          format: date-time
-          type: string
-        value:
-          description: The status event of the device
-          enum:
-          - CONNECTED
-          - DISCONNECTED
-          type: string
-      required:
-      - value
-      - updated_at
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.status.event+json; view=default'
-      type: object
-    ArduinoDevicev2Webhook:
-      description: DeviceWebhookV2 describes a webhook associated to the device (default view)
-      properties:
-        active:
-          default: true
-          description: Whether the webhook is active
-          type: boolean
-        id:
-          description: The uuid of the webhook
-          format: uuid
-          type: string
-        uri:
-          description: The uri of the webhook
-          format: uri
-          type: string
-      required:
-      - id
-      - uri
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
-      type: object
-    ArduinoDevicev2EventProperties:
-      description: ArduinoDevicev2EventProperties media type (default view)
-      properties:
-        events:
-          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
-        id:
-          description: The device of the property
-          format: uuid
-          type: string
-      required:
-      - id
-      - events
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.event.properties+json; view=default'
-      type: object
+    ArduinoDevicev2WebhookCollection:
+      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

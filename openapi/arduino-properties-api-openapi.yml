@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 properties API
+  title: Arduino IoT Cloud Properties API
   version: '2.0'
 tags:
-- name: properties
+- name: Properties
 paths:
   /iot/v1/properties:
     get:
@@ -51,7 +51,7 @@ paths:
       - oauth2: []
       summary: listAll properties
       tags:
-      - properties
+      - Properties
 components:
   schemas:
     ArduinoProperty:

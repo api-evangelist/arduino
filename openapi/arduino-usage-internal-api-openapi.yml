@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 usage_internal API
+  title: Arduino IoT Cloud Usage Internal API
   version: '2.0'
 tags:
 - name: usage_internal
@@ -84,6 +84,23 @@ components:
       - count
       title: UserUsageRecord
       type: object
+    UsageBatchPayload:
+      description: Batch of message-consumption counters to upsert
+      properties:
+        orgs_usage:
+          description: Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.
+          items:
+            $ref: '#/components/schemas/OrgUsageRecord'
+          maxItems: 10000
+          type: array
+        users_usage:
+          description: Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.
+          items:
+            $ref: '#/components/schemas/UserUsageRecord'
+          maxItems: 10000
+          type: array
+      title: UsageBatchPayload
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -110,23 +127,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    UsageBatchPayload:
-      description: Batch of message-consumption counters to upsert
-      properties:
-        orgs_usage:
-          description: Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.
-          items:
-            $ref: '#/components/schemas/OrgUsageRecord'
-          maxItems: 10000
-          type: array
-        users_usage:
-          description: Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.
-          items:
-            $ref: '#/components/schemas/UserUsageRecord'
-          maxItems: 10000
-          type: array
-      title: UsageBatchPayload
       type: object
     OrgUsageRecord:
       description: One (org, thing, device, date) message counter delta

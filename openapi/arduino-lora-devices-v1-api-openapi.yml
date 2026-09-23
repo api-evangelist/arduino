@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 lora_devices_v1 API
+  title: Arduino IoT Cloud Lora Devices V1 API
   version: '2.0'
 tags:
 - name: lora_devices_v1
@@ -37,6 +37,30 @@ paths:
       - lora_devices_v1
 components:
   schemas:
+    ArduinoLoradevicev1:
+      description: ArduinoLoradevicev1 media type (default view)
+      properties:
+        app_eui:
+          description: The eui of the app
+          type: string
+        app_key:
+          description: The key of the device
+          type: string
+        device_id:
+          description: The id of the device
+          format: uuid
+          type: string
+        eui:
+          description: The eui of the lora device
+          example: '71619230301'
+          type: string
+      required:
+      - eui
+      - device_id
+      - app_eui
+      - app_key
+      title: 'Mediatype identifier: application/vnd.arduino.loradevicev1+json; view=default'
+      type: object
     CreateLoraDevicesV1Payload:
       properties:
         app:
@@ -93,30 +117,6 @@ components:
       - app
       - type
       title: CreateLoraDevicesV1Payload
-      type: object
-    ArduinoLoradevicev1:
-      description: ArduinoLoradevicev1 media type (default view)
-      properties:
-        app_eui:
-          description: The eui of the app
-          type: string
-        app_key:
-          description: The key of the device
-          type: string
-        device_id:
-          description: The id of the device
-          format: uuid
-          type: string
-        eui:
-          description: The eui of the lora device
-          example: '71619230301'
-          type: string
-      required:
-      - eui
-      - device_id
-      - app_eui
-      - app_key
-      title: 'Mediatype identifier: application/vnd.arduino.loradevicev1+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

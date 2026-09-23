@@ -1,11 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 manage API
+  title: Arduino IoT Cloud Manage API
   version: '2.0'
 tags:
 - description: A set of api to manage resources externally
-  name: manage
+  name: Manage
 paths:
   /iot/v1/manage/org/{id}:
     delete:
@@ -41,7 +41,7 @@ paths:
           description: Internal Server Error
       summary: delete_org manage
       tags:
-      - manage
+      - Manage
   /iot/v1/manage/users/{id}:
     delete:
       description: Deletes the user, all their sketches and libraries
@@ -60,7 +60,7 @@ paths:
           description: 'NotFound: The requested user doesn''t exist or it''s not visible to the current user.'
       summary: delete_user manage
       tags:
-      - manage
+      - Manage
   /iot/v1/manage/users/{id}/devices:
     delete:
       description: Delete devices for a given user and organization
@@ -101,7 +101,7 @@ paths:
           description: Internal Server Error
       summary: delete_user_devices manage
       tags:
-      - manage
+      - Manage
   /iot/v1/manage/users/{id}/export:
     get:
       description: Exports an archive containing all user info.
@@ -120,7 +120,7 @@ paths:
           description: Not Found
       summary: export_user manage
       tags:
-      - manage
+      - Manage
 components:
   schemas:
     error:

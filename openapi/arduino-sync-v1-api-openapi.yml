@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 sync_v1 API
+  title: Arduino IoT Cloud Sync V1 API
   version: '2.0'
 tags:
 - name: sync_v1

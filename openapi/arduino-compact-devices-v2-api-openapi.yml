@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 compact_devices_v2 API
+  title: Arduino IoT Cloud Compact Devices V2 API
   version: '2.0'
 tags:
 - name: compact_devices_v2
@@ -216,6 +216,12 @@ components:
       - serial
       title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; view=default'
       type: object
+    ArduinoCompact_device_v2Collection:
+      description: ArduinoCompact_device_v2Collection is the media type for an array of ArduinoCompact_device_v2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_device_v2'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; type=collection; view=default'
+      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -243,12 +249,6 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    ArduinoCompact_device_v2Collection:
-      description: ArduinoCompact_device_v2Collection is the media type for an array of ArduinoCompact_device_v2 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_device_v2'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

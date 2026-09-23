@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   description: Provides a set of endpoints to manage Devices, Things, Properties and Timeseries
-  title: Arduino IoT Cloud binaries_v2 lora_app_v1 API
+  title: Arduino IoT Cloud Lora App V1 API
   version: '2.0'
 tags:
 - name: lora_app_v1
@@ -238,6 +238,19 @@ paths:
       - lora_app_v1
 components:
   schemas:
+    UpdateLoraAppV1Payload:
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: UpdateLoraAppV1Payload
+      type: object
     ArduinoLoraappv1:
       description: ArduinoLoraappv1 media type (default view)
       properties:
@@ -251,18 +264,6 @@ components:
       required:
       - name
       title: 'Mediatype identifier: application/vnd.arduino.loraappv1+json; view=default'
-      type: object
-    ArduinoLoraappsv1:
-      description: ArduinoLoraappsv1 media type (default view)
-      properties:
-        apps:
-          description: The list of apps
-          items:
-            $ref: '#/components/schemas/ArduinoLoraappv1'
-          type: array
-      required:
-      - apps
-      title: 'Mediatype identifier: application/vnd.arduino.loraappsv1+json; view=default'
       type: object
     CreateLoraAppV1Payload:
       properties:
@@ -290,6 +291,18 @@ components:
       - name
       title: DeleteLoraAppV1Payload
       type: object
+    ArduinoLoraappsv1:
+      description: ArduinoLoraappsv1 media type (default view)
+      properties:
+        apps:
+          description: The list of apps
+          items:
+            $ref: '#/components/schemas/ArduinoLoraappv1'
+          type: array
+      required:
+      - apps
+      title: 'Mediatype identifier: application/vnd.arduino.loraappsv1+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -316,19 +329,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    UpdateLoraAppV1Payload:
-      properties:
-        app_eui:
-          default: ''
-          description: The eui of the app
-          type: string
-        name:
-          description: The name of the app
-          type: string
-      required:
-      - name
-      title: UpdateLoraAppV1Payload
       type: object
 externalDocs:
   description: See docs on Confluence
