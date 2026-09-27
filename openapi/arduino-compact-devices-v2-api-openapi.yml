@@ -111,6 +111,12 @@ paths:
       - compact_devices_v2
 components:
   schemas:
+    ArduinoCompact_device_v2Collection:
+      description: ArduinoCompact_device_v2Collection is the media type for an array of ArduinoCompact_device_v2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_device_v2'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; type=collection; view=default'
+      type: array
     ArduinoCompact_device_v2:
       description: ArduinoCompact_device_v2 media type (default view)
       properties:
@@ -216,12 +222,6 @@ components:
       - serial
       title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; view=default'
       type: object
-    ArduinoCompact_device_v2Collection:
-      description: ArduinoCompact_device_v2Collection is the media type for an array of ArduinoCompact_device_v2 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_device_v2'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_device_v2+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:

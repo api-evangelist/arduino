@@ -304,31 +304,6 @@ paths:
       - sync_v1
 components:
   schemas:
-    ArduinoSync:
-      description: ArduinoSync media type (default view)
-      properties:
-        id:
-          description: The id of the property
-          format: uuid
-          type: string
-        organization_id:
-          description: Id of the organization the sync belongs to
-          format: uuid
-          type: string
-        properties:
-          description: The properties in sync
-          items:
-            $ref: '#/components/schemas/ArduinoProperty'
-          type: array
-        type:
-          description: The type of the property
-          type: string
-      required:
-      - id
-      - type
-      - properties
-      title: 'Mediatype identifier: application/vnd.arduino.sync+json; view=default'
-      type: object
     sync:
       properties:
         properties:
@@ -478,6 +453,31 @@ components:
       - properties
       title: sync
       type: object
+    ArduinoSync:
+      description: ArduinoSync media type (default view)
+      properties:
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        organization_id:
+          description: Id of the organization the sync belongs to
+          format: uuid
+          type: string
+        properties:
+          description: The properties in sync
+          items:
+            $ref: '#/components/schemas/ArduinoProperty'
+          type: array
+        type:
+          description: The type of the property
+          type: string
+      required:
+      - id
+      - type
+      - properties
+      title: 'Mediatype identifier: application/vnd.arduino.sync+json; view=default'
+      type: object
     ArduinoProperty:
       description: ArduinoProperty media type (default view)
       properties:
@@ -564,6 +564,12 @@ components:
       - href
       title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
       type: object
+    ArduinoSyncCollection:
+      description: ArduinoSyncCollection is the media type for an array of ArduinoSync (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoSync'
+      title: 'Mediatype identifier: application/vnd.arduino.sync+json; type=collection; view=default'
+      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -591,12 +597,6 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    ArduinoSyncCollection:
-      description: ArduinoSyncCollection is the media type for an array of ArduinoSync (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoSync'
-      title: 'Mediatype identifier: application/vnd.arduino.sync+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

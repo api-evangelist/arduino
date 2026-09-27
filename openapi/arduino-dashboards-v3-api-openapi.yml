@@ -516,19 +516,115 @@ paths:
       - dashboards_v3
 components:
   schemas:
-    ArduinoDashboardshare:
-      description: ArduinoDashboardshare media type (default view)
+    dashboardv3:
+      description: DashboardV3Payload describes a dashboard
       properties:
-        user_id:
-          description: The userID of the user you want to share the dashboard with
+        cover_image:
+          description: The cover image of the dashboard
+          maxLength: 1024
+          type: string
+        name:
+          description: The friendly name of the dashboard
+          maxLength: 64
+          pattern: '[a-zA-Z0-9_.@-]+'
+          type: string
+        pages:
+          description: List of sub-pages
+          items:
+            $ref: '#/components/schemas/pagepayload'
+          maxItems: 30
+          type: array
+        soft_deleted:
+          default: false
+          description: If false, restore the thing from the soft deletion
+          type: boolean
+        widgets:
+          description: Widgets attached to this dashboard
+          items:
+            $ref: '#/components/schemas/widgetv3'
+          type: array
+      title: dashboardv3
+      type: object
+    override:
+      properties:
+        new_thing_id:
+          description: The id of the new thing to link
           format: uuid
           type: string
-        username:
-          description: The username of the user you want to share the dashboard with
+        old_thing_id:
+          description: The id of the thing to override
+          format: uuid
           type: string
       required:
-      - user_id
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; view=default'
+      - old_thing_id
+      - new_thing_id
+      title: override
+      type: object
+    ArduinoWidgetv3Collection:
+      description: ArduinoWidgetv3Collection is the media type for an array of ArduinoWidgetv3 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoWidgetv3'
+      title: 'Mediatype identifier: application/vnd.arduino.widgetv3+json; type=collection; view=default'
+      type: array
+    ArduinoWidgetv3templateCollection:
+      description: ArduinoWidgetv3templateCollection is the media type for an array of ArduinoWidgetv3template (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoWidgetv3template'
+      title: 'Mediatype identifier: application/vnd.arduino.widgetv3template+json; type=collection; view=default'
+      type: array
+    ArduinoDashboardv3Collection:
+      description: ArduinoDashboardv3Collection is the media type for an array of ArduinoDashboardv3 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDashboardv3'
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3+json; type=collection; view=default'
+      type: array
+    ArduinoPagevariableCollection:
+      description: ArduinoPagevariableCollection is the media type for an array of ArduinoPagevariable (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoPagevariable'
+      title: 'Mediatype identifier: application/vnd.arduino.pagevariable+json; type=collection; view=default'
+      type: array
+    ArduinoPagevariable:
+      description: ArduinoPagevariable media type (default view)
+      properties:
+        icon:
+          description: The icon of the Page
+          type: string
+        id:
+          description: The id of the Page
+          type: string
+        name:
+          description: The name of the Page
+          type: string
+        position:
+          description: The position of the Page
+          format: int64
+          type: integer
+      required:
+      - id
+      - name
+      - position
+      title: 'Mediatype identifier: application/vnd.arduino.pagevariable+json; view=default'
+      type: object
+    ArduinoDashboardv3template:
+      description: ArduinoDashboardv3template media type (default view)
+      properties:
+        cover_image:
+          description: The cover image of the dashboard
+          type: string
+        id:
+          description: The friendly ID of the dashboard
+          type: string
+        name:
+          description: The friendly name of the dashboard
+          type: string
+        pages:
+          $ref: '#/components/schemas/ArduinoPagevariableCollection'
+        widgets:
+          $ref: '#/components/schemas/ArduinoWidgetv3templateCollection'
+      required:
+      - name
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3template+json; view=default'
       type: object
     widgetv3:
       description: Widget describes a dashboard widget
@@ -598,79 +694,12 @@ components:
       - options
       title: widgetv3
       type: object
-    ArduinoDashboardv3Collection:
-      description: ArduinoDashboardv3Collection is the media type for an array of ArduinoDashboardv3 (default view)
+    ArduinoLinkedvariableCollection:
+      description: ArduinoLinkedvariableCollection is the media type for an array of ArduinoLinkedvariable (default view)
       items:
-        $ref: '#/components/schemas/ArduinoDashboardv3'
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3+json; type=collection; view=default'
+        $ref: '#/components/schemas/ArduinoLinkedvariable'
+      title: 'Mediatype identifier: application/vnd.arduino.linkedvariable+json; type=collection; view=default'
       type: array
-    dashboardv3:
-      description: DashboardV3Payload describes a dashboard
-      properties:
-        cover_image:
-          description: The cover image of the dashboard
-          maxLength: 1024
-          type: string
-        name:
-          description: The friendly name of the dashboard
-          maxLength: 64
-          pattern: '[a-zA-Z0-9_.@-]+'
-          type: string
-        pages:
-          description: List of sub-pages
-          items:
-            $ref: '#/components/schemas/pagepayload'
-          maxItems: 30
-          type: array
-        soft_deleted:
-          default: false
-          description: If false, restore the thing from the soft deletion
-          type: boolean
-        widgets:
-          description: Widgets attached to this dashboard
-          items:
-            $ref: '#/components/schemas/widgetv3'
-          type: array
-      title: dashboardv3
-      type: object
-    ArduinoDashboardv3:
-      description: Dashboard is a collection of widgets (default view)
-      properties:
-        cover_image:
-          description: The cover image of the dashboard
-          maxLength: 1024
-          type: string
-        created_by:
-          $ref: '#/components/schemas/ArduinoDashboardowner'
-        id:
-          description: The friendly name of the dashboard
-          format: uuid
-          type: string
-        name:
-          description: The friendly name of the dashboard
-          type: string
-        organization_id:
-          description: Id of the organization the dashboard belongs to
-          format: uuid
-          type: string
-        pages:
-          $ref: '#/components/schemas/ArduinoPagevariableCollection'
-        shared_by:
-          $ref: '#/components/schemas/ArduinoDashboardshare'
-        shared_with:
-          $ref: '#/components/schemas/ArduinoDashboardshareCollection'
-        updated_at:
-          description: Last update date
-          format: date-time
-          type: string
-        widgets:
-          $ref: '#/components/schemas/ArduinoWidgetv3Collection'
-      required:
-      - id
-      - name
-      - updated_at
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3+json; view=default'
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -698,20 +727,28 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    override:
+    ArduinoDashboardshare:
+      description: ArduinoDashboardshare media type (default view)
       properties:
-        new_thing_id:
-          description: The id of the new thing to link
+        user_id:
+          description: The userID of the user you want to share the dashboard with
           format: uuid
           type: string
-        old_thing_id:
-          description: The id of the thing to override
-          format: uuid
+        username:
+          description: The username of the user you want to share the dashboard with
           type: string
       required:
-      - old_thing_id
-      - new_thing_id
-      title: override
+      - user_id
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; view=default'
+      type: object
+    clone:
+      properties:
+        overrides:
+          description: 'The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link'
+          items:
+            $ref: '#/components/schemas/override'
+          type: array
+      title: clone
       type: object
     ArduinoDashboardshareCollection:
       description: ArduinoDashboardshareCollection is the media type for an array of ArduinoDashboardshare (default view)
@@ -719,12 +756,26 @@ components:
         $ref: '#/components/schemas/ArduinoDashboardshare'
       title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; type=collection; view=default'
       type: array
-    ArduinoTemplatevariableCollection:
-      description: ArduinoTemplatevariableCollection is the media type for an array of ArduinoTemplatevariable (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoTemplatevariable'
-      title: 'Mediatype identifier: application/vnd.arduino.templatevariable+json; type=collection; view=default'
-      type: array
+    ArduinoTimezone:
+      description: ArduinoTimezone media type (default view)
+      properties:
+        name:
+          description: Name of the time zone.
+          type: string
+        offset:
+          description: Current UTC DST offset in seconds.
+          format: int64
+          type: integer
+        until:
+          description: Date until the offset is valid.
+          format: date-time
+          type: string
+      required:
+      - name
+      - offset
+      - until
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
+      type: object
     ArduinoDashboardowner:
       description: ArduinoDashboardowner media type (default view)
       properties:
@@ -739,95 +790,11 @@ components:
       - user_id
       title: 'Mediatype identifier: application/vnd.arduino.dashboardowner+json; view=default'
       type: object
-    ArduinoLinkedvariable:
-      description: ArduinoLinkedvariable media type (default view)
-      properties:
-        id:
-          description: The id of the linked variable
-          format: uuid
-          type: string
-        last_value:
-          description: Last value of the linked property
-        last_value_updated_at:
-          description: Update date of the last value
-          format: date-time
-          type: string
-        name:
-          description: The name of the variable
-          type: string
-        permission:
-          description: The permission of the linked variable
-          type: string
-        thing_id:
-          description: The id of the related thing
-          format: uuid
-          type: string
-        thing_name:
-          description: The name of the related thing
-          type: string
-        thing_timezone:
-          $ref: '#/components/schemas/ArduinoTimezone'
-        type:
-          description: The type of the variable
-          type: string
-        variable_name:
-          description: The name of the variable in the code
-          type: string
-      required:
-      - id
-      - name
-      - variable_name
-      - thing_id
-      - thing_name
-      - type
-      - permission
-      title: 'Mediatype identifier: application/vnd.arduino.linkedvariable+json; view=default'
-      type: object
-    ArduinoPagevariableCollection:
-      description: ArduinoPagevariableCollection is the media type for an array of ArduinoPagevariable (default view)
+    ArduinoTemplatevariableCollection:
+      description: ArduinoTemplatevariableCollection is the media type for an array of ArduinoTemplatevariable (default view)
       items:
-        $ref: '#/components/schemas/ArduinoPagevariable'
-      title: 'Mediatype identifier: application/vnd.arduino.pagevariable+json; type=collection; view=default'
-      type: array
-    ArduinoWidgetv3Collection:
-      description: ArduinoWidgetv3Collection is the media type for an array of ArduinoWidgetv3 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoWidgetv3'
-      title: 'Mediatype identifier: application/vnd.arduino.widgetv3+json; type=collection; view=default'
-      type: array
-    ArduinoPagevariable:
-      description: ArduinoPagevariable media type (default view)
-      properties:
-        icon:
-          description: The icon of the Page
-          type: string
-        id:
-          description: The id of the Page
-          type: string
-        name:
-          description: The name of the Page
-          type: string
-        position:
-          description: The position of the Page
-          format: int64
-          type: integer
-      required:
-      - id
-      - name
-      - position
-      title: 'Mediatype identifier: application/vnd.arduino.pagevariable+json; view=default'
-      type: object
-    ArduinoWidgetv3templateCollection:
-      description: ArduinoWidgetv3templateCollection is the media type for an array of ArduinoWidgetv3template (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoWidgetv3template'
-      title: 'Mediatype identifier: application/vnd.arduino.widgetv3template+json; type=collection; view=default'
-      type: array
-    ArduinoLinkedvariableCollection:
-      description: ArduinoLinkedvariableCollection is the media type for an array of ArduinoLinkedvariable (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoLinkedvariable'
-      title: 'Mediatype identifier: application/vnd.arduino.linkedvariable+json; type=collection; view=default'
+        $ref: '#/components/schemas/ArduinoTemplatevariable'
+      title: 'Mediatype identifier: application/vnd.arduino.templatevariable+json; type=collection; view=default'
       type: array
     ArduinoWidgetv3template:
       description: ArduinoWidgetv3template media type (default view)
@@ -916,25 +883,71 @@ components:
       - position
       title: pagepayload
       type: object
-    ArduinoDashboardv3template:
-      description: ArduinoDashboardv3template media type (default view)
+    ArduinoTemplatevariable:
+      description: ArduinoTemplatevariable media type (default view)
+      properties:
+        name:
+          description: The name of the variable
+          type: string
+        permission:
+          description: The permission of the linked variable
+          type: string
+        thing_id:
+          description: The name of the related thing
+          type: string
+        thing_timezone:
+          $ref: '#/components/schemas/ArduinoTimezone'
+        type:
+          description: The type of the variable
+          type: string
+        variable_id:
+          description: The name of the variable in the code
+          type: string
+      required:
+      - name
+      - variable_id
+      - thing_id
+      - type
+      - permission
+      title: 'Mediatype identifier: application/vnd.arduino.templatevariable+json; view=default'
+      type: object
+    ArduinoDashboardv3:
+      description: Dashboard is a collection of widgets (default view)
       properties:
         cover_image:
           description: The cover image of the dashboard
+          maxLength: 1024
           type: string
+        created_by:
+          $ref: '#/components/schemas/ArduinoDashboardowner'
         id:
-          description: The friendly ID of the dashboard
+          description: The friendly name of the dashboard
+          format: uuid
           type: string
         name:
           description: The friendly name of the dashboard
           type: string
+        organization_id:
+          description: Id of the organization the dashboard belongs to
+          format: uuid
+          type: string
         pages:
           $ref: '#/components/schemas/ArduinoPagevariableCollection'
+        shared_by:
+          $ref: '#/components/schemas/ArduinoDashboardshare'
+        shared_with:
+          $ref: '#/components/schemas/ArduinoDashboardshareCollection'
+        updated_at:
+          description: Last update date
+          format: date-time
+          type: string
         widgets:
-          $ref: '#/components/schemas/ArduinoWidgetv3templateCollection'
+          $ref: '#/components/schemas/ArduinoWidgetv3Collection'
       required:
+      - id
       - name
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3template+json; view=default'
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardv3+json; view=default'
       type: object
     ArduinoWidgetv3:
       description: ArduinoWidgetv3 media type (default view)
@@ -1010,29 +1023,19 @@ components:
       - page_id
       title: 'Mediatype identifier: application/vnd.arduino.widgetv3+json; view=default'
       type: object
-    ArduinoTimezone:
-      description: ArduinoTimezone media type (default view)
+    ArduinoLinkedvariable:
+      description: ArduinoLinkedvariable media type (default view)
       properties:
-        name:
-          description: Name of the time zone.
+        id:
+          description: The id of the linked variable
+          format: uuid
           type: string
-        offset:
-          description: Current UTC DST offset in seconds.
-          format: int64
-          type: integer
-        until:
-          description: Date until the offset is valid.
+        last_value:
+          description: Last value of the linked property
+        last_value_updated_at:
+          description: Update date of the last value
           format: date-time
           type: string
-      required:
-      - name
-      - offset
-      - until
-      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
-      type: object
-    ArduinoTemplatevariable:
-      description: ArduinoTemplatevariable media type (default view)
-      properties:
         name:
           description: The name of the variable
           type: string
@@ -1040,6 +1043,10 @@ components:
           description: The permission of the linked variable
           type: string
         thing_id:
+          description: The id of the related thing
+          format: uuid
+          type: string
+        thing_name:
           description: The name of the related thing
           type: string
         thing_timezone:
@@ -1047,25 +1054,18 @@ components:
         type:
           description: The type of the variable
           type: string
-        variable_id:
+        variable_name:
           description: The name of the variable in the code
           type: string
       required:
+      - id
       - name
-      - variable_id
+      - variable_name
       - thing_id
+      - thing_name
       - type
       - permission
-      title: 'Mediatype identifier: application/vnd.arduino.templatevariable+json; view=default'
-      type: object
-    clone:
-      properties:
-        overrides:
-          description: 'The overrides to apply to the cloned dashboard. An override is a tuple of ids: the id of the thing to override and the id of the new thing to link'
-          items:
-            $ref: '#/components/schemas/override'
-          type: array
-      title: clone
+      title: 'Mediatype identifier: application/vnd.arduino.linkedvariable+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

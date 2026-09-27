@@ -326,22 +326,6 @@ paths:
       - usage_v1
 components:
   schemas:
-    UsageMonthlyPoint:
-      properties:
-        count:
-          description: Number of messages sent during that month
-          format: int64
-          type: integer
-        month:
-          description: Calendar month in ISO-8601 (YYYY-MM, UTC)
-          example: 2026-04
-          pattern: ^\d{4}-\d{2}$
-          type: string
-      required:
-      - month
-      - count
-      title: UsageMonthlyPoint
-      type: object
     UsageDailyPoint:
       properties:
         count:
@@ -357,40 +341,6 @@ components:
       - date
       - count
       title: UsageDailyPoint
-      type: object
-    ArduinoUsageThingsDaily:
-      description: Per-thing daily message-consumption series (default view)
-      properties:
-        from:
-          description: Start of the returned range (inclusive, UTC)
-          format: date-time
-          type: string
-        owner_id:
-          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
-          format: uuid
-          type: string
-        scope:
-          description: 'Scope of the series: `user` or `org`'
-          enum:
-          - user
-          - org
-          type: string
-        things:
-          description: One entry per thing with at least one message in the range
-          items:
-            $ref: '#/components/schemas/UsageThingDailySeries'
-          type: array
-        to:
-          description: End of the returned range (inclusive, UTC)
-          format: date-time
-          type: string
-      required:
-      - scope
-      - owner_id
-      - from
-      - to
-      - things
-      title: 'Mediatype identifier: application/vnd.arduino.usage.things.daily+json; view=default'
       type: object
     UsageThingMonthlySeries:
       description: Monthly series of one thing
@@ -408,23 +358,6 @@ components:
       - thing_id
       - series
       title: UsageThingMonthlySeries
-      type: object
-    UsageThingDailySeries:
-      description: Daily series of one thing
-      properties:
-        series:
-          description: One entry per calendar day with a non-zero count (UTC, ascending)
-          items:
-            $ref: '#/components/schemas/UsageDailyPoint'
-          type: array
-        thing_id:
-          description: Thing ID
-          format: uuid
-          type: string
-      required:
-      - thing_id
-      - series
-      title: UsageThingDailySeries
       type: object
     ArduinoUsageDaily:
       description: Daily message-consumption series (default view)
@@ -465,6 +398,40 @@ components:
       - series
       title: 'Mediatype identifier: application/vnd.arduino.usage.daily+json; view=default'
       type: object
+    ArduinoUsageThingsMonthly:
+      description: Per-thing monthly message-consumption series (default view)
+      properties:
+        from:
+          description: Start of the returned range (inclusive, UTC, truncated to month start)
+          format: date-time
+          type: string
+        owner_id:
+          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
+          format: uuid
+          type: string
+        scope:
+          description: 'Scope of the series: `user` or `org`'
+          enum:
+          - user
+          - org
+          type: string
+        things:
+          description: One entry per thing with at least one message in the range
+          items:
+            $ref: '#/components/schemas/UsageThingMonthlySeries'
+          type: array
+        to:
+          description: End of the returned range (inclusive, UTC, month end)
+          format: date-time
+          type: string
+      required:
+      - scope
+      - owner_id
+      - from
+      - to
+      - things
+      title: 'Mediatype identifier: application/vnd.arduino.usage.things.monthly+json; view=default'
+      type: object
     ArduinoUsageMonthly:
       description: Monthly message-consumption series (default view)
       properties:
@@ -504,11 +471,28 @@ components:
       - series
       title: 'Mediatype identifier: application/vnd.arduino.usage.monthly+json; view=default'
       type: object
-    ArduinoUsageThingsMonthly:
-      description: Per-thing monthly message-consumption series (default view)
+    UsageThingDailySeries:
+      description: Daily series of one thing
+      properties:
+        series:
+          description: One entry per calendar day with a non-zero count (UTC, ascending)
+          items:
+            $ref: '#/components/schemas/UsageDailyPoint'
+          type: array
+        thing_id:
+          description: Thing ID
+          format: uuid
+          type: string
+      required:
+      - thing_id
+      - series
+      title: UsageThingDailySeries
+      type: object
+    ArduinoUsageThingsDaily:
+      description: Per-thing daily message-consumption series (default view)
       properties:
         from:
-          description: Start of the returned range (inclusive, UTC, truncated to month start)
+          description: Start of the returned range (inclusive, UTC)
           format: date-time
           type: string
         owner_id:
@@ -524,10 +508,10 @@ components:
         things:
           description: One entry per thing with at least one message in the range
           items:
-            $ref: '#/components/schemas/UsageThingMonthlySeries'
+            $ref: '#/components/schemas/UsageThingDailySeries'
           type: array
         to:
-          description: End of the returned range (inclusive, UTC, month end)
+          description: End of the returned range (inclusive, UTC)
           format: date-time
           type: string
       required:
@@ -536,7 +520,23 @@ components:
       - from
       - to
       - things
-      title: 'Mediatype identifier: application/vnd.arduino.usage.things.monthly+json; view=default'
+      title: 'Mediatype identifier: application/vnd.arduino.usage.things.daily+json; view=default'
+      type: object
+    UsageMonthlyPoint:
+      properties:
+        count:
+          description: Number of messages sent during that month
+          format: int64
+          type: integer
+        month:
+          description: Calendar month in ISO-8601 (YYYY-MM, UTC)
+          example: 2026-04
+          pattern: ^\d{4}-\d{2}$
+          type: string
+      required:
+      - month
+      - count
+      title: UsageMonthlyPoint
       type: object
     error:
       description: Error response media type (default view)

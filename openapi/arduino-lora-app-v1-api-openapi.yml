@@ -238,33 +238,6 @@ paths:
       - lora_app_v1
 components:
   schemas:
-    UpdateLoraAppV1Payload:
-      properties:
-        app_eui:
-          default: ''
-          description: The eui of the app
-          type: string
-        name:
-          description: The name of the app
-          type: string
-      required:
-      - name
-      title: UpdateLoraAppV1Payload
-      type: object
-    ArduinoLoraappv1:
-      description: ArduinoLoraappv1 media type (default view)
-      properties:
-        app_eui:
-          default: ''
-          description: The eui of the app
-          type: string
-        name:
-          description: The name of the app
-          type: string
-      required:
-      - name
-      title: 'Mediatype identifier: application/vnd.arduino.loraappv1+json; view=default'
-      type: object
     CreateLoraAppV1Payload:
       properties:
         app_eui:
@@ -291,6 +264,20 @@ components:
       - name
       title: DeleteLoraAppV1Payload
       type: object
+    ArduinoLoraappv1:
+      description: ArduinoLoraappv1 media type (default view)
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: 'Mediatype identifier: application/vnd.arduino.loraappv1+json; view=default'
+      type: object
     ArduinoLoraappsv1:
       description: ArduinoLoraappsv1 media type (default view)
       properties:
@@ -302,6 +289,19 @@ components:
       required:
       - apps
       title: 'Mediatype identifier: application/vnd.arduino.loraappsv1+json; view=default'
+      type: object
+    UpdateLoraAppV1Payload:
+      properties:
+        app_eui:
+          default: ''
+          description: The eui of the app
+          type: string
+        name:
+          description: The name of the app
+          type: string
+      required:
+      - name
+      title: UpdateLoraAppV1Payload
       type: object
     error:
       description: Error response media type (default view)

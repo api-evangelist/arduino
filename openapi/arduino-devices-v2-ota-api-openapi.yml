@@ -312,6 +312,26 @@ paths:
       - devices_v2_ota
 components:
   schemas:
+    ArduinoDevicev2Otaupload:
+      description: ArduinoDevicev2Otaupload media type (default view)
+      properties:
+        file_sha:
+          description: SHA256 of the uploaded file
+          type: string
+        ota_id:
+          description: OTA request id (only available from OTA version 2 and above)
+          type: string
+        ota_version:
+          description: OTA version
+          format: int64
+          type: integer
+        status:
+          description: OTA request status (only available from OTA version 2 and above)
+          type: string
+      required:
+      - ota_version
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.otaupload+json; view=default'
+      type: object
     devicev2.otabinaryurl:
       properties:
         async:
@@ -357,26 +377,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoDevicev2Otaupload:
-      description: ArduinoDevicev2Otaupload media type (default view)
-      properties:
-        file_sha:
-          description: SHA256 of the uploaded file
-          type: string
-        ota_id:
-          description: OTA request id (only available from OTA version 2 and above)
-          type: string
-        ota_version:
-          description: OTA version
-          format: int64
-          type: integer
-        status:
-          description: OTA request status (only available from OTA version 2 and above)
-          type: string
-      required:
-      - ota_version
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.otaupload+json; view=default'
       type: object
     devicev2.otaurlpyalod:
       properties:

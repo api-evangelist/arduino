@@ -142,15 +142,6 @@ paths:
       - lora_gw_v1
 components:
   schemas:
-    ClaimLoraGwV1Payload:
-      properties:
-        user_id:
-          description: The user id. Could be a uuid, or the string 'me'
-          type: string
-      required:
-      - user_id
-      title: ClaimLoraGwV1Payload
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -255,6 +246,15 @@ components:
       - mac
       - aws_id
       title: 'Mediatype identifier: application/vnd.arduino.loragwv1+json; view=default'
+      type: object
+    ClaimLoraGwV1Payload:
+      properties:
+        user_id:
+          description: The user id. Could be a uuid, or the string 'me'
+          type: string
+      required:
+      - user_id
+      title: ClaimLoraGwV1Payload
       type: object
 externalDocs:
   description: See docs on Confluence

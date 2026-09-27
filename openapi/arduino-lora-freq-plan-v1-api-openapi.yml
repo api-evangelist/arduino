@@ -43,6 +43,24 @@ paths:
       - lora_freq_plan_v1
 components:
   schemas:
+    ArduinoLorafreqplanv1:
+      description: ArduinoLorafreqplanv1 media type (default view)
+      properties:
+        advanced:
+          description: Frequency plan only for advanced users
+          type: boolean
+        id:
+          description: The ID of the frequency paln
+          type: string
+        name:
+          description: The name of the frequency plan
+          type: string
+      required:
+      - name
+      - id
+      - advanced
+      title: 'Mediatype identifier: application/vnd.arduino.lorafreqplanv1+json; view=default'
+      type: object
     ArduinoLorafreqplansv1:
       description: ArduinoLorafreqplansv1 media type (default view)
       properties:
@@ -79,24 +97,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoLorafreqplanv1:
-      description: ArduinoLorafreqplanv1 media type (default view)
-      properties:
-        advanced:
-          description: Frequency plan only for advanced users
-          type: boolean
-        id:
-          description: The ID of the frequency paln
-          type: string
-        name:
-          description: The name of the frequency plan
-          type: string
-      required:
-      - name
-      - id
-      - advanced
-      title: 'Mediatype identifier: application/vnd.arduino.lorafreqplanv1+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

@@ -223,6 +223,13 @@ paths:
       - devices_v2_pass
 components:
   schemas:
+    devicev2.pass:
+      properties:
+        password:
+          description: The password for the device
+          type: string
+      title: devicev2.pass
+      type: object
     CheckDevicesV2PassPayload:
       properties:
         password:
@@ -231,13 +238,6 @@ components:
       required:
       - password
       title: CheckDevicesV2PassPayload
-      type: object
-    devicev2.pass:
-      properties:
-        password:
-          description: The password for the device
-          type: string
-      title: devicev2.pass
       type: object
     error:
       description: Error response media type (default view)

@@ -91,121 +91,71 @@ paths:
       - compact_triggers_v1
 components:
   schemas:
-    ArduinoCompact_trigger:
-      description: ArduinoCompact_trigger media type (default view)
+    ArduinoAction:
+      description: ArduinoAction media type (default view)
       properties:
-        actions:
-          description: A list of actions associated with the trigger
-          items:
-            $ref: '#/components/schemas/ArduinoAction'
-          type: array
-        active:
-          description: Is true if the trigger is enabled
-          type: boolean
-        created_at:
-          description: Creation date of the trigger
-          format: date-time
-          type: string
-        deleted_at:
-          description: Deletion date of the trigger
-          format: date-time
-          type: string
-        description:
-          description: The description of the trigger
-          type: string
-        device_status_source:
-          $ref: '#/components/schemas/device_status_source'
-        id:
-          description: The id of the trigger
+        created_by:
+          description: Id of the user who created the action
           format: uuid
           type: string
+        description:
+          description: The description of the action
+          type: string
+        email:
+          $ref: '#/components/schemas/email_action'
+        id:
+          description: The id of the action
+          format: uuid
+          type: string
+        kind:
+          description: The kind of the action
+          enum:
+          - NOTIFY-EMAIL
+          - NOTIFY-PUSH
+          example: NOTIFY-EMAIL
+          type: string
         name:
-          description: The name of the trigger
+          description: The name of the action
           type: string
         organization_id:
           description: Id of the organization the trigger belongs to
           format: uuid
           type: string
-        property_id:
-          description: Id of the property the trigger is associated to (mutually exclusive with 'device_status_source')
+        push_notification:
+          $ref: '#/components/schemas/push_action'
+        trigger_id:
+          description: Id of the trigger the action is associated to
           format: uuid
           type: string
-        updated_at:
-          description: Update date of the trigger
-          format: date-time
-          type: string
-        user_id:
-          description: Id of the user who created the trigger
-          format: uuid
-          type: string
-      required:
-      - name
-      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; view=default'
+      title: 'Mediatype identifier: application/vnd.arduino.action+json; view=default'
       type: object
-    ArduinoCompact_triggerCollection:
-      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_trigger'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
-      type: array
-    title_expression:
+    device_status_source:
       properties:
-        expression:
-          description: Content of the title (or subject) of a message, variables are allowed
-          maxLength: 100
+        criteria:
+          description: The matching criteria of the trigger, this allows to interpret device_ids as an inclusion or exclusion list
+          enum:
+          - INCLUDE
+          - EXCLUDE
           type: string
-        variables:
-          description: Variables used by the expression
+        device_ids:
+          description: A list of device IDs to be included in or excluded from the trigger (see criteria). Mutually exclusive with property_id.
           items:
-            $ref: '#/components/schemas/variable'
+            format: uuid
+            type: string
           type: array
+        grace_period_offline:
+          description: Amount of seconds the trigger will wait before the device will be considered disconnected (requires 'device_id')
+          maximum: 1209600
+          minimum: 0
+          type: integer
+        grace_period_online:
+          description: Amount of seconds the trigger will wait before the device will be considered connected (requires 'device_id')
+          maximum: 1209600
+          minimum: 0
+          type: integer
       required:
-      - expression
-      title: title_expression
-      type: object
-    variable:
-      properties:
-        attribute:
-          description: The template expression that extracts the value from the respective entity
-          enum:
-          - ID
-          - NAME
-          - VALUE
-          - TIMESTAMP
-          - USERNAME
-          - EMAIL
-          - STATUS
-          example: PROPERTY
-          type: string
-        entity:
-          description: Type of the entity being referenced
-          enum:
-          - RECIPIENT
-          - USER
-          - DEVICE
-          - THING
-          - PROPERTY
-          - TRIGGERING_DEVICE
-          example: PROPERTY
-          type: string
-        id:
-          description: The ID of the referenced entity
-          format: uuid
-          type: string
-        placeholder:
-          description: Name of the variable as referenced by the expression
-          type: string
-        property_id:
-          description: The ID of the property referenced entity
-          type: string
-        thing_id:
-          description: The ID of the thing referenced entity
-          type: string
-      required:
-      - placeholder
-      - entity
-      - attribute
-      title: variable
+      - criteria
+      title: device_status_source
       type: object
     push_action:
       properties:
@@ -235,6 +185,39 @@ components:
       - body
       title: email_action
       type: object
+    title_expression:
+      properties:
+        expression:
+          description: Content of the title (or subject) of a message, variables are allowed
+          maxLength: 100
+          type: string
+        variables:
+          description: Variables used by the expression
+          items:
+            $ref: '#/components/schemas/variable'
+          type: array
+      required:
+      - expression
+      title: title_expression
+      type: object
+    push_delivery_opts:
+      properties:
+        to:
+          description: The recipient of a push notification
+          items:
+            $ref: '#/components/schemas/user_recipient'
+          minItems: 1
+          type: array
+      required:
+      - to
+      title: push_delivery_opts
+      type: object
+    ArduinoCompact_triggerCollection:
+      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_trigger'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
+      type: array
     email_delivery_opts:
       properties:
         bcc:
@@ -288,83 +271,49 @@ components:
       - id
       title: user_recipient
       type: object
-    ArduinoAction:
-      description: ArduinoAction media type (default view)
+    variable:
       properties:
-        created_by:
-          description: Id of the user who created the action
-          format: uuid
+        attribute:
+          description: The template expression that extracts the value from the respective entity
+          enum:
+          - ID
+          - NAME
+          - VALUE
+          - TIMESTAMP
+          - USERNAME
+          - EMAIL
+          - STATUS
+          example: PROPERTY
           type: string
-        description:
-          description: The description of the action
+        entity:
+          description: Type of the entity being referenced
+          enum:
+          - RECIPIENT
+          - USER
+          - DEVICE
+          - THING
+          - PROPERTY
+          - TRIGGERING_DEVICE
+          example: PROPERTY
           type: string
-        email:
-          $ref: '#/components/schemas/email_action'
         id:
-          description: The id of the action
+          description: The ID of the referenced entity
           format: uuid
           type: string
-        kind:
-          description: The kind of the action
-          enum:
-          - NOTIFY-EMAIL
-          - NOTIFY-PUSH
-          example: NOTIFY-EMAIL
+        placeholder:
+          description: Name of the variable as referenced by the expression
           type: string
-        name:
-          description: The name of the action
+        property_id:
+          description: The ID of the property referenced entity
           type: string
-        organization_id:
-          description: Id of the organization the trigger belongs to
-          format: uuid
+        thing_id:
+          description: The ID of the thing referenced entity
           type: string
-        push_notification:
-          $ref: '#/components/schemas/push_action'
-        trigger_id:
-          description: Id of the trigger the action is associated to
-          format: uuid
-          type: string
-      title: 'Mediatype identifier: application/vnd.arduino.action+json; view=default'
-      type: object
-    push_delivery_opts:
-      properties:
-        to:
-          description: The recipient of a push notification
-          items:
-            $ref: '#/components/schemas/user_recipient'
-          minItems: 1
-          type: array
       required:
-      - to
-      title: push_delivery_opts
-      type: object
-    device_status_source:
-      properties:
-        criteria:
-          description: The matching criteria of the trigger, this allows to interpret device_ids as an inclusion or exclusion list
-          enum:
-          - INCLUDE
-          - EXCLUDE
-          type: string
-        device_ids:
-          description: A list of device IDs to be included in or excluded from the trigger (see criteria). Mutually exclusive with property_id.
-          items:
-            format: uuid
-            type: string
-          type: array
-        grace_period_offline:
-          description: Amount of seconds the trigger will wait before the device will be considered disconnected (requires 'device_id')
-          maximum: 1209600
-          minimum: 0
-          type: integer
-        grace_period_online:
-          description: Amount of seconds the trigger will wait before the device will be considered connected (requires 'device_id')
-          maximum: 1209600
-          minimum: 0
-          type: integer
-      required:
-      - criteria
-      title: device_status_source
+      - placeholder
+      - entity
+      - attribute
+      title: variable
       type: object
     error:
       description: Error response media type (default view)
@@ -392,6 +341,57 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoCompact_trigger:
+      description: ArduinoCompact_trigger media type (default view)
+      properties:
+        actions:
+          description: A list of actions associated with the trigger
+          items:
+            $ref: '#/components/schemas/ArduinoAction'
+          type: array
+        active:
+          description: Is true if the trigger is enabled
+          type: boolean
+        created_at:
+          description: Creation date of the trigger
+          format: date-time
+          type: string
+        deleted_at:
+          description: Deletion date of the trigger
+          format: date-time
+          type: string
+        description:
+          description: The description of the trigger
+          type: string
+        device_status_source:
+          $ref: '#/components/schemas/device_status_source'
+        id:
+          description: The id of the trigger
+          format: uuid
+          type: string
+        name:
+          description: The name of the trigger
+          type: string
+        organization_id:
+          description: Id of the organization the trigger belongs to
+          format: uuid
+          type: string
+        property_id:
+          description: Id of the property the trigger is associated to (mutually exclusive with 'device_status_source')
+          format: uuid
+          type: string
+        updated_at:
+          description: Update date of the trigger
+          format: date-time
+          type: string
+        user_id:
+          description: Id of the user who created the trigger
+          format: uuid
+          type: string
+      required:
+      - name
+      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

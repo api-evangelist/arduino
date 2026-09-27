@@ -100,39 +100,6 @@ paths:
       - compact_things_v2
 components:
   schemas:
-    ArduinoCompact_thingCollection:
-      description: ArduinoCompact_thingCollection is the media type for an array of ArduinoCompact_thing (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_thing'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; type=collection; view=default'
-      type: array
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
     ArduinoCompact_thing:
       description: ArduinoCompact_thing media type (default view)
       properties:
@@ -196,6 +163,39 @@ components:
       - timezone
       title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; view=default'
       type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoCompact_thingCollection:
+      description: ArduinoCompact_thingCollection is the media type for an array of ArduinoCompact_thing (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_thing'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; type=collection; view=default'
+      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

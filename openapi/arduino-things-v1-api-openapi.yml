@@ -946,12 +946,53 @@ paths:
       - things_v1
 components:
   schemas:
-    ArduinoDevicev2SimplePropertiesCollection:
-      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
-      type: array
+    ThingCreate:
+      description: Payload to create a new thing
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        device_id:
+          description: The arn of the associated device
+          format: uuid
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9_. -]+$
+          type: string
+        properties:
+          description: The properties of the thing
+          items:
+            $ref: '#/components/schemas/property'
+          type: array
+        tags:
+          description: Optional set of tags
+          items:
+            $ref: '#/components/schemas/tag'
+          type: array
+        timezone:
+          default: America/New_York
+          description: 'A time zone name
+
+            Check /v2/timezones for a list of valid names.'
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      title: ThingCreate
+      type: object
     thingSketch:
       description: ThingSketchPayload describes a sketch of a thing
       properties:
@@ -963,149 +1004,157 @@ components:
           type: string
       title: thingSketch
       type: object
-    thingPropertiesValues:
+    ArduinoDevicev2:
+      description: ArduinoDevicev2 media type (default view)
       properties:
-        properties:
-          items:
-            $ref: '#/components/schemas/thingPropertiesValue'
-          type: array
-        thing_id:
-          format: uuid
+        ble_mac:
+          maxLength: 17
+          minLength: 17
+          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
           type: string
-      required:
-      - properties
-      title: thingPropertiesValues
-      type: object
-    ArduinoThinglayout:
-      description: ArduinoThinglayout media type (default view)
-      properties:
-        assistant:
-          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+        connection_type:
+          description: The type of the connections selected by the user when multiple connections are available
           enum:
-          - ALEXA
-          - GOOGLE
-          - NONE
+          - wifi
+          - eth
+          - wifiandsecret
+          - gsm
+          - nb
+          - lora
+          - catm1
+          - cellular
           type: string
         created_at:
-          description: Creation date of the thing
+          description: Creation date of the device
           format: date-time
           type: string
         deleted_at:
-          description: Delete date of the thing
+          description: Deletion date of the trigger
           format: date-time
           type: string
-        device_fqbn:
-          description: The fqbn of the device
+        device_status:
+          description: The connection status of the device
+          enum:
+          - ONLINE
+          - OFFLINE
+          - UNKNOWN
           type: string
-        device_id:
+        events:
+          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
+        fqbn:
+          description: The fully qualified board name
+          type: string
+        href:
+          description: The api reference of this device
+          type: string
+        id:
           description: The arn of the device
           format: uuid
           type: string
-        device_type:
-          description: The type of the device
+        issuer_ca:
           type: string
-        href:
-          description: The api reference of this thing
+        label:
+          description: The label of the device
           type: string
-        id:
-          description: The id of the thing
-          format: uuid
+        last_activity_at:
+          description: Last activity date
+          format: date-time
           type: string
+        latest_wifi_fw_version:
+          description: The latest version of the NINA/WIFI101 firmware available for this device
+          type: string
+        lib_version:
+          type: string
+        locked:
+          description: True if the device is locked and can't be claimed by another user
+          type: boolean
+        metadata:
+          additionalProperties: true
+          description: The metadata of the device
+          type: object
         name:
-          description: The friendly name of the thing
+          description: The friendly name of the device
           type: string
+        no_sketch:
+          description: True if the device type can not have an associated sketch
+          type: boolean
         organization_id:
-          description: Id of the organization the thing belongs to
+          description: Id of the organization the device belongs to
           format: uuid
           type: string
-        properties:
-          $ref: '#/components/schemas/ArduinoPropertyCollection'
-        properties_count:
-          description: The number of properties of the thing
-          format: double
-          type: number
-        shared_with:
-          description: The list of users the dashboard is shared with
-          items:
-            format: uuid
-            type: string
-          type: array
-        sketch_id:
-          description: The id of the attached sketch
-          format: uuid
+        ota_available:
+          description: True if the device type is ready to receive OTA updated
+          type: boolean
+        ota_compatible:
+          description: True if the device type is OTA compatible
+          type: boolean
+        required_wifi_fw_version:
+          description: The required version of the NINA/WIFI101 firmware needed by IoT Cloud
+          type: string
+        serial:
+          description: The serial uuid of the device
           type: string
         tags:
           additionalProperties: true
-          description: Tags of the thing
+          description: Tags belonging to the device
           type: object
-        timezone:
-          $ref: '#/components/schemas/ArduinoTimezone'
+        thing:
+          $ref: '#/components/schemas/ArduinoThing'
+        type:
+          description: The type of the device
+          type: string
+        unique_hardware_id:
+          description: The unique hardware id of the device
+          maxLength: 64
+          minLength: 64
+          type: string
         updated_at:
-          description: Update date of the thing
+          description: Update date of the trigger
           format: date-time
           type: string
         user_id:
-          description: The user id of the owner
+          description: The id of the user
           format: uuid
           type: string
-        webhook_active:
-          description: Webhook uri
-          type: boolean
-        webhook_uri:
-          description: Webhook uri
+        webhooks:
+          $ref: '#/components/schemas/ArduinoDevicev2WebhookCollection'
+        wifi_fw_version:
+          description: The version of the NINA/WIFI101 firmware running on the device
           type: string
       required:
       - id
-      - user_id
       - name
+      - type
+      - label
+      - user_id
       - href
-      - timezone
-      title: 'Mediatype identifier: application/vnd.arduino.thinglayout+json; view=default'
+      - serial
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; view=default'
       type: object
-    thingPropertiesValue:
+    ArduinoDevicev2SimpleProperties:
+      description: ArduinoDevicev2SimpleProperties media type (default view)
       properties:
-        created_at:
-          description: Then the property was created
-          format: date-time
-          type: string
         name:
           description: The name of the property
           type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
         value:
-          description: The last value of the property
+          description: Value of the property
       required:
       - name
       - value
-      - created_at
-      title: thingPropertiesValue
+      - updated_at
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
       type: object
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
+    ArduinoDevicev2WebhookCollection:
+      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+      type: array
     thingUpdate:
       description: Payload to update an existing thing
       properties:
@@ -1168,59 +1217,69 @@ components:
       - value
       title: tag
       type: object
-    ArduinoPropertyCollection:
-      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoProperty'
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
-      type: array
-    ThingCreate:
-      description: Payload to create a new thing
+    error:
+      description: Error response media type (default view)
       properties:
-        assistant:
-          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
-          enum:
-          - ALEXA
-          - GOOGLE
-          - NONE
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
           type: string
-        device_id:
-          description: The arn of the associated device
-          format: uuid
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
           type: string
         id:
-          description: The id of the thing
-          format: uuid
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
           type: string
-        name:
-          description: The friendly name of the thing
-          maxLength: 64
-          pattern: ^[a-zA-Z0-9_. -]+$
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
           type: string
-        properties:
-          description: The properties of the thing
-          items:
-            $ref: '#/components/schemas/property'
-          type: array
-        tags:
-          description: Optional set of tags
-          items:
-            $ref: '#/components/schemas/tag'
-          type: array
-        timezone:
-          default: America/New_York
-          description: 'A time zone name
-
-            Check /v2/timezones for a list of valid names.'
-          type: string
-        webhook_active:
-          description: Webhook uri
-          type: boolean
-        webhook_uri:
-          description: Webhook uri
-          type: string
-      title: ThingCreate
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
+    updateSketch:
+      properties:
+        sketch_version:
+          description: The autogenerated sketch version
+          enum:
+          - v1
+          - v2
+          type: string
+      title: updateSketch
+      type: object
+    ArduinoTimezone:
+      description: ArduinoTimezone media type (default view)
+      properties:
+        name:
+          description: Name of the time zone.
+          type: string
+        offset:
+          description: Current UTC DST offset in seconds.
+          format: int64
+          type: integer
+        until:
+          description: Date until the offset is valid.
+          format: date-time
+          type: string
+      required:
+      - name
+      - offset
+      - until
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
+      type: object
+    ArduinoDevicev2SimplePropertiesCollection:
+      description: ArduinoDevicev2SimplePropertiesCollection is the media type for an array of ArduinoDevicev2SimpleProperties (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2SimpleProperties'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; type=collection; view=default'
+      type: array
     ArduinoDevicev2Webhook:
       description: DeviceWebhookV2 describes a webhook associated to the device (default view)
       properties:
@@ -1241,128 +1300,92 @@ components:
       - uri
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; view=default'
       type: object
-    ArduinoDevicev2SimpleProperties:
-      description: ArduinoDevicev2SimpleProperties media type (default view)
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
       properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
         name:
-          description: The name of the property
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
           type: string
         updated_at:
           description: Update date of the property
           format: date-time
           type: string
-        value:
-          description: Value of the property
-      required:
-      - name
-      - value
-      - updated_at
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.simple.properties+json; view=default'
-      type: object
-    updateSketch:
-      properties:
-        sketch_version:
-          description: The autogenerated sketch version
-          enum:
-          - v1
-          - v2
-          type: string
-      title: updateSketch
-      type: object
-    ArduinoThing:
-      description: ArduinoThing media type (default view)
-      properties:
-        assistant:
-          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
-          enum:
-          - ALEXA
-          - GOOGLE
-          - NONE
-          type: string
-        created_at:
-          description: Creation date of the thing
+        value_updated_at:
+          description: Last update timestamp of this property
           format: date-time
           type: string
-        deleted_at:
-          description: Delete date of the thing
-          format: date-time
-          type: string
-        device_fqbn:
-          description: The fqbn of the attached device, if any
-          type: string
-        device_id:
-          description: The id of the device
-          format: uuid
-          type: string
-        device_name:
-          description: The name of the attached device, if any
-          type: string
-        device_type:
-          description: The type of the attached device, if any
-          type: string
-        href:
-          description: The api reference of this thing
-          type: string
-        id:
-          description: The id of the thing
-          format: uuid
-          type: string
-        name:
-          description: The friendly name of the thing
-          type: string
-        organization_id:
-          description: Id of the organization the thing belongs to
-          format: uuid
-          type: string
-        properties:
-          $ref: '#/components/schemas/ArduinoPropertyCollection'
-        properties_count:
-          description: The number of properties of the thing
-          format: int64
-          type: integer
-        sketch_id:
-          description: The id of the attached sketch
-          format: uuid
-          type: string
-        source_template:
-          description: The id of the template used to create the thing
-          format: uuid
-          type: string
-        tags:
-          additionalProperties: true
-          description: Tags of the thing
-          type: object
-        timezone:
-          description: Time zone of the thing
-          type: string
-        updated_at:
-          description: Update date of the thing
-          format: date-time
-          type: string
-        user_id:
-          description: The user id of the owner
-          format: uuid
-          type: string
-        webhook_active:
-          description: Webhook uri
-          type: boolean
-        webhook_uri:
-          description: Webhook uri
+        variable_name:
+          description: The sketch variable name of the property
           type: string
       required:
       - id
-      - user_id
+      - thing_id
       - name
+      - type
+      - permission
+      - update_strategy
       - href
-      - timezone
-      title: 'Mediatype identifier: application/vnd.arduino.thing+json; view=default'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
       type: object
-    ArduinoThingCollection:
-      description: ArduinoThingCollection is the media type for an array of ArduinoThing (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoThing'
-      title: 'Mediatype identifier: application/vnd.arduino.thing+json; type=collection; view=default'
-      type: array
     property:
       description: PropertyPayload describes a property of a thing. No field is mandatory
       properties:
@@ -1549,244 +1572,221 @@ components:
       - update_strategy
       title: property
       type: object
-    ArduinoProperty:
-      description: ArduinoProperty media type (default view)
+    thingPropertiesValue:
       properties:
         created_at:
-          description: Creation date of the property
+          description: Then the property was created
+          format: date-time
+          type: string
+        name:
+          description: The name of the property
+          type: string
+        value:
+          description: The last value of the property
+      required:
+      - name
+      - value
+      - created_at
+      title: thingPropertiesValue
+      type: object
+    ArduinoThingCollection:
+      description: ArduinoThingCollection is the media type for an array of ArduinoThing (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoThing'
+      title: 'Mediatype identifier: application/vnd.arduino.thing+json; type=collection; view=default'
+      type: array
+    ArduinoThinglayout:
+      description: ArduinoThinglayout media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
           format: date-time
           type: string
         deleted_at:
-          description: Delete date of the property
+          description: Delete date of the thing
           format: date-time
           type: string
-        href:
-          description: The api reference of this property
+        device_fqbn:
+          description: The fqbn of the device
           type: string
-        id:
-          description: The id of the property
-          format: uuid
-          type: string
-        last_value:
-          description: Last value of this property
-        linked_to_trigger:
-          description: Indicates if the property is involved in the activation of at least a trigger
-          type: boolean
-        max_value:
-          description: Maximum value of this property
-          format: double
-          type: number
-        min_value:
-          description: Minimum value of this property
-          format: double
-          type: number
-        name:
-          description: The friendly name of the property
-          type: string
-        permission:
-          description: The permission of the property
-          type: string
-        persist:
-          description: If true, data will persist into a timeseries database
-          type: boolean
-        sync_id:
-          description: The id of the sync pool
-          format: uuid
-          type: string
-        tag:
-          description: The integer id of the property
-          format: int64
-          type: integer
-        thing_id:
-          description: The id of the thing
-          format: uuid
-          type: string
-        thing_name:
-          description: The name of the associated thing
-          type: string
-        type:
-          description: The type of the property
-          type: string
-        update_parameter:
-          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
-          format: double
-          type: number
-        update_strategy:
-          description: The update strategy for the property value
-          type: string
-        updated_at:
-          description: Update date of the property
-          format: date-time
-          type: string
-        value_updated_at:
-          description: Last update timestamp of this property
-          format: date-time
-          type: string
-        variable_name:
-          description: The sketch variable name of the property
-          type: string
-      required:
-      - id
-      - thing_id
-      - name
-      - type
-      - permission
-      - update_strategy
-      - href
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
-      type: object
-    ArduinoTimezone:
-      description: ArduinoTimezone media type (default view)
-      properties:
-        name:
-          description: Name of the time zone.
-          type: string
-        offset:
-          description: Current UTC DST offset in seconds.
-          format: int64
-          type: integer
-        until:
-          description: Date until the offset is valid.
-          format: date-time
-          type: string
-      required:
-      - name
-      - offset
-      - until
-      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
-      type: object
-    ArduinoDevicev2:
-      description: ArduinoDevicev2 media type (default view)
-      properties:
-        ble_mac:
-          maxLength: 17
-          minLength: 17
-          pattern: ^(?:[0-9A-Fa-f]{2}[:]){5}(?:[0-9A-Fa-f]{2})
-          type: string
-        connection_type:
-          description: The type of the connections selected by the user when multiple connections are available
-          enum:
-          - wifi
-          - eth
-          - wifiandsecret
-          - gsm
-          - nb
-          - lora
-          - catm1
-          - cellular
-          type: string
-        created_at:
-          description: Creation date of the device
-          format: date-time
-          type: string
-        deleted_at:
-          description: Deletion date of the trigger
-          format: date-time
-          type: string
-        device_status:
-          description: The connection status of the device
-          enum:
-          - ONLINE
-          - OFFLINE
-          - UNKNOWN
-          type: string
-        events:
-          $ref: '#/components/schemas/ArduinoDevicev2SimplePropertiesCollection'
-        fqbn:
-          description: The fully qualified board name
-          type: string
-        href:
-          description: The api reference of this device
-          type: string
-        id:
+        device_id:
           description: The arn of the device
           format: uuid
           type: string
-        issuer_ca:
+        device_type:
+          description: The type of the device
           type: string
-        label:
-          description: The label of the device
+        href:
+          description: The api reference of this thing
           type: string
-        last_activity_at:
-          description: Last activity date
-          format: date-time
-          type: string
-        latest_wifi_fw_version:
-          description: The latest version of the NINA/WIFI101 firmware available for this device
-          type: string
-        lib_version:
-          type: string
-        locked:
-          description: True if the device is locked and can't be claimed by another user
-          type: boolean
-        metadata:
-          additionalProperties: true
-          description: The metadata of the device
-          type: object
-        name:
-          description: The friendly name of the device
-          type: string
-        no_sketch:
-          description: True if the device type can not have an associated sketch
-          type: boolean
-        organization_id:
-          description: Id of the organization the device belongs to
+        id:
+          description: The id of the thing
           format: uuid
           type: string
-        ota_available:
-          description: True if the device type is ready to receive OTA updated
-          type: boolean
-        ota_compatible:
-          description: True if the device type is OTA compatible
-          type: boolean
-        required_wifi_fw_version:
-          description: The required version of the NINA/WIFI101 firmware needed by IoT Cloud
+        name:
+          description: The friendly name of the thing
           type: string
-        serial:
-          description: The serial uuid of the device
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        properties_count:
+          description: The number of properties of the thing
+          format: double
+          type: number
+        shared_with:
+          description: The list of users the dashboard is shared with
+          items:
+            format: uuid
+            type: string
+          type: array
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
           type: string
         tags:
           additionalProperties: true
-          description: Tags belonging to the device
+          description: Tags of the thing
           type: object
-        thing:
-          $ref: '#/components/schemas/ArduinoThing'
-        type:
-          description: The type of the device
-          type: string
-        unique_hardware_id:
-          description: The unique hardware id of the device
-          maxLength: 64
-          minLength: 64
-          type: string
+        timezone:
+          $ref: '#/components/schemas/ArduinoTimezone'
         updated_at:
-          description: Update date of the trigger
+          description: Update date of the thing
           format: date-time
           type: string
         user_id:
-          description: The id of the user
+          description: The user id of the owner
           format: uuid
           type: string
-        webhooks:
-          $ref: '#/components/schemas/ArduinoDevicev2WebhookCollection'
-        wifi_fw_version:
-          description: The version of the NINA/WIFI101 firmware running on the device
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
           type: string
       required:
       - id
-      - name
-      - type
-      - label
       - user_id
+      - name
       - href
-      - serial
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2+json; view=default'
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.thinglayout+json; view=default'
       type: object
-    ArduinoDevicev2WebhookCollection:
-      description: ArduinoDevicev2WebhookCollection is the media type for an array of ArduinoDevicev2Webhook (default view)
+    ArduinoThing:
+      description: ArduinoThing media type (default view)
+      properties:
+        assistant:
+          description: The kind of voice assistant the thing is connected to, it can be ALEXA | GOOGLE | NONE
+          enum:
+          - ALEXA
+          - GOOGLE
+          - NONE
+          type: string
+        created_at:
+          description: Creation date of the thing
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the thing
+          format: date-time
+          type: string
+        device_fqbn:
+          description: The fqbn of the attached device, if any
+          type: string
+        device_id:
+          description: The id of the device
+          format: uuid
+          type: string
+        device_name:
+          description: The name of the attached device, if any
+          type: string
+        device_type:
+          description: The type of the attached device, if any
+          type: string
+        href:
+          description: The api reference of this thing
+          type: string
+        id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        name:
+          description: The friendly name of the thing
+          type: string
+        organization_id:
+          description: Id of the organization the thing belongs to
+          format: uuid
+          type: string
+        properties:
+          $ref: '#/components/schemas/ArduinoPropertyCollection'
+        properties_count:
+          description: The number of properties of the thing
+          format: int64
+          type: integer
+        sketch_id:
+          description: The id of the attached sketch
+          format: uuid
+          type: string
+        source_template:
+          description: The id of the template used to create the thing
+          format: uuid
+          type: string
+        tags:
+          additionalProperties: true
+          description: Tags of the thing
+          type: object
+        timezone:
+          description: Time zone of the thing
+          type: string
+        updated_at:
+          description: Update date of the thing
+          format: date-time
+          type: string
+        user_id:
+          description: The user id of the owner
+          format: uuid
+          type: string
+        webhook_active:
+          description: Webhook uri
+          type: boolean
+        webhook_uri:
+          description: Webhook uri
+          type: string
+      required:
+      - id
+      - user_id
+      - name
+      - href
+      - timezone
+      title: 'Mediatype identifier: application/vnd.arduino.thing+json; view=default'
+      type: object
+    thingPropertiesValues:
+      properties:
+        properties:
+          items:
+            $ref: '#/components/schemas/thingPropertiesValue'
+          type: array
+        thing_id:
+          format: uuid
+          type: string
+      required:
+      - properties
+      title: thingPropertiesValues
+      type: object
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
       items:
-        $ref: '#/components/schemas/ArduinoDevicev2Webhook'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.webhook+json; type=collection; view=default'
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
       type: array
 externalDocs:
   description: See docs on Confluence
