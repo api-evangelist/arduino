@@ -142,6 +142,21 @@ paths:
       - Users V1
 components:
   schemas:
+    ArduinoUser:
+      description: ArduinoUser media type (default view)
+      properties:
+        id:
+          description: The ID of the user
+          format: uuid
+          type: string
+        username:
+          description: The username of the user
+          type: string
+      required:
+      - id
+      - username
+      title: 'Mediatype identifier: application/vnd.arduino.user+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -168,21 +183,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoUser:
-      description: ArduinoUser media type (default view)
-      properties:
-        id:
-          description: The ID of the user
-          format: uuid
-          type: string
-        username:
-          description: The username of the user
-          type: string
-      required:
-      - id
-      - username
-      title: 'Mediatype identifier: application/vnd.arduino.user+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

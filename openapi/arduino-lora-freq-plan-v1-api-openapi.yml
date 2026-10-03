@@ -61,16 +61,6 @@ components:
       - advanced
       title: 'Mediatype identifier: application/vnd.arduino.lorafreqplanv1+json; view=default'
       type: object
-    ArduinoLorafreqplansv1:
-      description: ArduinoLorafreqplansv1 media type (default view)
-      properties:
-        frequency_plans:
-          description: The list of frequency plans
-          items:
-            $ref: '#/components/schemas/ArduinoLorafreqplanv1'
-          type: array
-      title: 'Mediatype identifier: application/vnd.arduino.lorafreqplansv1+json; view=default'
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -97,6 +87,16 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoLorafreqplansv1:
+      description: ArduinoLorafreqplansv1 media type (default view)
+      properties:
+        frequency_plans:
+          description: The list of frequency plans
+          items:
+            $ref: '#/components/schemas/ArduinoLorafreqplanv1'
+          type: array
+      title: 'Mediatype identifier: application/vnd.arduino.lorafreqplansv1+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

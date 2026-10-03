@@ -45,15 +45,6 @@ paths:
       - Timezones
 components:
   schemas:
-    ArduinoTimezones:
-      description: ArduinoTimezones media type (default view)
-      properties:
-        timezones:
-          $ref: '#/components/schemas/ArduinoTimezoneCollection'
-      required:
-      - timezones
-      title: 'Mediatype identifier: application/vnd.arduino.timezones+json; view=default'
-      type: object
     ArduinoTimezone:
       description: ArduinoTimezone media type (default view)
       properties:
@@ -74,12 +65,15 @@ components:
       - until
       title: 'Mediatype identifier: application/vnd.arduino.timezone+json; view=default'
       type: object
-    ArduinoTimezoneCollection:
-      description: ArduinoTimezoneCollection is the media type for an array of ArduinoTimezone (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoTimezone'
-      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; type=collection; view=default'
-      type: array
+    ArduinoTimezones:
+      description: ArduinoTimezones media type (default view)
+      properties:
+        timezones:
+          $ref: '#/components/schemas/ArduinoTimezoneCollection'
+      required:
+      - timezones
+      title: 'Mediatype identifier: application/vnd.arduino.timezones+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -107,6 +101,12 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
+    ArduinoTimezoneCollection:
+      description: ArduinoTimezoneCollection is the media type for an array of ArduinoTimezone (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoTimezone'
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; type=collection; view=default'
+      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

@@ -223,13 +223,6 @@ paths:
       - devices_v2_pass
 components:
   schemas:
-    devicev2.pass:
-      properties:
-        password:
-          description: The password for the device
-          type: string
-      title: devicev2.pass
-      type: object
     CheckDevicesV2PassPayload:
       properties:
         password:
@@ -278,6 +271,13 @@ components:
       required:
       - set
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
+      type: object
+    devicev2.pass:
+      properties:
+        password:
+          description: The password for the device
+          type: string
+      title: devicev2.pass
       type: object
 externalDocs:
   description: See docs on Confluence

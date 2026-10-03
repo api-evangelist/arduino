@@ -251,6 +251,33 @@ paths:
       - devices_v2_pubkeys
 components:
   schemas:
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
     ArduinoDevicev2Pubkey:
       description: DevicePubkeyV2 describes a public key associated to the device (default view)
       properties:
@@ -287,6 +314,12 @@ components:
       - href
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; view=default'
       type: object
+    ArduinoDevicev2PubkeyCollection:
+      description: ArduinoDevicev2PubkeyCollection is the media type for an array of ArduinoDevicev2Pubkey (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; type=collection; view=default'
+      type: array
     devicev2.pubkey:
       properties:
         enabled:
@@ -301,12 +334,6 @@ components:
           type: string
       title: devicev2.pubkey
       type: object
-    ArduinoDevicev2PubkeyCollection:
-      description: ArduinoDevicev2PubkeyCollection is the media type for an array of ArduinoDevicev2Pubkey (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; type=collection; view=default'
-      type: array
     CreateDevicesV2PubkeysPayload:
       properties:
         enabled:
@@ -324,33 +351,6 @@ components:
       - expire
       - pem
       title: CreateDevicesV2PubkeysPayload
-      type: object
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

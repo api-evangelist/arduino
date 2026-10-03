@@ -70,37 +70,6 @@ components:
           type: array
       title: UsageBatchPayload
       type: object
-    UserUsageRecord:
-      description: One (user, thing, device, date) message counter delta
-      properties:
-        count:
-          description: Delta number of messages for this (user, thing, device) on this date
-          minimum: 0
-          type: integer
-        date:
-          description: Calendar day these counters refer to (UTC; truncated to day on persist)
-          format: date-time
-          type: string
-        device_id:
-          description: Device ID attached to the thing
-          format: uuid
-          type: string
-        thing_id:
-          description: Thing ID
-          format: uuid
-          type: string
-        user_id:
-          description: Owning user
-          format: uuid
-          type: string
-      required:
-      - user_id
-      - thing_id
-      - device_id
-      - date
-      - count
-      title: UserUsageRecord
-      type: object
     OrgUsageRecord:
       description: One (org, thing, device, date) message counter delta
       properties:
@@ -158,6 +127,37 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    UserUsageRecord:
+      description: One (user, thing, device, date) message counter delta
+      properties:
+        count:
+          description: Delta number of messages for this (user, thing, device) on this date
+          minimum: 0
+          type: integer
+        date:
+          description: Calendar day these counters refer to (UTC; truncated to day on persist)
+          format: date-time
+          type: string
+        device_id:
+          description: Device ID attached to the thing
+          format: uuid
+          type: string
+        thing_id:
+          description: Thing ID
+          format: uuid
+          type: string
+        user_id:
+          description: Owning user
+          format: uuid
+          type: string
+      required:
+      - user_id
+      - thing_id
+      - device_id
+      - date
+      - count
+      title: UserUsageRecord
       type: object
 externalDocs:
   description: See docs on Confluence
