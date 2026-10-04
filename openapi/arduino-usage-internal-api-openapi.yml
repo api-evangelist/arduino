@@ -53,54 +53,6 @@ paths:
       - usage_internal
 components:
   schemas:
-    UsageBatchPayload:
-      description: Batch of message-consumption counters to upsert
-      properties:
-        orgs_usage:
-          description: Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.
-          items:
-            $ref: '#/components/schemas/OrgUsageRecord'
-          maxItems: 10000
-          type: array
-        users_usage:
-          description: Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.
-          items:
-            $ref: '#/components/schemas/UserUsageRecord'
-          maxItems: 10000
-          type: array
-      title: UsageBatchPayload
-      type: object
-    OrgUsageRecord:
-      description: One (org, thing, device, date) message counter delta
-      properties:
-        count:
-          description: Delta number of messages for this (org, thing, device) on this date
-          minimum: 0
-          type: integer
-        date:
-          description: Calendar day these counters refer to (UTC; truncated to day on persist)
-          format: date-time
-          type: string
-        device_id:
-          description: Device ID attached to the thing
-          format: uuid
-          type: string
-        org_id:
-          description: Owning organization
-          format: uuid
-          type: string
-        thing_id:
-          description: Thing ID
-          format: uuid
-          type: string
-      required:
-      - org_id
-      - thing_id
-      - device_id
-      - date
-      - count
-      title: OrgUsageRecord
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -127,6 +79,23 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    UsageBatchPayload:
+      description: Batch of message-consumption counters to upsert
+      properties:
+        orgs_usage:
+          description: Per-organization counters. Composite key (org_id, thing_id, device_id, date) must be unique within this array.
+          items:
+            $ref: '#/components/schemas/OrgUsageRecord'
+          maxItems: 10000
+          type: array
+        users_usage:
+          description: Per-user counters. Composite key (user_id, thing_id, device_id, date) must be unique within this array.
+          items:
+            $ref: '#/components/schemas/UserUsageRecord'
+          maxItems: 10000
+          type: array
+      title: UsageBatchPayload
       type: object
     UserUsageRecord:
       description: One (user, thing, device, date) message counter delta
@@ -158,6 +127,37 @@ components:
       - date
       - count
       title: UserUsageRecord
+      type: object
+    OrgUsageRecord:
+      description: One (org, thing, device, date) message counter delta
+      properties:
+        count:
+          description: Delta number of messages for this (org, thing, device) on this date
+          minimum: 0
+          type: integer
+        date:
+          description: Calendar day these counters refer to (UTC; truncated to day on persist)
+          format: date-time
+          type: string
+        device_id:
+          description: Device ID attached to the thing
+          format: uuid
+          type: string
+        org_id:
+          description: Owning organization
+          format: uuid
+          type: string
+        thing_id:
+          description: Thing ID
+          format: uuid
+          type: string
+      required:
+      - org_id
+      - thing_id
+      - device_id
+      - date
+      - count
+      title: OrgUsageRecord
       type: object
 externalDocs:
   description: See docs on Confluence

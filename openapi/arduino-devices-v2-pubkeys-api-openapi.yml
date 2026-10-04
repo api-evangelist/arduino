@@ -278,6 +278,38 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
+    CreateDevicesV2PubkeysPayload:
+      properties:
+        enabled:
+          description: Whether the public key is enabled
+          type: boolean
+        expire:
+          description: When the public key will expire
+          format: date-time
+          type: string
+        pem:
+          description: The public key in pem format
+          type: string
+      required:
+      - enabled
+      - expire
+      - pem
+      title: CreateDevicesV2PubkeysPayload
+      type: object
+    devicev2.pubkey:
+      properties:
+        enabled:
+          description: Whether the public key is enabled
+          type: boolean
+        expire:
+          description: When the public key will expire
+          format: date-time
+          type: string
+        pem:
+          description: The public key in pem format
+          type: string
+      title: devicev2.pubkey
+      type: object
     ArduinoDevicev2Pubkey:
       description: DevicePubkeyV2 describes a public key associated to the device (default view)
       properties:
@@ -320,38 +352,6 @@ components:
         $ref: '#/components/schemas/ArduinoDevicev2Pubkey'
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.pubkey+json; type=collection; view=default'
       type: array
-    devicev2.pubkey:
-      properties:
-        enabled:
-          description: Whether the public key is enabled
-          type: boolean
-        expire:
-          description: When the public key will expire
-          format: date-time
-          type: string
-        pem:
-          description: The public key in pem format
-          type: string
-      title: devicev2.pubkey
-      type: object
-    CreateDevicesV2PubkeysPayload:
-      properties:
-        enabled:
-          description: Whether the public key is enabled
-          type: boolean
-        expire:
-          description: When the public key will expire
-          format: date-time
-          type: string
-        pem:
-          description: The public key in pem format
-          type: string
-      required:
-      - enabled
-      - expire
-      - pem
-      title: CreateDevicesV2PubkeysPayload
-      type: object
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

@@ -91,49 +91,6 @@ paths:
       - compact_triggers_v1
 components:
   schemas:
-    device_status_source:
-      properties:
-        criteria:
-          description: The matching criteria of the trigger, this allows to interpret device_ids as an inclusion or exclusion list
-          enum:
-          - INCLUDE
-          - EXCLUDE
-          type: string
-        device_ids:
-          description: A list of device IDs to be included in or excluded from the trigger (see criteria). Mutually exclusive with property_id.
-          items:
-            format: uuid
-            type: string
-          type: array
-        grace_period_offline:
-          description: Amount of seconds the trigger will wait before the device will be considered disconnected (requires 'device_id')
-          maximum: 1209600
-          minimum: 0
-          type: integer
-        grace_period_online:
-          description: Amount of seconds the trigger will wait before the device will be considered connected (requires 'device_id')
-          maximum: 1209600
-          minimum: 0
-          type: integer
-      required:
-      - criteria
-      title: device_status_source
-      type: object
-    body_expression:
-      properties:
-        expression:
-          description: Content of the body of a message, variables are allowed
-          maxLength: 1000
-          type: string
-        variables:
-          description: Variables used by the expression
-          items:
-            $ref: '#/components/schemas/variable'
-          type: array
-      required:
-      - expression
-      title: body_expression
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -175,68 +132,43 @@ components:
       - body
       title: push_action
       type: object
-    email_action:
+    ArduinoAction:
+      description: ArduinoAction media type (default view)
       properties:
-        body:
-          $ref: '#/components/schemas/body_expression'
-        delivery:
-          $ref: '#/components/schemas/email_delivery_opts'
-        subject:
-          $ref: '#/components/schemas/title_expression'
-      required:
-      - delivery
-      - subject
-      - body
-      title: email_action
-      type: object
-    user_recipient:
-      properties:
-        email:
-          description: The email address of the user
-          type: string
-        id:
-          description: The id of the user
+        created_by:
+          description: Id of the user who created the action
           format: uuid
           type: string
-        username:
-          description: The username of the user
+        description:
+          description: The description of the action
           type: string
-      required:
-      - id
-      title: user_recipient
-      type: object
-    ArduinoCompact_triggerCollection:
-      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_trigger'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
-      type: array
-    title_expression:
-      properties:
-        expression:
-          description: Content of the title (or subject) of a message, variables are allowed
-          maxLength: 100
+        email:
+          $ref: '#/components/schemas/email_action'
+        id:
+          description: The id of the action
+          format: uuid
           type: string
-        variables:
-          description: Variables used by the expression
-          items:
-            $ref: '#/components/schemas/variable'
-          type: array
-      required:
-      - expression
-      title: title_expression
-      type: object
-    push_delivery_opts:
-      properties:
-        to:
-          description: The recipient of a push notification
-          items:
-            $ref: '#/components/schemas/user_recipient'
-          minItems: 1
-          type: array
-      required:
-      - to
-      title: push_delivery_opts
+        kind:
+          description: The kind of the action
+          enum:
+          - NOTIFY-EMAIL
+          - NOTIFY-PUSH
+          example: NOTIFY-EMAIL
+          type: string
+        name:
+          description: The name of the action
+          type: string
+        organization_id:
+          description: Id of the organization the trigger belongs to
+          format: uuid
+          type: string
+        push_notification:
+          $ref: '#/components/schemas/push_action'
+        trigger_id:
+          description: Id of the trigger the action is associated to
+          format: uuid
+          type: string
+      title: 'Mediatype identifier: application/vnd.arduino.action+json; view=default'
       type: object
     ArduinoCompact_trigger:
       description: ArduinoCompact_trigger media type (default view)
@@ -289,6 +221,28 @@ components:
       - name
       title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; view=default'
       type: object
+    email_delivery_opts:
+      properties:
+        bcc:
+          description: The "bcc:" field of an e-mail
+          items:
+            $ref: '#/components/schemas/user_recipient'
+          type: array
+        cc:
+          description: The "cc:" field of an e-mail
+          items:
+            $ref: '#/components/schemas/user_recipient'
+          type: array
+        to:
+          description: The "to:" field of an e-mail
+          items:
+            $ref: '#/components/schemas/user_recipient'
+          minItems: 1
+          type: array
+      required:
+      - to
+      title: email_delivery_opts
+      type: object
     variable:
       properties:
         attribute:
@@ -333,65 +287,111 @@ components:
       - attribute
       title: variable
       type: object
-    ArduinoAction:
-      description: ArduinoAction media type (default view)
+    ArduinoCompact_triggerCollection:
+      description: ArduinoCompact_triggerCollection is the media type for an array of ArduinoCompact_trigger (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_trigger'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_trigger+json; type=collection; view=default'
+      type: array
+    push_delivery_opts:
       properties:
-        created_by:
-          description: Id of the user who created the action
-          format: uuid
-          type: string
-        description:
-          description: The description of the action
-          type: string
-        email:
-          $ref: '#/components/schemas/email_action'
-        id:
-          description: The id of the action
-          format: uuid
-          type: string
-        kind:
-          description: The kind of the action
-          enum:
-          - NOTIFY-EMAIL
-          - NOTIFY-PUSH
-          example: NOTIFY-EMAIL
-          type: string
-        name:
-          description: The name of the action
-          type: string
-        organization_id:
-          description: Id of the organization the trigger belongs to
-          format: uuid
-          type: string
-        push_notification:
-          $ref: '#/components/schemas/push_action'
-        trigger_id:
-          description: Id of the trigger the action is associated to
-          format: uuid
-          type: string
-      title: 'Mediatype identifier: application/vnd.arduino.action+json; view=default'
-      type: object
-    email_delivery_opts:
-      properties:
-        bcc:
-          description: The "bcc:" field of an e-mail
-          items:
-            $ref: '#/components/schemas/user_recipient'
-          type: array
-        cc:
-          description: The "cc:" field of an e-mail
-          items:
-            $ref: '#/components/schemas/user_recipient'
-          type: array
         to:
-          description: The "to:" field of an e-mail
+          description: The recipient of a push notification
           items:
             $ref: '#/components/schemas/user_recipient'
           minItems: 1
           type: array
       required:
       - to
-      title: email_delivery_opts
+      title: push_delivery_opts
+      type: object
+    body_expression:
+      properties:
+        expression:
+          description: Content of the body of a message, variables are allowed
+          maxLength: 1000
+          type: string
+        variables:
+          description: Variables used by the expression
+          items:
+            $ref: '#/components/schemas/variable'
+          type: array
+      required:
+      - expression
+      title: body_expression
+      type: object
+    device_status_source:
+      properties:
+        criteria:
+          description: The matching criteria of the trigger, this allows to interpret device_ids as an inclusion or exclusion list
+          enum:
+          - INCLUDE
+          - EXCLUDE
+          type: string
+        device_ids:
+          description: A list of device IDs to be included in or excluded from the trigger (see criteria). Mutually exclusive with property_id.
+          items:
+            format: uuid
+            type: string
+          type: array
+        grace_period_offline:
+          description: Amount of seconds the trigger will wait before the device will be considered disconnected (requires 'device_id')
+          maximum: 1209600
+          minimum: 0
+          type: integer
+        grace_period_online:
+          description: Amount of seconds the trigger will wait before the device will be considered connected (requires 'device_id')
+          maximum: 1209600
+          minimum: 0
+          type: integer
+      required:
+      - criteria
+      title: device_status_source
+      type: object
+    title_expression:
+      properties:
+        expression:
+          description: Content of the title (or subject) of a message, variables are allowed
+          maxLength: 100
+          type: string
+        variables:
+          description: Variables used by the expression
+          items:
+            $ref: '#/components/schemas/variable'
+          type: array
+      required:
+      - expression
+      title: title_expression
+      type: object
+    user_recipient:
+      properties:
+        email:
+          description: The email address of the user
+          type: string
+        id:
+          description: The id of the user
+          format: uuid
+          type: string
+        username:
+          description: The username of the user
+          type: string
+      required:
+      - id
+      title: user_recipient
+      type: object
+    email_action:
+      properties:
+        body:
+          $ref: '#/components/schemas/body_expression'
+        delivery:
+          $ref: '#/components/schemas/email_delivery_opts'
+        subject:
+          $ref: '#/components/schemas/title_expression'
+      required:
+      - delivery
+      - subject
+      - body
+      title: email_action
       type: object
 externalDocs:
   description: See docs on Confluence

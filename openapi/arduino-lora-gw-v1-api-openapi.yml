@@ -142,49 +142,6 @@ paths:
       - lora_gw_v1
 components:
   schemas:
-    ArduinoLoragwv1:
-      description: ArduinoLoragwv1 media type (default view)
-      properties:
-        aws_id:
-          description: The id of the aws thing
-          type: string
-        id:
-          description: The id of the lora gateway. It's calculated from the mac using magic
-          example: '71619230301'
-          type: string
-        mac:
-          description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
-          type: string
-        pub:
-          description: The public key of the lora gateway
-          example: '-----BEGIN PUBLIC KEY-----
-
-            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO
-
-            3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX
-
-            7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS
-
-            j+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd
-
-            OrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ
-
-            5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl
-
-            FQIDAQAB
-
-            -----END PUBLIC KEY-----'
-          type: string
-        reachable:
-          description: True if the gateway is connected false if cannot be reachable
-          type: boolean
-      required:
-      - id
-      - pub
-      - mac
-      - aws_id
-      title: 'Mediatype identifier: application/vnd.arduino.loragwv1+json; view=default'
-      type: object
     CreateLoraGwV1Payload:
       properties:
         id:
@@ -246,6 +203,49 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoLoragwv1:
+      description: ArduinoLoragwv1 media type (default view)
+      properties:
+        aws_id:
+          description: The id of the aws thing
+          type: string
+        id:
+          description: The id of the lora gateway. It's calculated from the mac using magic
+          example: '71619230301'
+          type: string
+        mac:
+          description: The mac/serial_number/device_code of the lora gateway. It is printed on the box, and used to connect to tts.
+          type: string
+        pub:
+          description: The public key of the lora gateway
+          example: '-----BEGIN PUBLIC KEY-----
+
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryQICCl6NZ5gDKrnSztO
+
+            3Hy8PEUcuyvg/ikC+VcIo2SFFSf18a3IMYldIugqqqZCs4/4uVW3sbdLs/6PfgdX
+
+            7O9D22ZiFWHPYA2k2N744MNiCD1UE+tJyllUhSblK48bn+v1oZHCM0nYQ2NqUkvS
+
+            j+hwUU3RiWl7x3D2s9wSdNt7XUtW05a/FXehsPSiJfKvHJJnGOX0BgTvkLnkAOTd
+
+            OrUZ/wK69Dzu4IvrN4vs9Nes8vbwPa/ddZEzGR0cQMt0JBkhk9kU/qwqUseP1QRJ
+
+            5I1jR4g8aYPL/ke9K35PxZWuDp3U0UPAZ3PjFAh+5T+fc7gzCs9dPzSHloruU+gl
+
+            FQIDAQAB
+
+            -----END PUBLIC KEY-----'
+          type: string
+        reachable:
+          description: True if the gateway is connected false if cannot be reachable
+          type: boolean
+      required:
+      - id
+      - pub
+      - mac
+      - aws_id
+      title: 'Mediatype identifier: application/vnd.arduino.loragwv1+json; view=default'
       type: object
     ClaimLoraGwV1Payload:
       properties:

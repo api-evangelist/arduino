@@ -96,14 +96,6 @@ paths:
       - lora_apps_v1
 components:
   schemas:
-    UpdateLoraAppsV1Payload:
-      properties:
-        apps:
-          items:
-            type: string
-          type: array
-      title: UpdateLoraAppsV1Payload
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -130,6 +122,14 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    UpdateLoraAppsV1Payload:
+      properties:
+        apps:
+          items:
+            type: string
+          type: array
+      title: UpdateLoraAppsV1Payload
       type: object
 externalDocs:
   description: See docs on Confluence

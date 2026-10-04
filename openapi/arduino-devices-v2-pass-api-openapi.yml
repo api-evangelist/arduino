@@ -232,6 +232,19 @@ components:
       - password
       title: CheckDevicesV2PassPayload
       type: object
+    ArduinoDevicev2Pass:
+      description: DeviceCertV2 describes a password associated to a device (default view)
+      properties:
+        set:
+          description: Whether the password is set or not
+          type: boolean
+        suggested_password:
+          description: A random suggested password
+          type: string
+      required:
+      - set
+      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -258,19 +271,6 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoDevicev2Pass:
-      description: DeviceCertV2 describes a password associated to a device (default view)
-      properties:
-        set:
-          description: Whether the password is set or not
-          type: boolean
-        suggested_password:
-          description: A random suggested password
-          type: string
-      required:
-      - set
-      title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
       type: object
     devicev2.pass:
       properties:

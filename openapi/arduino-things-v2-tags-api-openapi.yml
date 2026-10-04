@@ -193,17 +193,6 @@ paths:
       - things_v2_tags
 components:
   schemas:
-    ArduinoTags:
-      description: ArduinoTags media type (default view)
-      properties:
-        tags:
-          items:
-            $ref: '#/components/schemas/tag'
-          type: array
-      required:
-      - tags
-      title: 'Mediatype identifier: application/vnd.arduino.tags+json; view=default'
-      type: object
     tag:
       properties:
         key:
@@ -247,6 +236,17 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    ArduinoTags:
+      description: ArduinoTags media type (default view)
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/tag'
+          type: array
+      required:
+      - tags
+      title: 'Mediatype identifier: application/vnd.arduino.tags+json; view=default'
       type: object
 externalDocs:
   description: See docs on Confluence

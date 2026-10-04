@@ -86,25 +86,6 @@ paths:
       - Templates
 components:
   schemas:
-    ArduinoTemplate:
-      description: ArduinoTemplate media type (default view)
-      properties:
-        dashboards:
-          items:
-            format: uuid
-            type: string
-          type: array
-        things:
-          $ref: '#/components/schemas/ArduinoThingresultCollection'
-        triggers:
-          items:
-            format: uuid
-            type: string
-          type: array
-      required:
-      - things
-      title: 'Mediatype identifier: application/vnd.arduino.template+json; view=default'
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -132,6 +113,31 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
+    ArduinoTemplate:
+      description: ArduinoTemplate media type (default view)
+      properties:
+        dashboards:
+          items:
+            format: uuid
+            type: string
+          type: array
+        things:
+          $ref: '#/components/schemas/ArduinoThingresultCollection'
+        triggers:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - things
+      title: 'Mediatype identifier: application/vnd.arduino.template+json; view=default'
+      type: object
+    ArduinoThingresultCollection:
+      description: ArduinoThingresultCollection is the media type for an array of ArduinoThingresult (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoThingresult'
+      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; type=collection; view=default'
+      type: array
     ArduinoThingresult:
       description: ArduinoThingresult media type (default view)
       properties:
@@ -152,12 +158,6 @@ components:
       - sketch_id
       title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; view=default'
       type: object
-    ArduinoThingresultCollection:
-      description: ArduinoThingresultCollection is the media type for an array of ArduinoThingresult (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoThingresult'
-      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; type=collection; view=default'
-      type: array
     template:
       description: TemplatePayload describes the needed attribute to apply a template
       properties:

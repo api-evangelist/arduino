@@ -419,29 +419,6 @@ paths:
       - clients_v1
 components:
   schemas:
-    ArduinoClient:
-      description: ArduinoClient media type (default view)
-      properties:
-        created_at:
-          description: Creation time
-          format: date-time
-          type: string
-        id:
-          description: The client_id of the client
-          type: string
-        name:
-          description: The friendly name of the client
-          type: string
-        secret:
-          description: The client_secret of the client
-          type: string
-      required:
-      - id
-      - name
-      - secret
-      - created_at
-      title: 'Mediatype identifier: application/vnd.arduino.client+json; view=default'
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -469,14 +446,28 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    enableclient:
+    ArduinoClient:
+      description: ArduinoClient media type (default view)
       properties:
-        enabled:
-          description: Enable or disable a client
-          type: boolean
+        created_at:
+          description: Creation time
+          format: date-time
+          type: string
+        id:
+          description: The client_id of the client
+          type: string
+        name:
+          description: The friendly name of the client
+          type: string
+        secret:
+          description: The client_secret of the client
+          type: string
       required:
-      - enabled
-      title: enableclient
+      - id
+      - name
+      - secret
+      - created_at
+      title: 'Mediatype identifier: application/vnd.arduino.client+json; view=default'
       type: object
     ArduinoToken:
       description: ArduinoToken media type (default view)
@@ -497,12 +488,6 @@ components:
       - expires_in
       title: 'Mediatype identifier: application/vnd.arduino.token+json; view=default'
       type: object
-    ArduinoClientCollection:
-      description: ArduinoClientCollection is the media type for an array of ArduinoClient (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoClient'
-      title: 'Mediatype identifier: application/vnd.arduino.client+json; type=collection; view=default'
-      type: array
     token:
       description: TokenPayload describes a request to obtain a jwt token
       properties:
@@ -548,6 +533,21 @@ components:
       required:
       - name
       title: client
+      type: object
+    ArduinoClientCollection:
+      description: ArduinoClientCollection is the media type for an array of ArduinoClient (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoClient'
+      title: 'Mediatype identifier: application/vnd.arduino.client+json; type=collection; view=default'
+      type: array
+    enableclient:
+      properties:
+        enabled:
+          description: Enable or disable a client
+          type: boolean
+      required:
+      - enabled
+      title: enableclient
       type: object
 externalDocs:
   description: See docs on Confluence

@@ -54,6 +54,12 @@ paths:
       - Properties
 components:
   schemas:
+    ArduinoPropertyCollection:
+      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoProperty'
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
+      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -167,12 +173,6 @@ components:
       - href
       title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
       type: object
-    ArduinoPropertyCollection:
-      description: ArduinoPropertyCollection is the media type for an array of ArduinoProperty (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoProperty'
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

@@ -331,92 +331,6 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    ArduinoProperty:
-      description: ArduinoProperty media type (default view)
-      properties:
-        created_at:
-          description: Creation date of the property
-          format: date-time
-          type: string
-        deleted_at:
-          description: Delete date of the property
-          format: date-time
-          type: string
-        href:
-          description: The api reference of this property
-          type: string
-        id:
-          description: The id of the property
-          format: uuid
-          type: string
-        last_value:
-          description: Last value of this property
-        linked_to_trigger:
-          description: Indicates if the property is involved in the activation of at least a trigger
-          type: boolean
-        max_value:
-          description: Maximum value of this property
-          format: double
-          type: number
-        min_value:
-          description: Minimum value of this property
-          format: double
-          type: number
-        name:
-          description: The friendly name of the property
-          type: string
-        permission:
-          description: The permission of the property
-          type: string
-        persist:
-          description: If true, data will persist into a timeseries database
-          type: boolean
-        sync_id:
-          description: The id of the sync pool
-          format: uuid
-          type: string
-        tag:
-          description: The integer id of the property
-          format: int64
-          type: integer
-        thing_id:
-          description: The id of the thing
-          format: uuid
-          type: string
-        thing_name:
-          description: The name of the associated thing
-          type: string
-        type:
-          description: The type of the property
-          type: string
-        update_parameter:
-          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
-          format: double
-          type: number
-        update_strategy:
-          description: The update strategy for the property value
-          type: string
-        updated_at:
-          description: Update date of the property
-          format: date-time
-          type: string
-        value_updated_at:
-          description: Last update timestamp of this property
-          format: date-time
-          type: string
-        variable_name:
-          description: The sketch variable name of the property
-          type: string
-      required:
-      - id
-      - thing_id
-      - name
-      - type
-      - permission
-      - update_strategy
-      - href
-      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
-      type: object
     ArduinoSync:
       description: ArduinoSync media type (default view)
       properties:
@@ -597,6 +511,92 @@ components:
         $ref: '#/components/schemas/ArduinoSync'
       title: 'Mediatype identifier: application/vnd.arduino.sync+json; type=collection; view=default'
       type: array
+    ArduinoProperty:
+      description: ArduinoProperty media type (default view)
+      properties:
+        created_at:
+          description: Creation date of the property
+          format: date-time
+          type: string
+        deleted_at:
+          description: Delete date of the property
+          format: date-time
+          type: string
+        href:
+          description: The api reference of this property
+          type: string
+        id:
+          description: The id of the property
+          format: uuid
+          type: string
+        last_value:
+          description: Last value of this property
+        linked_to_trigger:
+          description: Indicates if the property is involved in the activation of at least a trigger
+          type: boolean
+        max_value:
+          description: Maximum value of this property
+          format: double
+          type: number
+        min_value:
+          description: Minimum value of this property
+          format: double
+          type: number
+        name:
+          description: The friendly name of the property
+          type: string
+        permission:
+          description: The permission of the property
+          type: string
+        persist:
+          description: If true, data will persist into a timeseries database
+          type: boolean
+        sync_id:
+          description: The id of the sync pool
+          format: uuid
+          type: string
+        tag:
+          description: The integer id of the property
+          format: int64
+          type: integer
+        thing_id:
+          description: The id of the thing
+          format: uuid
+          type: string
+        thing_name:
+          description: The name of the associated thing
+          type: string
+        type:
+          description: The type of the property
+          type: string
+        update_parameter:
+          description: The update frequency in seconds, or the amount of the property has to change in order to trigger an update
+          format: double
+          type: number
+        update_strategy:
+          description: The update strategy for the property value
+          type: string
+        updated_at:
+          description: Update date of the property
+          format: date-time
+          type: string
+        value_updated_at:
+          description: Last update timestamp of this property
+          format: date-time
+          type: string
+        variable_name:
+          description: The sketch variable name of the property
+          type: string
+      required:
+      - id
+      - thing_id
+      - name
+      - type
+      - permission
+      - update_strategy
+      - href
+      title: 'Mediatype identifier: application/vnd.arduino.property+json; view=default'
+      type: object
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

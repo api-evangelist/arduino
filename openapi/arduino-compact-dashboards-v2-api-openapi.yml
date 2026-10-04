@@ -99,12 +99,6 @@ paths:
       - compact_dashboards_v2
 components:
   schemas:
-    ArduinoPageCollection:
-      description: ArduinoPageCollection is the media type for an array of ArduinoPage (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoPage'
-      title: 'Mediatype identifier: application/vnd.arduino.page+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -132,20 +126,24 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    ArduinoDashboardshare:
-      description: ArduinoDashboardshare media type (default view)
-      properties:
-        user_id:
-          description: The userID of the user you want to share the dashboard with
-          format: uuid
-          type: string
-        username:
-          description: The username of the user you want to share the dashboard with
-          type: string
-      required:
-      - user_id
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; view=default'
-      type: object
+    ArduinoDashboardshareCollection:
+      description: ArduinoDashboardshareCollection is the media type for an array of ArduinoDashboardshare (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoDashboardshare'
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; type=collection; view=default'
+      type: array
+    ArduinoPageCollection:
+      description: ArduinoPageCollection is the media type for an array of ArduinoPage (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoPage'
+      title: 'Mediatype identifier: application/vnd.arduino.page+json; type=collection; view=default'
+      type: array
+    ArduinoCompact_dashboard_v2Collection:
+      description: ArduinoCompact_dashboard_v2Collection is the media type for an array of ArduinoCompact_dashboard_v2 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_dashboard_v2'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_dashboard_v2+json; type=collection; view=default'
+      type: array
     ArduinoCompact_dashboard_v2:
       description: Dashboard is a collection of widgets (default view)
       properties:
@@ -192,12 +190,20 @@ components:
       - user_id
       title: 'Mediatype identifier: application/vnd.arduino.compact_dashboard_v2+json; view=default'
       type: object
-    ArduinoDashboardshareCollection:
-      description: ArduinoDashboardshareCollection is the media type for an array of ArduinoDashboardshare (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoDashboardshare'
-      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; type=collection; view=default'
-      type: array
+    ArduinoDashboardshare:
+      description: ArduinoDashboardshare media type (default view)
+      properties:
+        user_id:
+          description: The userID of the user you want to share the dashboard with
+          format: uuid
+          type: string
+        username:
+          description: The username of the user you want to share the dashboard with
+          type: string
+      required:
+      - user_id
+      title: 'Mediatype identifier: application/vnd.arduino.dashboardshare+json; view=default'
+      type: object
     ArduinoPage:
       description: Page describes a dashboard page (default view)
       properties:
@@ -220,12 +226,6 @@ components:
       - position
       title: 'Mediatype identifier: application/vnd.arduino.page+json; view=default'
       type: object
-    ArduinoCompact_dashboard_v2Collection:
-      description: ArduinoCompact_dashboard_v2Collection is the media type for an array of ArduinoCompact_dashboard_v2 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_dashboard_v2'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_dashboard_v2+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

@@ -100,12 +100,6 @@ paths:
       - compact_things_v2
 components:
   schemas:
-    ArduinoCompact_thingCollection:
-      description: ArduinoCompact_thingCollection is the media type for an array of ArduinoCompact_thing (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoCompact_thing'
-      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -196,6 +190,12 @@ components:
       - timezone
       title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; view=default'
       type: object
+    ArduinoCompact_thingCollection:
+      description: ArduinoCompact_thingCollection is the media type for an array of ArduinoCompact_thing (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoCompact_thing'
+      title: 'Mediatype identifier: application/vnd.arduino.compact_thing+json; type=collection; view=default'
+      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud

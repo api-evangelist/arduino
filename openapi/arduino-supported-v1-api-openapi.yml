@@ -22,6 +22,12 @@ paths:
       - supported_v1
 components:
   schemas:
+    ArduinoSupporteddevicev1Collection:
+      description: ArduinoSupporteddevicev1Collection is the media type for an array of ArduinoSupporteddevicev1 (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoSupporteddevicev1'
+      title: 'Mediatype identifier: application/vnd.arduino.supporteddevicev1+json; type=collection; view=default'
+      type: array
     ArduinoSupporteddevicev1:
       description: ArduinoSupporteddevicev1 media type (default view)
       properties:
@@ -74,12 +80,6 @@ components:
       - vendor
       title: 'Mediatype identifier: application/vnd.arduino.supporteddevicev1+json; view=default'
       type: object
-    ArduinoSupporteddevicev1Collection:
-      description: ArduinoSupporteddevicev1Collection is the media type for an array of ArduinoSupporteddevicev1 (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoSupporteddevicev1'
-      title: 'Mediatype identifier: application/vnd.arduino.supporteddevicev1+json; type=collection; view=default'
-      type: array
 externalDocs:
   description: See docs on Confluence
   url: https://arduino.atlassian.net/wiki/spaces/FTWEB/pages/91160610/Arduino+IoT+Cloud
