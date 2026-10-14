@@ -2,6 +2,7 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -19,3 +20,39 @@ edges:
   seller_name: Arduino
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Connectivity Standards Alliance (Matter)
+  partner: null
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors/5397
+  category: Matter certified products
+  contract_reference:
+    register: CSA Distributed Compliance Ledger (Matter certification)
+    spec_file: null
+    standard: Matter
+    role: Matter certified vendor
+    vendor_id: 5397
+    registered_name: Arduino
+    legal_name: Arduino SA
+    landing_page: https://www.arduino.cc
+    identity_source: vendorLandingPageURL
+    matched_domain: arduino.cc
+    matched_by: domain
+    certified_models: 1
+    certified_products:
+    - product: On/Off Light
+      device_type_id: 256
+      models: 1
+      revoked_models: 0
+      latest_certification: '2026-06-10'
+      transports:
+      - bluetooth
+      - thread
+      examples:
+      - Arduino Nano Matter
+      lapsed: false
+    signal_note: certified_products = one entry per device type (diversity), not per model
+    detected_by: sweep-iot.py
+    detected: '2026-10-14'
