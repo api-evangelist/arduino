@@ -36,12 +36,6 @@ paths:
       - property_types_v1
 components:
   schemas:
-    ArduinoPropertytypeCollection:
-      description: ArduinoPropertytypeCollection is the media type for an array of ArduinoPropertytype (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoPropertytype'
-      title: 'Mediatype identifier: application/vnd.arduino.propertytype+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -69,6 +63,12 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
+    ArduinoPropertytypeCollection:
+      description: ArduinoPropertytypeCollection is the media type for an array of ArduinoPropertytype (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoPropertytype'
+      title: 'Mediatype identifier: application/vnd.arduino.propertytype+json; type=collection; view=default'
+      type: array
     ArduinoPropertytype:
       description: ArduinoPropertytype media type (default view)
       properties:

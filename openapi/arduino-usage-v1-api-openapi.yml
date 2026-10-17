@@ -326,6 +326,79 @@ paths:
       - usage_v1
 components:
   schemas:
+    ArduinoUsageDaily:
+      description: Daily message-consumption series (default view)
+      properties:
+        from:
+          description: Start of the returned range (inclusive, UTC)
+          format: date-time
+          type: string
+        owner_id:
+          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
+          format: uuid
+          type: string
+        scope:
+          description: 'Scope of the series: `user` or `org`'
+          enum:
+          - user
+          - org
+          type: string
+        series:
+          description: One entry per calendar day in the requested range (days with zero messages are omitted)
+          items:
+            $ref: '#/components/schemas/UsageDailyPoint'
+          type: array
+        to:
+          description: End of the returned range (inclusive, UTC)
+          format: date-time
+          type: string
+        total:
+          description: Sum of `count` over the full returned range
+          format: int64
+          type: integer
+      required:
+      - scope
+      - owner_id
+      - from
+      - to
+      - total
+      - series
+      title: 'Mediatype identifier: application/vnd.arduino.usage.daily+json; view=default'
+      type: object
+    ArduinoUsageThingsMonthly:
+      description: Per-thing monthly message-consumption series (default view)
+      properties:
+        from:
+          description: Start of the returned range (inclusive, UTC, truncated to month start)
+          format: date-time
+          type: string
+        owner_id:
+          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
+          format: uuid
+          type: string
+        scope:
+          description: 'Scope of the series: `user` or `org`'
+          enum:
+          - user
+          - org
+          type: string
+        things:
+          description: One entry per thing with at least one message in the range
+          items:
+            $ref: '#/components/schemas/UsageThingMonthlySeries'
+          type: array
+        to:
+          description: End of the returned range (inclusive, UTC, month end)
+          format: date-time
+          type: string
+      required:
+      - scope
+      - owner_id
+      - from
+      - to
+      - things
+      title: 'Mediatype identifier: application/vnd.arduino.usage.things.monthly+json; view=default'
+      type: object
     UsageMonthlyPoint:
       properties:
         count:
@@ -342,6 +415,40 @@ components:
       - count
       title: UsageMonthlyPoint
       type: object
+    UsageThingMonthlySeries:
+      description: Monthly series of one thing
+      properties:
+        series:
+          description: One entry per calendar month with a non-zero count (UTC, ascending)
+          items:
+            $ref: '#/components/schemas/UsageMonthlyPoint'
+          type: array
+        thing_id:
+          description: Thing ID
+          format: uuid
+          type: string
+      required:
+      - thing_id
+      - series
+      title: UsageThingMonthlySeries
+      type: object
+    UsageThingDailySeries:
+      description: Daily series of one thing
+      properties:
+        series:
+          description: One entry per calendar day with a non-zero count (UTC, ascending)
+          items:
+            $ref: '#/components/schemas/UsageDailyPoint'
+          type: array
+        thing_id:
+          description: Thing ID
+          format: uuid
+          type: string
+      required:
+      - thing_id
+      - series
+      title: UsageThingDailySeries
+      type: object
     UsageDailyPoint:
       properties:
         count:
@@ -357,6 +464,33 @@ components:
       - date
       - count
       title: UsageDailyPoint
+      type: object
+    error:
+      description: Error response media type (default view)
+      properties:
+        code:
+          description: an application-specific error code, expressed as a string value.
+          example: invalid_value
+          type: string
+        detail:
+          description: a human-readable explanation specific to this occurrence of the problem.
+          example: Value of ID must be an integer
+          type: string
+        id:
+          description: a unique identifier for this particular occurrence of the problem.
+          example: 3F1FKVRR
+          type: string
+        meta:
+          additionalProperties: true
+          description: a meta object containing non-standard meta-information about the error.
+          example:
+            timestamp: 1458609066
+          type: object
+        status:
+          description: the HTTP status code applicable to this problem, expressed as a string value.
+          example: '400'
+          type: string
+      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
     ArduinoUsageMonthly:
       description: Monthly message-consumption series (default view)
@@ -396,140 +530,6 @@ components:
       - total
       - series
       title: 'Mediatype identifier: application/vnd.arduino.usage.monthly+json; view=default'
-      type: object
-    error:
-      description: Error response media type (default view)
-      properties:
-        code:
-          description: an application-specific error code, expressed as a string value.
-          example: invalid_value
-          type: string
-        detail:
-          description: a human-readable explanation specific to this occurrence of the problem.
-          example: Value of ID must be an integer
-          type: string
-        id:
-          description: a unique identifier for this particular occurrence of the problem.
-          example: 3F1FKVRR
-          type: string
-        meta:
-          additionalProperties: true
-          description: a meta object containing non-standard meta-information about the error.
-          example:
-            timestamp: 1458609066
-          type: object
-        status:
-          description: the HTTP status code applicable to this problem, expressed as a string value.
-          example: '400'
-          type: string
-      title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
-      type: object
-    ArduinoUsageThingsMonthly:
-      description: Per-thing monthly message-consumption series (default view)
-      properties:
-        from:
-          description: Start of the returned range (inclusive, UTC, truncated to month start)
-          format: date-time
-          type: string
-        owner_id:
-          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
-          format: uuid
-          type: string
-        scope:
-          description: 'Scope of the series: `user` or `org`'
-          enum:
-          - user
-          - org
-          type: string
-        things:
-          description: One entry per thing with at least one message in the range
-          items:
-            $ref: '#/components/schemas/UsageThingMonthlySeries'
-          type: array
-        to:
-          description: End of the returned range (inclusive, UTC, month end)
-          format: date-time
-          type: string
-      required:
-      - scope
-      - owner_id
-      - from
-      - to
-      - things
-      title: 'Mediatype identifier: application/vnd.arduino.usage.things.monthly+json; view=default'
-      type: object
-    UsageThingDailySeries:
-      description: Daily series of one thing
-      properties:
-        series:
-          description: One entry per calendar day with a non-zero count (UTC, ascending)
-          items:
-            $ref: '#/components/schemas/UsageDailyPoint'
-          type: array
-        thing_id:
-          description: Thing ID
-          format: uuid
-          type: string
-      required:
-      - thing_id
-      - series
-      title: UsageThingDailySeries
-      type: object
-    UsageThingMonthlySeries:
-      description: Monthly series of one thing
-      properties:
-        series:
-          description: One entry per calendar month with a non-zero count (UTC, ascending)
-          items:
-            $ref: '#/components/schemas/UsageMonthlyPoint'
-          type: array
-        thing_id:
-          description: Thing ID
-          format: uuid
-          type: string
-      required:
-      - thing_id
-      - series
-      title: UsageThingMonthlySeries
-      type: object
-    ArduinoUsageDaily:
-      description: Daily message-consumption series (default view)
-      properties:
-        from:
-          description: Start of the returned range (inclusive, UTC)
-          format: date-time
-          type: string
-        owner_id:
-          description: 'ID of the owner: user_id for scope=user, org_id for scope=org'
-          format: uuid
-          type: string
-        scope:
-          description: 'Scope of the series: `user` or `org`'
-          enum:
-          - user
-          - org
-          type: string
-        series:
-          description: One entry per calendar day in the requested range (days with zero messages are omitted)
-          items:
-            $ref: '#/components/schemas/UsageDailyPoint'
-          type: array
-        to:
-          description: End of the returned range (inclusive, UTC)
-          format: date-time
-          type: string
-        total:
-          description: Sum of `count` over the full returned range
-          format: int64
-          type: integer
-      required:
-      - scope
-      - owner_id
-      - from
-      - to
-      - total
-      - series
-      title: 'Mediatype identifier: application/vnd.arduino.usage.daily+json; view=default'
       type: object
     ArduinoUsageThingsDaily:
       description: Per-thing daily message-consumption series (default view)

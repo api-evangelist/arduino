@@ -45,12 +45,6 @@ paths:
       - Timezones
 components:
   schemas:
-    ArduinoTimezoneCollection:
-      description: ArduinoTimezoneCollection is the media type for an array of ArduinoTimezone (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoTimezone'
-      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; type=collection; view=default'
-      type: array
     error:
       description: Error response media type (default view)
       properties:
@@ -87,6 +81,12 @@ components:
       - timezones
       title: 'Mediatype identifier: application/vnd.arduino.timezones+json; view=default'
       type: object
+    ArduinoTimezoneCollection:
+      description: ArduinoTimezoneCollection is the media type for an array of ArduinoTimezone (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoTimezone'
+      title: 'Mediatype identifier: application/vnd.arduino.timezone+json; type=collection; view=default'
+      type: array
     ArduinoTimezone:
       description: ArduinoTimezone media type (default view)
       properties:

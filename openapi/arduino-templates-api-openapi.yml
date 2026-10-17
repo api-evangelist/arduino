@@ -86,6 +86,32 @@ paths:
       - Templates
 components:
   schemas:
+    ArduinoThingresultCollection:
+      description: ArduinoThingresultCollection is the media type for an array of ArduinoThingresult (default view)
+      items:
+        $ref: '#/components/schemas/ArduinoThingresult'
+      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; type=collection; view=default'
+      type: array
+    ArduinoThingresult:
+      description: ArduinoThingresult media type (default view)
+      properties:
+        device_id:
+          description: UUID of the attached device
+          format: uuid
+          type: string
+        id:
+          description: UUID of the created Thing
+          format: uuid
+          type: string
+        sketch_id:
+          description: UUID of the created Sketch
+          format: uuid
+          type: string
+      required:
+      - id
+      - sketch_id
+      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; view=default'
+      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -131,32 +157,6 @@ components:
       required:
       - things
       title: 'Mediatype identifier: application/vnd.arduino.template+json; view=default'
-      type: object
-    ArduinoThingresultCollection:
-      description: ArduinoThingresultCollection is the media type for an array of ArduinoThingresult (default view)
-      items:
-        $ref: '#/components/schemas/ArduinoThingresult'
-      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; type=collection; view=default'
-      type: array
-    ArduinoThingresult:
-      description: ArduinoThingresult media type (default view)
-      properties:
-        device_id:
-          description: UUID of the attached device
-          format: uuid
-          type: string
-        id:
-          description: UUID of the created Thing
-          format: uuid
-          type: string
-        sketch_id:
-          description: UUID of the created Sketch
-          format: uuid
-          type: string
-      required:
-      - id
-      - sketch_id
-      title: 'Mediatype identifier: application/vnd.arduino.thingresult+json; view=default'
       type: object
     template:
       description: TemplatePayload describes the needed attribute to apply a template

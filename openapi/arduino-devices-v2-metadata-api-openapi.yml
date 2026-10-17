@@ -125,10 +125,6 @@ paths:
       - devices_v2_metadata
 components:
   schemas:
-    SetDevicesV2MetadataPayload:
-      additionalProperties: true
-      title: SetDevicesV2MetadataPayload
-      type: object
     error:
       description: Error response media type (default view)
       properties:
@@ -155,6 +151,10 @@ components:
           example: '400'
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
+      type: object
+    SetDevicesV2MetadataPayload:
+      additionalProperties: true
+      title: SetDevicesV2MetadataPayload
       type: object
 externalDocs:
   description: See docs on Confluence

@@ -312,22 +312,6 @@ paths:
       - devices_v2_ota
 components:
   schemas:
-    devicev2.otaurlpyalod:
-      properties:
-        binary_key:
-          description: The object key of the binary
-          pattern: ^ota/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+.ota$
-          type: string
-        sha256:
-          description: The sha256 of the binary
-          pattern: ^[a-fA-F0-9]{64}$
-          type: string
-        user_id:
-          description: The id of the user who is requesting the url
-          format: uuid
-          type: string
-      title: devicev2.otaurlpyalod
-      type: object
     ArduinoDevicev2Otaupload:
       description: ArduinoDevicev2Otaupload media type (default view)
       properties:
@@ -393,6 +377,22 @@ components:
       required:
       - binary_key
       title: devicev2.otabinaryurl
+      type: object
+    devicev2.otaurlpyalod:
+      properties:
+        binary_key:
+          description: The object key of the binary
+          pattern: ^ota/[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+.ota$
+          type: string
+        sha256:
+          description: The sha256 of the binary
+          pattern: ^[a-fA-F0-9]{64}$
+          type: string
+        user_id:
+          description: The id of the user who is requesting the url
+          format: uuid
+          type: string
+      title: devicev2.otaurlpyalod
       type: object
 externalDocs:
   description: See docs on Confluence

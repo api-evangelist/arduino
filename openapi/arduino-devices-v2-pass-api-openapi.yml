@@ -223,15 +223,6 @@ paths:
       - devices_v2_pass
 components:
   schemas:
-    CheckDevicesV2PassPayload:
-      properties:
-        password:
-          description: The password for the device
-          type: string
-      required:
-      - password
-      title: CheckDevicesV2PassPayload
-      type: object
     ArduinoDevicev2Pass:
       description: DeviceCertV2 describes a password associated to a device (default view)
       properties:
@@ -244,6 +235,13 @@ components:
       required:
       - set
       title: 'Mediatype identifier: application/vnd.arduino.devicev2.pass+json; view=default'
+      type: object
+    devicev2.pass:
+      properties:
+        password:
+          description: The password for the device
+          type: string
+      title: devicev2.pass
       type: object
     error:
       description: Error response media type (default view)
@@ -272,12 +270,14 @@ components:
           type: string
       title: 'Mediatype identifier: application/vnd.goa.error+json; view=default'
       type: object
-    devicev2.pass:
+    CheckDevicesV2PassPayload:
       properties:
         password:
           description: The password for the device
           type: string
-      title: devicev2.pass
+      required:
+      - password
+      title: CheckDevicesV2PassPayload
       type: object
 externalDocs:
   description: See docs on Confluence
