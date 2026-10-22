@@ -54,3 +54,64 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: arduino-homebrew
+  label: Homebrew
+  partner: homebrew
+  partner_name: Homebrew
+  category: official CLI (Homebrew)
+  type: register
+  channel: package-registry
+  evidence: https://formulae.brew.sh/formula/arduino-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: arduino-cli
+      kind: formula
+      version: 1.5.1
+      released: null
+      lapsed: false
+      page: https://formulae.brew.sh/formula/arduino-cli
+      cli: 'formula desc: Arduino command-line interface'
+      repo_leg: github-org:arduino
+      publisher_leg: artifact-github-org:arduino
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: arduino-winget-windows-package-manager
+  label: winget (Windows Package Manager)
+  partner_name: winget (Windows Package Manager)
+  category: official CLI (winget (Windows Package Manager))
+  type: register
+  channel: package-registry
+  evidence: https://github.com/microsoft/winget-pkgs/tree/master/manifests/a/ArduinoSA/CLI
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: winget (Windows Package Manager) (public package index)
+    spec_file: null
+    packages:
+    - name: ArduinoSA.CLI
+      kind: manifest
+      version: 1.5.1
+      released: '2026-06-05'
+      lapsed: false
+      page: https://github.com/microsoft/winget-pkgs/tree/master/manifests/a/ArduinoSA/CLI
+      cli: 'winget: Arduino command line interface'
+      repo_leg: github-org:arduino
+      publisher_leg: artifact-github-org:arduino
+      matched_by: github-org
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null

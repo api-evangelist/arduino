@@ -2,12 +2,12 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
 - https://cdn.winget.microsoft.com/cache
 - https://formulae.brew.sh/api/cask.json
 - https://formulae.brew.sh/api/formula.json
 - https://github.com/ScoopInstaller/Extras
 - https://github.com/ScoopInstaller/Main
-- https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
 - https://pypi.org/pypi
 - https://registry.npmjs.org
 marketplace_apps: []
@@ -124,10 +124,10 @@ edges:
   detected_by: sweep-official-clis.py
   first_seen: '2026-10-20'
 source:
-- https://cdn.winget.microsoft.com/cache
-- https://formulae.brew.sh/api/cask.json
 - https://formulae.brew.sh/api/formula.json
-- https://github.com/ScoopInstaller/Extras
+- https://formulae.brew.sh/api/cask.json
+- https://cdn.winget.microsoft.com/cache
 - https://github.com/ScoopInstaller/Main
-- https://pypi.org/pypi
+- https://github.com/ScoopInstaller/Extras
 - https://registry.npmjs.org
+- https://pypi.org/pypi
